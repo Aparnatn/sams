@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SalesService } from '../services/sales.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { CashFrom, CashSaleRequest } from '../interfaces/sales.interfaces';
 import { CustomerResponse, ItemResponse, JobResponse } from '../user/login.interfaces';
 import { UserService } from '../user/user.service';
@@ -15,35 +15,35 @@ import { UserService } from '../user/user.service';
 export class CashComponent implements OnInit {
 
   cashSaleForm = this.formBuilder.group({
-    invoice_number: '',
-    date: '',
-    internal_ref_no: '',
-    cash: '',
+    invoice_number: ['',Validators.required],
+    date: ['',Validators.required],
+    internal_ref_no: ['',Validators.required],
+    cash: ['',Validators.required],
     ledger_name:"sales_ledger",
-    user_id: '',
-    account: '',
-    customer_id: '',
-    customer_name: '',
-    item_id1: '',
-    item_id2: '',
-    item_desc: '',
-    item_details2: '',
-    price1_1: '',
-    price1_2: '',
-    quantity1: '',
-    quantity2: '',
-    amount1: '',
-    amount2: '',
-    sales_ex1: '',
-    sales_ex2: '',
-    job_name: '',
-    job2: '',
-    labour_charge: '',
-    other_charge: '',
-    total1: '',
-    total2: '',
-    total3: '',
-    discount: '',
+    user_id: ['',Validators.required],
+    account: ['',Validators.required],
+    customer_id: ['',Validators.required],
+    customer_name: ['',Validators.required],
+    item_id1: ['',Validators.required],
+    item_id2: ['',Validators.required],
+    item_desc: ['',Validators.required],
+    item_details2: ['',Validators.required],
+    price1_1: ['',Validators.required],
+    price1_2: ['',Validators.required],
+    quantity1: ['',Validators.required],
+    quantity2: ['',Validators.required],
+    amount1: ['',Validators.required],
+    amount2: ['',Validators.required],
+    sales_ex1: ['',Validators.required],
+    sales_ex2: ['',Validators.required],
+    job_name: ['',Validators.required],
+    job2: ['',Validators.required],
+    labour_charge: ['',Validators.required],
+    other_charge: ['',Validators.required],
+    total1: ['',Validators.required],
+    total2: ['',Validators.required],
+    total3: ['',Validators.required],
+    discount: ['',Validators.required],
   });
   Customer: CustomerResponse[];
   Item:ItemResponse[];
