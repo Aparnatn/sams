@@ -58,7 +58,8 @@ export class UserComponent implements OnInit {
   private setUserTocken(tocken: string) {
     var now = new Date();
     now.setHours(now.getHours() + 8);
-    this.cookieService.put('userTocken', tocken);
+    this.cookieService.put('userTocken', tocken, {expires:now});
+    this.cookieService.put('jwt', tocken, {expires:now});
   }
 
   private showErros(errors: errorMessge) {

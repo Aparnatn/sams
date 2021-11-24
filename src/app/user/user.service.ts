@@ -348,13 +348,14 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/Sam/userlist`, {
       // observe: 'response',
-      // withCredentials: true
+      withCredentials: true
     });
   }
-  getUser(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}/Sam/userlist`, {
+
+  getUser(): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/Sam/user`, {
       // observe: 'response',
-      // withCredentials: true
+      withCredentials: true
     });
   }
 
