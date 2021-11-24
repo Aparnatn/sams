@@ -103,6 +103,8 @@
       <tr>
           <th>Job name</th>
           <th>Job Description</th>
+          <th>Actions</th>
+          <th>Actions</th>
           <!-- <th>CR No</th> -->
 
       </tr>
@@ -118,8 +120,8 @@
               <td>{{item.mobile }}</td>
               <td>{{item.email }}</td>
               <td>{{item.address }}</td> -->
-              <td><a href="customer-edit">Edit</a></td>
-
+              <td><a href="job/{{item.id}}/edit">Edit</a></td>
+              <td><a href="" (click)="delete(item.id)">Delete</a></td>
            </tr>
 
       </tbody>

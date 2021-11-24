@@ -32,6 +32,20 @@ export class JobComponent implements OnInit {
       this.jobs = data;
     })
   }
+  delete(event:number) {
+    if(confirm("Are you sure to delete this job ?")) {
+      this.service.jobdelete(event).subscribe(
+        () => {
+          alert('Deleted successfully');
+          this.loadJobs();
+        },
+        () => {
+          alert('Somethin went wrong!! Please try again later.');
+        }
+      );
+    }
+    return false
+  }
   onSubmit1(): void {
 
     this.service.job(this.JobForm.value,).subscribe((data,)=>{

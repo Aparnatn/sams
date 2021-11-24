@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-import { JobResponse } from '../user/login.interfaces';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Job, JobResponse } from '../user/login.interfaces';
 import { UserService } from '../user/user.service';
 
 @Component({
@@ -11,9 +11,11 @@ import { UserService } from '../user/user.service';
   styleUrls: ['./job-edit.component.scss']
 })
 export class JobEditComponent implements OnInit {
-
+  id: number;
   JobeditForm = this.formBuilder.group({
+    id:"",
     job_name:"",
+
     job_desc:"",
     // imag1:"",
     // imag2:"",
@@ -23,20 +25,41 @@ export class JobEditComponent implements OnInit {
 
   });
   jobs:JobResponse[]=[];
-  constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:UserService,) { }
+  constructor(
+    private http:HttpClient,
+    private userservice: UserService,
+    private route:ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private service:UserService,
+  ) { }
 
   ngOnInit(): void {
-    this.loadJobs();
+    this.route.params
+            .subscribe(
+                params => {
+                    this.id = params.id;
+                    this.fetchjobs();
+                },
+                error => {
+                    console.log(`Error on person view`, error);
+                },
+            );
   }
-  private loadJobs() {
-    this.service. getJob().subscribe((data: JobResponse[]) => {
-      this.jobs = data;
-    })
+
+  private fetchjobs() {
+   this.service.getJobs(this.id).subscribe((job: Job) => {
+     this.JobeditForm.setValue({
+       id: job.id,
+      job_name: job.job_name,
+     job_desc :job.job_desc,
+
+     });
+   })
   }
+
   onSubmit1(): void {
 
-    this.service.job(this.JobeditForm.value,).subscribe((data,)=>{
+    this.service.jobedit(this.JobeditForm.value,this.id).subscribe((data,)=>{
       console.log(data);});
-      this.router.navigate(['/grand-hyper']);
   }
 }
