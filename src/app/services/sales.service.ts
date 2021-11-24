@@ -65,7 +65,7 @@ export class SalesService {
   }
 
   customermasterdata(data: CustomerMasterdataRequest): Observable<CustomerMasterdataResponse> {
-    return this.http.post<CustomerMasterdataResponse>(`${this.apiUrl}/Sam/custom`, data, {
+    return this.http.post<CustomerMasterdataResponse>(`${this.apiUrl}/Sam/customermasterdata`, data, {
       // observe: 'response',
       withCredentials: true
     });
