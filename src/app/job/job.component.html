@@ -36,7 +36,7 @@
             <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Job Name" > -->
           </div>
           <div class="col-sm-9">
-            <input type="text " style="border-radius:12px;" class="form-control" formControlName="job_name" placeholder="" >
+            <input type="text " style="border-radius:12px;" class="form-control" formControlName="job1" placeholder="" >
           </div>
         </div>
 
@@ -110,7 +110,7 @@
       <tbody>
 
           <tr  *ngFor="let item of jobs">
-              <td>{{item.job_name }}</td>
+              <td>{{item.job1 }}</td>
               <td>{{item.job_desc }}</td>
               <!-- <td>{{item.cr_no }}</td>
               <td>{{item.expired_on }}</td>

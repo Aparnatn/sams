@@ -46,7 +46,7 @@
             <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Item Description" > -->
           </div>
           <div class="col-sm-9">
-            <input type="text " style="border-radius:12px;" class="form-control" formControlName="item_desc" placeholder="" >
+            <input type="text " style="border-radius:12px;" class="form-control" formControlName="item_details1" placeholder="" >
           </div>
         </div>
         <div class="row" style="padding-top: 5px;">
@@ -182,7 +182,7 @@
 
           <tr *ngFor="let item of Items">
               <td>{{ item.item_name }}</td>
-              <td>{{ item.item_desc }}</td>
+              <td>{{ item.item_details1 }}</td>
               <td>{{ item.item_barcode }}</td>
               <td>{{ item.item_category }}</td>
               <td>{{ item.open_balance }}</td>

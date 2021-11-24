@@ -69,6 +69,7 @@ export interface JobRequest {
 }
 
 export interface JobResponse {
+ job1: any;
  job_name: any;
  job_desc: any;
  id:number,

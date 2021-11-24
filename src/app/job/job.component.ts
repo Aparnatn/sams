@@ -13,7 +13,7 @@ import { JobResponse } from '../user/login.interfaces';
 export class JobComponent implements OnInit {
 
   JobForm = this.formBuilder.group({
-    job_name:['',Validators.required],
+    job1:['',Validators.required],
     job_desc:['',Validators.required],
     // imag1:"",
     // imag2:"",

@@ -26,7 +26,7 @@ export class CashComponent implements OnInit {
     customer_name: ['',Validators.required],
     item_id1: ['',Validators.required],
     item_id2: ['',Validators.required],
-    item_desc: ['',Validators.required],
+    item_details1: ['',Validators.required],
     item_details2: ['',Validators.required],
     price1_1: ['',Validators.required],
     price1_2: ['',Validators.required],
@@ -36,7 +36,7 @@ export class CashComponent implements OnInit {
     amount2: ['',Validators.required],
     sales_ex1: ['',Validators.required],
     sales_ex2: ['',Validators.required],
-    job_name: ['',Validators.required],
+    job1: ['',Validators.required],
     job2: ['',Validators.required],
     labour_charge: ['',Validators.required],
     other_charge: ['',Validators.required],
@@ -74,7 +74,7 @@ export class CashComponent implements OnInit {
 
       data.forEach(d => {
         this.cashSaleForm.patchValue({
-          item_desc: d.item_desc,
+          // item_desc: d.item_desc,
           item_id1: d.id
         });
       });
@@ -85,7 +85,7 @@ export class CashComponent implements OnInit {
 
       data.forEach(d => {
         this.cashSaleForm.patchValue({
-          job_name: d.job_name,
+          job1: d.job1,
          job_id1: d.id
         });
       });
