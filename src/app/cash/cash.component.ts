@@ -74,7 +74,7 @@ export class CashComponent implements OnInit {
 
       data.forEach(d => {
         this.cashSaleForm.patchValue({
-          // item_desc: d.item_desc,
+         item_details1: d.item_details1,
           item_id1: d.id
         });
       });
@@ -86,7 +86,7 @@ export class CashComponent implements OnInit {
       data.forEach(d => {
         this.cashSaleForm.patchValue({
           job1: d.job1,
-         job_id1: d.id
+         job_id: d.id
         });
       });
 

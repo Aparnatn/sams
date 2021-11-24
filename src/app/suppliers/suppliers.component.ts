@@ -22,9 +22,10 @@ export class SuppliersComponent implements OnInit {
     email: ['',Validators.required],
     address: ['',Validators.required],
     open_balance: ['',Validators.required],
-    credit_lim_am: ['',Validators.required],
+    bank_acc_name: ['',Validators.required],
+    bank_acc_no: ['',Validators.required],
     credit_lim_dur: ['',Validators.required],
-
+    credit_lim_am:['',Validators.required]
   });
   Suppliers:SupplierResponse[]=[];
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:UserService,) { }
