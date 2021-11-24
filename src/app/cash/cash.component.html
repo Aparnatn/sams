@@ -119,7 +119,13 @@
                 style="border-radius: 12px;width: 150px" class="form-control" >Quantity</div>
             <div><input type="number" min="0" formControlName="amount1" style="border-radius: 12px;width: 150px" class="form-control" >Amount</div>
             <div>  <input type="text" formControlName="sales_ex1" style="border-radius: 12px;width: 150px" class="form-control" > Sales Executive</div>
-            <div>   <input type="text" formControlName="job1" style="border-radius: 12px;width: 150px" class="form-control" >JOB</div>
+            <div>
+              <select  formControlName="job1" style="border-radius: 12px;width: 150px" class="form-control" placeholder="">
+
+                <option *ngFor="let item of Job">{{item.job1}}</option>
+              </select>
+             Job
+            </div>
             </div>
           <div class="row">
           <div>   <input type="text" formControlName="item_id2" style="border-radius: 12px;width: 150px" class="form-control" >Item ID</div>

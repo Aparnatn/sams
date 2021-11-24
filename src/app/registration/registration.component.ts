@@ -41,7 +41,7 @@ Customers:CustomerResponse[]=[];
     })
   }
   delete(event:number) {
-    if(confirm("Are you sure to delete this customer ?")) {
+    // if(confirm("Are you sure to delete this customer ?")) {
       this.service.customerdelete(event).subscribe(
         () => {
           alert('Deleted successfully');
@@ -51,7 +51,7 @@ Customers:CustomerResponse[]=[];
           alert('Somethin went wrong!! Please try again later.');
         }
       );
-    }
+
     return false
   }
   onSubmit(): void {

@@ -93,10 +93,25 @@ export interface ItemRequest {
   open_balance: string,
   buying_price: string,
   sell_price: string,
-  image1: string,
-  image2: string,
-  image3: string,
-  image4: string,
+  // image1: string,
+  // image2: string,
+  // image3: string,
+  // image4: string,
+}
+export interface ItemeditRequest {
+  item_name: string,
+  item_desc: string,
+  item_barcode: string,
+  item_category: string,
+  item_unit_prim: string,
+  item_unit_sec: string,
+  open_balance: string,
+  buying_price: string,
+  sell_price: string,
+  // image1: string,
+  // image2: string,
+  // image3: string,
+  // image4: string,
 }
 
 export interface ItemResponse {
@@ -105,6 +120,12 @@ export interface ItemResponse {
  item_details: any;
  id:number,
 }
+export interface ItemeditResponse {
+  item_desc: any;
+  item_details1: any;
+  item_details: any;
+  id:number,
+ }
 
 export interface User {
   username: string,
@@ -350,6 +371,23 @@ export interface Supplier {
   credit_lim_dur: string,
   bank_acc_name: string,
   bank_acc_no: string,
+}
+export interface Item {
+  id: any;
+  item_details1: any;
+  item_name: string,
+  item_desc: string,
+  item_barcode: string,
+  item_category: string,
+  item_unit_prim: string,
+  item_unit_sec: string,
+  open_balance: string,
+  buying_price: string,
+  sell_price: string,
+  // image1: string,
+  // image2: string,
+  // image3: string,
+  // image4: string,
 }
 export interface Trial {
   id: number,

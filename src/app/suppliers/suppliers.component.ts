@@ -38,6 +38,20 @@ export class SuppliersComponent implements OnInit {
       this.Suppliers = data;
     })
   }
+  delete(event:number) {
+    // if(confirm("Are you sure to delete this customer ?")) {
+      this.service.supplierdelete(event).subscribe(
+        () => {
+          alert('Deleted successfully');
+          this.loadSuppliers();
+        },
+        () => {
+          alert('Somethin went wrong!! Please try again later.');
+        }
+      );
+
+    return false
+  }
   onSubmit1(): void {
 
     this.service.supplier(this.SupplierForm.value,).subscribe((data,)=>{

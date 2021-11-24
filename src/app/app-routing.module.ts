@@ -362,7 +362,7 @@ export const ROUTES: Routes = [
     component: EmployeeEditComponent,
   },
   {
-    path: 'item-edit',
+    path: 'item/:id/edit',
     component: ItemEditComponent,
   },
   {

@@ -13,7 +13,7 @@ export class ItemComponent implements OnInit {
 
   itemForm = this.formBuilder.group({
     item_name:['',Validators.required],
-    item_desc:['',Validators.required],
+    item_details1:['',Validators.required],
     item_barcode:['',Validators.required],
     item_category:['',Validators.required],
     item_unit_prim:['',Validators.required],
@@ -41,6 +41,20 @@ export class ItemComponent implements OnInit {
     this.service.item(this.itemForm.value,).subscribe((data,)=>{
       console.log(data);});
       this.router.navigate(['/grand-hyper']);
+  }
+  delete(event:number) {
+    if(confirm("Are you sure to delete this item ?")) {
+      this.service.itemdelete(event).subscribe(
+        () => {
+          alert('Deleted successfully');
+          this.loadItems();
+        },
+        () => {
+          alert('Somethin went wrong!! Please try again later.');
+        }
+      );
+    }
+    return false
   }
 }
 

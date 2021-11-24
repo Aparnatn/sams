@@ -27,7 +27,8 @@ export class SupplierEditComponent implements OnInit {
     open_balance:"",
     credit_lim_am:"",
     credit_lim_dur:"",
-
+    bank_acc_name: "",
+    bank_acc_no: "",
   });
  suppliers:SupplierResponse[]=[];
   constructor(
@@ -68,7 +69,8 @@ export class SupplierEditComponent implements OnInit {
        open_balance:suppliers.open_balance,
        credit_lim_am:suppliers.credit_lim_am,
        credit_lim_dur:suppliers.credit_lim_dur,
-
+    bank_acc_name: suppliers.bank_acc_name,
+bank_acc_no:suppliers.bank_acc_no
      });
    })
   }

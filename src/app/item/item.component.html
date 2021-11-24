@@ -169,12 +169,13 @@
       <thead class="alert-warning">
       <tr>
           <th>Item name</th>
-          <th>Item Drecription</th>
+          <th>Item Description</th>
           <th>Item Item Barcode</th>
           <th>Item Item Category</th>
           <th>Item Opening Balance</th>
           <th>Item Buying Price</th>
           <th>Item Selling Price</th>
+          <th>Action</th>
           <th>Action</th>
       </tr>
       </thead>
@@ -188,7 +189,8 @@
               <td>{{ item.open_balance }}</td>
               <td>{{ item.buying_price }}</td>
               <td>{{ item.sell_price }}</td>
-
+              <td><a href="item/{{item.id}}/edit">Edit</a></td>
+              <td><a href="" (click)="delete(item.id)">Delete</a></td>
           </tr>
 
       </tbody>
