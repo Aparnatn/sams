@@ -64,10 +64,7 @@ export interface LedgerResponse {
 export interface JobRequest {
   job_name: string,
   job_desc: string,
-  imag1: string,
-  imag2: string,
-  imag3: string,
-  imag4: string,
+
 }
 
 export interface JobResponse {
@@ -253,6 +250,11 @@ export interface Ledger {
   category: string,
   opening_bal: string,
   date:string,
+}
+export interface Job {
+  id: any;
+  job_name: string,
+  job_desc: string,
 }
 
 export interface Trial {

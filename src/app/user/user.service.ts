@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { CompanylistResponse, CompanyRequest, CompanyResponse, CustomerRequest, CustomerResponse, EmployeeRequest, EmployeeResponse, GroupRequest, GroupResponse, ItemRequest, ItemResponse, JobRequest, JobResponse, Ledger, LedgereditRequest, LedgereditResponse, LedgerRequest, LedgerResponse, LedgerStatementRequest, LedgerStatementResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, SupplierRequest, SupplierResponse, UserlistResponse, User, EmployeeeditRequest, EmployeeeditResponse, Employee } from './login.interfaces';
+import { CompanylistResponse, CompanyRequest, CompanyResponse, CustomerRequest, CustomerResponse, EmployeeRequest, EmployeeResponse, GroupRequest, GroupResponse, ItemRequest, ItemResponse, JobRequest, JobResponse, Ledger, LedgereditRequest, LedgereditResponse, LedgerRequest, LedgerResponse, LedgerStatementRequest, LedgerStatementResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, SupplierRequest, SupplierResponse, UserlistResponse, User, EmployeeeditRequest, EmployeeeditResponse, Employee, Job } from './login.interfaces';
 import { LedgerComponent } from '../ledger/ledger.component';
 
 export interface LedgerFilter {
@@ -172,13 +172,19 @@ export class UserService {
     });
   }
   jobedit(data: EmployeeeditRequest,id): Observable<EmployeeeditResponse> {
-    return this.http.post<EmployeeeditResponse>(`${this.apiUrl}/Sam/employee/${id}/update`, data, {
+    return this.http.post<EmployeeeditResponse>(`${this.apiUrl}/Sam/job/${id}/update`, data, {
       // observe: 'response',
       // withCredentials: true
     });
   }
   employeedelete(id:number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/Sam/employee/${id}/delete`,  {
+      // observe: 'response',
+      // withCredentials: true
+    });
+  }
+ jobdelete(id:number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/Sam/job/${id}/delete`,  {
       // observe: 'response',
       // withCredentials: true
     });
@@ -239,8 +245,8 @@ export class UserService {
   getLedger(id: number): Observable<Ledger> {
     return this.http.get<Ledger>(`${this.apiUrl}/Sam/ledger/${id}`);
   }
-  getCust(id: number): Observable<Ledger> {
-    return this.http.get<Ledger>(`${this.apiUrl}/ledgedits/${id}`);
+  getJobs(id: number): Observable<Job> {
+    return this.http.get<Job>(`${this.apiUrl}/Sam/job/${id}`);
   }
   getemp(id:number): Observable<Employee> {
     return this.http.get<Employee>(`${this.apiUrl}/Sam/employee/${id}`,
