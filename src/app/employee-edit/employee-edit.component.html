@@ -1,0 +1,266 @@
+<html>
+    <head>
+      <style>
+        body
+        {
+          font-family: 'Times New Roman', Times, serif;
+        }
+      </style>
+    </head>
+
+
+<body style="font: Times New Roman;">
+    <section style="padding-top:30px">
+      <div class="container">
+        <button type="button"  style="border-radius:12px;" class="btn  btn-lg btn-block"><b><p style="font-size: 50px;">Registration </p></b></button>
+         &emsp;
+        <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">Employee Profile Edit </p></b></button>
+        <br>
+      </div>
+
+      <form  [formGroup]="EmployeeditForm" (ngSubmit)="onSubmit1()">
+        <div class="container-sm ">
+
+          <div class="row" style="padding-top: 5px;">
+            <div class="col-sm-3">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Employee ID </label>
+              <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Employee ID" > -->
+            </div>
+            <div class="col-sm-9">
+              <input type="text " style="border-radius:12px;" class="form-control" formControlName=""  placeholder="" >
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px;">
+            <div class="col-sm-3">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Employee Name </label>
+              <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Employee Name" > -->
+            </div>
+            <div class="col-sm-9">
+              <input type="text " style="border-radius:12px;" class="form-control" formControlName="emp_name" placeholder="" >
+            </div>
+          </div>
+
+          <div class="row" style="padding-top: 5px;">
+            <div class="col-sm-3">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Nationality </label>
+              <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Nationality" > -->
+            </div>
+            <div class="col-sm-9">
+              <input type="text " style="border-radius:12px;" class="form-control" formControlName="nationality" placeholder="" >
+            </div>
+          </div>
+
+
+
+          <div class="row" style="padding-top: 5px;">
+            <div class="col-sm-3">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Birth Date </label>
+              <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Birth Date" > -->
+            </div>
+            <div class="col-sm-9">
+              <input type="date" style="border-radius:12px;" class="form-control" formControlName="birth_date" placeholder="" >
+            </div>
+          </div>
+          <div class="row" style="padding-top: 5px;">
+            <div class="col-sm-3">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Joining Date </label>
+              <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Joining Date" > -->
+            </div>
+            <div class="col-sm-9">
+              <input type="date" style="border-radius:12px;" class="form-control" formControlName="joining_date" placeholder="" >
+            </div>
+          </div>
+          <div class="row" style="padding-top: 5px;">
+            <div class="col-sm-3">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Designation </label>
+              <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Designation" > -->
+            </div>
+            <div class="col-sm-9">
+              <input type="text " style="border-radius:12px;" class="form-control" formControlName="designation" placeholder="" >
+            </div>
+          </div>
+          <div class="row" style="padding-top: 5px;">
+            <div class="col-sm-3">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Department </label>
+              <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Department" > -->
+            </div>
+            <div class="col-sm-9">
+              <input type="text " style="border-radius:12px;" class="form-control" formControlName="department" placeholder="" >
+            </div>
+          </div>
+          <div class="row" style="padding-top: 5px;">
+            <div class="col-sm-3">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Salary Category </label>
+              <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Salary Category" > -->
+            </div>
+            <div class="col-sm-9">
+              <input type="text " style="border-radius:12px;" class="form-control" formControlName="salary_categ" placeholder="" >
+            </div>
+          </div>
+          <div class="row" style="padding-top: 5px;">
+            <div class="col-sm-3">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Passport Details </label>
+              <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Passort Details  " > -->
+            </div>
+            <div class="col">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> No </label>
+              <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="No" > -->
+            </div>
+            <div class="col">
+              <input type="text " style="border-radius:12px;" class="form-control" formControlName="passport_no" placeholder="" >
+            </div>
+            <div class="col">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Expires On </label>
+              <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Expires On" > -->
+            </div>
+            <div class="col">
+              <input type="date" style="border-radius:12px;" class="form-control" formControlName="expir" placeholder="" >
+            </div>
+          </div>
+          <div class="row" style="padding-top: 5px;">
+            <div class="col-sm-3">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Id Details </label>
+              <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Id DetailsId Details" > -->
+            </div>
+            <div class="col">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> No </label>
+              <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="No" > -->
+            </div>
+            <div class="col">
+              <input type="text " style="border-radius:12px;" class="form-control" formControlName="id_no" placeholder="" >
+            </div>
+            <div class="col">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Expires On </label>
+              <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Expires On" > -->
+            </div>
+            <div class="col">
+              <input type="date" style="border-radius:12px;" class="form-control" formControlName="id_expir" placeholder="" >
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row" style="padding-top: 5px;">
+            <!-- <div class="col-sm-3">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Add Image </label>
+              <<input type="text" style="border-radius:12px;" class="form-control"  placeholder="Add Image" > -->
+            <!-- </div> -->
+            <!-- <div class="col">
+              <input type="file" id="myFile" style="border-radius:12px;" class="form-control" formControlName="img1" placeholder="Image-1" >
+            </div>
+            <div class="col">
+              <input type="file" id="myFile" style="border-radius:12px;" class="form-control" formControlName="img2" placeholder="Image-2" >
+            </div>
+            <div class="col">
+              <input type="file" id="myFile" style="border-radius:12px;" class="form-control" formControlName="img3" placeholder="Image-3" >
+            </div>
+            <div class="col">
+              <input type="file" id="myFile" style="border-radius:12px;" class="form-control" formControlName="img4" placeholder="Image-4" >
+            </div> -->
+          </div>
+          <script>
+            function myFunction() {
+              var x = document.getElementById("myFile");
+              x.disabled = true;
+            }
+            </script>
+
+            <div class="grid-container" style="padding-top: 15px;" >
+
+
+
+                <div class="row" style="padding-top: 35px;">
+                  <div class="col-3">
+                    <label class="form-control"  style="border-radius:12px;"> Basic </label>
+
+                  </div>
+
+                  <div class="col-3">
+                    <input type="text " style="border-radius:12px;" class="form-control" formControlName="basic" placeholder="" >
+                  </div>
+                  <div class="col-3">
+                    <label class="form-control"  style="border-radius:12px;"> Housing </label>
+
+                  </div>
+                  <div class="col-3">
+                    <input type="text " style="border-radius:12px;" class="form-control" formControlName="housing" placeholder="" >
+                  </div>
+                </div>
+                <div class="row" style="padding-top: 5px;">
+                  <div class="col-3">
+                    <label class="form-control"  style="border-radius:12px;"> Transportation </label>
+
+                  </div>
+
+                  <div class="col-3">
+                    <input type="text " style="border-radius:12px;" class="form-control" formControlName="transportation" placeholder="" >
+                  </div>
+                  <div class="col-3">
+                    <label class="form-control"  style="border-radius:12px;"> Food </label>
+
+                  </div>
+                  <div class="col-3">
+                    <input type="text " style="border-radius:12px;" class="form-control" formControlName="food" placeholder="" >
+                  </div>
+                </div>
+                <div class="row" style="padding-top: 5px;">
+                  <div class="col-3">
+                    <label class="form-control"  style="border-radius:12px;"> Mobile </label>
+
+                  </div>
+
+                  <div class="col-3">
+                    <input type="text " style="border-radius:12px;" class="form-control" formControlName="mobile" placeholder="" >
+                  </div>
+                  <div class="col-3">
+                    <label class="form-control"  style="border-radius:12px;"> Other </label>
+
+                  </div>
+                  <div class="col-3">
+                    <input type="text " style="border-radius:12px;" class="form-control" formControlName="other" placeholder="" >
+                  </div>
+                </div>
+                <div class="row" style="padding-top: 5px;">
+                  <div class="col-3">
+                    <label class="form-control"  style="border-radius:12px;"> Net Pay </label>
+
+                  </div>
+                  <div class="col-9">
+                    <input type="text " style="border-radius:12px;" class="form-control" formControlName="netpay" placeholder="" >
+                  </div>
+                </div>
+
+
+
+        </div>
+
+        </div>
+
+
+
+        <div class="container">
+          <div class="row" style="padding-top: 15px;">
+            <div class="col-6">
+              <button type="submit" style="border-radius: 12px;width:500px;padding-right: 50px;margin-right: 50px;" class="btn btn-lg btn-block">Update</button>
+            </div>
+              <!-- <div class="col-6">
+              <button type="submit" style="border-radius: 12px;width:500px;padding-right: 50px;margin-right: 50px;" class="btn btn-lg btn-block">Delete</button>
+              </div> -->
+
+
+          </div>
+        </div>
+      </form>
+      <br>
+      <!-- <form  action="">
+
+        <button type="submit" style="border-radius: 12px;width: 80%;margin-left: 10%;margin-right: 50%;" class=" a btn btn-lg btn-block">Submit & Go to Home Page</button>
+      </form> -->
+      </section>
+    </body>
+
+
+
+
+
+</html>

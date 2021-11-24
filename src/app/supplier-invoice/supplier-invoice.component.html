@@ -1,0 +1,136 @@
+<head>
+
+  <style>
+    body
+    {
+      font-family: 'Times New Roman', Times, serif;
+    }
+  </style>
+</head>
+<body>
+    <section style="padding-top:30px">
+    <div class="container">
+
+      <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">Supplier Invoice History</p></b></button>
+      <br>
+    </div>
+
+      <form [formGroup]=" supplierInvoiceHistoryForm" (ngSubmit)="onSubmit()">
+        <div class="container-sm ">
+
+        <div class="row">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Supplier Id </label>
+
+          </div>
+          <div class="col-sm-7" >
+            <input type="text"  style="border-radius:12px;" class="form-control" placeholder="" >
+          </div>
+        </div>
+
+
+
+          <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; ">  Report Date </label>
+
+          </div>
+
+          <div class="col-sm-7" >
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="report_date">
+          </div>
+        </div>
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Supplier Id </label>
+
+          </div>
+
+          <div class="col-sm-7" >
+            <input type="text"  style="border-radius:12px;" class="form-control" placeholder=""  formControlName="date">
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Invoice No</label>
+
+          </div>
+
+          <div class="col-sm-7" >
+            <input type="text"  style="border-radius:12px;" class="form-control" placeholder="" name="">
+          </div>
+        </div>
+
+
+
+        <br><br>
+
+
+        <div class="container">
+
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Sl.no</th>
+                <th>Date</th>
+                <th>Ref No</th>
+                <th>Description</th>
+                <th>Item</th>
+                <th>Qty </th>
+                <th>Job</th>
+                <th>Sales Staff</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr   *ngFor="let supplierIn of supplierIn;">
+                <td></td>
+                <td>{{supplierIn.date }}</td>
+                <td>{{supplierIn.internal_ref_no }}</td>
+                <td></td>
+                <td>{{supplierIn.item_details1 }}</td>
+                <td>{{supplierIn.qty }}</td>
+                <td>{{supplierIn.job1 }}</td>
+                <td>{{supplierIn.sales_ex1 }}</td>
+                <td>{{supplierIn.total }}</td>
+
+              </tr>
+
+
+              <tr>
+                <td colspan="8" align="right">Balance Amount</td>
+                <td></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+
+
+
+
+
+      </div>
+        <br>
+    <div class="container ">
+
+
+      </div>
+
+    <br>
+        <div class="container">
+        <button type="submit" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+      </div>
+      </form>
+
+
+    </section>
+    </body>
+
+
+

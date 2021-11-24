@@ -1,0 +1,65 @@
+<div class="main-card mb-3 card">
+    <div class="card-body"><h5 class="card-title">Registred Companies</h5>
+        <table class="mb-0 table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Company Name</th>
+                <th>Reg No,</th>
+                <th>Reg Date</th>
+                <th>Mobile no.</th>
+                <th>Email</th>
+                <th>Admin Username</th>
+                <th>Username</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody *ngIf="companies.length > 0">
+            <tr *ngFor="let item of companies; let i = index" [attr.data-index]="i">
+                <th scope="row">{{ i+1 }}</th>
+                <td>{{item.company_name}}</td>
+                <td>{{item.reg_no}}</td>
+                <td>{{item.app_regdate}}</td>
+                <td>{{item.reg_mobno}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.admin_usernm}}</td>
+                <td>{{item.username}}</td>
+                <!-- <td>{{item.user_access}}</td> -->
+                <td><a href="company/{{ item.id }}/edit">Edit</a></td>
+                <td><a href="" (click)="delete(item.id)">Delete</a></td>
+            </tr>
+            <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <!-- <td></td> -->
+                <td></td>
+                <td></td>
+            </tr>
+            <tbody *ngIf="companies.length == 0">
+                <tr>
+                    <td colspan="9">No data</td>
+                </tr>
+                <tr>
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <!-- <td></td> -->
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

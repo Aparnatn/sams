@@ -1,0 +1,127 @@
+
+<head>
+
+  <style>
+    body
+    {
+      font-family: 'Times New Roman', Times, serif;
+    }
+  </style>
+</head>
+<body>
+  <section style="padding-top:30px">
+    <div class="container">
+      <button type="button"  style="border-radius:12px;" class="btn  btn-lg btn-block"><b><p style="font-size: 50px;">Registration </p></b></button>
+       &emsp;
+      <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">Job Registration</p></b></button>
+      <br>
+    </div>
+
+    <form [formGroup]="JobForm" (ngSubmit)="onSubmit1()" >
+      <div class="container-sm ">
+
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-3">
+            <label class="form-control"  style="border-radius:12px;padding: 10px;"> Job ID </label>
+            <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Job ID" > -->
+          </div>
+          <div class="col-sm-9">
+            <input type="text " style="border-radius:12px;" class="form-control"  placeholder="" >
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-3">
+            <label class="form-control"  style="border-radius:12px;padding: 10px;"> Job Name </label>
+            <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Job Name" > -->
+          </div>
+          <div class="col-sm-9">
+            <input type="text " style="border-radius:12px;" class="form-control" formControlName="job_name" placeholder="" >
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-3">
+            <label class="form-control"  style="border-radius:12px;padding: 10px;"> Job Description </label>
+            <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Job Description" > -->
+          </div>
+          <div class="col-sm-9">
+            <input type="text " style="border-radius:12px;" class="form-control" formControlName="job_desc" placeholder="" >
+          </div>
+        </div>
+
+      </div>
+      <div class="container">
+        <!-- <div class="row" style="padding-top: 5px;">
+          <!-- <div class="col-sm-3">
+            <label class="form-control"  style="border-radius:12px;padding: 10px;"> Add Image </label>
+            <!-- <input type="text" style="border-radius:12px;" class="form-control"  placeholder="Add Image" > -->
+          <!-- </div>
+          <div class="col">
+            <input type="file" id="myFile" style="border-radius:12px;" class="form-control" formControlName="imag1" placeholder="Image-1" >
+          </div>
+          <div class="col">
+            <input type="file" id="myFile" style="border-radius:12px;" class="form-control" formControlName="imag2"  placeholder="Image-2" >
+          </div> -->
+          <!-- <div class="col">
+            <input type="file" id="myFile" style="border-radius:12px;" class="form-control" formControlName="imag3" placeholder="Image-3" >
+          </div>
+          <div class="col">
+            <input type="file" id="myFile" style="border-radius:12px;" class="form-control" formControlName="imag4" placeholder="Image-4" >
+          </div> -->
+        <!-- </div>  -->
+        <!-- <script>
+          function myFunction() {
+            var x = document.getElementById("myFile");
+            x.disabled = true;
+          }
+          </script> -->
+
+      </div>
+
+      <div class="container">
+        <div class="row" style="padding-top: 15px;">
+
+            <button type="submit" style="border-radius: 12px;width:100%;" class="btn btn-lg btn-block">Submit & Register New</button>
+
+
+
+
+
+        </div>
+      </div>
+    </form>
+    <br>
+    <form  action="home-page">
+
+      <button type="submit" style="border-radius: 12px;width: 80%;margin-left: 10%;margin-right: 50%;" class=" a btn btn-lg btn-block">Submit & Go to Home Page</button>
+    </form>
+    </section>
+    <table border="1" class="table table-bordered" input align="center">
+
+      <thead class="alert-warning">
+      <tr>
+          <th>Job name</th>
+          <th>Job Description</th>
+          <!-- <th>CR No</th> -->
+
+      </tr>
+      </thead>
+      <tbody>
+
+          <tr  *ngFor="let item of jobs">
+              <td>{{item.job_name }}</td>
+              <td>{{item.job_desc }}</td>
+              <!-- <td>{{item.cr_no }}</td>
+              <td>{{item.expired_on }}</td>
+              <td>{{item.land_phone }}</td>
+              <td>{{item.mobile }}</td>
+              <td>{{item.email }}</td>
+              <td>{{item.address }}</td> -->
+              <td><a href="customer-edit">Edit</a></td>
+
+           </tr>
+
+      </tbody>
+  </table>
+  </body>

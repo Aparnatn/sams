@@ -1,0 +1,60 @@
+<html>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <head>
+
+    <style>
+      body
+      {
+        font-family: 'Times New Roman', Times, serif;
+      }
+    </style>
+ </head>
+
+<body>
+  <section style="padding-top:30px">
+    <div class="container">
+
+      <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">User Login</p></b></button>
+      <br>
+    </div>
+ <br>
+    <form [formGroup]="form" (ngSubmit)="login()" method= " post" action="grand-hyper" name="myForm">
+      <div class="container-sm ">
+
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-3">
+            <label class="form-control"  style="border-radius:12px;padding: 10px;"> Username </label>
+          </div>
+          <div class="col-sm-9">
+            <input type="text " style="border-radius:12px;" class="form-control" formControlName="username" placeholder="" required>
+            <small class="text-danger"
+                *ngIf="form.get('username').touched && form.get('username').hasError('required')">
+                Please enter username.
+            </small>
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-3">
+            <label class="form-control"  style="border-radius:12px;padding: 10px;"> Password</label>
+          </div>
+          <div class="col-sm-9">
+            <input type="password" style="border-radius:12px;" class="form-control" formControlName="password" placeholder="" required>
+            <small class="text-danger"
+                *ngIf="form.get('password').touched && form.get('password').hasError('required')">
+                Please enter password.
+            </small>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="container" style="padding-top: 50px;">
+        <button type="submit" [disabled]="!form.valid" style="border-radius: 12px; font-size:25px;" class="btn btn-lg btn-block">Login</button>
+
+      </div>
+    </form>
+  </section>
+  </body>
+
+  </html>

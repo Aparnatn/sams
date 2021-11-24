@@ -1,0 +1,194 @@
+<head>
+  
+  <style>
+    body
+    {
+      font-family: 'Times New Roman', Times, serif;
+    }
+  </style>  
+</head>
+<body>
+    <section style="padding-top:30px">
+      <div class="container">
+        <button type="button"  style="border-radius:12px;" class="btn  btn-lg btn-block"><b><p style="font-size: 50px; color: black;" >Purchase Return Edit</p></b></button>
+  
+      </div>
+      <form >
+        <div class="container ">
+          <div class="row" style="padding-top: 15px; " >
+            <div class="col-sm-3" >
+              <label class="form-control"  style="border-radius:12px;padding: 10px;color: white;">Invoice Number </label>
+              <!-- <input   type="text " style="border-radius:12px;" class="form-control" placeholder="Invoice Number" > -->
+            </div>
+            <div  class="col-sm-4" >
+              <input   type="text " formControlName="invoice_number"style="border-radius:12px;" class="form-control" placeholder="" ng-required>
+            </div>
+            <div class="col-sm-2" >
+              <label class="form-control"  style="border-radius:12px;padding: 10px;color: white;"> Date</label>
+              <!-- <input   type="date " style="border-radius:12px;" class="form-control" placeholder="Date"> -->
+            </div>
+            <div class="col-sm-3"  >
+              <input   type="date" formControlName="date" style="border-radius: 12px;" class="form-control" placeholder="" required>
+            </div>
+          </div>
+          <div class="row" style="padding-top: 5px; ">
+            <div class="col-sm-3" >
+               <label class="form-control"  style="border-radius:12px;padding: 10px;color: white;"> Internal Ref.Number</label>
+              <!-- <input   type="text " style="border-radius: 12px;" class="form-control" placeholder="Internal Ref.Number" > -->
+            </div>
+            <div class="col-sm-4" >
+              <input   type="text" formControlName="internal_ref_no" style="border-radius: 12px;" class="form-control" placeholder="" required>
+            </div>
+            <div class="col-sm-2" >
+               <label class="form-control"  style="border-radius:12px;padding: 10px;color: white;">Due On</label>
+              <!-- <input   type="number " style="border-radius: 12px;" class="form-control" placeholder="Cash/Cheque"> -->
+            </div>
+            <div class="col-sm-3" >
+              <input   type="date " formControlName="due_on"style="border-radius: 12px;" class="form-control" placeholder="" >
+            </div>
+          </div>
+          <div class="row" style="padding-top: 5px; ">
+            <div class="col-sm-3" >
+              <label class="form-control"  style="border-radius:12px;padding: 10px;color: white;">Credit Limit Amount </label>
+              <!-- <input type="text " style="border-radius: 12px;" class="form-control" placeholder=" User ID" > -->
+            </div>
+            <div class="col-sm-4" >
+              <input type="text" formControlName="credit_limit_amt"  style="border-radius: 12px;" class="form-control" placeholder="">
+            </div>
+  
+            <div class="col-sm-2" >
+              <label class="form-control"  style="border-radius:12px;padding: 10px;color: white;">User ID </label>
+              <!-- <input type="text " style="border-radius: 12px;" class="form-control" placeholder=" User ID" > -->
+            </div>
+            <div class="col-sm-3" >
+              <input type="text" formControlName="user_id"  style="border-radius: 12px;" class="form-control" placeholder="">
+            </div>
+          </div>
+            <br><br>
+          <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
+            <div class="col-sm-5" >
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Supplier ID</label>
+              <!-- <input type="text " style="border-radius: 12px; color: white;" class="form-control" placeholder=" Supplier ID" > -->
+            </div>
+            <div class="col-sm-7" >
+              <input type="text" formControlName="supp_id"  style="border-radius: 12px;" class="form-control" >
+            </div>
+          </div>
+          <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
+            <div class="col-sm-5" >
+              <label class="form-control"  style="border-radius:12px;padding: 10px;">Supplier Name </label>
+              <!-- <input type="text " style="border-radius: 12px" class="form-control" placeholder=" Supplier Name" > -->
+            </div>
+            <div class="col-sm-7" >
+              <input type="text" formControlName="supp_name"  style="border-radius: 12px;" class="form-control" >
+            </div>
+          </div>
+            <br><br>
+  
+            <div class="container">
+  
+              <table class="table table-bordered">
+                <thead>
+                  <th></th>
+                  <th> Item ID </th>
+                  <th>Item Details</th>
+                  <th> Price </th>
+                  <th> Quantity </th>
+                  <th> Amount </th>
+                  <th> Total </th>
+                  <th> Sales Executive </th>
+                  <th> JOB </th>
+                </thead>
+                <tbody>
+                  <tr id='addr0'>
+                      <td></td>
+                      <td><input type="text" formControlName="item_id1" class="form-control"/></td>
+                      <td><input type="text"  formControlName="item_details1" class="form-control"/></td>
+                      <td><input type="number"  formControlName="price1_1" placeholder='Enter Price' class="form-control price" step="0.00" min="0"/></td>
+                      <td><input type="number"  formControlName="quantity1" placeholder='Enter Qty' class="form-control qty" step="0" min="0"/></td>
+                      <td><input type="number"  formControlName="amount1" placeholder='0.00' class="form-control total" /></td>
+                      <td><input type="number"  formControlName="total1" placeholder='0.00' class="form-control total" /></td>
+                      <td><input type="text"  formControlName="sales_ex1" class="form-control"/></td>
+                      <td><input type="text"  formControlName="job1" class="form-control"/></td>
+                  </tr>
+                  <tr id='addr1'>
+                      <td></td>
+                      <td><input type="text"  formControlName="item_id2" class="form-control"/></td>
+                      <td><input type="text"  formControlName="item_details2" class="form-control"/></td>
+                      <td><input type="number"  formControlName="price1_2" placeholder='Enter Price' class="form-control price" step="0.00" min="0"/></td>
+                      <td><input type="number"  formControlName="quantity2" placeholder='Enter Qty' class="form-control qty" step="0" min="0"/></td>
+                      <td><input type="number"  formControlName="amount2" placeholder='0.00' class="form-control total" /></td>
+                      <td><input type="number"  formControlName="total2" placeholder='0.00' class="form-control total" /></td>
+                      <td><input type="text"  formControlName="sales_ex2" class="form-control"/></td>
+                      <td><input type="text"  formControlName="job2" class="form-control"/></td>
+                  </tr>
+  
+                  </tbody>
+              </table>
+            </div>
+  
+  
+              <br>
+            <div class="row" style="padding-top: 5px; ">
+              <div class="col-sm-2" style="padding-left: 3px;">
+                <label class="form-control"  style="border-radius:12px;padding: 10px;">Labour Charge</label>
+              </div>
+              <div class="col-sm-4" >
+                <input  type="text" formControlName="labour_charge" style="border-radius: 12px;" class="form-control" name="labour_charge" placeholder='0.00'>
+              </div>
+              <div class="col-sm-2" style="padding-left: 3px;">
+              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Other Charges</label>
+              </div>
+              <div class="col-sm-4" >
+                <input type="text "formControlName="other_charge" style="border-radius: 12px;" class="form-control" name="other_charge" placeholder='0.00'>
+              </div>
+            </div>
+  
+            <div class="row" style="padding-top: 5px; ">
+              <div class="col-sm-2" style="padding-left: 3px;">
+                <label class="form-control"  style="border-radius:12px;padding: 10px;">Total </label>
+              </div>
+              <div class="col-sm-3" >
+                <input  type="text" formControlName="total3" style="border-radius: 12px;" name="total1" placeholder='0.00' class="form-control">
+              </div>
+              <div class="col-sm-7" style="padding-left: 3px;" >
+                <input  type="text " style="border-radius: 12px;" class="form-control" name="total2" placeholder='Enter in words'>
+              </div>
+            </div>
+  
+            <div class="row" style="padding-top: 5px; ">
+              <div class="col-sm-3" >
+                <label class="form-control"  style="border-radius:12px;padding: 10px;"> Discount</label>
+              </div>
+              <div class="col" >
+                <input type="text " formControlName="discount" style="border-radius: 12px;" class="form-control" name="discount" id="discount" placeholder="0">
+              </div>
+            </div>
+  
+            <div class="row" style="padding-top: 5px; ">
+              <div class="col-sm-2" style="padding-left: 3px;">
+                <label class="form-control"  style="border-radius:12px;padding: 10px;">Total </label>
+              </div>
+              <div class="col-sm-3" >
+                <input  type="text" formControlName="total4" style="border-radius: 12px;" name="total3" placeholder='0.00' class="form-control" id="total3">
+              </div>
+              <div class="col-sm-7" style="padding-left: 3px;" >
+                <input  type="text " style="border-radius: 12px;" class="form-control" name="total4" placeholder='Enter in words'>
+              </div>
+            </div>
+  
+  
+  
+          </div>
+        <br>
+        <div class="container">
+          <button type="submit"  style="border-radius: 12px; font-size:25px; " class="  btn btn-lg btn-block">SUBMIT</button>
+        </div>
+      </form>
+    </section>
+  </body>
+  
+  
+  
+  
+  

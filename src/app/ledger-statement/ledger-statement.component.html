@@ -1,0 +1,260 @@
+<head>
+
+  <style>
+    body
+    {
+      font-family: 'Times New Roman', Times, serif;
+    }
+  </style>
+</head>
+<body>
+    <section style="padding-top:30px">
+    <div class="container">
+
+      <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">Ledger Statement</p></b></button>
+      <br>
+    </div>
+
+      <form [formGroup]="LedgerStatementForm" (ngSubmit)="onSubmit()" >
+        <div class="container-sm ">
+
+        <div class="row">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; ">From Date </label>
+
+          </div>
+          <div class="col-sm-7" >
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="from_date">
+          </div>
+        </div>
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Ledger Id </label>
+
+          </div>
+
+          <div class="col-sm-7" >
+            <input type="text" style="border-radius:12px;" class="form-control" placeholder="" formControlName="name">
+          </div>
+        </div>
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> To Date </label>
+
+          </div>
+
+          <div class="col-sm-7" >
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="to_date">
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Period </label>
+
+          </div>
+
+          <div class="col-sm-7" >
+            <input type="text"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="period">
+          </div>
+        </div>
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Ledger Name </label>
+
+          </div>
+
+          <div class="col-sm-7" >
+            <select  formControlName="ledger_name" style="border-radius: 12px;" class="form-control" placeholder="">
+              <option selected disabled value="">Choose....</option>
+              <option>Assets </option>
+              <option>Rent </option>
+              <option>Bank Accounts </option>
+              <option>Cash-in-hand</option>
+              <option>Cash Ledger</option>
+              <option>Purchase Accounts</option>
+              <option>Customer ledger</option>
+              <option>sales Ledger</option>
+              <option>Supplier-ledger</option>
+              <option>sales Accounts</option>
+              <option>Supplier-ledger</option>
+              <option>Loans & Advances(Assets)</option>
+              <option>Stock-in-Hand</option>
+              <option>Sundry Debtors</option>
+              <option>Fixed Asset</option>
+              <option>Investments</option>
+              <option>Misc. Expenses(ASSET)</option>
+              <option>Liabilities</option>
+              <option>Branch\Divisions</option>
+              <option>Capital Account</option>
+              <option>Reserves & Surplus</option>
+              <option>Current Liabilities</option>
+              <option>Duties & Taxes</option>
+              <option>Provisions</option>
+              <option>Sundry Creditors</option>
+              <option>Loans (Liabilities)</option>
+              <option>Bank OD A/c</option>
+              <option>Secured A/c</option>
+              <option>Profit & loss A/c</option>
+              <option>Direct Expenses</option>
+              <option>Indirect Expenses</option>
+              <option>Direct Income</option>
+              <option>Indirect Income</option>
+
+          </select>   </div>
+        </div>
+
+
+
+        <br><br>
+
+
+        <div class="container">
+
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>SI.no</th>
+                <th>Ledger ID</th>
+                <th>Ledger Name</th>
+                <th>Ledger Category</th>
+                <th>Opening Balance</th>
+                <th>Debit Amount</th>
+                <th>Credit Amount</th>
+                <th>Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+
+
+              <tr *ngFor="let item of Cash;">
+                <td>{{item.id}}</td>
+                <td></td>
+                <td>{{item.account}}</td>
+                <td></td>
+                <td></td>
+                <td>{{item.total3}}</td>
+                <td>{{item.total3}}</td>
+                <td></td>
+
+              </tr>
+              <tr  *ngFor="let cash of PCash;">
+                <td>{{ cash.id }}</td>
+                <td></td>
+                <td>{{cash.account}}</td>
+                <td></td>
+                <td></td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td></td>
+
+              </tr>
+              <tr  *ngFor="let cash of receipt;">
+                <td>{{ cash.id }}</td>
+                <td></td>
+                <td>{{cash.account}}</td>
+                <td></td>
+                <td></td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td></td>
+
+
+              </tr>
+
+              <tr  *ngFor="let cash of preceipt;">
+                <td>{{ cash.id }}</td>
+                <td></td>
+                <td>{{cash.account}}</td>
+                <td></td>
+                <td></td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td></td>
+
+              </tr>
+              <tr   *ngFor="let cash of credit;">
+                <td>{{ cash.id }}</td>
+                <td></td>
+                <td>{{cash.account}}</td>
+                <td></td>
+                <td></td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td></td>
+
+
+              </tr>
+              <tr  *ngFor="let cash of pcredit;">
+                <td>{{ cash.id }}</td>
+                <td></td>
+                <td>{{cash.account}}</td>
+                <td></td>
+                <td></td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td></td>
+
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+              </tr>
+
+
+
+
+
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+
+
+
+
+
+      </div>
+        <br>
+    <div class="container ">
+
+
+      </div>
+
+    <br>
+        <div class="container">
+        <button type="submit"  style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+      </div>
+      </form>
+
+
+    </section>
+    </body>
+
+
+
+
+
+

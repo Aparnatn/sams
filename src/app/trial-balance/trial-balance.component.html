@@ -1,0 +1,202 @@
+<head>
+
+  <style>
+    body
+    {
+      font-family: 'Times New Roman', Times, serif;
+    }
+  </style>
+</head>
+<body>
+    <section style="padding-top:30px">
+    <div class="container">
+
+      <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">Trial Balance</p></b></button>
+      <br>
+    </div>
+
+      <form [formGroup]="TrialBalanceForm" (ngSubmit)="onSubmit()">
+        <div class="container-sm ">
+
+        <div class="row">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Date </label>
+
+          </div>
+          <div class="col-sm-7" >
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date">
+          </div>
+        </div>
+
+
+
+          <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Report Date </label>
+
+          </div>
+
+
+
+          <div class="col-sm-7" >
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date">
+          </div>
+        </div>
+
+
+
+
+
+        <br><br>
+
+
+        <div class="container">
+
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>SI.no</th>
+                <th>Ledger ID</th>
+                <th>Ledger Name</th>
+                <th>Ledger Category</th>
+                <th>Opening Balance</th>
+                <th>Debit Amount</th>
+                <th>Credit Amount</th>
+                <th>Closing Balance</th>
+
+              </tr>
+            </thead>
+            <tbody>
+
+
+              <tr  *ngFor="let cash of Cash;">
+                <td>{{ cash.id }}</td>
+                <td></td>
+                <td>{{cash.account}}</td>
+                <td></td>
+                <td></td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td></td>
+
+              </tr>
+              <tr  *ngFor="let cash of PCash;">
+                <td>{{ cash.id }}</td>
+                <td></td>
+                <td>{{cash.account}}</td>
+                <td></td>
+                <td></td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td></td>
+
+              </tr>
+              <tr  *ngFor="let cash of receipt;">
+                <td>{{ cash.id }}</td>
+                <td></td>
+                <td>{{cash.account}}</td>
+                <td></td>
+                <td></td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td></td>
+
+
+              </tr>
+
+              <tr  *ngFor="let cash of preceipt;">
+                <td>{{ cash.id }}</td>
+                <td></td>
+                <td>{{cash.account}}</td>
+                <td></td>
+                <td></td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td></td>
+
+              </tr>
+              <tr   *ngFor="let cash of credit;">
+                <td>{{ cash.id }}</td>
+                <td></td>
+                <td>{{cash.account}}</td>
+                <td></td>
+                <td></td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td></td>
+
+
+              </tr>
+              <tr  *ngFor="let cash of pcredit;">
+                <td>{{ cash.id }}</td>
+                <td></td>
+                <td>{{cash.account}}</td>
+                <td></td>
+                <td></td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td></td>
+
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+              </tr>
+
+
+
+
+
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+
+
+
+
+
+      </div>
+        <br>
+    <div class="container ">
+
+
+      </div>
+
+    <br>
+        <div class="container">
+        <button type="submit"  style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+      </div>
+      </form>
+
+
+    </section>
+    </body>
+
+
+
+
+
+

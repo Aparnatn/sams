@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <title>C.R.U.D</title>
+
+</head>
+
+<body>
+  <div class="container">
+
+    <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">User Registration</p></b></button>
+    <br>
+  </div>
+    <div class="container">
+        <table class="table table-bordered" >
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Mobileno</th>
+
+
+                        <!-- <th>useraccess</th> -->
+
+                        <th>edit</th>
+                        <th>delete</th>
+                    </tr>
+
+                </thead>
+            <tbody>
+
+                <tr   *ngFor="let item of users">
+                    <td>{{item.username}}</td>
+                    <td style="padding:10px;">{{item.mobile_no}}</td>
+
+
+                    <!-- <td style="padding:10px;">{{item.user_access}}</td> -->
+
+
+                     <td style="padding:10px;"><a href="#">Edit</a></td>
+                     <td style="padding:10px;"><a href= "#">Delete</a></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+</body>
+
+</html>

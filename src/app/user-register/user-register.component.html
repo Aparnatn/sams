@@ -1,0 +1,91 @@
+<html>
+<head>
+
+    <style>
+      body
+      {
+        font-family: 'Times New Roman', Times, serif;
+      }
+    </style>
+
+
+
+</head>
+<body>
+  <section>
+    <div class="container" >
+     <div  style="text-align:center ;font-size: 50px;background-color: #808F9C;border-radius:12px;">User Registration </div>
+
+
+    </div>
+<br>
+    <form  [formGroup]="form" (ngSubmit)="onSubmit()" method="post" action="user-register" name="alertform" >
+      <div class="container-sm ">
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-3">
+            <label class="form-control"  style="border-radius:12px;padding: 10px;"> Mobile No </label>
+          </div>
+          <div class="col-sm-9">
+            <input type="text" formControlName="mobile_no" style="border-radius:12px;" class="form-control" required="">
+            <small class="text-danger"
+                *ngIf="form.get('mobile_no').touched && form.get('mobile_no').hasError('required')">
+                Mobile is required.
+            </small>
+            <!-- <input type="text " style="border-radius:12px;" class="form-control" formControlName="mobile_no" placeholder="" required> -->
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-3">
+            <label class="form-control"  style="border-radius:12px;padding: 10px;"> Enter Username </label>
+          </div>
+          <div class="col-sm-9">
+            <input type="text" formControlName="username" style="border-radius:12px;" class="form-control" required="">
+            <small class="text-danger"
+                *ngIf="form.get('username').touched && form.get('username').hasError('required')">
+                Username is required.
+            </small>
+          </div>
+        </div>
+
+       <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-3">
+            <label class="form-control"  style="border-radius:12px;padding: 10px;">Enter 4 digit Password</label>
+          </div>
+          <div class="col-sm-9">
+            <input type="password" formControlName="password" style="border-radius:12px;" class="form-control" required="">
+            <small class="text-danger"
+                *ngIf="isPasswordInvalid && form.get('password').hasError('required')">
+                Password is required.
+            </small>
+            <small class="text-danger"
+                *ngIf="isPasswordInvalid && form.get('password').hasError('minlength')">
+                Password should be minimum 4 digit long.
+            </small>
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-3">
+            <label class="form-control"  style="border-radius:12px;padding: 10px;">Re-Enter 4 digit Password</label>
+          </div>
+          <div class="col-sm-9">
+            <input type="password" formControlName="confirm_password" style="border-radius:12px;" class="form-control" required="">
+            <small class="text-danger"
+                *ngIf="form.get('confirm_password').dirty && !passwordMatch">
+                Password should be minimum 4 digit long.
+            </small>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="container" style="padding-top: 50px;">
+        <input type="submit" [disabled]="!canSaved" style="border-radius: 12px; font-size:25px;" class="btn btn-lg btn-block" value="Submit">
+      </div>
+    </form>
+  </section>
+
+  </body>
+
+</html>

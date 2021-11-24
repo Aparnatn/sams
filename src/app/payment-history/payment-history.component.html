@@ -1,0 +1,139 @@
+
+<body>
+  <section style="padding-top:30px">
+  <div class="container">
+
+    <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">Payment History</p></b></button>
+    <br>
+  </div>
+
+    <form [formGroup]="PaymentHistoryForm" (ngSubmit)="onSubmit()">
+      <div class="container-sm ">
+
+      <div class="row">
+        <div class="col-sm-5" >
+          <label class="form-control"  style="border-radius:12px;padding: 10px; "> Supplier Id </label>
+
+        </div>
+        <div class="col-sm-7" >
+          <input type="text"  style="border-radius:12px;" class="form-control" placeholder="" name="pswd">
+        </div>
+      </div>
+
+
+
+        <div class="row" style="padding-top: 5px;">
+        <div class="col-sm-5" >
+          <label class="form-control"  style="border-radius:12px;padding: 10px; ">  Report Date </label>
+
+        </div>
+
+        <div class="col-sm-7" >
+          <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="report_date">
+        </div>
+      </div>
+      <div class="row" style="padding-top: 5px;">
+        <div class="col-sm-5" >
+          <label class="form-control"  style="border-radius:12px;padding: 10px; "> Supplier Name  </label>
+
+        </div>
+
+        <div class="col-sm-7" >
+          <input type="text"  style="border-radius:12px;" class="form-control" placeholder="" name="">
+        </div>
+      </div>
+
+      <div class="row" style="padding-top: 5px;">
+        <div class="col-sm-5" >
+          <label class="form-control"  style="border-radius:12px;padding: 10px; "> Voucher No</label>
+
+        </div>
+
+        <div class="col-sm-7" >
+          <input type="text"  style="border-radius:12px;" class="form-control" placeholder="" name="">
+        </div>
+      </div>
+
+
+
+      <br><br>
+      <div class="container">
+        <button type="submit"  style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+      </div>
+      <br><br>
+
+
+      <div class="container">
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Sl.no</th>
+              <th>Date</th>
+              <th>Ref No</th>
+              <th>Description</th>
+              <th>Item</th>
+              <th>Qty </th>
+              <th>Job</th>
+              <th>Sales Staff</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr   *ngFor="let payment of payment;">
+              <td></td>
+              <td>{{payment.date}}</td>
+              <td>{{payment.internal_ref_no}}</td>
+              <td></td>
+              <td>{{payment.item_details1}}</td>
+              <td>{{payment.qty}}</td>
+              <td>{{payment.job1}}</td>
+              <td>{{payment.sales_ex1}}</td>
+              <td>{{payment.total}}</td>
+            </tr>
+            <tr *ngFor="let payment1 of payment;">
+              <td></td>
+              <td>{{payment1.date}}</td>
+              <td>{{payment1.internal_ref_no}}</td>
+              <td></td>
+              <td>{{payment1.item_details2}}</td>
+              <td>{{payment1.quantity2}}</td>
+              <td>{{payment1.job2}}</td>
+              <td>{{payment1.sales_ex2}}</td>
+              <td>{{payment1.amount2}}</td>
+            </tr>
+
+            <tr>
+              <td colspan="8" align="right">Balance Amount</td>
+              <td></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+
+
+
+
+
+    </div>
+      <br>
+  <div class="container ">
+
+
+    </div>
+
+  <br>
+
+    </form>
+
+
+  </section>
+  </body>
+
+
+

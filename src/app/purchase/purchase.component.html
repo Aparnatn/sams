@@ -1,0 +1,42 @@
+<body>
+    <section>
+        <div class="container" style="padding-top:30px">
+            <button type="button"  style="border-radius:12px;" class="btn  btn-lg btn-block"><b><p style="font-size: 50px; color: black;" >Purchase</p></b></button>
+
+          </div>
+
+
+            <div class="container">
+
+                <div class="row" style="padding-top: 30px; ">
+                    <div style="padding-left: 140px; padding-right: 60px;" >
+                      <form (ngSubmit)="onSubmit()" action="cash-purchase">
+                        <button type="submit" style="border-radius:20px; height: 140px; width: 350px;" class="b1" ><p style="font-size: 35px; color: black;"><b>Cash Purchase</b></p></button>
+                      </form>
+                      </div>
+                    <div style="padding-left: 100px;padding-right: 60px;">
+                    <form (ngSubmit)="onSubmit1()" action="credit-purchase">
+                        <button type="submit" style="border-radius:20px; height: 140px; width: 350px;" class="b1" ><p style="font-size: 35px; color: black;"><b>Credit Purchase</b></p></button>
+                      </form>
+                      </div>
+                </div>
+                <div class="row" style="padding-top: 30px; ">
+                    <div style="padding-left: 140px; padding-right: 60px;" >
+                    <form  (ngSubmit)="onSubmit2()" action="purchase-return">
+                      <button type="submit" style="border-radius:20px; height: 140px; width: 350px;" class="b1" ><p style="font-size: 35px; color: black;"><b>Purchase Return</b></p></button>
+                      </form>
+                      </div>
+                    <div style="padding-left: 100px;padding-right: 60px;">
+                      <form  (ngSubmit)="onSubmit3()" action="purchase-receipts">
+                        <button type="submit" style="border-radius:20px; height: 140px; width: 350px;" class="b1" ><p style="font-size: 35px; color: black;"><b>Payment</b></p></button>
+                      </form>
+                      </div>
+                </div>
+
+
+
+            </div>
+
+    </section>
+</body>
+

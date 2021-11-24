@@ -1,0 +1,273 @@
+<body>
+    <section style="padding-top:30px">
+    <div class="container">
+
+      <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">Balance Sheet</p></b></button>
+      <br>
+    </div>
+
+      <form [formGroup]="BsForm" (ngSubmit)="onSubmit()" >
+        <div class="container-sm ">
+
+        <div class="row">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Date </label>
+
+          </div>
+          <div class="col-sm-7" >
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder=""  formControlName="date">
+          </div>
+        </div>
+
+
+
+          <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Report Date </label>
+
+          </div>
+
+
+
+          <div class="col-sm-7" >
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="report_date">
+          </div>
+        </div>
+
+
+
+
+
+        <br><br>
+
+
+        <div class="container">
+          <h3 style="text-align: center;">LIABILITY</h3>
+          <table class="table table-bordered">
+            <thead>
+                <tr>
+                  <th style="text-align: center;">Description</th>
+                  <th style="text-align: center;">Amount</th>
+                  <th style="text-align: center;">Total Amount</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th style="text-align: center;">Partners Liability</th>
+                  <td></td>
+
+
+                </tr>
+                <tr  *ngFor="let cash of Cash;">
+                  <td>Ledger-1</td>
+                  <td>{{cash.account}}</td>
+
+
+                </tr>
+                <tr  *ngFor="let cash of credit;">
+                  <td>ledger-2</td>
+                  <td>{{cash.account}}</td>
+
+
+                </tr>
+                <tr>
+                  <th style="text-align: right;">Total</th>
+                  <td></td>
+                  <td></td>
+
+                </tr>
+                <tr>
+                  <th style="text-align: center;">Current Liability</th>
+                  <td></td>
+
+
+                </tr>
+                <tr>
+                  <td>ledger-3</td>
+                  <td></td>
+
+
+                </tr>
+                <tr>
+                  <td>ledger-4</td>
+                  <td></td>
+
+
+                </tr>
+                <tr>
+                  <th style="text-align: right;">Total</th>
+                  <td></td>
+                  <td></td>
+
+                </tr>
+                <tr>
+                  <th style="text-align: center;">Long Term Liability</th>
+                  <td></td>
+
+
+                </tr>
+                <tr>
+
+                  <td>ledger-5</td>
+                  <td></td>
+
+
+                </tr>
+                <tr>
+                  <td>ledger-6</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="text-align: right;">Total</th>
+                  <td></td>
+                  <td></td>
+
+                </tr>
+
+                <tr  >
+                  <td></td>
+                  <td></td>
+                  <th style="text-align: right;">Gross Profit</th>
+
+
+                </tr>
+
+
+
+
+              </tbody>
+          </table>
+        </div>
+        <div class="container">
+            <h3 style="text-align: center;">ASSET</h3>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th style="text-align: center;">Description</th>
+                  <th style="text-align: center;">Amount</th>
+                  <th style="text-align: center;">Total Amount</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th style="text-align: center;">Cah & Bank Account</th>
+                  <td></td>
+
+
+                </tr>
+                <tr>
+                  <td>Ledger-7</td>
+                  <td></td>
+
+
+                </tr>
+                <tr>
+                  <td>ledger-8</td>
+                  <td></td>
+
+
+                </tr>
+                <tr  *ngFor="let cash of Cash;">
+                  <th style="text-align: right;">Total</th>
+                  <td>{{cash.total3}}</td>
+                  <td></td>
+
+                </tr>
+                <tr>
+                  <th style="text-align: center;">Current Asset</th>
+                  <td></td>
+
+
+                </tr>
+                <tr>
+                  <td>ledger-9</td>
+                  <td></td>
+
+
+                </tr>
+                <tr>
+                  <td>ledger-10</td>
+                  <td></td>
+
+
+                </tr>
+                <tr>
+                  <th style="text-align: right;">Total</th>
+                  <td></td>
+                  <td></td>
+
+                </tr>
+                <tr>
+                  <th style="text-align: center;">Fixed Asset</th>
+                  <td></td>
+
+
+                </tr>
+                <tr>
+
+                  <td>ledger-11</td>
+                  <td></td>
+
+
+                </tr>
+                <tr>
+                  <td>ledger-12</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th style="text-align: right;">Total</th>
+                  <td></td>
+                  <td></td>
+
+                </tr>
+
+                <tr *ngFor="let cash of PCash;">
+
+                  <td>{{cash.total3}}</td>
+                  <td></td>
+                  <th style="text-align: right;">Gross Profit</th>
+                  <td></td>
+
+                </tr>
+
+
+
+
+              </tbody>
+            </table>
+          </div>
+
+
+
+
+
+
+
+
+
+      </div>
+        <br>
+    <div class="container ">
+
+
+      </div>
+
+    <br>
+        <div class="container">
+        <button type="submit" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+      </div>
+      </form>
+
+
+    </section>
+    </body>
+
+
+
+
+
+
+
+

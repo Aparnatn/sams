@@ -1,0 +1,201 @@
+<body>
+  <section style="padding-top:30px">
+    <div class="container">
+      <button type="button"  style="border-radius:12px;" class="btn  btn-lg btn-block"><b><p style="font-size: 50px; color: black;" >Credit Purchase</p></b></button>
+
+    </div>
+
+    <form [formGroup]="CreditPurchaseForm" (ngSubmit)="onSubmit()" >
+      <div class="container ">
+
+        <div class="row" style="padding-top: 15px; " >
+
+          <div class="col-sm-3" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px;color: white;">Invoice Number</label>
+          </div>
+          <div  class="col-sm-4" >
+            <input type="text " style="border-radius:12px;" class="form-control" formControlName="invoice_number" placeholder="">
+          </div>
+          <div class="col-sm-2" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px;color: white;">Date</label>
+          </div>
+          <div class="col-sm-3"  >
+            <input  type="date" style="border-radius: 12px;" formControlName="date"class="form-control" placeholder="">
+          </div>
+
+
+    </div>
+
+        <div class="row" style="padding-top: 5px; ">
+          <div class="col-sm-3" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px;color: white;">Internal Ref.Number</label>
+          </div>
+          <div class="col-sm-4" >
+            <input   type="text" formControlName="internal_ref_no" style="border-radius: 12px;" class="form-control" placeholder="">
+          </div>
+          <div class="col-sm-2" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px;color: white;">Dueon</label>
+          </div>
+          <div class="col-sm-3"  >
+            <input  type="date" style="border-radius: 12px;" formControlName="due_on"class="form-control" placeholder="">
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px; ">
+          <div class="col-sm-3" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px;color: white;">User ID</label>
+          </div>
+          <div class="col-sm-4" >
+            <input type="text" formControlName="user_id" style="border-radius: 12px;" class="form-control" placeholder="">
+          </div>
+          <div class="col-sm-2" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px;color: white;">Account</label>
+          </div>
+          <div class="col-sm-3" >
+            <select  formControlName="account" style="border-radius: 12px;" class="form-control" placeholder="">
+              <option selected disabled value="">Choose....</option>
+              <option>Purchase Accounts</option>
+            </select>
+          </div>
+          <div class="col-sm-3" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px;color: white;">Credit Limit amount</label>
+          </div>
+          <div class="col-sm-4"  >
+            <input  type="text" style="border-radius: 12px;" formControlName="credit_limit_amt"class="form-control" placeholder="">
+          </div>
+
+
+        </div>
+
+          <br><br>
+        <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px;">Supplier ID</label>
+          </div>
+          <div class="col-sm-7" >
+            <input type="text" formControlName="supp_id" style="border-radius: 12px;" class="form-control" >
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px;">Supplier Name</label>
+          </div>
+          <div class="col-sm-7" >
+            <input type="text"  style="border-radius: 12px;" formControlName="supp_name" class="form-control" >
+          </div>
+        </div>
+        <br><br>
+
+        <div class="grid-container" >
+          <!-- Control the column width, and how they should appear on different devices -->
+          <div class="row">
+            <div>   <input type="text" formControlName="item_id1" style="border-radius: 12px;width: 150px" class="form-control" >Item ID</div>
+            <div>   <input type="text" formControlName="item_details1" style="border-radius: 12px;width: 150px" class="form-control" >Item Details</div>
+            <div><input type="number" min="0"
+                (ngModelChange)="calcualtTotal()" formControlName="price1_1"
+                style="border-radius: 12px;width: 150px" class="form-control" >Price-1</div>
+            <div><input type="number" min="0"
+                (ngModelChange)="calcualtTotal()" formControlName="quantity1"
+                style="border-radius: 12px;width: 150px" class="form-control" >Quantity</div>
+            <div><input type="number" min="0" formControlName="amount1" style="border-radius: 12px;width: 150px" class="form-control" >Amount</div>
+            <div>  <input type="text" formControlName="sales_ex1" style="border-radius: 12px;width: 150px" class="form-control" > Sales Executive</div>
+            <div>   <input type="text" formControlName="job1" style="border-radius: 12px;width: 150px" class="form-control" >JOB</div>
+            </div>
+          <div class="row">
+          <div>   <input type="text" formControlName="item_id2" style="border-radius: 12px;width: 150px" class="form-control" >Item ID</div>
+          <div>   <input type="text" formControlName="item_details2" style="border-radius: 12px;width: 150px" class="form-control" >Item Details</div>
+          <div><input type="number" min="0"
+              (ngModelChange)="calcualtTotal()" formControlName="price1_2"
+              style="border-radius: 12px;width: 150px" class="form-control" >Price-1</div>
+          <div><input type="number" min="0"
+              (ngModelChange)="calcualtTotal()" formControlName="quantity2"
+              style="border-radius: 12px;width: 150px" class="form-control" >Quantity</div>
+          <div><input type="number" min="0" formControlName="amount2" style="border-radius: 12px;width: 150px;" class="form-control" >Amount</div>
+          <div>  <input type="text" formControlName="sales_ex2" style="border-radius: 12px;width: 150px;" class="form-control" > Sales Executive</div>
+          <div>   <input type="text" formControlName="job2" style="border-radius: 12px;width: 150px" class="form-control" >JOB</div>
+          </div>
+
+</div>
+
+          <br>
+        <div class="row" style="padding-top: 5px; ">
+          <div class="col-sm-2" style="padding-left: 3px;">
+            <label class="form-control"  style="border-radius:12px;padding: 10px;">Labour Charge</label>
+          </div>
+          <div class="col-sm-4" >
+            <input type="number" min="0"
+              (ngModelChange)="calcualtTotal()" formControlName="labour_charge"
+              style="border-radius: 12px;" class="form-control" placeholder="70.00">
+          </div>
+          <div class="col-sm-2" style="padding-left: 3px;">
+          <label class="form-control"  style="border-radius:12px;padding: 10px;"> Other Charges</label>
+          </div>
+          <div class="col-sm-4" >
+            <input type="number" min="0"
+              (ngModelChange)="calcualtTotal()" formControlName="other_charge"
+              style="border-radius: 12px;" class="form-control" placeholder="60.00">
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px; ">
+          <div class="col-sm-2" style="padding-left: 3px;">
+            <label class="form-control"  style="border-radius:12px;padding: 10px;">Total </label>
+          </div>
+          <div class="col-sm-3" >
+            <input  type="text" readonly formControlName="total1" style="border-radius: 12px;" class="form-control" placeholder="210.50">
+          </div>
+          <div class="col-sm-7" style="padding-left: 3px;" >
+            <input  type="text"  style="border-radius: 12px;" class="form-control" placeholder="Two Hundred Ten Rupees & Fifty Paisa Only">
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px; ">
+          <div class="col-sm-3" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px;"> Discount</label>
+          </div>
+          <div class="col" >
+            <input type="number" min="0"
+              (ngModelChange)="calcualtTotal()" formControlName="discount"
+              style="border-radius: 12px;" class="form-control" placeholder="">
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px; ">
+          <div class="col-sm-2" style="padding-left: 3px;">
+            <label class="form-control"  style="border-radius:12px;padding: 10px;">Total </label>
+          </div>
+          <div class="col-sm-3" >
+            <input  type="text" formControlName="total2" readonly=""  style="border-radius: 12px;" class="form-control" placeholder="210.50">
+          </div>
+          <div class="col-sm-7" style="padding-left: 3px;" >
+            <input  type="text" style="border-radius: 12px;" class="form-control" placeholder="Two Hundred Ten Rupees & Fifty Paisa Only">
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px; ">
+          <div class="col-sm-2" style="padding-left: 3px;">
+            <label class="form-control"  style="border-radius:12px;padding: 10px;"> Total</label>
+          </div>
+          <div class="col-sm-3" >
+            <input  type="text"  formControlName="total3"style="border-radius: 12px;" class="form-control" placeholder="230.50">
+          </div>
+          <div class="col-sm-7" style="padding-left: 3px;" >
+            <input  type="text " style="border-radius: 12px;" class="form-control" placeholder="Two Hundred Thirty Rupees & Fifty Paisa Only">
+          </div>
+        </div>
+
+      </div>
+          <br>
+        <div class="container">
+        <button type="submit"  style="border-radius: 12px; font-size:25px; " class="  btn btn-lg btn-block">SUBMIT</button>
+        </div>
+    </form>
+  </section>
+
+</body>
+
+
+
+
+

@@ -1,0 +1,50 @@
+<head>
+
+  <style>
+    body
+    {
+      font-family: 'Times New Roman', Times, serif;
+    }
+  </style>
+</head>
+<body>
+    <section>
+        <div class="container" style="padding-top:30px">
+            <button type="submit"  style="border-radius:12px;" class="btn  btn-lg btn-block"><b><p style="font-size: 50px; color: black;" >Financial</p></b></button>
+
+          </div>
+
+
+            <div class="container">
+
+                <div class="row" style="padding-top: 30px; ">
+                    <div style="padding-left: 140px; padding-right: 60px;" >
+                      <form (ngSubmit)="onSubmit1()" action="sales">
+                        <button type="submit" style="border-radius:20px; height: 140px; width: 350px;" class="b1" ><p style="font-size: 35px; color: black;"><b>Post dated cheques</b></p></button>
+                      </form>
+                      </div>
+                    <div style="padding-left: 100px;padding-right: 60px;">
+                    <form  (ngSubmit)="onSubmit6()" action="purchase">
+                        <button type="submit" style="border-radius:20px; height: 140px; width: 350px;" class="b1" ><p style="font-size: 35px; color: black;"><b>Trial balance</b></p></button>
+                      </form>
+                      </div>
+                </div>
+                <div class="row" style="padding-top: 30px; ">
+                    <div style="padding-left: 140px; padding-right: 60px;" >
+                    <form (ngSubmit)="onSubmit2()" action="all-journal-entry">
+                        <button type="submit" style="border-radius:20px; height: 140px; width: 350px;" class="b1" ><p style="font-size: 35px; color: black;"><b>Profit and Loss</b></p></button>
+                      </form>
+                      </div>
+                    <div style="padding-left: 100px;padding-right: 60px;">
+                    <form (ngSubmit)="onSubmit5()" action="payroll">
+                        <button type="submit" style="border-radius:20px; height: 140px; width: 350px;" class="b1" ><p style="font-size: 35px; color: black;"><b>Balance sheet</b></p></button>
+                      </form>
+                      </div>
+                </div>
+
+
+
+            </div>
+
+    </section>
+</body>

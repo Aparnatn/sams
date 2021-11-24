@@ -1,0 +1,104 @@
+<head>
+
+  <style>
+    body
+    {
+      font-family: 'Times New Roman', Times, serif;
+    }
+  </style>
+</head>
+<body>
+    <section style="padding-top:30px">
+    <div class="container">
+
+      <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">Ledger Master Data</p></b></button>
+      <br>
+    </div>
+
+      <form [formGroup]="LedgerMasterDataForm" (ngSubmit)="onSubmit()">
+        <div class="container-sm ">
+
+        <div class="row">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Date </label>
+
+          </div>
+          <div class="col-sm-7" >
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date">
+          </div>
+        </div>
+
+
+
+          <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Report Date </label>
+
+          </div>
+
+
+
+          <div class="col-sm-7" >
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="report_date">
+          </div>
+        </div>
+
+
+        <br><br>
+
+
+        <div class="container">
+
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>SI.no</th>
+                <th>Ledger ID</th>
+                <th>Ledger Name</th>
+                <th>Ledger Category</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ledger of ledger;">
+                <td></td>
+                <td>{{ledger.id }}</td>
+                <td>{{ledger.ledger_name }}</td>
+                <td>{{ledger.category }}</td>
+
+              </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+
+
+
+
+
+      </div>
+        <br>
+    <div class="container ">
+
+
+      </div>
+
+    <br>
+        <div class="container">
+        <button type="submit"  style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+      </div>
+      </form>
+
+
+    </section>
+    </body>
+
+
+
+
+

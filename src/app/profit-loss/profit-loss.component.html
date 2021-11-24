@@ -1,0 +1,238 @@
+<head>
+
+  <style>
+    body
+    {
+      font-family: 'Times New Roman', Times, serif;
+    }
+  </style>
+</head>
+<body>
+    <section style="padding-top:30px">
+    <div class="container">
+
+      <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">Profit & Loss A/c</p></b></button>
+      <br>
+    </div>
+
+      <form [formGroup]="PandLForm" (ngSubmit)="onSubmit()">
+        <div class="container-sm ">
+
+        <div class="row">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Date </label>
+
+          </div>
+          <div class="col-sm-7" >
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date">
+          </div>
+        </div>
+
+
+
+          <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Report Date </label>
+
+          </div>
+
+
+
+          <div class="col-sm-7" >
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date">
+          </div>
+        </div>
+
+
+
+
+
+        <br><br>
+
+
+        <div class="container">
+
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th style="text-align: center;">Description</th>
+                <th style="text-align: center;">Amount</th>
+                <th style="text-align: center;">Total Amount</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th style="text-align: center;">Direct Income</th>
+                <td></td>
+
+
+              </tr>
+              <tr  *ngFor="let cash of Cash;">
+                <td>Income1</td>
+                <td>{{cash.account}}</td>
+
+                <td>{{cash.cash}}</td>
+              </tr>
+              <tr>
+                <td>Income2</td>
+                <td></td>
+
+
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+
+
+              </tr>
+              <tr>
+                <th>Total</th>
+                <td></td>
+                <td></td>
+
+              </tr>
+              <tr>
+                <th style="text-align: center;">Direct Expense</th>
+                <td></td>
+
+
+              </tr>
+              <tr *ngFor="let cash of PCash;">
+                <td>Expense-1</td>
+                <td>{{cash.account}}</td>
+
+                <td>{{cash.cash}}</td>
+
+              </tr>
+              <tr>
+                <td>Expense-2</td>
+                <td></td>
+
+
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+
+
+              </tr>
+              <tr>
+                <th>Total</th>
+                <td></td>
+                <td></td>
+
+              </tr>
+              <tr>
+                <td></td>
+                <th style="text-align: right;">Gross Profit</th>
+                <td></td>
+
+              </tr>
+              <tr>
+
+                <th style="text-align: center;">Indirect Income</th>
+                <td></td>
+
+
+              </tr>
+              <tr  *ngFor="let cash of receipt;">
+                <td>Indirect-Income1</td>
+                <td>{{cash.customer_name}}</td>
+                <td>{{cash.total3}}</td>
+
+              </tr>
+              <tr>
+                <td>Indirect-Income2</td>
+                <td></td>
+
+
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+
+
+              </tr>
+              <tr>
+                <th>Total</th>
+                <td></td>
+                <td></td>
+
+              </tr>
+              <tr>
+
+                <th style="text-align: center;">Indirect Expense</th>
+                <td></td>
+
+
+              </tr>
+              <tr  *ngFor="let cash of preceipt;">
+                <td>Indirect-Expense-1</td>
+                <td>{{cash.supp_name}}</td>
+
+
+              </tr>
+              <tr>
+                <td>Indirect-Expense-2</td>
+                <td></td>
+
+
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+
+
+              </tr>
+              <tr>
+                <th>Total</th>
+                <td></td>
+                <td></td>
+
+              </tr>
+              <tr>
+                <td></td>
+                <th style="text-align: right;">Net Profit</th>
+                <td></td>
+
+              </tr>
+
+
+
+
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+
+
+
+
+
+      </div>
+        <br>
+    <div class="container ">
+
+
+      </div>
+
+    <br>
+        <div class="container">
+        <button type="submit" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+      </div>
+      </form>
+
+
+    </section>
+    </body>
+
+
+
+
+
+
+

@@ -1,0 +1,210 @@
+<body>
+  <section style="padding-top:30px">
+  <div class="container">
+
+    <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">All Journal Entry</p></b></button>
+    <br>
+  </div>
+
+    <form [formGroup]="AllJournalEntryForm" (ngSubmit)="onSubmit()">
+      <div class="container-sm ">
+
+      <div class="row">
+        <div class="col-sm-5" >
+          <label class="form-control"  style="border-radius:12px;padding: 10px; "> Date </label>
+
+        </div>
+        <div class="col-sm-7" >
+          <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date">
+        </div>
+      </div>
+
+
+
+        <div class="row" style="padding-top: 5px;">
+        <div class="col-sm-5" >
+          <label class="form-control"  style="border-radius:12px;padding: 10px; "> Report Date </label>
+
+        </div>
+
+
+
+        <div class="col-sm-7" >
+          <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="report_date">
+        </div>
+      </div>
+
+
+
+
+
+      <br><br>
+      <div class="container">
+        <button type="submit" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+      </div>
+      <br><br>
+      <div class="container">
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>SI.no</th>
+              <th>Date</th>
+              <th>Ref No</th>
+              <th>Voucher Type</th>
+              <th>Dr-Ledger</th>
+              <th>Debit Amount</th>
+              <th>Cr-Ledger</th>
+              <th>Credit Amount</th>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>User_ID</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let cash of Cash;">
+              <td></td>
+              <td>{{cash.date}}</td>
+              <td>{{cash.internal_ref_no}}</td>
+              <td>Cash sale</td>
+
+              <td>{{cash.account}}</td>
+              <td>{{cash.total3}}</td>
+              <td>Liability</td>
+              <td>{{cash.total3}}</td>
+              <td>{{cash.item_details1}}</td>
+              <td>{{cash.qty}}</td>
+              <td>{{cash.user_id}}</td>
+
+
+            </tr>
+            <tr  *ngFor="let cash1 of PCash;">
+              <td></td>
+              <td>{{cash1.date}}</td>
+              <td>{{cash1.internal_ref_no}}</td>
+              <td>Cash Purchase</td>
+
+              <td>{{cash1.account}}</td>
+              <td>{{cash1.total3}}</td>
+              <td>Cash-in-Hand</td>
+              <td>{{cash1.total3}}</td>
+              <td>{{cash1.item_details1}}</td>
+              <td>{{cash1.qty}}</td>
+              <td>{{cash1.user_id}}</td>
+
+            </tr>
+            <tr   *ngFor="let cash2 of receipt;">
+              <td></td>
+              <td>{{cash2.date}}</td>
+              <td>{{cash2.internal_ref_no}}</td>
+              <td>Receipt</td>
+
+              <td>{{cash2.account}}</td>
+              <td>{{cash2.total3}}</td>
+              <td>Sales Ledger</td>
+              <td>{{cash2.total5}}</td>
+              <td>{{cash2.item_details1}}</td>
+              <td>{{cash2.qty}}</td>
+              <td>{{cash2.user_id}}</td>
+
+
+            </tr>
+            <tr  *ngFor="let cash3 of preceipt;">
+              <td></td>
+              <td>{{cash3.date}}</td>
+              <td>{{cash3.internal_ref_no}}</td>
+              <td>Payment</td>
+
+              <td>{{cash3.account}}</td>
+              <td>{{cash3.total3}}</td>
+              <td>Cash Ledger</td>
+              <td>{{cash3.total5}}</td>
+              <td>{{cash3.item_details1}}</td>
+              <td>{{cash3.qty}}</td>
+              <td>{{cash3.user_id}}</td>
+
+            </tr>
+            <tr   *ngFor="let cash4 of credit;">
+              <td></td>
+              <td>{{cash4.date}}</td>
+              <td>{{cash4.internal_ref_no}}</td>
+              <td>Credit Sale</td>
+
+              <td>{{cash4.account}}</td>
+              <td>{{cash4.total3}}</td>
+              <td>Customer Ledger</td>
+              <td>{{cash4.total3}}</td>
+              <td>{{cash4.item_details1}}</td>
+              <td>{{cash4.qty}}</td>
+              <td>{{cash4.user_id}}</td>
+
+
+            </tr>
+
+            <tr  *ngFor="let cash5 of pcredit;">
+              <td></td>
+              <td>{{cash5.date}}</td>
+              <td>{{cash5.internal_ref_no}}</td>
+              <td>Credit Purchase</td>
+
+              <td>{{cash5.account}}</td>
+              <td>{{cash5.total3}}</td>
+              <td>Supplier Ledger</td>
+              <td>{{cash5.total3}}</td>
+              <td>{{cash5.item_details1}}</td>
+              <td>{{cash5.qty}}</td>
+              <td>{{cash5.user_id}}</td>
+
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+
+
+            </tr>
+
+
+
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+
+
+
+
+
+    </div>
+      <br>
+  <div class="container ">
+
+
+    </div>
+
+  <br>
+
+    </form>
+
+
+  </section>
+  </body>
+
+
+
+
+
+
+

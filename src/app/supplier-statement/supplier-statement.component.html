@@ -1,0 +1,126 @@
+<head>
+
+  <style>
+    body
+    {
+      font-family: 'Times New Roman', Times, serif;
+    }
+  </style>
+</head>
+<body>
+    <section style="padding-top:30px">
+    <div class="container">
+
+      <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">Supplier Account Statement</p></b></button>
+      <br>
+    </div>
+
+      <form [formGroup]="supplierAccountForm" (ngSubmit)="onSubmit()">
+        <div class="container-sm ">
+
+        <div class="row">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Supplier Id </label>
+
+          </div>
+          <div class="col-sm-7" >
+            <input type="text"  style="border-radius:12px;" class="form-control" placeholder="" name="pswd">
+          </div>
+        </div>
+
+
+
+          <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Supplier Name </label>
+
+          </div>
+
+          <div class="col-sm-7" >
+            <input type="text"  style="border-radius:12px;" class="form-control" placeholder="" name="">
+          </div>
+        </div>
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Date </label>
+
+          </div>
+
+          <div class="col-sm-7" >
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date">
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-5" >
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Report Period </label>
+
+          </div>
+
+          <div class="col-sm-7" >
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="report_date">
+          </div>
+        </div>
+
+
+
+        <br><br>
+
+
+        <div class="container">
+
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Sl.no</th>
+                <th>Date</th>
+                <th>Ref No</th>
+                <th>Description</th>
+                <th>Inv amount</th>
+                <th>Receipt amount</th>
+                <th>Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr   *ngFor="let supplierAcc of supplierAcc;">
+                <td></td>
+                <td>{{supplierAcc.date }}</td>
+                <td>{{supplierAcc.internal_ref_no }}</td>
+                <td></td>
+                <td>{{supplierAcc.invoice_amt1 }}</td>
+                <td>{{supplierAcc.tick_space1 }}</td>
+                <td>{{supplierAcc.balance_amt1 }}</td>
+              </tr>
+
+
+
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+
+
+
+
+
+      </div>
+        <br>
+    <div class="container ">
+
+
+      </div>
+
+    <br>
+        <div class="container">
+        <button type="submit"  style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+      </div>
+      </form>
+
+
+    </section>
+    </body>
+
+
