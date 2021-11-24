@@ -159,7 +159,7 @@ export class SalesService {
       params = params.append('name', filter.name);
     }
     return this.http.get<CustomerMasterdataResponse[]>(
-      `${this.apiUrl}/Sam/custom`,
+      `${this.apiUrl}/Sam/customermasterdata`,
       { params: params }
     )
   }
