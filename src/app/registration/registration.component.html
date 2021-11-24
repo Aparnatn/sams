@@ -148,7 +148,7 @@
       <div class="container">
         <div class="row" style="padding-top: 15px;">
 
-            <button type="submit" style="border-radius: 12px;width:100%;" class="btn btn-lg btn-block">Submit & Register New</button>
+            <button type="submit"  [disabled]="!RegistrationForm.valid" style="border-radius: 12px;width:100%;" class="btn btn-lg btn-block">Submit & Register New</button>
 
 
 
@@ -190,7 +190,7 @@
               <td>{{item.mobile }}</td>
               <td>{{item.email }}</td>
               <td>{{item.address }}</td>
-              <td><a href="employee/{{item.id}}/edit">Edit</a></td>
+              <td><a href="registration/{{item.id}}/edit">Edit</a></td>
               <td><a href="" (click)="delete(item.id)">Delete</a></td>
            </tr>
 

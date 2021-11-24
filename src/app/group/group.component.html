@@ -35,7 +35,11 @@
             <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Group Name" > -->
           </div>
           <div class="col-sm-9">
-            <input type="text " style="border-radius:12px;" class="form-control" formControlName="group_name" placeholder="" >
+            <input type="text " style="border-radius:12px;" class="form-control" formControlName="group_name" placeholder="" required >
+            <small class="text-danger"
+            *ngIf="groupForm.get('group_name').touched && groupForm.get('group_name').hasError('required')">
+
+        </small>
           </div>
         </div>
 
@@ -55,7 +59,7 @@
       <div class="container">
         <div class="row" style="padding-top: 15px;">
 
-            <button type="submit" style="border-radius: 12px;width:100%;" class="btn btn-lg btn-block">Submit & Register New</button>
+            <button type="submit" [disabled]="!groupForm.valid" style="border-radius: 12px;width:100%;" class="btn btn-lg btn-block">Submit & Register New</button>
 
 
 

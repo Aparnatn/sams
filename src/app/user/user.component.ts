@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Company, Users, UserService } from '../user/user.service';
+import { Users, UserService } from '../user/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie';
 
 type errorMessge = {
   detail?: string;
@@ -18,35 +19,46 @@ export class UserComponent implements OnInit {
     username: ['', Validators.required],
     password: ['', Validators.required],
   });
-users: Users[] = [];
+
+  users: Users[] = [];
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private service: UserService,
+    private cookieService: CookieService,
   ) { }
 
   ngOnInit(): void {
-    this.loadUsers();
+    // this.loadUsers();
   }
-  private loadUsers() {
-    this.service.getUsers().subscribe((data:Users[]) => {
-      this.users = data;
-    })
-  }
+
+  // private loadUsers() {
+  //   this.service.getUsers().subscribe((data: Users[]) => {
+  //     this.users = data;
+  //   })
+  // }
 
   login(): void {
     if (this.form.dirty && this.form.valid) {
       this.service.login(this.form.value,).subscribe(
         (data) => {
-          // console.log(data);
+          console.log(data);
+          this.setUserTocken(data.userTocken);
           this.router.navigate(['/grand-hyper']);
         },
         (error: HttpErrorResponse) => {
-          // console.log(error);
+          // console.log(error.error);
           this.showErros(error.error);
         }
       );
     }
+  }
+
+  private setUserTocken(tocken: string) {
+    var now = new Date();
+    now.setHours(now.getHours() + 8);
+    this.cookieService.put('userTocken', tocken);
   }
 
   private showErros(errors: errorMessge) {

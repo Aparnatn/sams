@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user/user.service';
 import { ItemResponse } from '../user/login.interfaces';
 @Component({
@@ -12,15 +12,15 @@ import { ItemResponse } from '../user/login.interfaces';
 export class ItemComponent implements OnInit {
 
   itemForm = this.formBuilder.group({
-    item_name:"",
-    item_desc:"",
-    item_barcode:"",
-    item_category:"",
-    item_unit_prim:"",
-    item_unit_sec:"",
-    open_balance:"",
-    buying_price:"",
-    sell_price:"",
+    item_name:['',Validators.required],
+    item_desc:['',Validators.required],
+    item_barcode:['',Validators.required],
+    item_category:['',Validators.required],
+    item_unit_prim:['',Validators.required],
+    item_unit_sec:['',Validators.required],
+    open_balance:['',Validators.required],
+    buying_price:['',Validators.required],
+    sell_price:['',Validators.required],
 
 
 

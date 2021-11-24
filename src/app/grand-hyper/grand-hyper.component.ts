@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../user/login.interfaces';
 import { Company, UserService } from '../user/user.service';
+
 @Component({
   selector: 'app-grand-hyper',
   templateUrl: './grand-hyper.component.html',

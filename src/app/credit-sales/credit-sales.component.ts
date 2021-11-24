@@ -88,6 +88,6 @@ export class CreditSalesComponent implements OnInit {
 
     });
     this.router.navigate(['/grand-hyper']);
-    
+
   }
 }

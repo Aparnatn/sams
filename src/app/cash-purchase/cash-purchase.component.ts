@@ -81,4 +81,5 @@ export class CashPurchaseComponent implements OnInit {
       console.log(data);});
       this.router.navigate(['/grand-hyper']);
   }
+
 }

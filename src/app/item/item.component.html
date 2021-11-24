@@ -149,7 +149,7 @@
       <div class="container">
         <div class="row" style="padding-top: 15px;">
 
-            <button type="submit" style="border-radius: 12px;width:100%;" class="btn btn-lg btn-block">Submit & Register New</button>
+            <button type="submit" [disabled]="!itemForm.valid" style="border-radius: 12px;width:100%;" class="btn btn-lg btn-block">Submit & Register New</button>
 
 
 

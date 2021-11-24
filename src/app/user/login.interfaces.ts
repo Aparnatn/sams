@@ -5,6 +5,7 @@ export interface LoginRequest {
 
 export interface LoginResponse {
   id: number,
+  userTocken?: string,
 }
 
 export interface CompanyRequest {

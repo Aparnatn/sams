@@ -48,7 +48,8 @@ export class SalesReturnComponent implements OnInit {
     private service: SalesService,
     private formBuilder: FormBuilder
   ) { }
-
+  private fieldArray: Array<any> = [];
+  private newAttribute: any = {};
    ngOnInit(): void {
   //   const headers = new Headers();
   //   headers.append('Access-Control-Allow-Headers', 'Content-Type');
@@ -87,4 +88,5 @@ export class SalesReturnComponent implements OnInit {
     });
     this.router.navigate(['/grand-hyper']);
   }
+
 }

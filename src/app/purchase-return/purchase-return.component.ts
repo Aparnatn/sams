@@ -46,6 +46,8 @@ export class PurchaseReturnComponent implements OnInit {
 
 
   });
+  private fieldArray: Array<any> = [];
+            private newAttribute: any = {};
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
 
   ngOnInit(): void {
@@ -64,4 +66,5 @@ export class PurchaseReturnComponent implements OnInit {
       console.log(data);});
       this.router.navigate(['/grand-hyper']);
   }
+
 }

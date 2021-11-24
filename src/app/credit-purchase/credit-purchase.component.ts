@@ -43,6 +43,8 @@ export class CreditPurchaseComponent implements OnInit {
     discount: '',
 
   });
+  private fieldArray: Array<any> = [];
+  private newAttribute: any = {};
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
 
   ngOnInit(): void {
@@ -82,4 +84,12 @@ export class CreditPurchaseComponent implements OnInit {
       console.log(data);});
       this.router.navigate(['/grand-hyper']);
   }
+  addFieldValue() {
+    this.fieldArray.push(this.newAttribute)
+    this.newAttribute = {};
+}
+
+deleteFieldValue(index) {
+    this.fieldArray.splice(index, 1);
+}
 }

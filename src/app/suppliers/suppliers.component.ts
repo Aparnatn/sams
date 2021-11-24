@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user/user.service';
 import { SupplierResponse } from '../user/login.interfaces';
 @Component({
@@ -11,21 +11,19 @@ import { SupplierResponse } from '../user/login.interfaces';
 })
 export class SuppliersComponent implements OnInit {
   SupplierForm = this.formBuilder.group({
-    customer_name:"",
-    vat_reg_no:"",
-    cr_no:"",
-    expired_on:"",
-    land_phone:"",
-    mobile:"",
-    contact_person:"",
-    contact_mobile:"",
-    email:"",
-    address:"",
-    open_balance:"",
-    credit_lim_am:"",
-    credit_lim_dur:"",
-    bank_acc_name:"",
-    bank_acc_no:"",
+    customer_name: ['',Validators.required],
+    vat_reg_no: ['',Validators.required],
+    cr_no: ['',Validators.required],
+    expired_on: ['',Validators.required],
+    land_phone: ['',Validators.required],
+    mobile: ['',Validators.required],
+    contact_person: ['',Validators.required],
+    contact_mobile: ['',Validators.required],
+    email: ['',Validators.required],
+    address: ['',Validators.required],
+    open_balance: ['',Validators.required],
+    credit_lim_am: ['',Validators.required],
+    credit_lim_dur: ['',Validators.required],
 
   });
   Suppliers:SupplierResponse[]=[];

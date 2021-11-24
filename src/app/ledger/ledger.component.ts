@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user/user.service';
 import { LedgerResponse } from '../user/login.interfaces';
 @Component({
@@ -11,11 +11,11 @@ import { LedgerResponse } from '../user/login.interfaces';
 })
 export class LedgerComponent implements OnInit {
   LedgerForm = this.formBuilder.group({
-    ledger_name:"",
-    group_name :"",
-    category:"",
-    opening_bal:"",
-date:"",
+    ledger_name:['',Validators.required],
+    group_name :['',Validators.required],
+    category:['',Validators.required],
+    opening_bal:['',Validators.required],
+date:['',Validators.required],
   });
  ledgers:LedgerResponse[]=[];
   constructor(private http:HttpClient,private userservice: UserService,private router:Router,private formBuilder: FormBuilder,private service:UserService,) { }

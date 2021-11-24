@@ -21,7 +21,7 @@ export class PurchaseReceiptsComponent implements OnInit {
   supp_name:'',
   si_no1:'',
   si_no2:'',
-  
+
   invoice_no1:'',
   invoice_no2:'',
 
@@ -60,6 +60,8 @@ export class PurchaseReceiptsComponent implements OnInit {
   account:'',
   discount:'',
 });
+private fieldArray: Array<any> = [];
+            private newAttribute: any = {};
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
 
   ngOnInit(): void {
@@ -102,4 +104,12 @@ export class PurchaseReceiptsComponent implements OnInit {
       console.log(data);});
       this.router.navigate(['/grand-hyper']);
   }
+  addFieldValue() {
+    this.fieldArray.push(this.newAttribute)
+    this.newAttribute = {};
+}
+
+deleteFieldValue(index) {
+    this.fieldArray.splice(index, 1);
+}
 }

@@ -93,7 +93,7 @@ export const ROUTES: Routes = [
    component: JobEditComponent,
 },
 {
-  path: 'customer/:id/edit',
+  path: 'registration/:id/edit',
    component: CustomerEditComponent,
 },
 
