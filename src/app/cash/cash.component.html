@@ -35,7 +35,7 @@
             <label class="form-control" style="border-radius:12px;padding: 10px;color: white;">Cash / Cheque</label>
           </div>
           <div class="col-sm-3" >
-            <input  type="text" readonly="" formControlName="cash" style="border-radius: 12px;" class="form-control" placeholder="">
+            <input  type="text" readonly="" formControlName="cash" style="border-radius: 12px;" class="form-control" placeholder="0.00">
           </div>
         </div>
 
@@ -116,7 +116,7 @@
           <div class="col-sm-4" >
             <input type="number" min="0"
               (ngModelChange)="calcualtTotal()" formControlName="labour_charge"
-              style="border-radius: 12px;" class="form-control" placeholder="70.00">
+              style="border-radius: 12px;" class="form-control" placeholder="0.00">
           </div>
           <div class="col-sm-2" style="padding-left: 3px;">
           <label class="form-control"  style="border-radius:12px;padding: 10px;"> Other Charges</label>
@@ -124,7 +124,7 @@
           <div class="col-sm-4" >
             <input type="number" min="0"
               (ngModelChange)="calcualtTotal()" formControlName="other_charge"
-              style="border-radius: 12px;" class="form-control" placeholder="60.00">
+              style="border-radius: 12px;" class="form-control" placeholder="0.00">
           </div>
         </div>
 
@@ -133,10 +133,10 @@
             <label class="form-control"  style="border-radius:12px;padding: 10px;">Total </label>
           </div>
           <div class="col-sm-3" >
-            <input  type="text" readonly formControlName="total1" style="border-radius: 12px;" class="form-control" placeholder="210.50">
+            <input  type="text" readonly formControlName="total1" style="border-radius: 12px;" class="form-control" placeholder="0.00">
           </div>
           <div class="col-sm-7" style="padding-left: 3px;" >
-            <input  type="text"  style="border-radius: 12px;" class="form-control" placeholder="Two Hundred Ten Rupees & Fifty Paisa Only">
+            <input  type="text"  style="border-radius: 12px;" class="form-control" placeholder="Amount in words">
           </div>
         </div>
 
@@ -156,10 +156,10 @@
             <label class="form-control"  style="border-radius:12px;padding: 10px;">Total </label>
           </div>
           <div class="col-sm-3" >
-            <input  type="text" formControlName="total2" readonly=""  style="border-radius: 12px;" class="form-control" placeholder="210.50">
+            <input  type="text" formControlName="total2" readonly=""  style="border-radius: 12px;" class="form-control" placeholder="0.00">
           </div>
           <div class="col-sm-7" style="padding-left: 3px;" >
-            <input  type="text" style="border-radius: 12px;" class="form-control" placeholder="Two Hundred Ten Rupees & Fifty Paisa Only">
+            <input  type="text" style="border-radius: 12px;" class="form-control" placeholder="Amount in words">
           </div>
         </div>
 
@@ -168,10 +168,10 @@
             <label class="form-control"  style="border-radius:12px;padding: 10px;"> Total</label>
           </div>
           <div class="col-sm-3" >
-            <input  type="text"  formControlName="total3"style="border-radius: 12px;" class="form-control" placeholder="230.50">
+            <input  type="text"  formControlName="total3"style="border-radius: 12px;" class="form-control" placeholder="0.00">
           </div>
           <div class="col-sm-7" style="padding-left: 3px;" >
-            <input  type="text " style="border-radius: 12px;" class="form-control" placeholder="Two Hundred Thirty Rupees & Fifty Paisa Only">
+            <input  type="text " style="border-radius: 12px;" class="form-control" placeholder="Amount in words">
           </div>
         </div>
 
