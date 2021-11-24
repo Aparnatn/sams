@@ -78,6 +78,7 @@ import { JobEditComponent } from './job-edit/job-edit.component';
 import { SupplierbuttonsComponent } from './supplierbuttons/supplierbuttons.component';
 import { CustomerbuttonsComponent } from './customerbuttons/customerbuttons.component';
 import { LedgerbuttonsComponent } from './ledgerbuttons/ledgerbuttons.component';
+import { ItemjobbuttonsComponent } from './itemjobbuttons/itemjobbuttons.component';
 export const ROUTES: Routes = [
 
   {
@@ -112,6 +113,10 @@ export const ROUTES: Routes = [
 {
   path: 'ledgerbuttons',
    component: LedgerbuttonsComponent,
+},
+{
+  path: 'itemjobbuttons',
+   component: ItemjobbuttonsComponent,
 },
 {
   path: 'company/:id/edit',
