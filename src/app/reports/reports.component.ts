@@ -25,7 +25,7 @@ export class ReportsComponent implements OnInit {
   }
   onSubmit4(): void {
 
-    this.router.navigate(['/stock-adjustment']);
+    this.router.navigate(['/itemjobbuttons']);
   }
   onSubmit5(): void {
 
