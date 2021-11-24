@@ -75,6 +75,9 @@ import { CompanyeditComponent } from './companyedit/companyedit.component';
 import { CompanydeleteComponent } from './companydelete/companydelete.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { JobEditComponent } from './job-edit/job-edit.component';
+import { SupplierbuttonsComponent } from './supplierbuttons/supplierbuttons.component';
+import { CustomerbuttonsComponent } from './customerbuttons/customerbuttons.component';
+import { LedgerbuttonsComponent } from './ledgerbuttons/ledgerbuttons.component';
 export const ROUTES: Routes = [
 
   {
@@ -89,10 +92,26 @@ export const ROUTES: Routes = [
   path: 'job/:id/edit',
    component: JobEditComponent,
 },
+{
+  path: 'customer/:id/edit',
+   component: CustomerEditComponent,
+},
 
  {
   path: 'companylist',
    component: CompanylistComponent,
+},
+{
+  path: 'supplierbuttons',
+   component: SupplierbuttonsComponent,
+},
+{
+  path: 'customerbuttons',
+   component: CustomerbuttonsComponent,
+},
+{
+  path: 'ledgerbuttons',
+   component: LedgerbuttonsComponent,
 },
 {
   path: 'company/:id/edit',
@@ -329,10 +348,10 @@ export const ROUTES: Routes = [
     path: 'reports',
     component: ReportsComponent,
   },
-  {
-    path: 'customer-edit',
-    component: CustomerEditComponent,
-  },
+  // {
+  //   path: 'customer-edit',
+  //   component: CustomerEditComponent,
+  // },
   {
     path: 'employee/:id/edit',
     component: EmployeeEditComponent,
@@ -342,7 +361,10 @@ export const ROUTES: Routes = [
     component: ItemEditComponent,
   },
   {
-    path: 'supplier-edit',
+
+      path: 'supplier/:id/edit',
+
+
     component: SupplierEditComponent,
   },
   {

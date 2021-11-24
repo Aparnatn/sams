@@ -53,10 +53,10 @@
       </div>
       <div class="container">
         <!-- <div class="row" style="padding-top: 5px;">
-          <!-- <div class="col-sm-3">
+           <div class="col-sm-3">
             <label class="form-control"  style="border-radius:12px;padding: 10px;"> Add Image </label>
-            <!-- <input type="text" style="border-radius:12px;" class="form-control"  placeholder="Add Image" > -->
-          <!-- </div>
+             <input type="text" style="border-radius:12px;" class="form-control"  placeholder="Add Image" >
+           </div>
           <div class="col">
             <input type="file" id="myFile" style="border-radius:12px;" class="form-control" formControlName="imag1" placeholder="Image-1" >
           </div>
@@ -68,14 +68,16 @@
           </div>
           <div class="col">
             <input type="file" id="myFile" style="border-radius:12px;" class="form-control" formControlName="imag4" placeholder="Image-4" >
-          </div> -->
+          </div>
+        -->
         <!-- </div>  -->
         <!-- <script>
           function myFunction() {
             var x = document.getElementById("myFile");
             x.disabled = true;
           }
-          </script> -->
+          </script>
+        -->
 
       </div>
 
@@ -83,10 +85,6 @@
         <div class="row" style="padding-top: 15px;">
 
             <button type="submit" style="border-radius: 12px;width:100%;" class="btn btn-lg btn-block">Submit & Register New</button>
-
-
-
-
 
         </div>
       </div>
@@ -121,7 +119,7 @@
               <td>{{item.email }}</td>
               <td>{{item.address }}</td> -->
               <td><a href="job/{{item.id}}/edit">Edit</a></td>
-              <td><a href="" (click)="delete(item.id)">Delete</a></td>
+              <td><a href="#" (click)="deleteJob(item.id)">Delete</a></td>
            </tr>
 
       </tbody>

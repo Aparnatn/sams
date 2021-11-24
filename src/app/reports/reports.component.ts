@@ -13,15 +13,15 @@ export class ReportsComponent implements OnInit {
   }
   onSubmit1(): void {
 
-    this.router.navigate(['/customer']);
+    this.router.navigate(['/customerbuttons']);
   }
   onSubmit2(): void {
 
-    this.router.navigate(['/supplier-outstand']);
+    this.router.navigate(['/supplierbuttons']);
   }
   onSubmit3(): void {
 
-    this.router.navigate(['/ledger-statement']);
+    this.router.navigate(['/ledgerbuttons']);
   }
   onSubmit4(): void {
 

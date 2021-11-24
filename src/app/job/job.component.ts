@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { UserService } from '../user/user.service';
 import { JobResponse } from '../user/login.interfaces';
+
 @Component({
   selector: 'app-job',
   templateUrl: './job.component.html',
@@ -32,8 +33,9 @@ export class JobComponent implements OnInit {
       this.jobs = data;
     })
   }
-  delete(event:number) {
-    if(confirm("Are you sure to delete this job ?")) {
+
+  deleteJob(event:number) {
+    // if(confirm("Are you sure to delete this job ?")) {
       this.service.jobdelete(event).subscribe(
         () => {
           alert('Deleted successfully');
@@ -43,8 +45,8 @@ export class JobComponent implements OnInit {
           alert('Somethin went wrong!! Please try again later.');
         }
       );
-    }
-    return false
+    // }
+    return false;
   }
   onSubmit1(): void {
 

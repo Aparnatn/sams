@@ -86,6 +86,9 @@ import { LedgerJournalComponent } from './ledger-journal/ledger-journal.componen
 import { LedgerMasterdataComponent } from './ledger-masterdata/ledger-masterdata.component';
 import { PaymentHistoryComponent } from './payment-history/payment-history.component';
 import { JobEditComponent } from './job-edit/job-edit.component';
+import { SupplierbuttonsComponent } from './supplierbuttons/supplierbuttons.component';
+import { CustomerbuttonsComponent } from './customerbuttons/customerbuttons.component';
+import { LedgerbuttonsComponent } from './ledgerbuttons/ledgerbuttons.component';
 
 @NgModule({
   declarations: [
@@ -177,6 +180,9 @@ import { JobEditComponent } from './job-edit/job-edit.component';
     PayrollComponent,
     PaymentHistoryComponent,
     JobEditComponent,
+    SupplierbuttonsComponent,
+    CustomerbuttonsComponent,
+    LedgerbuttonsComponent,
   ],
   imports: [
     BrowserModule,

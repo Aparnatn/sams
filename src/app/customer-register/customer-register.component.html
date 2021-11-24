@@ -1,11 +1,11 @@
 <head>
-  
+
   <style>
     body
     {
       font-family: 'Times New Roman', Times, serif;
     }
-  </style>  
+  </style>
 </head>
 <body>
   <section style="padding-top:30px">
@@ -16,7 +16,7 @@
     <br>
   </div>
 
-    <form (ngSubmit)="onSubmit1()" action="reports">
+    <form [formGroup]="CustomerInvoRForm" (ngSubmit)="onSubmit()">
       <div class="container-sm ">
 
         <div class="row">
@@ -25,7 +25,7 @@
 
           </div>
           <div class="col-sm-7" >
-            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" name="pswd">
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date">
           </div>
         </div>
 
@@ -38,15 +38,17 @@
           </div>
 
           <div class="col-sm-7" >
-            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" name="">
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="report_date">
           </div>
         </div>
 
 
 
 
-
-
+        <br><br>
+        <div class="container">
+          <button type="submit"  style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+        </div>
       <br><br>
 
 
@@ -68,16 +70,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let customer of CustomerIR;">
               <td></td>
               <td></td>
+              <td>{{customer.date }}</td>
+              <td>{{ customer.internal_ref_no }}</td>
+              <td>{{customer.customer_name}}</td>
               <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{customer.total}}</td>
+              <td>{{customer.sales_ex1}}</td>
+              <td>{{customer.user_id}}</td>
+
             </tr>
             <tr>
               <td></td>
@@ -122,16 +125,9 @@
 
 
     </div>
-      <script>
-      function myFunction() {
-        var x = document.getElementById("myFile");
-        x.disabled = true;
-      }
-      </script>
+
   <br>
-      <div class="container">
-      <button type="submit" onclick="myFunction()" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
-    </div>
+
     </form>
 
 

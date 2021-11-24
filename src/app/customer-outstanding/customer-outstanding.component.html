@@ -1,11 +1,11 @@
 <head>
-  
+
   <style>
     body
     {
       font-family: 'Times New Roman', Times, serif;
     }
-  </style>  
+  </style>
 </head>
 <body>
   <section style="padding-top:30px">
@@ -15,7 +15,7 @@
     <br>
   </div>
 
-    <form form (ngSubmit)="onSubmit1()" action="reports">
+    <form [formGroup]="customerOutstandForm" (ngSubmit)="onSubmit()">
       <div class="container-sm ">
 
         <div class="row">
@@ -24,7 +24,7 @@
 
           </div>
           <div class="col-sm-7" >
-            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" name="pswd">
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date">
           </div>
         </div>
 
@@ -37,7 +37,7 @@
           </div>
 
           <div class="col-sm-7" >
-            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" name="">
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="report_date">
           </div>
         </div>
         <div class="row" style="padding-top: 5px;">
@@ -62,8 +62,10 @@
           </div>
         </div>
 
-
-
+        <br><br>
+        <div class="container">
+          <button type="submit"  style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+        </div>
       <br><br>
 
 
@@ -83,37 +85,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr   *ngFor="let customerOut of customerOut;">
               <td></td>
+              <td>{{customerOut.date }}</td>
+              <td>{{customerOut.internal_ref_no }}</td>
               <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{customerOut.invoice_amt1 }}</td>
+              <td>{{customerOut.tick_space1 }}</td>
+              <td>{{customerOut.balance_amt1 }}</td>
             </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
 
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
 
           </tbody>
         </table>
@@ -133,16 +114,9 @@
 
 
     </div>
-      <script>
-      function myFunction() {
-        var x = document.getElementById("myFile");
-        x.disabled = true;
-      }
-      </script>
+
   <br>
-      <div class="container">
-      <button type="submit" onclick="myFunction()" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
-    </div>
+
     </form>
 
 

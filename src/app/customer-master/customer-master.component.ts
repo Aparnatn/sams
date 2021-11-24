@@ -13,10 +13,7 @@ import { CustomerMasterdataResponse } from '../interfaces/sales.interfaces';
 export class CustomerMasterComponent implements OnInit {
   CustomerMasterDataForm = this.formBuilder.group({
    date:"",
-    report_date:"",
-
-
-
+   report_date:"",
   });
   Customer: CustomerMasterdataResponse[];
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }

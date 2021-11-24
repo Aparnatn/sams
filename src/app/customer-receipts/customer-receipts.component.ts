@@ -1,5 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CustomerReceiptHistoryResponse } from '../reports/reports.interface';
+import { ReportsService } from '../reports/reports.service';
+
 @Component({
   selector: 'app-customer-receipts',
   templateUrl: './customer-receipts.component.html',
@@ -7,12 +12,22 @@ import { Router } from '@angular/router';
 })
 export class CustomerReceiptsComponent implements OnInit {
 
-  constructor(private router:Router,) { }
+  customerReceiptForm = this.formBuilder.group({
+    report_date:"",
+   });
+
+   receipt: CustomerReceiptHistoryResponse[];
+  constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
+    this.service.customerRcptHF({}).subscribe((data) => {
+      this.receipt = data;
+      console.log(data);
+    })
   }
-  onSubmit1(): void {
-
-    this.router.navigate(['/reports']);
+  onSubmit(): void {
+    this.service.customerRcptHF(this.customerReceiptForm.value,).subscribe((data,)=>{
+      console.log(data);});
+    // this.router.navigate(['/reports']);
   }
 }

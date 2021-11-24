@@ -1,11 +1,11 @@
 <head>
-  
+
   <style>
     body
     {
       font-family: 'Times New Roman', Times, serif;
     }
-  </style>  
+  </style>
 </head>
 <body>
   <section style="padding-top:30px">
@@ -15,7 +15,7 @@
     <br>
   </div>
 
-    <form form (ngSubmit)="onSubmit1()" action="reports" >
+    <form [formGroup]="customerInviceForm" (ngSubmit)="onSubmit()" >
       <div class="container-sm ">
 
         <div class="row">
@@ -62,8 +62,10 @@
           </div>
         </div>
 
-
-
+        <br><br>
+        <div class="container">
+          <button type="submit"  style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+        </div>
       <br><br>
 
 
@@ -84,22 +86,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr   *ngFor="let customerIN of customerIN;">
               <td></td>
+              <td>{{customerIN.date}}</td>
+              <td>{{customerIN.internal_ref_no}}</td>
               <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{customerIN.item_details1}}</td>
+              <td>{{customerIN.qty}}</td>
+              <td>{{customerIN.job1}}</td>
+              <td>{{customerIN.sales_ex1}}</td>
+              <td>{{customerIN.total}}</td>
             </tr>
             <tr>
               <td></td>
               <td></td>
               <td></td>
-
               <td></td>
               <td></td>
               <td></td>
@@ -137,16 +138,9 @@
 
 
     </div>
-      <script>
-      function myFunction() {
-        var x = document.getElementById("myFile");
-        x.disabled = true;
-      }
-      </script>
+
   <br>
-      <div class="container">
-      <button type="submit" onclick="myFunction()" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
-    </div>
+
     </form>
 
 

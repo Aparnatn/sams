@@ -1,11 +1,11 @@
 <head>
-  
+
   <style>
     body
     {
       font-family: 'Times New Roman', Times, serif;
     }
-  </style>  
+  </style>
 </head>
 <body>
   <section style="padding-top:30px">
@@ -15,7 +15,7 @@
     <br>
   </div>
 
-    <form  (ngSubmit)="onSubmit1()" action="reports">
+    <form  (ngSubmit)="onSubmit()" action="reports">
       <div class="container-sm ">
 
         <div class="row">
@@ -62,8 +62,10 @@
           </div>
         </div>
 
-
-
+        <br><br>
+        <div class="container">
+          <button type="submit" onclick="myFunction()" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+        </div>
       <br><br>
 
 
@@ -84,27 +86,27 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr   *ngFor="let payment of receipt;">
               <td></td>
+              <td>{{payment.date}}</td>
+              <td>{{payment.internal_ref_no}}</td>
               <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{payment.item_details1}}</td>
+              <td>{{payment.qty}}</td>
+              <td>{{payment.job1}}</td>
+              <td>{{payment.sales_ex1}}</td>
+              <td>{{payment.total}}</td>
             </tr>
-            <tr>
+            <tr *ngFor="let payment1 of receipt;">
               <td></td>
+              <td>{{payment1.date}}</td>
+              <td>{{payment1.internal_ref_no}}</td>
               <td></td>
-              <td></td>
-
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{payment1.item_details2}}</td>
+              <td>{{payment1.quantity2}}</td>
+              <td>{{payment1.job2}}</td>
+              <td>{{payment1.sales_ex2}}</td>
+              <td>{{payment1.amount2}}</td>
             </tr>
             <tr>
               <td class="hide">hide</td>
@@ -144,9 +146,7 @@
       }
       </script>
   <br>
-      <div class="container">
-      <button type="submit" onclick="myFunction()" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
-    </div>
+
     </form>
 
 

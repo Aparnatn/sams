@@ -122,6 +122,13 @@ export interface LedgereditResponse {
 export interface EmployeeeditResponse {
   id: number,
 }
+export interface CustomereditResponse {
+  id: number,
+}
+export interface SuppliereditResponse {
+  id: number,
+}
+
 export interface LedgereditRequest {
   id?: number,
   ledger_name:string,
@@ -129,6 +136,40 @@ export interface LedgereditRequest {
   category:string,
   opening_bal:string,
   date:string,
+}
+export interface CustomereditRequest {
+  id?: number,
+  customer_name: string,
+  vat_reg_no: string,
+  cr_no: string,
+  expired_on: string,
+  land_phone: string,
+  mobile: string,
+  contact_person: string,
+  contact_mobile: string,
+  email: string,
+  address: string,
+  open_balance: string,
+  credit_lim_am: string,
+  credit_lim_dur: string,
+}
+export interface SuppliereditRequest {
+  id?: number,
+  customer_name: string,
+  vat_reg_no: string,
+  cr_no: string,
+  expired_on: string,
+  land_phone: string,
+  mobile: string,
+  contact_person: string,
+  contact_mobile: string,
+  email: string,
+  address: string,
+  open_balance: string,
+  credit_lim_am: string,
+  credit_lim_dur: string,
+  bank_acc_name: string,
+  bank_acc_no: string,
 }
 export interface EmployeeeditRequest {
   emp_name: string,
@@ -256,7 +297,58 @@ export interface Job {
   job_name: string,
   job_desc: string,
 }
-
+export interface Customer {
+  id?: number,
+  customer_name: string,
+  vat_reg_no: string,
+  cr_no: string,
+  expired_on: string,
+  land_phone: string,
+  mobile: string,
+  contact_person: string,
+  contact_mobile: string,
+  email: string,
+  address: string,
+  open_balance: string,
+  credit_lim_am: string,
+  credit_lim_dur: string,
+}
+export interface SuppliereditRequest {
+  id?: number,
+  customer_name: string,
+  vat_reg_no: string,
+  cr_no: string,
+  expired_on: string,
+  land_phone: string,
+  mobile: string,
+  contact_person: string,
+  contact_mobile: string,
+  email: string,
+  address: string,
+  open_balance: string,
+  credit_lim_am: string,
+  credit_lim_dur: string,
+  bank_acc_name: string,
+  bank_acc_no: string,
+}
+export interface Supplier {
+  id?: number,
+  customer_name: string,
+  vat_reg_no: string,
+  cr_no: string,
+  expired_on: string,
+  land_phone: string,
+  mobile: string,
+  contact_person: string,
+  contact_mobile: string,
+  email: string,
+  address: string,
+  open_balance: string,
+  credit_lim_am: string,
+  credit_lim_dur: string,
+  bank_acc_name: string,
+  bank_acc_no: string,
+}
 export interface Trial {
   id: number,
   ledger_name: string,
