@@ -30,6 +30,12 @@ export class SupplierOutstandComponent implements OnInit {
   onSubmit(): void {
     this.service.supplierOutstandF(this.supplierOutstandForm.value,).subscribe((data,)=>{
       console.log(data);});
+      this.service.supplierOutstandF({}).subscribe((data) => {
+           this.supplierOut = data;
+           console.log(data);
+         })  
+
+
     // this.router.navigate(['/reports']);
 
 

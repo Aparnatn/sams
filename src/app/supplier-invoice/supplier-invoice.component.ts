@@ -29,6 +29,10 @@ export class SupplierInvoiceComponent implements OnInit {
   onSubmit(): void {
     this.service.supplierInvoiceHF(this.supplierInvoiceHistoryForm.value,).subscribe((data,)=>{
       console.log(data);});
+      this.service.supplierInvoiceHF({}).subscribe((data) => {
+        this.supplierIn = data;
+        console.log(data);
+      })
     // this.router.navigate(['/reports']);
   }
 }

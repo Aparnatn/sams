@@ -29,6 +29,10 @@ export class SupplierInvoReceiptComponent implements OnInit {
   onSubmit(): void {
     this.service.supplierInvoRF(this.SupplierInvoReceiptForm.value,).subscribe((data,)=>{
       console.log(data);});
+      this.service.supplierInvoRF({}).subscribe((data) => {
+        this.supplierInvoRcpt = data;
+        console.log(data);
+      })
     // this.router.navigate(['/reports']);
   }
 }

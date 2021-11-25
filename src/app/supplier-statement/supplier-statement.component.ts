@@ -29,6 +29,10 @@ export class SupplierStatementComponent implements OnInit {
   onSubmit(): void {
     this.service.supplierAccountF(this.supplierAccountForm.value,).subscribe((data,)=>{
       console.log(data);});
+    this.service.supplierAccountF({}).subscribe((data) => {
+        this.supplierAcc = data;
+         console.log(data);
+      })
     // this.router.navigate(['/reports']);
 
     // this.router.navigate(['/reports']);

@@ -29,6 +29,10 @@ export class PaymentHistoryComponent implements OnInit {
   onSubmit(): void {
     this.service.supplierPaymentHisF(this.PaymentHistoryForm.value,).subscribe((data,)=>{
       console.log(data);});
+      this.service.supplierPaymentHisF({}).subscribe((data) => {
+        this.payment = data;
+        console.log(data);
+      })
     // this.router.navigate(['/reports']);
   }
 
