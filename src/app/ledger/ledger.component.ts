@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user/user.service';
 import { LedgerResponse } from '../user/login.interfaces';
 @Component({
@@ -11,7 +11,7 @@ import { LedgerResponse } from '../user/login.interfaces';
 })
 export class LedgerComponent implements OnInit {
   LedgerForm = this.formBuilder.group({
-    ledger_name:"",
+    ledger_name:['',Validators.required],
     group_name :"",
     category:"",
     opening_bal:"",
@@ -44,8 +44,8 @@ date:"",
   }
   onSubmit1(): void {
 
-    // this.service.ledger(this.LedgerForm.value,).subscribe((data,)=>{
-    //   console.log(data);});
+     this.service.ledgercreate(this.LedgerForm.value,).subscribe((data,)=>{
+      console.log(data);});
       this.router.navigate(['/grand-hyper']);
   }
 }

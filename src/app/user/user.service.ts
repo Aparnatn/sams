@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { CompanylistResponse, CompanyRequest, CompanyResponse, CustomerRequest, CustomerResponse, EmployeeRequest, EmployeeResponse, GroupRequest, GroupResponse, ItemRequest, ItemResponse, JobRequest, JobResponse, Ledger, LedgereditRequest, LedgereditResponse, LedgerRequest, LedgerResponse, LedgerStatementRequest, LedgerStatementResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, SupplierRequest, SupplierResponse, UserlistResponse, User, EmployeeeditRequest, EmployeeeditResponse, Employee, Job, SuppliereditRequest, SuppliereditResponse, CustomereditRequest, CustomereditResponse } from './login.interfaces';
+import { CompanylistResponse, CompanyRequest, CompanyResponse, CustomerRequest, CustomerResponse, EmployeeRequest, EmployeeResponse, GroupRequest, GroupResponse, ItemRequest, ItemResponse, JobRequest, JobResponse, Ledger, LedgereditRequest, LedgereditResponse, LedgerRequest, LedgerResponse, LedgerStatementRequest, LedgerStatementResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, SupplierRequest, SupplierResponse, UserlistResponse, User, EmployeeeditRequest, EmployeeeditResponse, Employee, Job, SuppliereditRequest, SuppliereditResponse, CustomereditRequest, CustomereditResponse, Customer, Supplier, ItemeditRequest, ItemeditResponse, Item } from './login.interfaces';
 import { LedgerComponent } from '../ledger/ledger.component';
 
 export interface LedgerFilter {
@@ -47,6 +47,9 @@ export interface companycreateFilter {
 
 @Injectable()
 export class UserService {
+  ledger(value: any) {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl: string;
   company: any;
 
@@ -81,7 +84,12 @@ export class UserService {
       // withCredentials: true
     });
   }
-
+  ledgercreate(data: LedgerRequest): Observable<LedgerResponse> {
+    return this.http.post<LedgerResponse>(`${this.apiUrl}/Sam/ledgercreates/`, data, {
+      // observe: 'response',
+      // withCredentials: true
+    });
+  }
 
 
   ledgerstatement(data: LedgerStatementRequest): Observable<LedgerStatementResponse> {
@@ -104,7 +112,12 @@ export class UserService {
       // withCredentials: true
     });
   }
-
+  getItemss(): Observable<ItemResponse[]> {
+    return this.http.get<ItemResponse[]>(`${this.apiUrl}/Sam/itemshowApi`, {
+      // observe: 'response',
+      // withCredentials: true
+    });
+  }
   item(data: ItemRequest): Observable<ItemResponse> {
     return this.http.post<ItemResponse>(`${this.apiUrl}/Sam/item`, data, {
       // observe: 'response',
@@ -189,6 +202,12 @@ export class UserService {
       // withCredentials: true
     });
   }
+  itemedit(data: ItemeditRequest,id): Observable<ItemeditResponse> {
+    return this.http.post<ItemeditResponse>(`${this.apiUrl}/Sam/item/${id}/update`, data, {
+      // observe: 'response',
+      // withCredentials: true
+    });
+  }
   employeedelete(id:number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/Sam/employee/${id}/delete`,  {
       // observe: 'response',
@@ -209,6 +228,12 @@ export class UserService {
   }
   supplierdelete(id:number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/Sam/supplier/${id}/delete`,  {
+      // observe: 'response',
+      // withCredentials: true
+    });
+  }
+  itemdelete(id:number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/Sam/item/${id}/delete`,  {
       // observe: 'response',
       // withCredentials: true
     });
@@ -277,12 +302,16 @@ export class UserService {
     );
   }
 
-  getcust(id: number): Observable<CustomerResponse> {
-    return this.http.get<CustomerResponse>(`${this.apiUrl}Sam/customer/${id}`,
+  getcust(id: number): Observable<Customer> {
+    return this.http.get<Customer>(`${this.apiUrl}/Sam/customer/${id}`,
     );
   }
-  getsupp(id: number): Observable<SupplierResponse> {
-    return this.http.get<SupplierResponse>(`${this.apiUrl}Sam/supplier/${id}`,
+  getsupp(id: number): Observable<Supplier> {
+    return this.http.get<Supplier>(`${this.apiUrl}/Sam/supplier/${id}`,
+    );
+  }
+  getitem(id: number): Observable<Item> {
+    return this.http.get<Item>(`${this.apiUrl}/Sam/item/${id}`,
     );
   }
 
@@ -348,7 +377,14 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/Sam/userlist`, {
       // observe: 'response',
-      // withCredentials: true
+      withCredentials: true
+    });
+  }
+
+  getUser(): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/Sam/user`, {
+      // observe: 'response',
+      withCredentials: true
     });
   }
 

@@ -20,6 +20,9 @@ type errorMessge = {
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
+  template:`
+  <button (click)="onClickMe()">Click me!</button>
+  {{clickMessage}}`,
   styleUrls: ['./company.component.scss']
 })
 export class CompanyComponent implements OnInit {
@@ -42,6 +45,7 @@ export class CompanyComponent implements OnInit {
     // imag1     :"",
     // imag2       :"",
   });
+  clickMessage = '';
 
   constructor(
     private userservice: UserService,
@@ -79,7 +83,11 @@ export class CompanyComponent implements OnInit {
       }
     });
   }
-
+ skip() {
+    this.clickMessage = 'You are my hero!';
+    console.log("You are my hero!");
+    this.router.navigate(['/user']);
+  }
   private showErros(errors: errorMessge) {
     let msg = '';
 

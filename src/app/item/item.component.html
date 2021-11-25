@@ -46,7 +46,7 @@
             <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Item Description" > -->
           </div>
           <div class="col-sm-9">
-            <input type="text " style="border-radius:12px;" class="form-control" formControlName="item_desc" placeholder="" >
+            <input type="text " style="border-radius:12px;" class="form-control" formControlName="item_details1" placeholder="" >
           </div>
         </div>
         <div class="row" style="padding-top: 5px;">
@@ -116,6 +116,15 @@
             <input type="text " style="border-radius:12px;" class="form-control" formControlName="sell_price" placeholder="" >
           </div>
         </div>
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-sm-3">
+            <label class="form-control"  style="border-radius:12px;padding: 10px;"> Date </label>
+            <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Selling Price" > -->
+          </div>
+          <div class="col-sm-9">
+            <input type="date" style="border-radius:12px;" class="form-control" formControlName="created_at" placeholder="" >
+          </div>
+        </div>
       </div>
       <!-- <div class="container">
         <div class="row" style="padding-top: 5px;">
@@ -149,7 +158,7 @@
       <div class="container">
         <div class="row" style="padding-top: 15px;">
 
-            <button type="submit" style="border-radius: 12px;width:100%;" class="btn btn-lg btn-block">Submit & Register New</button>
+            <button type="submit" [disabled]="!itemForm.valid" style="border-radius: 12px;width:100%;" class="btn btn-lg btn-block">Submit & Register New</button>
 
 
 
@@ -169,12 +178,13 @@
       <thead class="alert-warning">
       <tr>
           <th>Item name</th>
-          <th>Item Drecription</th>
+          <th>Item Description</th>
           <th>Item Item Barcode</th>
           <th>Item Item Category</th>
           <th>Item Opening Balance</th>
           <th>Item Buying Price</th>
           <th>Item Selling Price</th>
+          <th>Action</th>
           <th>Action</th>
       </tr>
       </thead>
@@ -182,13 +192,14 @@
 
           <tr *ngFor="let item of Items">
               <td>{{ item.item_name }}</td>
-              <td>{{ item.item_desc }}</td>
+              <td>{{ item.item_details1 }}</td>
               <td>{{ item.item_barcode }}</td>
               <td>{{ item.item_category }}</td>
               <td>{{ item.open_balance }}</td>
               <td>{{ item.buying_price }}</td>
               <td>{{ item.sell_price }}</td>
-
+              <td><a href="item/{{item.id}}/edit">Edit</a></td>
+              <td><a href="" (click)="delete(item.id)">Delete</a></td>
           </tr>
 
       </tbody>

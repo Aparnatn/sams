@@ -60,13 +60,13 @@
 
                 </tr>
                 <tr  *ngFor="let cash of Cash;">
-                  <td>Ledger-1</td>
-                  <td>{{cash.account}}</td>
+                  <td>
+                  {{cash.account}}</td>
 
 
                 </tr>
                 <tr  *ngFor="let cash of credit;">
-                  <td>ledger-2</td>
+
                   <td>{{cash.account}}</td>
 
 
@@ -83,8 +83,8 @@
 
 
                 </tr>
-                <tr>
-                  <td>ledger-3</td>
+                <tr  *ngFor="let cash of pcredit;">
+                  <td>{{cash.account}}</td>
                   <td></td>
 
 
@@ -228,7 +228,7 @@
                   <td>{{cash.total3}}</td>
                   <td></td>
                   <th style="text-align: right;">Gross Profit</th>
-                  <td></td>
+                  <td (ngModelChange)="calculateAsset()">{{total3}}</td>
 
                 </tr>
 
@@ -256,7 +256,7 @@
 
     <br>
         <div class="container">
-        <button type="submit" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+        <button type="submit" [disabled]="!BsForm.valid" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
       </div>
       </form>
 

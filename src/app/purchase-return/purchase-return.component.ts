@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SalesService } from '../services/sales.service';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { UserService } from '../user/user.service';
+import { CustomerResponse, ItemResponse, JobResponse } from '../user/login.interfaces';
 @Component({
   selector: 'app-purchase-return',
   templateUrl: './purchase-return.component.html',
@@ -10,53 +12,83 @@ import { FormBuilder } from '@angular/forms';
 })
 export class PurchaseReturnComponent implements OnInit {
   PurchaseReturnForm = this.formBuilder.group({
-    invoice_number: '',
-    date: '',
-    internal_ref_no: '',
-    due_on: '',
-    user_id: '',
-    credit_limit_amt: '',
-    supp_id: '',
-    supp_name: '',
-    item_id1: '',
-    item_id2: '',
-    item_details1: '',
-    item_details2: '',
-    price1_1: '',
+    invoice_number: ['',Validators.required],
+    date: ['',Validators.required],
+    internal_ref_no: ['',Validators.required],
+    due_on: ['',Validators.required],
+    user_id: ['',Validators.required],
+    credit_limit_amt: ['',Validators.required],
+    supp_id: ['',Validators.required],
+    supp_name: ['',Validators.required],
+    item_id1: ['',Validators.required],
+    item_id2: ['',Validators.required],
+    item_details1: ['',Validators.required],
+    item_details2: ['',Validators.required],
+    price1_1: ['',Validators.required],
 
-    price1_2: '',
+    price1_2: ['',Validators.required],
 
-    quantity1:'',
-    quantity2:'',
+    quantity1:['',Validators.required],
+    quantity2:['',Validators.required],
 
-    amount1:'',
-    amount2:'',
-    sales_ex1:'',
-    sales_ex2:'',
-    job1:'',
-    job2:'',
-    labour_charge:'',
-    other_charge:'',
-    total1:'',
-    total2:'',
-    total3:'',
-    total4:'',
+    amount1:['',Validators.required],
+    amount2:['',Validators.required],
+    sales_ex1:['',Validators.required],
+    sales_ex2:['',Validators.required],
+    job1:['',Validators.required],
+    job2:['',Validators.required],
+    labour_charge:['',Validators.required],
+    other_charge:['',Validators.required],
+    total1:['',Validators.required],
+    total2:['',Validators.required],
+    total3:['',Validators.required],
+    total4:['',Validators.required],
 
-    discount:'',
+    discount:['',Validators.required],
 
 
   });
-  constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
+  private fieldArray: Array<any> = [];
+            private newAttribute: any = {};
+            Customer: CustomerResponse[];
+            Item:ItemResponse[];
+            Job:JobResponse[];
+  constructor( private userService: UserService,private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
 
   ngOnInit(): void {
-    const headers = new Headers();
-    headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    headers.append('Access-Control-Allow-Methods', 'GET');
-    headers.append('Access-Control-Allow-Origin', '*');
-    this.http.post("http://127.0.0.1:8004/Sam/PCreditApi", {headers: headers}).subscribe(res => {
+    this.userService.getCustomer().subscribe((data: CustomerResponse[]) => {
+      this.Customer = data;
 
-      console.log(res);
-    });
+      data.forEach(d => {
+        this.PurchaseReturnForm.patchValue({
+          customer_name: d.customer_name,
+          customer_id: d.id
+        });
+      });
+
+    })
+    this.userService.getItem().subscribe((data: ItemResponse[]) => {
+      this.Item = data;
+
+      data.forEach(d => {
+        this.PurchaseReturnForm.patchValue({
+         item_details1: d.item_details1,
+          item_id1: d.id
+        });
+      });
+
+    })
+    this.userService.getJob().subscribe((data: JobResponse[]) => {
+      this.Job = data;
+
+      data.forEach(d => {
+        this.PurchaseReturnForm.patchValue({
+          job1: d.job1,
+         job_id: d.id
+        });
+      });
+
+    })
   }
   onSubmit1(): void {
 
@@ -64,4 +96,5 @@ export class PurchaseReturnComponent implements OnInit {
       console.log(data);});
       this.router.navigate(['/grand-hyper']);
   }
+
 }

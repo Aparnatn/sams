@@ -5,9 +5,9 @@
         {
           font-family: 'Times New Roman', Times, serif;
         }
-      </style>  
+      </style>
     </head>
-        
+
 <body>
     <section style="padding-top:30px">
       <div class="container">
@@ -16,10 +16,10 @@
         <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">Item Profile Edit </p></b></button>
         <br>
       </div>
-  
-      <form  action="">
+
+      <form  [formGroup]="itemeditForm" (ngSubmit)="onSubmit1()">
         <div class="container-sm ">
-  
+
           <div class="row" style="padding-top: 5px;">
             <div class="col-sm-3">
               <label class="form-control"  style="border-radius:12px;padding: 10px;"> Item ID </label>
@@ -29,7 +29,7 @@
               <input type="text " style="border-radius:12px;" class="form-control"  placeholder="" >
             </div>
           </div>
-  
+
           <div class="row" style="padding-top: 5px;">
             <div class="col-sm-3">
               <label class="form-control"  style="border-radius:12px;padding: 10px;"> Item Name </label>
@@ -39,7 +39,7 @@
               <input type="text " style="border-radius:12px;" class="form-control" name="item_name" placeholder="" >
             </div>
           </div>
-  
+
           <div class="row" style="padding-top: 5px;">
             <div class="col-sm-3">
               <label class="form-control"  style="border-radius:12px;padding: 10px;">Item Description </label>
@@ -67,7 +67,7 @@
               <input type="text " style="border-radius:12px;" class="form-control" name="item_category" placeholder="" >
             </div>
           </div>
-  
+
           <div class="row" style="padding-top: 5px;">
             <div class="col-sm-3">
               <label class="form-control"  style="border-radius:12px;padding: 10px;"> Item Unit </label>
@@ -88,7 +88,7 @@
               <input type="text " style="border-radius:12px;" class="form-control" name="item_unit_sec"  placeholder="" >
             </div>
           </div>
-  
+
           <div class="row" style="padding-top: 5px;">
             <div class="col-sm-3">
               <label class="form-control"  style="border-radius:12px;padding: 10px;"> Opening Balance </label>
@@ -119,11 +119,11 @@
         </div>
         <div class="container">
           <div class="row" style="padding-top: 5px;">
-            <div class="col-sm-3">
+            <!-- <div class="col-sm-3">
               <label class="form-control"  style="border-radius:12px;padding: 10px;"> Add Image </label>
               <!-- <input type="text" style="border-radius:12px;" class="form-control"  placeholder="Add Image" > -->
-            </div>
-            <div class="col">
+            <!-- </div> -->
+            <!-- <div class="col">
               <input type="file" id="myFile" style="border-radius:12px;" class="form-control" name="image1" placeholder="Image-1" >
             </div>
             <div class="col">
@@ -134,7 +134,7 @@
             </div>
             <div class="col">
               <input type="file" id="myFile" style="border-radius:12px;" class="form-control" name="image4" placeholder="Image-4" >
-            </div>
+            </div> -->
           </div>
           <script>
             function myFunction() {
@@ -142,10 +142,10 @@
               x.disabled = true;
             }
             </script>
-  
+
         </div>
-  
-  
+
+
         <div class="container">
           <div class="row" style="padding-top: 15px;">
             <div class="col-6">
@@ -154,18 +154,18 @@
               <div class="col-6">
               <button type="submit" style="border-radius: 12px;width:500px;padding-right: 50px;margin-right: 50px;" class="btn btn-lg btn-block">Delete</button>
               </div>
-  
-  
+
+
           </div>
         </div>
       </form>
       <br>
       <!-- <form  action="">
-  
+
         <button type="submit" style="border-radius: 12px;width: 80%;margin-left: 10%;margin-right: 50%;" class=" a btn btn-lg btn-block">Submit & Go to Home Page</button>
       </form> -->
       </section>
     </body>
-  
-    
+
+
 </html>

@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: "https://sam-api-rx3e5.ondigitalocean.app"
+  apiUrl: "https://sam-api-rx3e5.ondigitalocean.app",
+  appDomain: "ondigitalocean.app"
 };

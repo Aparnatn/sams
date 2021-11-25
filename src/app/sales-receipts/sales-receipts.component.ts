@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SalesService } from '../services/sales.service';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { SalesFrom, SalesReceiptRequest } from '../interfaces/sales.interfaces';
+import { UserService } from '../user/user.service';
+import { CustomerResponse } from '../user/login.interfaces';
 @Component({
   selector: 'app-sales-receipts',
   templateUrl: './sales-receipts.component.html',
@@ -11,66 +13,70 @@ import { SalesFrom, SalesReceiptRequest } from '../interfaces/sales.interfaces';
 })
 export class SalesReceiptsComponent implements OnInit {
   SalesReceiptsForm = this.formBuilder.group({
-    receipt_number:'',
-    date:'',
-    internal_ref_no:'',
-    due_on:'',
-    credit_limit_amt:'',
-    user_id:'',
-   customer_id:'',
-    customer_name:'',
-    si_no1:'',
-    si_no2:'',
-account:'',
-    invoice_no1:'',
-    invoice_no2:'',
+    receipt_number:['',Validators.required],
+    date:['',Validators.required],
+    internal_ref_no:['',Validators.required],
+    due_on:['',Validators.required],
+    credit_limit_amt:['',Validators.required],
+    user_id:['',Validators.required],
+   customer_id:['',Validators.required],
+    customer_name:['',Validators.required],
+    si_no1:['',Validators.required],
+    si_no2:['',Validators.required],
+account:['',Validators.required],
+    invoice_no1:['',Validators.required],
+    invoice_no2:['',Validators.required],
 
-    invoice_date1:'',
-    invoice_date2:'',
+    invoice_date1:['',Validators.required],
+    invoice_date2:['',Validators.required],
 
-    duedate1:'',
-    duedate2:'',
+    duedate1:['',Validators.required],
+    duedate2:['',Validators.required],
 
-    invoice_amt1:'',
-    invoice_amt2:'',
+    invoice_amt1:['',Validators.required],
+    invoice_amt2:['',Validators.required],
 
-    received_amt1:'',
-    received_amt2:'',
+    received_amt1:['',Validators.required],
+    received_amt2:['',Validators.required],
 
-    outstanding1:'',
-    outstanding2:'',
+    outstanding1:['',Validators.required],
+    outstanding2:['',Validators.required],
 
-    discount1:'',
-    discount2:'',
+    discount1:['',Validators.required],
+    discount2:['',Validators.required],
 
-    balance_amt1:'',
-    balance_amt2:'',
+    balance_amt1:['',Validators.required],
+    balance_amt2:['',Validators.required],
 
-    tick_space1:'',
-    tick_space2:'',
+    tick_space1:['',Validators.required],
+    tick_space2:['',Validators.required],
 
-    partial1:'',
-    partial2:'',
+    partial1:['',Validators.required],
+    partial2:['',Validators.required],
 
-    total1:'',
-    total2:'',
-    total3:'',
+    total1:['',Validators.required],
+    total2:['',Validators.required],
+    total3:['',Validators.required],
 
-    paid_amount:'',
+    paid_amount:['',Validators.required],
 
-    discount:'',
+    discount:['',Validators.required],
   });
-    constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
+  Customer: CustomerResponse[];
+    constructor(private userService: UserService,private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
 
     ngOnInit(): void {
-      const headers = new Headers();
-      headers.append('Access-Control-Allow-Headers', 'Content-Type');
-      headers.append('Access-Control-Allow-Methods', 'GET');
-      headers.append('Access-Control-Allow-Origin', '*');
-      this.http.post("http://127.0.0.1:8004/ReceiptApi", {headers: headers}).subscribe(res => {
+      this.userService.getCustomer().subscribe((data: CustomerResponse[]) => {
+        this.Customer = data;
 
-        console.log(res);
-      });
+        data.forEach(d => {
+          this.SalesReceiptsForm.patchValue({
+            customer_name: d.customer_name,
+            customer_id: d.id
+          });
+        });
+
+      })
     }
     calcualtTotal() {
       const form: SalesFrom = this.SalesReceiptsForm.value;

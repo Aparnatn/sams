@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Company, Users, UserService } from '../user/user.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Users, UserService } from '../user/user.service';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie';
+import { environment } from '../../environments/environment';
 
 type errorMessge = {
   detail?: string;
@@ -18,35 +20,54 @@ export class UserComponent implements OnInit {
     username: ['', Validators.required],
     password: ['', Validators.required],
   });
-users: Users[] = [];
+
+  users: Users[] = [];
+
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private service: UserService,
+    private cookieService: CookieService,
+    private http:HttpClient,
   ) { }
 
   ngOnInit(): void {
-    this.loadUsers();
-  }
-  private loadUsers() {
-    this.service.getUsers().subscribe((data:Users[]) => {
-      this.users = data;
-    })
+       const headers = new Headers();
+    headers.append('Access-Control-Allow-Headers', 'Content-Type');
+    headers.append('Access-Control-Allow-Methods', 'GET');
+    headers.append('Access-Control-Allow-Origin', '*');
+    this.http.post("http://127.0.0.1:8004/Sam/user", { headers: headers }).subscribe(res => {
+
+      console.log(res);
+    });
   }
 
   login(): void {
     if (this.form.dirty && this.form.valid) {
       this.service.login(this.form.value,).subscribe(
         (data) => {
-          // console.log(data);
+          console.log(data);
+          this.setUserTocken(data.userTocken);
           this.router.navigate(['/grand-hyper']);
         },
         (error: HttpErrorResponse) => {
-          // console.log(error);
+          // console.log(error.error);
           this.showErros(error.error);
         }
       );
     }
+  }
+
+  private setUserTocken(tocken: string) {
+    var now = new Date();
+    now.setHours(now.getHours() + 8);
+    this.cookieService.put('userTocken', tocken, {expires:now});
+    this.cookieService.put('jwt', tocken, {expires:now});
+    this.cookieService.put('jwt', tocken, {
+      expires:now,
+      domain: environment.appDomain
+    });
   }
 
   private showErros(errors: errorMessge) {
