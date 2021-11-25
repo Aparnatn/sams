@@ -15,6 +15,7 @@ export class ItemEditComponent implements OnInit {
   id: number;
 
   itemeditForm = this.formBuilder.group({
+    id:"",
     item_name:"",
     item_details1:"",
     item_barcode:"",
@@ -24,7 +25,7 @@ export class ItemEditComponent implements OnInit {
     open_balance:"",
     buying_price:"",
     sell_price:"",
-
+    created_at:"",
 
   });
 
@@ -61,9 +62,9 @@ export class ItemEditComponent implements OnInit {
       item_unit_sec:item.item_unit_sec,
       open_balance:item.open_balance,
       buying_price:item.buying_price,
-      sell_price:item.sell_price
+      sell_price:item.sell_price,
 
-
+created_at:item.created_at,
      });
    })
   }

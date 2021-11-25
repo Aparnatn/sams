@@ -135,24 +135,26 @@
                 <td></td>
                 <td>{{item.account}}</td>
                 <td></td>
-                <td></td>
+
+                <td *ngFor="let cash of Ledger;">{{cash.opening_bal}}</td>
+
                 <td>{{item.total3}}</td>
                 <td>{{item.total3}}</td>
-                <td>{{item.amount1}}</td>
+                <td>{{ calculateTotal(item.total3) }}</td>
 
               </tr>
-              <tr  *ngFor="let cash of PCash;">
+              <tr *ngFor="let cash of PCash;">
                 <td>{{ cash.id }}</td>
                 <td></td>
                 <td>{{cash.account}}</td>
                 <td></td>
-                <td></td>
+                <td>{{cash.opening_bal}}</td>
                 <td>{{cash.total3}}</td>
                 <td>{{cash.total3}}</td>
-                <td></td>
+                <td>{{cash.amount1}}</td>
 
               </tr>
-              <tr  *ngFor="let cash of receipt;">
+              <tr *ngFor="let cash of receipt;">
                 <td>{{ cash.id }}</td>
                 <td></td>
                 <td>{{cash.account}}</td>

@@ -379,6 +379,7 @@ export interface Supplier {
   bank_acc_no: string,
 }
 export interface Item {
+  created_at: any;
   id: any;
   item_details1: any;
   item_name: string,
