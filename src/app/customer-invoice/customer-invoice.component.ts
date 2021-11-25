@@ -31,6 +31,11 @@ export class CustomerInvoiceComponent implements OnInit {
   onSubmit(): void {
     this.service.customeInvoicetHF(this.customerInviceForm.value,).subscribe((data,)=>{
       console.log(data);});
+      this.service.customeInvoicetHF({}).subscribe((data) => {
+      this.customerIN = data;
+      console.log(data);
+    })
+  
     // this.router.navigate(['/reports']);
     this.calculateAsset();
 
@@ -39,12 +44,11 @@ export class CustomerInvoiceComponent implements OnInit {
   calculateAsset() {
     this.salesservice.lsb({}).subscribe((cash) => {
       this.Cash = cash;
-      let total=0;
-        this.Cash.forEach(element => {
-          this.assetTotal  +=element.total+element.amount2
+      
+        this.Cash.forEach(td => {
+          this.assetTotal  +=  Number(td.total) + Number(td.amount2);
         });
     });
 
-    
   }
 }
