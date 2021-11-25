@@ -27,16 +27,16 @@
             <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="from_date">
           </div>
         </div>
-        <div class="row" style="padding-top: 5px;">
+        <!-- <div class="row" style="padding-top: 5px;">
           <div class="col-sm-5" >
             <label class="form-control"  style="border-radius:12px;padding: 10px; "> Ledger Id </label>
 
           </div>
 
           <div class="col-sm-7" >
-            <input type="text" style="border-radius:12px;" class="form-control" placeholder="" formControlName="name">
+            <input type="text" style="border-radius:12px;" class="form-control" placeholder="" formControlName="ledger_id">
           </div>
-        </div>
+        </div> -->
         <div class="row" style="padding-top: 5px;">
           <div class="col-sm-5" >
             <label class="form-control"  style="border-radius:12px;padding: 10px; "> To Date </label>
@@ -106,7 +106,7 @@
         <br><br>
 
         <div class="container">
-          <button type="submit"  style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+          <button type="submit" [disabled]="!LedgerStatementForm.valid" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
         </div>
 
         <br><br>
@@ -138,7 +138,7 @@
                 <td></td>
                 <td>{{item.total3}}</td>
                 <td>{{item.total3}}</td>
-                <td></td>
+                <td>{{item.amount1}}</td>
 
               </tr>
               <tr  *ngFor="let cash of PCash;">
@@ -247,7 +247,7 @@
       </div>
 
     <br>
-       
+
       </form>
 
 

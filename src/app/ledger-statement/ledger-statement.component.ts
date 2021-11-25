@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
-import { Ledger } from '../user/login.interfaces';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Ledger, LedgerstatementFrom } from '../user/login.interfaces';
 import { Observable } from 'rxjs';
 import { SalesService } from '../services/sales.service';
 import { CashSaleResponse, CreditPurchaseResponse, CreditSaleResponse, PCashSaleResponse, PurchaseReceiptResponse, SalesReceiptResponse } from '../interfaces/sales.interfaces';
+import { element } from 'protractor';
 @Component({
   selector: 'app-ledger-statement',
   templateUrl: './ledger-statement.component.html',
@@ -15,10 +16,10 @@ import { CashSaleResponse, CreditPurchaseResponse, CreditSaleResponse, PCashSale
 export class LedgerStatementComponent implements OnInit {
 
   LedgerStatementForm = this.formBuilder.group({
-    from_date:"",
-    to_date: "",
-    ledger_name:"",
-    period: "",
+    from_date:["", Validators.required],
+    to_date:["", Validators.required],
+    ledger_name:["", Validators.required],
+    period: ["", Validators.required],
   });
 
   Cash: CashSaleResponse[];
@@ -37,44 +38,62 @@ export class LedgerStatementComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.service.ls({}).subscribe((data) => {
-      this.Cash = data;
-      console.log(data);
-    })
+    // this.service.ls({}).subscribe((data) => {
+    //   this.Cash = data;
+    //   console.log(data);
+    // })
   }
 
   onSubmit(): void {
-    this.service.ls(this.LedgerStatementForm.value).subscribe((data,)=>{
+    this.service.ls(this.LedgerStatementForm.value).subscribe((data)=>{
       this.Cash = data;
       console.log(data);
-    });
+    });}
 
-    this.service.lsl(this.LedgerStatementForm.value).subscribe((data,)=>{
-      this.PCash = data;
-      console.log(data);
-    });
 
-      this.service.tll(this.LedgerStatementForm.value).subscribe((data,)=>{
-        this.receipt = data;
-        console.log(data);
+    // this.service.lsl(this.LedgerStatementForm.value).subscribe((data)=>{
+    //   this.PCash = data;
+    //   console.log(data);
+    // });
+
+  //     this.service.tll(this.LedgerStatementForm.value).subscribe((data)=>{
+  //       this.receipt = data;
+  //       console.log(data);
+  //     });
+
+  //       this.service.tlrs(this.LedgerStatementForm.value).subscribe((data)=>{
+  //         this.preceipt = data;
+  //         console.log(data);
+  //       });
+
+  //         this.service.tsrl(this.LedgerStatementForm.value).subscribe((data)=>{
+  //           this.credit = data;
+  //           console.log(data);
+  //         });
+
+  //           this.service.trl(this.LedgerStatementForm.value).subscribe((data)=>{
+  //             this.pcredit = data;
+  //             console.log(data);
+  //           });
+
+   }
+
+
+
+function total3(total3: any) {
+  const form:LedgerstatementFrom = this.LedgerStatementForm .value;
+
+      const amount1 = Number(total3) +Number(total3);
+
+
+
+      this.LedgerStatementForm.patchValue({
+
+"amount1":amount1,
+        "cash": total3,
+        "pcash":total3,
+
       });
-
-        this.service.tlrs(this.LedgerStatementForm.value).subscribe((data,)=>{
-          this.preceipt = data;
-          console.log(data);
-        });
-
-          this.service.tsrl(this.LedgerStatementForm.value).subscribe((data,)=>{
-            this.credit = data;
-            console.log(data);
-          });
-
-            this.service.trl(this.LedgerStatementForm.value).subscribe((data,)=>{
-              this.pcredit = data;
-              console.log(data);
-            });
-
-  }
-}
+    }
 
 

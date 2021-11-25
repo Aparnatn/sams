@@ -55,6 +55,7 @@ export interface PCashFrom extends PCashSaleRequest {
   quantity1:number,
   // total2: number,
 }
+
 export interface CreditFrom extends CreditSaleRequest {
   total1: number,
   // total2: number,
