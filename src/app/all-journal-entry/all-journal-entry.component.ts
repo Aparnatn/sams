@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CashSaleResponse, CreditPurchaseResponse, CreditSaleResponse, PCashSaleResponse, PurchaseReceiptResponse, SalesReceiptResponse } from '../interfaces/sales.interfaces';
 import { ReportsService } from '../reports/reports.service';
@@ -13,8 +13,8 @@ import { ReportsService } from '../reports/reports.service';
 })
 export class AllJournalEntryComponent implements OnInit {
   AllJournalEntryForm = this.formBuilder.group({
-    date:"",
-    report_date:"",
+    date:['',Validators.required],
+    report_date:['',Validators.required],
 
    });
 
@@ -31,10 +31,10 @@ export class AllJournalEntryComponent implements OnInit {
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    this.service.chs({}).subscribe((data) => {
-      this.Cash = data;
-      console.log(data);
-    })
+    // this.service.chs({}).subscribe((data) => {
+    //   this.Cash = data;
+    //   console.log(data);
+    // })
   }
   onSubmit(): void {
 
