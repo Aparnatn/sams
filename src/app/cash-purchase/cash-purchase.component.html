@@ -96,20 +96,8 @@
         <div class="grid-container" >
           <!-- Control the column width, and how they should appear on different devices -->
           <div class="row">
-            <div>
-              <select  formControlName="item_id1"
-                style="border-radius: 12px; width: 150px" class="form-control" placeholder="">
-
-                <option *ngFor="let item of Item">{{item.id}}</option>
-              </select>Item
-            </div>
-            <div>
-              <select  formControlName="item_details1" style="border-radius: 12px;width: 150px" class="form-control" placeholder="">
-
-                <option *ngFor="let item of Item">{{item.item_details1}}</option>
-              </select>
-              Item Details
-            </div>
+            <div>   <input type="text" formControlName="item_id1" style="border-radius: 12px;width: 150px" class="form-control" >Item ID</div>
+            <div>   <input type="text" formControlName="item_details1" style="border-radius: 12px;width: 150px" class="form-control" >Item Details</div>
             <div><input type="number" min="0"
                 (ngModelChange)="calcualtTotal()" formControlName="price1_1"
                 style="border-radius: 12px;width: 150px" class="form-control" >Price-1</div>
@@ -118,13 +106,7 @@
                 style="border-radius: 12px;width: 150px" class="form-control" >Quantity</div>
             <div><input type="number" min="0" formControlName="amount1" style="border-radius: 12px;width: 150px" class="form-control" >Amount</div>
             <div>  <input type="text" formControlName="sales_ex1" style="border-radius: 12px;width: 150px" class="form-control" > Sales Executive</div>
-            <div>
-              <select  formControlName="job1" style="border-radius: 12px;width: 150px" class="form-control" placeholder="">
-
-                <option *ngFor="let item of Job">{{item.job1}}</option>
-              </select>
-             Job
-            </div>
+            <div>   <input type="text" formControlName="job1" style="border-radius: 12px;width: 150px" class="form-control" >JOB</div>
             </div>
           <div class="row">
           <div>   <input type="text" formControlName="item_id2" style="border-radius: 12px;width: 150px" class="form-control" >Item ID</div>

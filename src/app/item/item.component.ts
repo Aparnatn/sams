@@ -21,7 +21,7 @@ export class ItemComponent implements OnInit {
     open_balance:['',Validators.required],
     buying_price:['',Validators.required],
     sell_price:['',Validators.required],
-
+   created_at:['',Validators.required],
 
 
   });
