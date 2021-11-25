@@ -30,6 +30,10 @@ export class StockMasterDataComponent implements OnInit {
 
     this.service.stockmasterDF(this.stockMasterDataForm.value,).subscribe((data,)=>{
       console.log(data);});
+      this.service.stockmasterDF({}).subscribe((data) => {
+        this.stock = data;
+        console.log(data);
+      })
     // this.router.navigate(['/reports']);
   }
 

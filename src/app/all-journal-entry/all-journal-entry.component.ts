@@ -43,30 +43,30 @@ export class AllJournalEntryComponent implements OnInit {
       console.log(data);
     });
 
-    this.service.pchs(this.AllJournalEntryForm.value).subscribe((data,)=>{
-      this.PCash = data;
-      console.log(data);
-    });
+    // this.service.pchs(this.AllJournalEntryForm.value).subscribe((data,)=>{
+    //   this.PCash = data;
+    //   console.log(data);
+    // });
 
-      this.service.rs(this.AllJournalEntryForm.value).subscribe((data,)=>{
-        this.receipt = data;
-        console.log(data);
-      });
+    //   this.service.rs(this.AllJournalEntryForm.value).subscribe((data,)=>{
+    //     this.receipt = data;
+    //     console.log(data);
+    //   });
 
-        this.service.rp(this.AllJournalEntryForm.value).subscribe((data,)=>{
-          this.preceipt = data;
-          console.log(data);
-        });
+    //     this.service.rp(this.AllJournalEntryForm.value).subscribe((data,)=>{
+    //       this.preceipt = data;
+    //       console.log(data);
+    //     });
 
-          this.service.crs(this.AllJournalEntryForm.value).subscribe((data,)=>{
-            this.credit = data;
-            console.log(data);
-          });
+    //       this.service.crs(this.AllJournalEntryForm.value).subscribe((data,)=>{
+    //         this.credit = data;
+    //         console.log(data);
+    //       });
 
-            this.service.crp(this.AllJournalEntryForm.value).subscribe((data,)=>{
-              this.pcredit = data;
-              console.log(data);
-            });
+    //         this.service.crp(this.AllJournalEntryForm.value).subscribe((data,)=>{
+    //           this.pcredit = data;
+    //           console.log(data);
+    //         });
 
   }
 
