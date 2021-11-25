@@ -20,9 +20,10 @@ export class SamFoftwareInterceptor implements HttpInterceptor {
     if (typeof(this.userToken) !== 'undefined') {
       headers.set('Authorization', `Bearer ${this.userToken}`);
     }
-    // headers.set('Authorization', `Bearer ${userToken}`);
+    // headers.set('Authorization', `Bearer ${this.userToken}`);
     // headers.set('Access-Control-Allow-Origin', 'http://localhost:4200');
     headers.set('Access-Control-Allow-Origin', '*');
+    headers.set('USER_TOCKEN', this.userToken);
     // headers.set('Access-Control-Allow-Credentials', 'true');
     // headers.set('Access-Control-Allow-Headers', 'X-CSRFToken, Content-Type');
     // headers.set('X-CSRFToken', this.csrf);
