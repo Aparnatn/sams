@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { SalesService } from '../services/sales.service';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
+import { UserService } from '../user/user.service';
+import { CustomerResponse, ItemResponse, JobResponse } from '../user/login.interfaces';
 @Component({
   selector: 'app-purchase-return',
   templateUrl: './purchase-return.component.html',
@@ -48,17 +50,45 @@ export class PurchaseReturnComponent implements OnInit {
   });
   private fieldArray: Array<any> = [];
             private newAttribute: any = {};
-  constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
+            Customer: CustomerResponse[];
+            Item:ItemResponse[];
+            Job:JobResponse[];
+  constructor( private userService: UserService,private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
 
   ngOnInit(): void {
-    const headers = new Headers();
-    headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    headers.append('Access-Control-Allow-Methods', 'GET');
-    headers.append('Access-Control-Allow-Origin', '*');
-    this.http.post("http://127.0.0.1:8004/Sam/PCreditApi", {headers: headers}).subscribe(res => {
+    this.userService.getCustomer().subscribe((data: CustomerResponse[]) => {
+      this.Customer = data;
 
-      console.log(res);
-    });
+      data.forEach(d => {
+        this.PurchaseReturnForm.patchValue({
+          customer_name: d.customer_name,
+          customer_id: d.id
+        });
+      });
+
+    })
+    this.userService.getItem().subscribe((data: ItemResponse[]) => {
+      this.Item = data;
+
+      data.forEach(d => {
+        this.PurchaseReturnForm.patchValue({
+         item_details1: d.item_details1,
+          item_id1: d.id
+        });
+      });
+
+    })
+    this.userService.getJob().subscribe((data: JobResponse[]) => {
+      this.Job = data;
+
+      data.forEach(d => {
+        this.PurchaseReturnForm.patchValue({
+          job1: d.job1,
+         job_id: d.id
+        });
+      });
+
+    })
   }
   onSubmit1(): void {
 

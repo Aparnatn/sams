@@ -23,6 +23,7 @@ export class SamFoftwareInterceptor implements HttpInterceptor {
     // headers.set('Authorization', `Bearer ${userToken}`);
     // headers.set('Access-Control-Allow-Origin', 'http://localhost:4200');
     headers.set('Access-Control-Allow-Origin', '*');
+    // headers.set('Access-Control-Allow-Credentials', 'true');
     // headers.set('Access-Control-Allow-Headers', 'X-CSRFToken, Content-Type');
     // headers.set('X-CSRFToken', this.csrf);
     const modifiedReq = request.clone({

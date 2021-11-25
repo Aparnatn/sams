@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Users, UserService } from '../user/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie';
+import { environment } from '../../environments/environment';
 
 type errorMessge = {
   detail?: string;
@@ -60,6 +61,10 @@ export class UserComponent implements OnInit {
     now.setHours(now.getHours() + 8);
     this.cookieService.put('userTocken', tocken, {expires:now});
     this.cookieService.put('jwt', tocken, {expires:now});
+    this.cookieService.put('jwt', tocken, {
+      expires:now,
+      domain: environment.appDmain
+    });
   }
 
   private showErros(errors: errorMessge) {

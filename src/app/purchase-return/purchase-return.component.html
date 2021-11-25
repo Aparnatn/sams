@@ -44,7 +44,7 @@
             <!-- <input   type="number " style="border-radius: 12px;" class="form-control" placeholder="Cash/Cheque"> -->
           </div>
           <div class="col-sm-3" >
-            <input   type="date " formControlName="due_on"style="border-radius: 12px;" class="form-control" placeholder="" >
+            <input   type="date" formControlName="due_on"style="border-radius: 12px;" class="form-control" placeholder="" >
           </div>
         </div>
         <div class="row" style="padding-top: 5px; ">
@@ -71,7 +71,10 @@
             <!-- <input type="text " style="border-radius: 12px; color: white;" class="form-control" placeholder=" Supplier ID" > -->
           </div>
           <div class="col-sm-7" >
-            <input type="text" formControlName="supp_id"  style="border-radius: 12px;" class="form-control" >
+            <select  formControlName="customer_id" style="border-radius: 12px;" class="form-control" placeholder="">
+
+              <option *ngFor="let item of Customer">{{item.id}}</option>
+            </select>
           </div>
         </div>
         <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
@@ -80,7 +83,10 @@
             <!-- <input type="text " style="border-radius: 12px" class="form-control" placeholder=" Supplier Name" > -->
           </div>
           <div class="col-sm-7" >
-            <input type="text" formControlName="supp_name"  style="border-radius: 12px;" class="form-control" >
+            <select  formControlName="customer_name" style="border-radius: 12px;" class="form-control" placeholder="">
+
+              <option *ngFor="let item of Customer">{{item.customer_name}}</option>
+            </select>
           </div>
         </div>
           <br><br>
@@ -102,14 +108,27 @@
               <tbody>
                 <tr id='addr0'>
                     <td></td>
-                    <td><input type="text" formControlName="item_id1" class="form-control"/></td>
-                    <td><input type="text"  formControlName="item_details1" class="form-control"/></td>
+                    <td> <select  formControlName="item_id1"
+                      style="border-radius: 12px; width: 150px" class="form-control" placeholder="">
+
+                      <option *ngFor="let item of Item">{{item.id}}</option>
+                    </select></td>
+                    <td><select  formControlName="item_details1" style="border-radius: 12px;width: 150px" class="form-control" placeholder="">
+
+                      <option *ngFor="let item of Item">{{item.item_details1}}</option>
+                    </select></td>
                     <td><input type="number"  formControlName="price1_1" placeholder='Enter Price' class="form-control price" step="0.00" min="0"/></td>
                     <td><input type="number"  formControlName="quantity1" placeholder='Enter Qty' class="form-control qty" step="0" min="0"/></td>
                     <td><input type="number"  formControlName="amount1" placeholder='0.00' class="form-control total" /></td>
                     <td><input type="number"  formControlName="total1" placeholder='0.00' class="form-control total" /></td>
                     <td><input type="text"  formControlName="sales_ex1" class="form-control"/></td>
-                    <td><input type="text"  formControlName="job1" class="form-control"/></td>
+<td>
+                      <select  formControlName="job1" style="border-radius: 12px;width: 150px" class="form-control" placeholder="">
+
+                        <option *ngFor="let item of Job">{{item.job1}}</option>
+                      </select>
+                    </td>
+
                 </tr>
                 <tr id='addr1'>
                     <td></td>

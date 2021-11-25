@@ -47,7 +47,7 @@ export class CashPurchaseComponent implements OnInit {
   Customer: CustomerResponse[];
   Item:ItemResponse[];
   Job:JobResponse[];
-  constructor(  private userService: UserService,private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
+  constructor(private userService: UserService,private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
 
   ngOnInit(): void {
     this.userService.getCustomer().subscribe((data: CustomerResponse[]) => {
