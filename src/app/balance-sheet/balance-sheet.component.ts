@@ -37,7 +37,7 @@ LiabilityTotal=0;
   ) { }
 
   ngOnInit(): void {
-    this.salesservice.pl({}).subscribe((data) => {
+    this.salesservice.lsb({}).subscribe((data) => {
       this.Cash = data;
       console.log(data);
     })
@@ -49,7 +49,7 @@ LiabilityTotal=0;
   }
 
   calculsteLiability() {
-    this.salesservice.tsrl(this.BsForm.value,).subscribe((data,)=>{
+    this.salesservice.balance_sheet(this.BsForm.value,).subscribe((data,)=>{
       this.credit = data;
       let total=0;
             this.credit.forEach(element => {
@@ -66,7 +66,7 @@ LiabilityTotal=0;
         });
 
         });
-    this.service.ls(this.BsForm.value,).subscribe((data,)=>{
+    this.service.tcrlb(this.BsForm.value).subscribe((data,)=>{
       console.log(data);
     });
 
@@ -81,7 +81,7 @@ LiabilityTotal=0;
         });
     });
 
-    this.salesservice.lslb(this.BsForm.value,).subscribe((pcash)=>{
+    this.salesservice.lslb(this.BsForm.value).subscribe((pcash)=>{
       this.PCash = pcash;
       let total=0;
         this.PCash.forEach(element => {

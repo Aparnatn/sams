@@ -316,6 +316,7 @@ export interface Ledger {
   date:string,
 }
 export interface Job {
+  job1: any;
   id: any;
   job_name: string,
   job_desc: string,
