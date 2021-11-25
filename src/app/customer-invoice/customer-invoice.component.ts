@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CashSaleResponse } from '../interfaces/sales.interfaces';
 import { CustomerInvoiceHistoryResponse } from '../reports/reports.interface';
 import { ReportsService } from '../reports/reports.service';
 
@@ -12,12 +13,13 @@ import { ReportsService } from '../reports/reports.service';
 })
 export class CustomerInvoiceComponent implements OnInit {
  customerInviceForm = this.formBuilder.group({
-    report_date:"",
+    report_date:['',Validators.required],
    });
 
    customerIN: CustomerInvoiceHistoryResponse[];
-
-
+   assetTotal = 0;
+   Cash: CashSaleResponse[];
+  salesservice: any;
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
@@ -30,7 +32,19 @@ export class CustomerInvoiceComponent implements OnInit {
     this.service.customeInvoicetHF(this.customerInviceForm.value,).subscribe((data,)=>{
       console.log(data);});
     // this.router.navigate(['/reports']);
+    this.calculateAsset();
 
 
+  }
+  calculateAsset() {
+    this.salesservice.lsb({}).subscribe((cash) => {
+      this.Cash = cash;
+      let total=0;
+        this.Cash.forEach(element => {
+          this.assetTotal  +=element.total+element.amount2
+        });
+    });
+
+    
   }
 }
