@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Users, UserService } from '../user/user.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie';
 import { environment } from '../../environments/environment';
 
@@ -22,13 +22,14 @@ export class UserComponent implements OnInit {
   });
 
   users: Users[] = [];
-  http: any;
+
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private service: UserService,
     private cookieService: CookieService,
+    private http:HttpClient,
   ) { }
 
   ngOnInit(): void {
