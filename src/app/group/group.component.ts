@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user/user.service';
 @Component({
   selector: 'app-group',
@@ -11,8 +11,8 @@ import { UserService } from '../user/user.service';
 export class GroupComponent implements OnInit {
 
  groupForm = this.formBuilder.group({
-    group_name:"",
-    category:"",
+    group_name: ['',Validators.required],
+    category:['',Validators.required],
 
 
 

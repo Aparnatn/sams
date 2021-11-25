@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SalesService } from '../services/sales.service';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { PCashFrom, PCashSaleRequest } from '../interfaces/sales.interfaces';
+import { CustomerResponse, ItemResponse, JobResponse } from '../user/login.interfaces';
+import { UserService } from '../user/user.service';
 @Component({
   selector: 'app-cash-purchase',
   templateUrl: './cash-purchase.component.html',
@@ -11,48 +13,76 @@ import { PCashFrom, PCashSaleRequest } from '../interfaces/sales.interfaces';
 })
 export class CashPurchaseComponent implements OnInit {
   PCashSaleForm = this.formBuilder.group({
-    invoice_number: '',
-    date: '',
-    internal_ref_no: '',
-    cash: '',
-    user_id: '',
-    account: '',
-   supp_id: '',
-    supp_name: '',
-    item_id1: '',
-    item_id2: '',
-    item_details1: '',
-    item_details2: '',
-    price1_1: '',
-    price1_2: '',
-    quantity1: '',
-    quantity2: '',
-    amount1: '',
-    amount2: '',
-    sales_ex1: '',
-    sales_ex2: '',
-    job1: '',
-    job2: '',
-    labour_charge: '',
-    other_charge: '',
-    total1: '',
-    total2: '',
-    total3: '',
-    discount: '',
+    invoice_number: ['',Validators.required],
+    date: ['',Validators.required],
+    internal_ref_no: ['',Validators.required],
+    cash: ['',Validators.required],
+    user_id: ['',Validators.required],
+    account: ['',Validators.required],
+   customer_id: ['',Validators.required],
+    customer_name: ['',Validators.required],
+    item_id1: ['',Validators.required],
+    item_id2: ['',Validators.required],
+    item_details1: ['',Validators.required],
+    item_details2: ['',Validators.required],
+    price1_1: ['',Validators.required],
+    price1_2: ['',Validators.required],
+    quantity1: ['',Validators.required],
+    quantity2: ['',Validators.required],
+    amount1: ['',Validators.required],
+    amount2: ['',Validators.required],
+    sales_ex1: ['',Validators.required],
+    sales_ex2: ['',Validators.required],
+    job1: ['',Validators.required],
+    job2: ['',Validators.required],
+    labour_charge: ['',Validators.required],
+    other_charge: ['',Validators.required],
+    total1: ['',Validators.required],
+    total2: ['',Validators.required],
+    total3: ['',Validators.required],
+    discount: ['',Validators.required],
 
 
   });
-  constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
+  Customer: CustomerResponse[];
+  Item:ItemResponse[];
+  Job:JobResponse[];
+  constructor(private userService: UserService,private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
 
   ngOnInit(): void {
-    //   const headers = new Headers();
-    //   headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    //   headers.append('Access-Control-Allow-Methods', 'GET');
-    //   headers.append('Access-Control-Allow-Origin', '*');
-    //   this.http.post("http://127.0.0.1:8004/Sam/cashapi", { headers: headers }).subscribe(res => {
+    this.userService.getCustomer().subscribe((data: CustomerResponse[]) => {
+      this.Customer = data;
 
-    //     console.log(res);
-    //   });
+      data.forEach(d => {
+        this.PCashSaleForm.patchValue({
+          customer_name: d.customer_name,
+          customer_id: d.id
+        });
+      });
+
+    })
+    this.userService.getItem().subscribe((data: ItemResponse[]) => {
+      this.Item = data;
+
+      data.forEach(d => {
+        this.PCashSaleForm.patchValue({
+         item_details1: d.item_details1,
+          item_id1: d.id
+        });
+      });
+
+    })
+    this.userService.getJob().subscribe((data: JobResponse[]) => {
+      this.Job = data;
+
+      data.forEach(d => {
+        this.PCashSaleForm.patchValue({
+          job1: d.job1,
+         job_id: d.id
+        });
+      });
+
+    })
      }
 
     calcualtTotal() {
@@ -81,4 +111,5 @@ export class CashPurchaseComponent implements OnInit {
       console.log(data);});
       this.router.navigate(['/grand-hyper']);
   }
+
 }

@@ -89,6 +89,7 @@ import { JobEditComponent } from './job-edit/job-edit.component';
 import { SupplierbuttonsComponent } from './supplierbuttons/supplierbuttons.component';
 import { CustomerbuttonsComponent } from './customerbuttons/customerbuttons.component';
 import { LedgerbuttonsComponent } from './ledgerbuttons/ledgerbuttons.component';
+import { ItemjobbuttonsComponent } from './itemjobbuttons/itemjobbuttons.component';
 
 @NgModule({
   declarations: [
@@ -183,6 +184,7 @@ import { LedgerbuttonsComponent } from './ledgerbuttons/ledgerbuttons.component'
     SupplierbuttonsComponent,
     CustomerbuttonsComponent,
     LedgerbuttonsComponent,
+    ItemjobbuttonsComponent,
   ],
   imports: [
     BrowserModule,

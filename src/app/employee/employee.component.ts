@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user/user.service';
 import { EmployeeResponse } from '../user/login.interfaces';
 @Component({
@@ -12,25 +12,25 @@ import { EmployeeResponse } from '../user/login.interfaces';
 export class EmployeeComponent implements OnInit {
 
   employeeForm = this.formBuilder.group({
-    emp_name:"",
-    nationality:"",
-    birth_date:"",
-    joining_date:"",
-    designation:"",
-    department:"",
-    salary_categ:"",
-    passport_no:"",
-    expir:"",
-    id_no:"",
-    id_expir:"",
+    emp_name:['',Validators.required],
+    nationality:['',Validators.required],
+    birth_date:['',Validators.required],
+    joining_date:['',Validators.required],
+    designation:['',Validators.required],
+    department:['',Validators.required],
+    salary_categ:['',Validators.required],
+    passport_no:['',Validators.required],
+    expir:['',Validators.required],
+    id_no:['',Validators.required],
+    id_expir:['',Validators.required],
 
-    basic:"",
-    housing:"",
-    transportation:"",
-    food:"",
-    mobile:"",
-    other:"",
-    netpay:"",
+    basic:['',Validators.required],
+    housing:['',Validators.required],
+    transportation:['',Validators.required],
+    food:['',Validators.required],
+    mobile:['',Validators.required],
+    other:['',Validators.required],
+    netpay:['',Validators.required],
 
 
 

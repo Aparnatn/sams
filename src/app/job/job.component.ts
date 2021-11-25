@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user/user.service';
 import { JobResponse } from '../user/login.interfaces';
 
@@ -13,8 +13,8 @@ import { JobResponse } from '../user/login.interfaces';
 export class JobComponent implements OnInit {
 
   JobForm = this.formBuilder.group({
-    job_name:"",
-    job_desc:"",
+    job1:['',Validators.required],
+    job_desc:['',Validators.required],
     // imag1:"",
     // imag2:"",
     // imag3:"",

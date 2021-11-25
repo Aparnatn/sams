@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../user/login.interfaces';
 import { Company, UserService } from '../user/user.service';
+
 @Component({
   selector: 'app-grand-hyper',
   templateUrl: './grand-hyper.component.html',
@@ -9,7 +10,7 @@ import { Company, UserService } from '../user/user.service';
 })
 export class GrandHyperComponent implements OnInit {
   companies: Company[] = [];
-  Users: User[] = [];
+  User: User;
   constructor(private router: Router, private service: UserService,) { }
 
   ngOnInit(): void {
@@ -17,8 +18,8 @@ export class GrandHyperComponent implements OnInit {
     this.loadUsers();
   }
   private loadUsers() {
-    this.service.getUsers().subscribe((data: User[]) => {
-      this.Users = data;
+    this.service.getUser().subscribe((data: User) => {
+      this.User = data;
     })
   }
   private loadCompanies() {

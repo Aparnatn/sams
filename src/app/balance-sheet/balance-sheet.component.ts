@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Ledger } from '../user/login.interfaces';
 import { Observable } from 'rxjs';
 import { SalesService } from '../services/sales.service';
@@ -15,8 +15,8 @@ import { BSFrom, CashFrom, CashSaleResponse, CreditPurchaseResponse, CreditSaleR
 })
 export class BalanceSheetComponent implements OnInit {
   BsForm = this.formBuilder.group({
-    date:"",
-    report_date: "",
+    date:["",Validators.required],
+    report_date: ["",Validators.required],
 
   });
 
@@ -37,19 +37,19 @@ LiabilityTotal=0;
   ) { }
 
   ngOnInit(): void {
-    this.salesservice.pl({}).subscribe((data) => {
-      this.Cash = data;
-      console.log(data);
-    })
+    // this.salesservice.lsb({}).subscribe((data) => {
+    //   this.Cash = data;
+    //   console.log(data);
+    // })
   }
 
   onSubmit(): void {
-    this.calculsteLiability();
+    // this.calculsteLiability();
     this.calculateAsset();
   }
 
   calculsteLiability() {
-    this.salesservice.tsrl(this.BsForm.value,).subscribe((data,)=>{
+    this.salesservice.balance_sheet(this.BsForm.value,).subscribe((data,)=>{
       this.credit = data;
       let total=0;
             this.credit.forEach(element => {
@@ -66,7 +66,7 @@ LiabilityTotal=0;
         });
 
         });
-    this.service.ls(this.BsForm.value,).subscribe((data,)=>{
+    this.service.tcrlb(this.BsForm.value).subscribe((data,)=>{
       console.log(data);
     });
 
@@ -81,7 +81,7 @@ LiabilityTotal=0;
         });
     });
 
-    this.salesservice.lslb(this.BsForm.value,).subscribe((pcash)=>{
+    this.salesservice.lslb(this.BsForm.value).subscribe((pcash)=>{
       this.PCash = pcash;
       let total=0;
         this.PCash.forEach(element => {

@@ -27,7 +27,8 @@ export class SupplierEditComponent implements OnInit {
     open_balance:"",
     credit_lim_am:"",
     credit_lim_dur:"",
-
+    bank_acc_name: "",
+    bank_acc_no: "",
   });
  suppliers:SupplierResponse[]=[];
   constructor(
@@ -39,39 +40,40 @@ export class SupplierEditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.route.params
-    //         .subscribe(
-    //             params => {
-    //                 this.id = params.id;
-    //                 this.fetchsuppliers();
-    //             },
-    //             error => {
-    //                 console.log(`Error on person view`, error);
-    //             },
-    //         );
+    this.route.params
+            .subscribe(
+                params => {
+                    this.id = params.id;
+                    this.fetchsuppliers();
+                },
+                error => {
+                    console.log(`Error on person view`, error);
+                },
+            );
   }
 
-  // private fetchsuppliers() {
-  //  this.service.getsupp(this.id).subscribe((suppliers: Supplier) => {
-  //    this.suppliereditForm.setValue({
-  //      id: suppliers.id,
-  //      customer_name:suppliers.customer_name,
-  //      vat_reg_no:suppliers.vat_reg_no,
-  //      cr_no:suppliers.cr_no,
-  //      expired_on:suppliers.expired_on,
-  //      land_phone:suppliers.land_phone,
-  //      mobile:suppliers.mobile,
-  //      contact_person:suppliers.contact_person,
-  //      contact_mobile:suppliers. contact_mobile,
-  //      email:suppliers.email,
-  //      address:suppliers.address,
-  //      open_balance:suppliers.open_balance,
-  //      credit_lim_am:suppliers.credit_lim_am,
-  //      credit_lim_dur:suppliers.credit_lim_dur,
-
-  //    });
-  //  })
-  // }
+  private fetchsuppliers() {
+   this.service.getsupp(this.id).subscribe((suppliers: Supplier) => {
+     this.suppliereditForm.setValue({
+       id: suppliers.id,
+       customer_name:suppliers.customer_name,
+       vat_reg_no:suppliers.vat_reg_no,
+       cr_no:suppliers.cr_no,
+       expired_on:suppliers.expired_on,
+       land_phone:suppliers.land_phone,
+       mobile:suppliers.mobile,
+       contact_person:suppliers.contact_person,
+       contact_mobile:suppliers. contact_mobile,
+       email:suppliers.email,
+       address:suppliers.address,
+       open_balance:suppliers.open_balance,
+       credit_lim_am:suppliers.credit_lim_am,
+       credit_lim_dur:suppliers.credit_lim_dur,
+    bank_acc_name: suppliers.bank_acc_name,
+bank_acc_no:suppliers.bank_acc_no
+     });
+   })
+  }
 
   onSubmit1(): void {
 

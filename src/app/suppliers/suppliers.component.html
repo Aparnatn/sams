@@ -167,7 +167,7 @@
       <div class="container">
         <div class="row" style="padding-top: 15px;">
 
-            <button type="submit" style="border-radius: 12px;width:100%;" class="btn btn-lg btn-block">Submit & Register New</button>
+            <button type="submit"   [disabled]="!SupplierForm.valid" style="border-radius: 12px;width:100%;" class="btn btn-lg btn-block">Submit & Register New</button>
 
 
 
@@ -194,6 +194,14 @@
           <th>Mob No</th>
           <th>Email Id</th>
           <th>Address</th>
+          <th>Opening balance</th>
+          <th>Credit Limit amount</th>
+          <th>Credit limit Duration</th>
+          <th>Contact person</th>
+          <th>Contact Mobile</th>
+          <th>Bank account name</th>
+          <th>Bank account number</th>
+          <th>Action</th>
           <th>Action</th>
       </tr>
       </thead>
@@ -208,7 +216,15 @@
               <td>{{item.mobile }}</td>
               <td>{{item.email }}</td>
               <td>{{item.address }}</td>
-              <td><a href="customer-edit">Edit</a></td>
+              <td> {{item.open_balance}}</td>
+             <td> {{ item.credit_lim_am}}</td>
+             <td>{{item.credit_lim_dur}}</td>
+            <td> {{item.contact_person}}</td>
+           <td>{{item.contact_mobile}}</td>
+           <td>{{item.bank_acc_name}}</td>
+           <td>{{item.bank_acc_no}}</td>
+              <td><a href="supplier/{{item.id}}/edit">Edit</a></td>
+              <td><a href="" (click)="delete(item.id)">Delete</a></td>
 
            </tr>
 

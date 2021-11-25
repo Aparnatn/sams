@@ -1,5 +1,13 @@
 
+<head>
 
+  <style>
+    body
+    {
+      font-family: 'Times New Roman', Times, serif;
+    }
+  </style>
+</head>
 <body>
   <section style="padding-top:30px">
     <div class="container">
@@ -65,7 +73,10 @@
             <label class="form-control"  style="border-radius:12px;padding: 10px;">Supplier ID</label>
           </div>
           <div class="col-sm-7" >
-            <input type="text" formControlName="supp_id" style="border-radius: 12px;" class="form-control" >
+            <select  formControlName="customer_id" style="border-radius: 12px;" class="form-control" placeholder="">
+
+              <option *ngFor="let item of Customer">{{item.id}}</option>
+            </select>
           </div>
         </div>
 
@@ -74,7 +85,10 @@
             <label class="form-control"  style="border-radius:12px;padding: 10px;">Supplier Name</label>
           </div>
           <div class="col-sm-7" >
-            <input type="text"  style="border-radius: 12px;" formControlName="supp_name" class="form-control" >
+            <select  formControlName="customer_name" style="border-radius: 12px;" class="form-control" placeholder="">
+
+              <option *ngFor="let item of Customer">{{item.customer_name}}</option>
+            </select>
           </div>
         </div>
         <br><br>

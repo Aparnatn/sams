@@ -46,6 +46,11 @@ export interface PcreditFilter {
   to_date?: string,
   name?: string,
 }
+export interface creditFilter {
+  from_date?: string,
+  to_date?: string,
+  name?: string,
+}
 
 @Injectable()
 export class SalesService {
@@ -65,7 +70,7 @@ export class SalesService {
   }
 
   customermasterdata(data: CustomerMasterdataRequest): Observable<CustomerMasterdataResponse> {
-    return this.http.post<CustomerMasterdataResponse>(`${this.apiUrl}/Sam/custom`, data, {
+    return this.http.post<CustomerMasterdataResponse>(`${this.apiUrl}/Sam/customermasterdata`, data, {
       // observe: 'response',
       withCredentials: true
     });
@@ -159,7 +164,7 @@ export class SalesService {
       params = params.append('name', filter.name);
     }
     return this.http.get<CustomerMasterdataResponse[]>(
-      `${this.apiUrl}/Sam/custom`,
+      `${this.apiUrl}/Sam/customermasterdata`,
       { params: params }
     )
   }
@@ -527,7 +532,23 @@ export class SalesService {
       { params: params }
     );
   }
-
+  balance_sheet(filter: creditFilter): Observable<CreditSaleResponse[]> {
+    // console.log(filter);
+    let params = new HttpParams();
+    if (filter.from_date) {
+      params = params.append('from_date', filter.from_date);
+    }
+    if (filter.to_date) {
+      params = params.append('to_date', filter.to_date);
+    }
+    if (filter.name) {
+      params = params.append('name', filter.name);
+    }
+    return this.http.get<CreditSaleResponse[]>(
+      `${this.apiUrl}/Sam/gob_s`,
+      { params: params }
+    );
+  }
   getCustomer(): Observable<CustomerResponse[]> {
     return this.http.get<CustomerResponse[]>(`${this.apiUrl}/Sam/customershowApi`, {
       // observe: 'response',
