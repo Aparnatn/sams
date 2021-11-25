@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user/user.service';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 import { SalesService } from '../services/sales.service';
@@ -14,7 +14,7 @@ import { CashSaleResponse, CreditPurchaseResponse, CreditSaleResponse, PCashSale
 })
 export class TrialBalanceComponent implements OnInit {
   TrialBalanceForm = this.formBuilder.group({
-   date:"",
+   date:["", Validators.required],
 
   });
 
@@ -29,10 +29,7 @@ export class TrialBalanceComponent implements OnInit {
   constructor(private http:HttpClient, private service: SalesService,private userservice: UserService,private router:Router,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.service.l({}).subscribe((data) => {
-      this.Cash = data;
-      console.log(data);
-    })
+
   }
 
   onSubmit(): void {
@@ -40,33 +37,8 @@ export class TrialBalanceComponent implements OnInit {
     this.service.l(this.TrialBalanceForm.value).subscribe((data,)=>{
       this.Cash = data;
       console.log(data);
-    });
+    });}
 
-    this.service.tl(this.TrialBalanceForm.value).subscribe((data,)=>{
-      this.PCash = data;
-      console.log(data);
-    });
 
-      this.service.tlr(this.TrialBalanceForm.value).subscribe((data,)=>{
-        this.receipt = data;
-        console.log(data);
-      });
-
-        this.service.tpr(this.TrialBalanceForm.value).subscribe((data,)=>{
-          this.preceipt = data;
-          console.log(data);
-        });
-
-          this.service.tsr(this.TrialBalanceForm.value).subscribe((data,)=>{
-            this.credit = data;
-            console.log(data);
-          });
-
-            this.service.tcr(this.TrialBalanceForm.value).subscribe((data,)=>{
-              this.pcredit = data;
-              console.log(data);
-            });
-
-  }
 }
 
