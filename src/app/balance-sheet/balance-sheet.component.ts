@@ -44,7 +44,7 @@ LiabilityTotal=0;
   }
 
   onSubmit(): void {
-    this.calculsteLiability();
+    // this.calculsteLiability();
     this.calculateAsset();
   }
 

@@ -22,6 +22,7 @@ export class UserComponent implements OnInit {
   });
 
   users: Users[] = [];
+  http: any;
 
   constructor(
     private router: Router,
@@ -31,14 +32,15 @@ export class UserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.loadUsers();
-  }
+       const headers = new Headers();
+    headers.append('Access-Control-Allow-Headers', 'Content-Type');
+    headers.append('Access-Control-Allow-Methods', 'GET');
+    headers.append('Access-Control-Allow-Origin', '*');
+    this.http.post("http://127.0.0.1:8004/Sam/user", { headers: headers }).subscribe(res => {
 
-  // private loadUsers() {
-  //   this.service.getUsers().subscribe((data: Users[]) => {
-  //     this.users = data;
-  //   })
-  // }
+      console.log(res);
+    });
+  }
 
   login(): void {
     if (this.form.dirty && this.form.valid) {
