@@ -14,7 +14,7 @@ export class JobEditComponent implements OnInit {
   id: number;
   JobeditForm = this.formBuilder.group({
     id:"",
-    job_name:"",
+    job1:"",
 
     job_desc:"",
     // imag1:"",
@@ -50,7 +50,7 @@ export class JobEditComponent implements OnInit {
    this.service.getJobs(this.id).subscribe((job: Job) => {
      this.JobeditForm.setValue({
        id: job.id,
-      job_name: job.job_name,
+      job1: job.job1,
      job_desc :job.job_desc,
 
      });

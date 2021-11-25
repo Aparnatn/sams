@@ -12,10 +12,10 @@ import { LedgerResponse } from '../user/login.interfaces';
 export class LedgerComponent implements OnInit {
   LedgerForm = this.formBuilder.group({
     ledger_name:['',Validators.required],
-    group_name :['',Validators.required],
-    category:['',Validators.required],
-    opening_bal:['',Validators.required],
-date:['',Validators.required],
+    group_name :"",
+    category:"",
+    opening_bal:"",
+date:"",
   });
  ledgers:LedgerResponse[]=[];
   constructor(private http:HttpClient,private userservice: UserService,private router:Router,private formBuilder: FormBuilder,private service:UserService,) { }
@@ -44,8 +44,8 @@ date:['',Validators.required],
   }
   onSubmit1(): void {
 
-    // this.service.ledger(this.LedgerForm.value,).subscribe((data,)=>{
-    //   console.log(data);});
+     this.service.ledgercreate(this.LedgerForm.value,).subscribe((data,)=>{
+      console.log(data);});
       this.router.navigate(['/grand-hyper']);
   }
 }

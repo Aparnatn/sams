@@ -47,6 +47,9 @@ export interface companycreateFilter {
 
 @Injectable()
 export class UserService {
+  ledger(value: any) {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl: string;
   company: any;
 
@@ -81,7 +84,12 @@ export class UserService {
       // withCredentials: true
     });
   }
-
+  ledgercreate(data: LedgerRequest): Observable<LedgerResponse> {
+    return this.http.post<LedgerResponse>(`${this.apiUrl}/Sam/ledgercreates/`, data, {
+      // observe: 'response',
+      // withCredentials: true
+    });
+  }
 
 
   ledgerstatement(data: LedgerStatementRequest): Observable<LedgerStatementResponse> {
