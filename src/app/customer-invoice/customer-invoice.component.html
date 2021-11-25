@@ -97,15 +97,16 @@
               <td>{{customerIN.sales_ex1}}</td>
               <td>{{customerIN.total}}</td>
             </tr>
-            <tr>
+            <tr   *ngFor="let customerINn of customerIN;">
               <td></td>
+              <td>{{customerINn.date}}</td>
+              <td>{{customerINn.internal_ref_no}}</td>
               <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{customerINn.item_details2}}</td>
+              <td>{{customerINn.quantity2}}</td>
+              <td>{{customerINn.job2}}</td>
+              <td>{{customerINn.sales_ex2}}</td>
+              <td>{{customerINn.amount2}}</td>
             </tr>
             <tr>
               <td class="hide">hide</td>
@@ -117,7 +118,7 @@
               <td class="hide"></td>
               <td class="hide"></td>
               <p>Balance amount</p>
-              <td></td>
+              <td ></td>
             </tr>
 
           </tbody>
