@@ -224,11 +224,11 @@
                 </tr>
 
                 <tr *ngFor="let cash of PCash;">
-
+<td>{{cash.account}}</td>
                   <td>{{cash.total3}}</td>
                   <td></td>
                   <th style="text-align: right;">Gross Profit</th>
-                  <td (ngModelChange)="calculateAsset()">{{total3}}</td>
+                  <td >{{assetTotal}}</td>
 
                 </tr>
 
