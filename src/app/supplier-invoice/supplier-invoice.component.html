@@ -20,11 +20,11 @@
 
         <div class="row">
           <div class="col-sm-5" >
-            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Supplier Id </label>
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Date </label>
 
           </div>
           <div class="col-sm-7" >
-            <input type="text"  style="border-radius:12px;" class="form-control" placeholder="" >
+            <input type="text"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date" >
           </div>
         </div>
 
@@ -64,7 +64,7 @@
 
         <br><br>
         <div class="container">
-          <button type="submit" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+          <button type="submit" [disabled]="!supplierInvoiceHistoryForm.valid" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
         </div>
 
 

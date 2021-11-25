@@ -13,7 +13,8 @@ import { ReportsService } from '../reports/reports.service';
 })
 export class CustomerInvoiceComponent implements OnInit {
  customerInviceForm = this.formBuilder.group({
-    report_date:['',Validators.required],
+  date:['',Validators.required],
+  report_date:['',Validators.required],
    });
 
    customerIN: CustomerInvoiceHistoryResponse[];
@@ -23,19 +24,20 @@ export class CustomerInvoiceComponent implements OnInit {
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    this.service.customeInvoicetHF({}).subscribe((data) => {
-      this.customerIN = data;
-      console.log(data);
-    })
+    // this.service.customeInvoicetHF({}).subscribe((data) => {
+    //   this.customerIN = data;
+    //   console.log(data);
+    // })
   }
   onSubmit(): void {
     this.service.customeInvoicetHF(this.customerInviceForm.value,).subscribe((data,)=>{
       console.log(data);});
       this.service.customeInvoicetHF({}).subscribe((data) => {
-      this.customerIN = data;
-      console.log(data);
-    })
-  
+
+        this.customerIN = data;
+        console.log(data);
+      })
+
     // this.router.navigate(['/reports']);
     this.calculateAsset();
 

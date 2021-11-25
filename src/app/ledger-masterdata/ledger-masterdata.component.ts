@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LedgerMasterDataResponse } from '../reports/reports.interface';
 import { ReportsService } from '../reports/reports.service';
@@ -13,24 +13,28 @@ import { ReportsService } from '../reports/reports.service';
 })
 export class LedgerMasterdataComponent implements OnInit {
   LedgerMasterDataForm = this.formBuilder.group({
-    date:"",
-    report_date:"",
+    date:['',Validators.required],
+    report_date:['',Validators.required],
    });
    ledger: LedgerMasterDataResponse[];
 
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    this.service.ledgermasterdF({}).subscribe((data) => {
-      this.ledger = data;
-      console.log(data);
-    })
+    // this.service.ledgermasterdF({}).subscribe((data) => {
+    //   this.ledger = data;
+    //   console.log(data);
+    // })
   }
 
   onSubmit(): void {
 
     this.service.ledgermasterdF(this.LedgerMasterDataForm.value,).subscribe((data,)=>{
       console.log(data);});
+      this.service.ledgermasterdF({}).subscribe((data) => {
+        this.ledger = data;
+        console.log(data);
+      })
       // this.router.navigate(['/grand-hyper']);
   }
 }

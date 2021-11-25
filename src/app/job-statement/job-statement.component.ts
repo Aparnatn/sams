@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CashSaleResponse, PCashSaleResponse } from '../interfaces/sales.interfaces';
 import { ReportsService } from '../reports/reports.service';
@@ -13,8 +13,8 @@ import { ReportsService } from '../reports/reports.service';
 })
 export class JobStatementComponent implements OnInit {
   JobStatementForm = this.formBuilder.group({
-    date:"",
-    report_date:"",
+    date:['',Validators.required],
+    report_date:['',Validators.required],
    });
 
    Cash: CashSaleResponse[];
@@ -27,10 +27,10 @@ export class JobStatementComponent implements OnInit {
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    this.service.chs1({}).subscribe((data) => {
-      this.Cash = data;
-      console.log(data);
-    })
+    // this.service.chs1({}).subscribe((data) => {
+    //   this.Cash = data;
+    //   console.log(data);
+    // })
   }
   onSubmit(): void {
 
@@ -38,11 +38,15 @@ export class JobStatementComponent implements OnInit {
       this.Cash = data;
       console.log(data);
     });
-
-    this.service.pchs1(this.JobStatementForm.value).subscribe((data,)=>{
-      this.PCash = data;
+    this.service.chs1({}).subscribe((data) => {
+      this.Cash = data;
       console.log(data);
-    });
+    })
+
+    // this.service.pchs1(this.JobStatementForm.value).subscribe((data,)=>{
+    //   this.PCash = data;
+    //   console.log(data);
+    // });
 
 
 

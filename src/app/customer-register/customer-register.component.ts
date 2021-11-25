@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { customerInvoRecptRegResponse } from '../reports/reports.interface';
 import { ReportsService } from '../reports/reports.service';
@@ -12,8 +12,8 @@ import { ReportsService } from '../reports/reports.service';
 })
 export class CustomerRegisterComponent implements OnInit {
   CustomerInvoRForm = this.formBuilder.group({
-    date:"",
-    report_date:"",
+    date:['',Validators.required],
+    report_date:['',Validators.required],
 
 
 
@@ -22,15 +22,19 @@ export class CustomerRegisterComponent implements OnInit {
   constructor(private router:Router,private http:HttpClient,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    this.service.customerInvoR({}).subscribe((data) => {
-      this.CustomerIR = data;
-      console.log(data);
-    })
+    // this.service.customerInvoR({}).subscribe((data) => {
+    //   this.CustomerIR = data;
+    //   console.log(data);
+    // })
   }
 
   onSubmit(): void {
     this.service.customerInvoR(this.CustomerInvoRForm.value,).subscribe((data,)=>{
       console.log(data);});
+      this.service.customerInvoR({}).subscribe((data) => {
+        this.CustomerIR = data;
+        console.log(data);
+      })
       // this.router.navigate(['/grand-hyper']);
 
     // this.router.navigate(['/reports']);

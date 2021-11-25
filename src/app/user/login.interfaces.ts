@@ -39,7 +39,12 @@ export interface RegisterRequest {
 export interface RegisterResponse {
   id: number,
 }
-
+export interface LedgerstatementFrom extends LedgerStatementRequest {
+  price1_1: number,
+  price1_2:number,
+  quantity1:number,
+  // total2: number,
+}
 export interface LedgerRequest {
   ledger_name: string,
   group_name: string,

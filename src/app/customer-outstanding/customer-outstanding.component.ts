@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { customerOutstandingResponse } from '../reports/reports.interface';
 import { ReportsService } from '../reports/reports.service';
@@ -12,8 +12,8 @@ import { ReportsService } from '../reports/reports.service';
 })
 export class CustomerOutstandingComponent implements OnInit {
   customerOutstandForm = this.formBuilder.group({
-    date:"",
-    report_date:"",
+    date:['',Validators.required],
+    report_date:['',Validators.required],
    });
 
    customerOut: customerOutstandingResponse[];
@@ -21,14 +21,18 @@ export class CustomerOutstandingComponent implements OnInit {
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    this.service.customerOutstandF({}).subscribe((data) => {
-      this.customerOut = data;
-      console.log(data);
-    })
+    // this.service.customerOutstandF({}).subscribe((data) => {
+    //   this.customerOut = data;
+    //   console.log(data);
+    // })
   }
   onSubmit(): void {
     this.service.customerOutstandF(this.customerOutstandForm.value,).subscribe((data,)=>{
       console.log(data);});
+      this.service.customerOutstandF({}).subscribe((data) => {
+        this.customerOut = data;
+        console.log(data);
+      })
     // this.router.navigate(['/reports']);
   }
 }

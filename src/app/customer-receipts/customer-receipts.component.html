@@ -15,16 +15,16 @@
     <br>
   </div>
 
-    <form  (ngSubmit)="onSubmit()" action="reports">
+    <form [formGroup]="customerReceiptForm" (ngSubmit)="onSubmit()" >
       <div class="container-sm ">
 
         <div class="row">
           <div class="col-sm-5" >
-            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Customer Id </label>
+            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Date </label>
 
           </div>
           <div class="col-sm-7" >
-            <input type="text"  style="border-radius:12px;" class="form-control" placeholder="" name="pswd">
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date">
           </div>
         </div>
 
@@ -37,7 +37,7 @@
           </div>
 
           <div class="col-sm-7" >
-            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" name="">
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="report_date">
           </div>
         </div>
         <div class="row" style="padding-top: 5px;">

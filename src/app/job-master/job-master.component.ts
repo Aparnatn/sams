@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { jobMasterdataResponse } from '../reports/reports.interface';
 import { ReportsService } from '../reports/reports.service';
@@ -12,8 +12,8 @@ import { ReportsService } from '../reports/reports.service';
 })
 export class JobMasterComponent implements OnInit {
   jobmasterdataForm = this.formBuilder.group({
-    date:"",
-    report_date:"",
+    date:['',Validators.required],
+    report_date:['',Validators.required],
    });
 
    jobmaster: jobMasterdataResponse[];
@@ -21,15 +21,19 @@ export class JobMasterComponent implements OnInit {
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    this.service.jobmasterDF({}).subscribe((data) => {
-      this.jobmaster = data;
-      console.log(data);
-    })
+    // this.service.jobmasterDF({}).subscribe((data) => {
+    //   this.jobmaster = data;
+    //   console.log(data);
+    // })
   }
   onSubmit(): void {
 
     this.service.jobmasterDF(this.jobmasterdataForm.value,).subscribe((data,)=>{
       console.log(data);});
+      this.service.jobmasterDF({}).subscribe((data) => {
+        this.jobmaster = data;
+        console.log(data);
+      })
     // this.router.navigate(['/reports']);
   }
   onSubmit2(): void {
