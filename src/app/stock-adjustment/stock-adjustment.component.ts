@@ -26,32 +26,37 @@ export class StockAdjustmentComponent implements OnInit {
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    this.service.chs3({}).subscribe((data) => {
-      this.Cash = data;
-      console.log(data);
-    })
+    // this.service.chs3({}).subscribe((data) => {
+    //   this.Cash = data;
+    //   console.log(data);
+    // })
   }
   onSubmit(): void {
 
     this.service.chs3(this.StockAdjustmentForm.value).subscribe((data,)=>{
       this.Cash = data;
       console.log(data);
+      this.service.chs3({}).subscribe((data) => {
+        this.Cash = data;
+        console.log(data);
+      })
+      
     });
 
-    this.service.pchs3(this.StockAdjustmentForm.value).subscribe((data,)=>{
-      this.PCash = data;
-      console.log(data);
-    });
+    // this.service.pchs3(this.StockAdjustmentForm.value).subscribe((data,)=>{
+    //   this.PCash = data;
+    //   console.log(data);
+    // });
 
-      this.service.crs3(this.StockAdjustmentForm.value).subscribe((data,)=>{
-            this.credit = data;
-            console.log(data);
-          });
+    //   this.service.crs3(this.StockAdjustmentForm.value).subscribe((data,)=>{
+    //         this.credit = data;
+    //         console.log(data);
+    //       });
 
-            this.service.crp3(this.StockAdjustmentForm.value).subscribe((data,)=>{
-              this.pcredit = data;
-              console.log(data);
-            });
+    //         this.service.crp3(this.StockAdjustmentForm.value).subscribe((data,)=>{
+    //           this.pcredit = data;
+    //           console.log(data);
+    //         });
 
   }
 
