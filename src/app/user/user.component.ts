@@ -63,7 +63,7 @@ export class UserComponent implements OnInit {
     this.cookieService.put('jwt', tocken, {expires:now});
     this.cookieService.put('jwt', tocken, {
       expires:now,
-      domain: environment.appDmain
+      domain: environment.appDomain
     });
   }
 
