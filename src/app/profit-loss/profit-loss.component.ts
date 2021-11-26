@@ -22,29 +22,19 @@ date:"",
   constructor(private http:HttpClient,private salesservice: SalesService,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
 
   ngOnInit(): void {
-    this.salesservice.pl({}).subscribe((data) => {
-      this.Cash = data;
-      console.log(data);
-    })
+    // this.salesservice.pl({}).subscribe((data) => {
+    //   this.Cash = data;
+    //   console.log(data);
+    // })
   }
 
   onSubmit(): void {
 
-    this.service.pl(this.PandLForm.value,).subscribe((data,)=>{
+    this.service.pl(this.PandLForm.value).subscribe((data,)=>{
       this.Cash = data;
       console.log(data);});
 
-    this.service.p(this.PandLForm.value,).subscribe((data,)=>{
-      this.PCash = data;
-      console.log(data);});
 
-      this.service.r(this.PandLForm.value,).subscribe((data,)=>{
-        this.receipt = data;
-        console.log(data);});
-
-        this.service.pr(this.PandLForm.value,).subscribe((data,)=>{
-          this.preceipt = data;
-          console.log(data);});
 
 
   }

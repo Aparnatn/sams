@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../user/login.interfaces';
+import { AuthenticationService, User } from '../auth/authentication.service';
 import { Company, UserService } from '../user/user.service';
 
 @Component({
@@ -10,45 +10,53 @@ import { Company, UserService } from '../user/user.service';
 })
 export class GrandHyperComponent implements OnInit {
   companies: Company[] = [];
-  User: User;
-  constructor(private router: Router, private service: UserService,) { }
+  user: User;
+
+  constructor(
+    private router: Router,
+    private service: UserService,
+    private authService: AuthenticationService,
+  ) { }
 
   ngOnInit(): void {
+    this.user = this.authService.user;
     this.loadCompanies();
-    this.loadUsers();
+    // this.loadUsers();
   }
-  private loadUsers() {
-    this.service.getUser().subscribe((data: User) => {
-      this.User = data;
-    })
-  }
+
+  // private loadUsers() {
+  //   this.service.getUser().subscribe((data: User) => {
+  //     this.User = data;
+  //   })
+  // }
+
   private loadCompanies() {
     this.service.getCompanies().subscribe((data: Company[]) => {
       this.companies = data;
     })
   }
-  onSubmit1(): void {
 
+  onSubmit1(): void {
     this.router.navigate(['/sales']);
   }
-  onSubmit2(): void {
 
+  onSubmit2(): void {
     this.router.navigate(['/journal-entry']);
   }
-  onSubmit3(): void {
 
+  onSubmit3(): void {
     this.router.navigate(['/register']);
   }
-  onSubmit4(): void {
 
+  onSubmit4(): void {
     this.router.navigate(['/reports']);
   }
-  onSubmit5(): void {
 
+  onSubmit5(): void {
     this.router.navigate(['/payroll']);
   }
-  onSubmit6(): void {
 
+  onSubmit6(): void {
     this.router.navigate(['/purchase']);
   }
 }

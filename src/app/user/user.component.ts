@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Users, UserService } from '../user/user.service';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { CookieService } from 'ngx-cookie';
-import { environment } from '../../environments/environment';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AuthenticationService, User } from '../auth/authentication.service';
 
 type errorMessge = {
   detail?: string;
@@ -16,40 +14,35 @@ type errorMessge = {
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+  returnUrl: string;
+
   form = this.formBuilder.group({
     username: ['', Validators.required],
     password: ['', Validators.required],
   });
 
-  users: Users[] = [];
-
-
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
-    private service: UserService,
-    private cookieService: CookieService,
-    private http:HttpClient,
-  ) { }
+    private service: AuthenticationService,
+  ) {
+    // redirect to company page if user alredy logged in
+    if (this.service.isLoggedIn) {
+      this.router.navigate(['/grand-hyper']);
+    }
+  }
 
   ngOnInit(): void {
-       const headers = new Headers();
-    headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    headers.append('Access-Control-Allow-Methods', 'GET');
-    headers.append('Access-Control-Allow-Origin', '*');
-    this.http.post("http://127.0.0.1:8004/Sam/user", { headers: headers }).subscribe(res => {
-
-      console.log(res);
-    });
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/grand-hyper';
   }
 
   login(): void {
     if (this.form.dirty && this.form.valid) {
-      this.service.login(this.form.value,).subscribe(
-        (data) => {
-          console.log(data);
-          this.setUserTocken(data.userTocken);
-          this.router.navigate(['/grand-hyper']);
+      this.service.login(this.form.value.username, this.form.value.password).subscribe(
+        (user: User) => {
+          console.log(user);
+          this.router.navigate([this.returnUrl]);
         },
         (error: HttpErrorResponse) => {
           // console.log(error.error);
@@ -57,17 +50,6 @@ export class UserComponent implements OnInit {
         }
       );
     }
-  }
-
-  private setUserTocken(tocken: string) {
-    var now = new Date();
-    now.setHours(now.getHours() + 8);
-    this.cookieService.put('userTocken', tocken, {expires:now});
-    this.cookieService.put('jwt', tocken, {expires:now});
-    this.cookieService.put('jwt', tocken, {
-      expires:now,
-      domain: environment.appDomain
-    });
   }
 
   private showErros(errors: errorMessge) {

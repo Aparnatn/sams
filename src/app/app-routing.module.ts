@@ -79,99 +79,100 @@ import { SupplierbuttonsComponent } from './supplierbuttons/supplierbuttons.comp
 import { CustomerbuttonsComponent } from './customerbuttons/customerbuttons.component';
 import { LedgerbuttonsComponent } from './ledgerbuttons/ledgerbuttons.component';
 import { ItemjobbuttonsComponent } from './itemjobbuttons/itemjobbuttons.component';
-export const ROUTES: Routes = [
+import { AuthGuard } from './auth/auth.guard';
 
+export const ROUTES: Routes = [
   {
     path: 'register',
-     component: RegisterComponent,pathMatch: 'full'
- },
- {
-  path: 'ledger/:id/edit',
-   component: LedgereditComponent,
-},
-{
-  path: 'job/:id/edit',
-   component: JobEditComponent,
-},
-{
-  path: 'registration/:id/edit',
-   component: CustomerEditComponent,
-},
+    component: RegisterComponent, pathMatch: 'full'
+  },
+  {
+    path: 'ledger/:id/edit',
+    component: LedgereditComponent,
+  },
+  {
+    path: 'job/:id/edit',
+    component: JobEditComponent,
+  },
+  {
+    path: 'registration/:id/edit',
+    component: CustomerEditComponent,
+  },
 
- {
-  path: 'companylist',
-   component: CompanylistComponent,
-},
-{
-  path: 'supplierbuttons',
-   component: SupplierbuttonsComponent,
-},
-{
-  path: 'customerbuttons',
-   component: CustomerbuttonsComponent,
-},
-{
-  path: 'ledgerbuttons',
-   component: LedgerbuttonsComponent,
-},
-{
-  path: 'itemjobbuttons',
-   component: ItemjobbuttonsComponent,
-},
-{
-  path: 'company/:id/edit',
-   component: CompanyeditComponent,
-},
-{
-  path: 'company/:id/delete',
-   component: CompanydeleteComponent,
-},
-{
-  path: 'userlist',
-   component: UserlistComponent,
-},
-{
-  path: 'dashboard',
-   component: DashboardComponent,
-},
- {
-  path: 'charts',
-   component: ChartsComponent,
-},
-{
-  path: 'ledgershow',
-   component: LedgershowComponent,
-},
-{
-  path: 'ledger/:id',
-   component: LedgereditComponent,
-},
- {
-  path: 'customer-outstanding',
-   component: CustomerOutstandingComponent,
-},
-{
-  path: 'customer-invoice',
-   component: CustomerInvoiceComponent,
-},
-{
-  path: 'customer-receipts',
-   component: CustomerReceiptsComponent,
-},
-{
-  path: 'customer-master',
-   component: CustomerMasterComponent,
-},
-{
-  path: 'customer-register',
-   component: CustomerRegisterComponent,
-},
- {
-  path: 'user-register',
-   component: UserRegisterComponent,
-},
- {
-   path: 'registration',
+  {
+    path: 'companylist',
+    component: CompanylistComponent,
+  },
+  {
+    path: 'supplierbuttons',
+    component: SupplierbuttonsComponent,
+  },
+  {
+    path: 'customerbuttons',
+    component: CustomerbuttonsComponent,
+  },
+  {
+    path: 'ledgerbuttons',
+    component: LedgerbuttonsComponent,
+  },
+  {
+    path: 'itemjobbuttons',
+    component: ItemjobbuttonsComponent,
+  },
+  {
+    path: 'company/:id/edit',
+    component: CompanyeditComponent,
+  },
+  {
+    path: 'company/:id/delete',
+    component: CompanydeleteComponent,
+  },
+  {
+    path: 'userlist',
+    component: UserlistComponent,
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+  },
+  {
+    path: 'charts',
+    component: ChartsComponent,
+  },
+  {
+    path: 'ledgershow',
+    component: LedgershowComponent,
+  },
+  {
+    path: 'ledger/:id',
+    component: LedgereditComponent,
+  },
+  {
+    path: 'customer-outstanding',
+    component: CustomerOutstandingComponent,
+  },
+  {
+    path: 'customer-invoice',
+    component: CustomerInvoiceComponent,
+  },
+  {
+    path: 'customer-receipts',
+    component: CustomerReceiptsComponent,
+  },
+  {
+    path: 'customer-master',
+    component: CustomerMasterComponent,
+  },
+  {
+    path: 'customer-register',
+    component: CustomerRegisterComponent,
+  },
+  {
+    path: 'user-register',
+    component: UserRegisterComponent,
+  },
+  {
+    path: 'registration',
     component: RegistrationComponent,
   },
   {
@@ -199,7 +200,7 @@ export const ROUTES: Routes = [
     component: EmployeeComponent,
   },
   {
-    path: 'user',
+    path: 'login',
     component: UserComponent,
   },
   {
@@ -245,6 +246,7 @@ export const ROUTES: Routes = [
   {
     path: 'grand-hyper',
     component: GrandHyperComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'purchase',
@@ -367,7 +369,7 @@ export const ROUTES: Routes = [
   },
   {
 
-      path: 'supplier/:id/edit',
+    path: 'supplier/:id/edit',
 
 
     component: SupplierEditComponent,

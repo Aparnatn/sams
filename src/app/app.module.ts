@@ -60,7 +60,7 @@ import { LedgereditComponent } from './ledgeredit/ledgeredit.component';
 import { TrialBalanceComponent } from './trial-balance/trial-balance.component';
 import { CommonModule } from '@angular/common';
 import { LedgerStatementComponent } from './ledger-statement/ledger-statement.component';
-import { SamFoftwareInterceptor } from './sam-software.interceptor';
+import { AuthInterceptor } from './auth/auth.interceptor';
 import { ProfitLossComponent } from './profit-loss/profit-loss.component';
 import { BalanceSheetComponent } from './balance-sheet/balance-sheet.component';
 import { FinancialComponent } from './financial/financial.component';
@@ -68,7 +68,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CompanylistComponent } from './companylist/companylist.component';
 import { CompanyeditComponent } from './companyedit/companyedit.component';
 import { CompanydeleteComponent } from './companydelete/companydelete.component';
-import { CookieModule } from 'ngx-cookie';
 import { UserlistComponent } from './userlist/userlist.component'
 import { AllJournalEntryComponent } from './all-journal-entry/all-journal-entry.component';
 import { SupplierOutstandComponent } from './supplier-outstand/supplier-outstand.component';
@@ -90,6 +89,8 @@ import { SupplierbuttonsComponent } from './supplierbuttons/supplierbuttons.comp
 import { CustomerbuttonsComponent } from './customerbuttons/customerbuttons.component';
 import { LedgerbuttonsComponent } from './ledgerbuttons/ledgerbuttons.component';
 import { ItemjobbuttonsComponent } from './itemjobbuttons/itemjobbuttons.component';
+import { AuthenticationService } from './auth/authentication.service';
+import { ErrorInterceptor } from './auth/error.iterceptor';
 
 @NgModule({
   declarations: [
@@ -194,12 +195,13 @@ import { ItemjobbuttonsComponent } from './itemjobbuttons/itemjobbuttons.compone
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CookieModule.forRoot(),
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: SamFoftwareInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     UserService,
-    SalesService
+    SalesService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent],
 })
