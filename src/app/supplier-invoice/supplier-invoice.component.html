@@ -24,7 +24,7 @@
 
           </div>
           <div class="col-sm-7" >
-            <input type="text"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date" >
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date" >
           </div>
         </div>
 
@@ -78,7 +78,7 @@
               <tr>
                 <th>Sl.no</th>
                 <th>Date</th>
-                <th>Ref No</th>
+                <th>Price</th>
                 <th>Description</th>
                 <th>Item</th>
                 <th>Qty </th>
@@ -88,23 +88,23 @@
               </tr>
             </thead>
             <tbody>
-              <tr   *ngFor="let supplierIn of supplierIn;">
+              <tr   *ngFor="let supplierIn of PCash;">
                 <td></td>
                 <td>{{supplierIn.date }}</td>
                 <td>{{supplierIn.internal_ref_no }}</td>
-                <td></td>
+                <td>{{supplierIn.price1_1}}</td>
                 <td>{{supplierIn.item_details1 }}</td>
-                <td>{{supplierIn.qty }}</td>
+                <td>{{supplierIn.quantity1 }}</td>
                 <td>{{supplierIn.job1 }}</td>
                 <td>{{supplierIn.sales_ex1 }}</td>
-                <td>{{supplierIn.total }}</td>
+                <td>{{supplierIn.price1_1}}</td>
 
               </tr>
-              <tr   *ngFor="let supplierINn of supplierIn;">
+              <tr   *ngFor="let supplierINn of PCash;">
                 <td></td>
                 <td>{{supplierINn.date}}</td>
                 <td>{{supplierINn.internal_ref_no}}</td>
-                <td></td>
+                <td>{{supplierIn.price1_2}}</td>
                 <td>{{supplierINn.item_details2}}</td>
                 <td>{{supplierINn.quantity2}}</td>
                 <td>{{supplierINn.job2}}</td>
@@ -115,7 +115,7 @@
 
               <tr>
                 <td colspan="8" align="right">Balance Amount</td>
-                <td></td>
+                <td>{{assetTotal}}</td>
               </tr>
 
             </tbody>
@@ -138,7 +138,7 @@
       </div>
 
     <br>
-       
+
       </form>
 
 

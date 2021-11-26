@@ -28,7 +28,7 @@ export class LedgerStatementComponent implements OnInit {
   preceipt: PurchaseReceiptResponse[];
   credit: CreditSaleResponse[];
   pcredit: CreditPurchaseResponse[];
-Ledger:LedgerResponse[];
+  Ledger: LedgerResponse[];
 
   constructor(
     private http: HttpClient,
@@ -48,14 +48,19 @@ Ledger:LedgerResponse[];
 
       console.log(data);
     });
-    this.userservice. getLedgers().subscribe((data) => {
+    this.userservice.getLedgers().subscribe((data) => {
       this.Ledger = data;
       console.log(data);
     })
   }
 
-  calculateTotal(total3: any,opening_bal:any) {
-    return  Number(total3) + Number(total3) + Number(opening_bal);
+  calculateTotal(total_1: string | number, total_2: string | number, ledgers: LedgerResponse[]) {
+    let total = Number(total_1) - Number(total_2);
+
+    (ledgers || []).forEach(ledger => {
+      total += Number(ledger.opening_bal);
+    });
+    return total;
   }
 
 

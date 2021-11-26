@@ -110,6 +110,8 @@ export interface CustomerMasterdataResponse {
  id:number
 }
 export interface CashSaleResponse {
+  price1_1: any;
+  amount1: any;
   amount2: any;
   total: any;
   total2: number;
@@ -161,6 +163,9 @@ export interface PCashSaleRequest {
 }
 
 export interface PCashSaleResponse {
+  amount1: any;
+  amount2: any;
+  price1_1: any;
   total3: number;
   total1: number;
   id:number,

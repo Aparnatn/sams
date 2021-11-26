@@ -64,7 +64,7 @@
 
         <br><br>
         <div class="container">
-          <button type="submit" [disabled]="!customerInviceForm.valid"  style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+          <button type="submit"  style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
         </div>
       <br><br>
 
@@ -76,7 +76,7 @@
             <tr>
               <th>Sl.no</th>
               <th>Date</th>
-              <th>Ref No</th>
+              <th>Price</th>
               <th>Description</th>
               <th>Item</th>
               <th>Quantity</th>
@@ -86,22 +86,22 @@
             </tr>
           </thead>
           <tbody>
-            <tr   *ngFor="let customerIN of customerIN;">
+            <tr   *ngFor="let customerIN of Cash;">
               <td></td>
               <td>{{customerIN.date}}</td>
               <td>{{customerIN.internal_ref_no}}</td>
-              <td></td>
+              <td>{{customerIN.price1_1}}</td>
               <td>{{customerIN.item_details1}}</td>
-              <td>{{customerIN.qty}}</td>
+              <td>{{customerIN.quantity1}}</td>
               <td>{{customerIN.job1}}</td>
               <td>{{customerIN.sales_ex1}}</td>
-              <td>{{customerIN.total}}</td>
+              <td>{{customerIN.amount1}}</td>
             </tr>
-            <tr   *ngFor="let customerINn of customerIN;">
+            <tr   *ngFor="let customerINn of Cash;">
               <td></td>
               <td>{{customerINn.date}}</td>
               <td>{{customerINn.internal_ref_no}}</td>
-              <td></td>
+              <td>{{customerINn.price1_2}}</td>
               <td>{{customerINn.item_details2}}</td>
               <td>{{customerINn.quantity2}}</td>
               <td>{{customerINn.job2}}</td>
@@ -118,7 +118,7 @@
               <td class="hide"></td>
               <td class="hide"></td>
               <p>Balance amount</p>
-              <td>{{calculateAsset()}}</td>
+              <td>{{assetTotal}}</td>
             </tr>
 
           </tbody>

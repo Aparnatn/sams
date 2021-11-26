@@ -65,6 +65,7 @@ export interface LedgerStatementResponse {
 
 export interface LedgerResponse {
   id: number,
+  opening_bal: number,
 }
 
 export interface JobRequest {

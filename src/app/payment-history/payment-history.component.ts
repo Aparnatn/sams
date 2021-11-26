@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PCashSaleResponse } from '../interfaces/sales.interfaces';
 import { PaymentHistoryResponse } from '../reports/reports.interface';
 import { ReportsService } from '../reports/reports.service';
 
@@ -17,7 +18,8 @@ export class PaymentHistoryComponent implements OnInit {
    });
 
    payment: PaymentHistoryResponse[];
-
+   PCash: PCashSaleResponse[];
+   assetTotal = 0;
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
@@ -34,6 +36,19 @@ export class PaymentHistoryComponent implements OnInit {
         console.log(data);
       })
     // this.router.navigate(['/reports']);
-  }
+    this.calculateAsset(this.assetTotal);
 
+
+  }
+  calculateAsset(assetTotal:Number) {
+    this.service.supplier_InvoiceHF({}).subscribe((pcash) => {
+      this.PCash = pcash;
+
+        this.PCash.forEach(element => {
+          this.assetTotal  +=  Number(element.price1_1) + Number(element.amount2);
+        });
+        return Number(assetTotal);
+    });
+
+  }
 }

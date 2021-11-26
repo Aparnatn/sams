@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CashSaleResponse } from '../interfaces/sales.interfaces';
 import { CustomerInvoiceHistoryResponse } from '../reports/reports.interface';
 import { ReportsService } from '../reports/reports.service';
+import { SalesService } from '../services/sales.service';
 
 @Component({
   selector: 'app-customer-invoice',
@@ -20,8 +21,8 @@ export class CustomerInvoiceComponent implements OnInit {
    customerIN: CustomerInvoiceHistoryResponse[];
    assetTotal = 0;
    Cash: CashSaleResponse[];
-  salesservice: any;
-  constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
+
+  constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,private salesservice:SalesService) { }
 
   ngOnInit(): void {
     // this.service.customeInvoicetHF({}).subscribe((data) => {
@@ -39,17 +40,18 @@ export class CustomerInvoiceComponent implements OnInit {
       })
 
     // this.router.navigate(['/reports']);
-    this.calculateAsset();
+    this.calculateAsset(this.assetTotal);
 
 
   }
-  calculateAsset() {
-    this.salesservice.lsb({}).subscribe((cash) => {
+  calculateAsset(assetTotal:Number) {
+    this.service.customer_invoice({}).subscribe((cash) => {
       this.Cash = cash;
-      
-        this.Cash.forEach(td => {
-          this.assetTotal  +=  Number(td.total) + Number(td.amount2);
+
+        this.Cash.forEach(element => {
+          this.assetTotal  +=  Number(element.price1_1) + Number(element.amount2);
         });
+        return Number(assetTotal);
     });
 
   }

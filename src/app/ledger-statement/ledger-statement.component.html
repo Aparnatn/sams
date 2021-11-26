@@ -140,7 +140,7 @@
 
                 <td>{{item.total3}}</td>
                 <td>{{item.total3}}</td>
-                <td>{{ calculateTotal(item.total3) }}</td>
+                <td>{{ calculateTotal(item.total2, item.total3, Ledger) }}</td>
 
               </tr>
               <tr *ngFor="let cash of PCash;">

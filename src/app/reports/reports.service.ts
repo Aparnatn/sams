@@ -540,6 +540,23 @@ customerInvoRecpt: customerInvoRecptRegRequest[] = [];
         {params: params}
       )
     }
+    supplier_InvoiceHF(filter: PCashFilter): Observable<PCashSaleResponse[]> {
+      // console.log(filter);
+      let params = new HttpParams();
+      if (filter.from_date) {
+        params = params.append('from_date', filter.from_date);
+      }
+      if (filter.to_date) {
+        params = params.append('to_date', filter.to_date);
+      }
+      if (filter.name) {
+        params = params.append('name', filter.name);
+      }
+      return this.http.get<PCashSaleResponse[]>(
+        `${this.apiUrl}/Sam/SupplierInvoiceHistory`,
+        {params: params}
+      )
+    }
     csr: CashSaleRequest[] = [];
 pcsr: PCashSaleRequest[] = [];
 srr: SalesReceiptRequest[] = [];
@@ -820,6 +837,23 @@ chs1(filter: CashFilter): Observable<CashSaleResponse[]> {
   }
   return this.http.get<CashSaleResponse[]>(
     `${this.apiUrl}/Sam/jobStatement`,
+    {params: params}
+  )
+}
+customer_invoice(filter: CashFilter): Observable<CashSaleResponse[]> {
+  // console.log(filter);
+  let params = new HttpParams();
+  if (filter.from_date) {
+    params = params.append('from_date', filter.from_date);
+  }
+  if (filter.to_date) {
+    params = params.append('to_date', filter.to_date);
+  }
+  if (filter.name) {
+    params = params.append('name', filter.name);
+  }
+  return this.http.get<CashSaleResponse[]>(
+    `${this.apiUrl}/Sam/CustomerInvoiceHistory`,
     {params: params}
   )
 }

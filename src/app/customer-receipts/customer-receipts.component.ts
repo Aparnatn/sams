@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CashSaleResponse } from '../interfaces/sales.interfaces';
 import { CustomerReceiptHistoryResponse } from '../reports/reports.interface';
 import { ReportsService } from '../reports/reports.service';
 
@@ -16,7 +17,8 @@ export class CustomerReceiptsComponent implements OnInit {
     date:['',Validators.required],
     report_date:['',Validators.required],
    });
-
+   Cash: CashSaleResponse[];
+   assetTotal = 0;
    receipt: CustomerReceiptHistoryResponse[];
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
@@ -34,5 +36,19 @@ export class CustomerReceiptsComponent implements OnInit {
         console.log(data);
       })
     // this.router.navigate(['/reports']);
+    this.calculateAsset(this.assetTotal);
+
+
+  }
+  calculateAsset(assetTotal:Number) {
+    this.service.customer_invoice({}).subscribe((cash) => {
+      this.Cash = cash;
+
+        this.Cash.forEach(element => {
+          this.assetTotal  +=  Number(element.price1_1) + Number(element.amount2);
+        });
+        return Number(assetTotal);
+    });
+
   }
 }
