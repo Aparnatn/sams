@@ -4,23 +4,23 @@ import { UserService } from '../user/user.service';
 import { FormBuilder, Validators } from '@angular/forms';
 
 type errorMessge = {
-  company_name: string [],
-  reg_no: string [],
-  app_regdate: string [],
-  reg_mobno: string [],
-  email: string [],
-  admin_usernm: string [],
-  admin_password: string [],
-  username: string [],
-  password: string [],
-  mobile: string [],
-  user_access: string [],
+  company_name: string[],
+  reg_no: string[],
+  app_regdate: string[],
+  reg_mobno: string[],
+  email: string[],
+  admin_usernm: string[],
+  admin_password: string[],
+  username: string[],
+  password: string[],
+  mobile: string[],
+  user_access: string[],
 }
 
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
-  template:`
+  template: `
   <button (click)="onClickMe()">Click me!</button>
   {{clickMessage}}`,
   styleUrls: ['./company.component.scss']
@@ -49,7 +49,7 @@ export class CompanyComponent implements OnInit {
 
   constructor(
     private userservice: UserService,
-    private router:Router,
+    private router: Router,
     private formBuilder: FormBuilder,
   ) { }
 
@@ -60,9 +60,9 @@ export class CompanyComponent implements OnInit {
   onSubmit(): void {
     if (this.companyForm.dirty && this.companyForm.valid) {
       this.userservice.companycreate(this.companyForm.value,).subscribe(
-        ()=>{
+        (data) => {
           alert('Company registred');
-          this.router.navigate(['/user-register']);
+          this.router.navigate(['/user-register'], { queryParams: { companyId: data.id }});
         },
         (error) => {
           this.showErros(error.error);
@@ -78,16 +78,16 @@ export class CompanyComponent implements OnInit {
       const controlErrors: any = this.companyForm.get(key).errors;
       if (controlErrors != null) {
         Object.keys(controlErrors).forEach(keyError => {
-         console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+          console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
         });
       }
     });
   }
- skip() {
-    this.clickMessage = 'You are my hero!';
-    console.log("You are my hero!");
-    this.router.navigate(['/user']);
+
+  skip() {
+    this.router.navigate(['/login']);
   }
+
   private showErros(errors: errorMessge) {
     let msg = '';
 

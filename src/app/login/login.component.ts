@@ -9,11 +9,11 @@ type errorMessge = {
 }
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class UserComponent implements OnInit {
+export class LoginComponent implements OnInit {
   returnUrl: string;
 
   form = this.formBuilder.group({

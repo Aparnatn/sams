@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Company, UserService } from '../user/user.service';
 import { UserRegisterFormGroup } from './user-register.form';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -41,15 +41,22 @@ export class UserRegisterComponent {
       );
   }
 
+  companyId: string;
+
   companies: Company[] = [];
 
   constructor(
     private router: Router,
     private service: UserService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.loadCompanies();
+    this.route.queryParams.subscribe(params => {
+      this.companyId = params.companyId;
+      this.form.patchValue({company_id: this.companyId})
+    });
+    // this.loadCompanies();
   }
 
   private loadCompanies() {
@@ -63,7 +70,7 @@ export class UserRegisterComponent {
       this.service.register(this.form.values).subscribe(
         () => {
           alert('Regiistred user successfully');
-          this.router.navigate(['/user']);
+          this.router.navigate(['/login']);
         },
         (error: HttpErrorResponse) => {
           // console.log(error);

@@ -17,6 +17,7 @@ import { RegisterRequest } from '../user/login.interfaces';
 // };
 
 type UserRegister = {
+    company_id?: string|number,
     username?: string,
     mobile_no?: string,
     password?: string,
@@ -26,6 +27,7 @@ type UserRegister = {
 export class UserRegisterFormGroup extends FormGroup {
     constructor(data: UserRegister = {}) {
         super({
+            company_id: new FormControl(data.company_id || '', Validators.required),
             username: new FormControl(data.username || '', Validators.required),
             mobile_no: new FormControl(data.mobile_no || '', Validators.required),
             password: new FormControl(data.password || '', [Validators.required, Validators.minLength(4)]),
@@ -35,10 +37,10 @@ export class UserRegisterFormGroup extends FormGroup {
 
     get values(): RegisterRequest {
         return {
+            company_id: this.value.company_id,
             username: this.value.username,
             mobile_no: this.value.mobile_no,
             password: this.value.password,
-            // updated_at: this.value.confirm_password,
         }
     }
 

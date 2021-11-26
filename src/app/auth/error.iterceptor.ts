@@ -14,7 +14,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           return event;
         }),
         catchError((errorResponse: HttpErrorResponse, _: Observable<HttpEvent<any>>) => {
-            if (errorResponse.status === 403) {
+            if (errorResponse.status === 401) {
               this.authenticationService.logout();
             }
             return throwError(errorResponse);

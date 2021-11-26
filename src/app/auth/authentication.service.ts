@@ -7,12 +7,12 @@ import { Router } from '@angular/router';
 
 export interface User {
   name: string,
-  companyName?: string
+  company_name?: string
 }
 
 export interface LoginResponse {
   id: number,
-  userToken: string,
+  token: string,
   user: User,
 }
 
@@ -55,11 +55,11 @@ export class AuthenticationService {
       // withCredentials: true
     }).pipe(map((response: LoginResponse) => {
       // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem('userToken', response.userToken);
+      localStorage.setItem('userToken', response.token);
       localStorage.setItem('currentUser', JSON.stringify(response.user));
 
       this.loggedInStatusSubject.next(true);
-      this.authTokenSubject.next(response.userToken);
+      this.authTokenSubject.next(response.token);
       this.currentUser.next(response.user);
 
       return response.user;

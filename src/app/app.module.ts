@@ -15,7 +15,7 @@ import { ItemComponent } from './item/item.component';
 import { JobComponent } from './job/job.component';
 import { GroupComponent } from './group/group.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { UserComponent } from './user/user.component';
+import { LoginComponent } from './login/login.component';
 import { SalesComponent } from './sales/sales.component';
 import { CashComponent } from './cash/cash.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
@@ -103,7 +103,7 @@ import { ErrorInterceptor } from './auth/error.iterceptor';
     JobComponent,
     GroupComponent,
     EmployeeComponent,
-    UserComponent,
+    LoginComponent,
     SalesComponent,
     LedgerComponent,
     LedgerStatementComponent,

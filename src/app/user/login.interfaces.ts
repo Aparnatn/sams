@@ -30,6 +30,7 @@ export interface CompanyResponse {
 }
 
 export interface RegisterRequest {
+  company_id: number,
   username: string,
   password: string,
   mobile_no: string,

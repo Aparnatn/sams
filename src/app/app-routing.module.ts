@@ -9,7 +9,7 @@ import { JobComponent } from './job/job.component';
 import { GroupComponent } from './group/group.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { UserComponent } from './user/user.component';
+import { LoginComponent } from './login/login.component';
 import { SalesComponent } from './sales/sales.component';
 import { CashComponent } from './cash/cash.component';
 import { PurchaseReceiptsComponent } from './purchase-receipts/purchase-receipts.component';
@@ -201,7 +201,7 @@ export const ROUTES: Routes = [
   },
   {
     path: 'login',
-    component: UserComponent,
+    component: LoginComponent,
   },
   {
     path: 'sales',
