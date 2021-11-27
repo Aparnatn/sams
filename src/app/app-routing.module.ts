@@ -84,100 +84,126 @@ import { AuthGuard } from './auth/auth.guard';
 export const ROUTES: Routes = [
   {
     path: 'register',
-    component: RegisterComponent, pathMatch: 'full'
+
+    component: RegisterComponent, pathMatch: 'full',
+    canActivate: [AuthGuard]
   },
   {
     path: 'ledger/:id/edit',
     component: LedgereditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'job/:id/edit',
     component: JobEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'registration/:id/edit',
     component: CustomerEditComponent,
+    canActivate: [AuthGuard]
+
   },
 
   {
     path: 'companylist',
     component: CompanylistComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'supplierbuttons',
     component: SupplierbuttonsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'customerbuttons',
     component: CustomerbuttonsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'ledgerbuttons',
     component: LedgerbuttonsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'itemjobbuttons',
     component: ItemjobbuttonsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'company/:id/edit',
     component: CompanyeditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'company/:id/delete',
     component: CompanydeleteComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'userlist',
     component: UserlistComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'charts',
     component: ChartsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'ledgershow',
     component: LedgershowComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'ledger/:id',
     component: LedgereditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'customer-outstanding',
     component: CustomerOutstandingComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'customer-invoice',
     component: CustomerInvoiceComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'customer-receipts',
     component: CustomerReceiptsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'customer-master',
     component: CustomerMasterComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'customer-register',
     component: CustomerRegisterComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'user-register',
     component: UserRegisterComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'registration',
     component: RegistrationComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'suppliers',
     component: SuppliersComponent,
+     canActivate: [AuthGuard]
   },
   {
     path: 'item',

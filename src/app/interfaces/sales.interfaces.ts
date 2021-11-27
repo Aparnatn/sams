@@ -259,6 +259,9 @@ export interface PurchasereturnRequest {
 export interface PurchaseReturnResponse {
   id:number,
 }
+export interface SalesReturnResponse {
+  id:number,
+}
 
 export interface SalesreturnRequest {
 

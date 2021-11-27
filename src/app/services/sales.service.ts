@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { CashSaleRequest, CashSaleResponse, CreditPurchaseRequest, CreditPurchaseResponse, CreditSaleRequest, CreditSaleResponse, CustomerMasterdataRequest, CustomerMasterdataResponse, PCashSaleRequest, PCashSaleResponse, PurchaseReceiptRequest, PurchaseReceiptResponse, PurchasereturnRequest, SalesReceiptRequest, SalesReceiptResponse } from '../interfaces/sales.interfaces';
+import { CashSaleRequest, CashSaleResponse, CreditPurchaseRequest, CreditPurchaseResponse, CreditSaleRequest, CreditSaleResponse, CustomerMasterdataRequest, CustomerMasterdataResponse, PCashSaleRequest, PCashSaleResponse, PurchaseReceiptRequest, PurchaseReceiptResponse, PurchasereturnRequest, SalesReceiptRequest, SalesReceiptResponse, SalesreturnRequest, SalesReturnResponse } from '../interfaces/sales.interfaces';
 import { Company } from '../user/user.service';
 import { CustomerResponse, ItemResponse, JobResponse } from '../user/login.interfaces';
 export interface CashFilter {
@@ -119,8 +119,8 @@ export class SalesService {
     });
   }
 
-  salesReturn(data: PurchasereturnRequest): Observable<PurchaseReceiptResponse> {
-    return this.http.post<PurchaseReceiptResponse>(`${this.apiUrl}/Sam/sales_returnapi`, data, {
+  salesReturn(data: SalesreturnRequest): Observable<SalesReturnResponse> {
+    return this.http.post<SalesReturnResponse>(`${this.apiUrl}/Sam/sales_returnapi`, data, {
       // observe: 'response',
       // withCredentials: true
     });

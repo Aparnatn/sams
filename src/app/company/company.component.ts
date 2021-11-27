@@ -38,10 +38,10 @@ export class CompanyComponent implements OnInit {
     email: ['', Validators.required],
     admin_usernm: ['', Validators.required],
     admin_password: ['', Validators.required],
-    username: ['', Validators.required],
-    password: ['', Validators.required],
-    mobile: ['', Validators.required],
-    user_access: 2,
+    // username: ['', Validators.required],
+    // password: ['', Validators.required],
+    // mobile: ['', Validators.required],
+    // user_access: 2,
     // imag1     :"",
     // imag2       :"",
   });
@@ -62,7 +62,7 @@ export class CompanyComponent implements OnInit {
       this.userservice.companycreate(this.companyForm.value,).subscribe(
         (data) => {
           alert('Company registred');
-          this.router.navigate(['/user-register'], { queryParams: { companyId: data.id }});
+          this.router.navigate(['/login'], { queryParams: { companyId: data.id }});
         },
         (error) => {
           this.showErros(error.error);
@@ -148,37 +148,12 @@ export class CompanyComponent implements OnInit {
       msg += '\n';
     }
 
-    if (errors.username) {
-      msg += 'username : ';
-      errors.username.forEach(er => {
-        msg += `${er}. `;
-      });
-      msg += '\n';
-    }
 
-    if (errors.password) {
-      msg += 'Password : ';
-      errors.password.forEach(er => {
-        msg += `${er}. `;
-      });
-      msg += '\n';
-    }
 
-    if (errors.mobile) {
-      msg += 'Mobile number : ';
-      errors.mobile.forEach(er => {
-        msg += `${er}. `;
-      });
-      msg += '\n';
-    }
 
-    if (errors.user_access) {
-      msg += 'User access : ';
-      errors.user_access.forEach(er => {
-        msg += `${er}. `;
-      });
-      msg += '\n';
-    }
+
+
+
 
     if (msg != '') {
       alert(msg)

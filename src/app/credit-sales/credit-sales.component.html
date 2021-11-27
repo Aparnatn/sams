@@ -77,23 +77,31 @@
         </div>
 
           <br><br>
-        <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
-          <div class="col-sm-5" >
-            <label class="form-control"  style="border-radius:12px;padding: 10px;">Customer ID</label>
-          </div>
-          <div class="col-sm-7" >
-            <input type="text" formControlName="customer_id" style="border-radius: 12px;" class="form-control" >
-          </div>
-        </div>
+          <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
+            <div class="col-sm-5" >
+              <label class="form-control"  style="border-radius:12px;padding: 10px;">Customer ID</label>
+            </div>
+            <div class="col-sm-7" >
 
-        <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
-          <div class="col-sm-5" >
-            <label class="form-control"  style="border-radius:12px;padding: 10px;">Customer Name</label>
+              <select  formControlName="customer_id" style="border-radius: 12px;" class="form-control" placeholder="">
+
+                <option *ngFor="let item of Customer">{{item.id}}</option>
+              </select>
+            </div>
           </div>
-          <div class="col-sm-7" >
-            <input type="text"  style="border-radius: 12px;" formControlName="customer_name" class="form-control" >
+
+          <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
+            <div class="col-sm-5" >
+              <label class="form-control"  style="border-radius:12px;padding: 10px;">Customer Name</label>
+            </div>
+            <div class="col-sm-7" >
+
+              <select  formControlName="customer_name" style="border-radius: 12px;" class="form-control" placeholder="">
+
+                <option *ngFor="let item of Customer">{{item.customer_name}}</option>
+              </select>
+            </div>
           </div>
-        </div>
         <br><br>
 
         <div class="grid-container" >

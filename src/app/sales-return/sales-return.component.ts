@@ -67,17 +67,7 @@ export class SalesReturnComponent implements OnInit {
       });
 
     })
-    this.userService.getItem().subscribe((data: ItemResponse[]) => {
-      this.Item = data;
 
-      data.forEach(d => {
-        this.salesReturnForm.patchValue({
-         item_details1: d.item_details1,
-          item_id1: d.id
-        });
-      });
-
-    })
     this.userService.getJob().subscribe((data: JobResponse[]) => {
       this.Job = data;
 
