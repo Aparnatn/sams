@@ -190,11 +190,11 @@ export const ROUTES: Routes = [
     component: CustomerRegisterComponent,
     canActivate: [AuthGuard]
   },
-  {
-    path: 'user-register',
-    component: UserRegisterComponent,
-    canActivate: [AuthGuard]
-  },
+  // {
+  //   path: 'user-register',
+  //   component: UserRegisterComponent,
+  //   canActivate: [AuthGuard]
+  // },
   {
     path: 'registration',
     component: RegistrationComponent,

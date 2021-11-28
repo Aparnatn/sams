@@ -10,11 +10,14 @@ import { AuthenticationService } from './auth/authentication.service';
 export class AppComponent {
   title = 'sam';
 
+  isLoggedIn = false;
+
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
 
+    this.isLoggedIn = this.authenticationService.isLoggedIn;
   }
 
   logout() {
