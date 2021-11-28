@@ -56,5 +56,8 @@ export class ItemComponent implements OnInit {
     }
     return false
   }
+  back() {
+    this.router.navigate(['/register']);
+  }
 }
 

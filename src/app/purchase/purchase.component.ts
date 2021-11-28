@@ -27,4 +27,7 @@ export class PurchaseComponent implements OnInit {
 
     this.router.navigate(['/purchase-receipts']);
   }
+  back() {
+    this.router.navigate(['/grand-hyper']);
+  }
 }

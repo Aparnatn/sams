@@ -108,5 +108,7 @@ export class SalesReturnComponent implements OnInit {
     });
     this.router.navigate(['/grand-hyper']);
   }
-
+  back() {
+    this.router.navigate(['/sales']);
+  }
 }

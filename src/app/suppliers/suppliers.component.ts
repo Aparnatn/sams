@@ -58,5 +58,8 @@ export class SuppliersComponent implements OnInit {
       console.log(data);});
       this.router.navigate(['/grand-hyper']);
   }
+  back() {
+    this.router.navigate(['/register']);
+  }
 
 }

@@ -114,6 +114,9 @@ private fieldArray: Array<any> = [];
     this.fieldArray.push(this.newAttribute)
     this.newAttribute = {};
 }
+back() {
+  this.router.navigate(['/purchase']);
+}
 
 deleteFieldValue(index) {
     this.fieldArray.splice(index, 1);
