@@ -27,5 +27,8 @@ export class SalesComponent implements OnInit {
 
     this.router.navigate(['/sales-receipts']);
   }
+  back() {
+    this.router.navigate(['/grand-hyper']);
+  }
 
 }
