@@ -8,5 +8,5 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
-<!-- <a href="#" (click)="logout()">Logout</a> -->
+<div  *ngIf="isLoggedIn"><a href="#" (click)="logout()">Logout</a></div>
 <router-outlet></router-outlet>

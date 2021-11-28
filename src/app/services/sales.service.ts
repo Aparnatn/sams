@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { CashSaleRequest, CashSaleResponse, CreditPurchaseRequest, CreditPurchaseResponse, CreditSaleRequest, CreditSaleResponse, CustomerMasterdataRequest, CustomerMasterdataResponse, PCashSaleRequest, PCashSaleResponse, PurchaseReceiptRequest, PurchaseReceiptResponse, PurchasereturnRequest, SalesReceiptRequest, SalesReceiptResponse, SalesreturnRequest, SalesReturnResponse } from '../interfaces/sales.interfaces';
+import { BalanceSheet, CashSaleRequest, CashSaleResponse, CreditPurchaseRequest, CreditPurchaseResponse, CreditSaleRequest, CreditSaleResponse, CustomerMasterdataRequest, CustomerMasterdataResponse, pandl, PCashSaleRequest, PCashSaleResponse, PurchaseReceiptRequest, PurchaseReceiptResponse, PurchasereturnRequest, SalesReceiptRequest, SalesReceiptResponse, SalesreturnRequest, SalesReturnResponse } from '../interfaces/sales.interfaces';
 import { Company } from '../user/user.service';
 import { CustomerResponse, ItemResponse, JobResponse } from '../user/login.interfaces';
 export interface CashFilter {
@@ -41,12 +41,22 @@ export interface creditsaleFilter {
   name?: string,
 }
 
-export interface PcreditFilter {
+export interface PreceiptFilter {
   from_date?: string,
   to_date?: string,
   name?: string,
 }
-export interface creditFilter {
+export interface PcreditFilter{
+  from_date?: string,
+  to_date?: string,
+  name?: string,
+}
+export interface creditsaleFilter{
+  from_date?: string,
+  to_date?: string,
+  name?: string,
+}
+export interface salesreceiptFilter {
   from_date?: string,
   to_date?: string,
   name?: string,
@@ -479,7 +489,7 @@ export class SalesService {
     )
   }
 
-  lslb(filter: PCashFilter): Observable<PCashSaleResponse[]> {
+  getBalanceSheet(filter: PCashFilter): Observable<BalanceSheet> {
     // console.log(filter);
     let params = new HttpParams();
     if (filter.from_date) {
@@ -491,8 +501,25 @@ export class SalesService {
     if (filter.name) {
       params = params.append('name', filter.name);
     }
-    return this.http.get<PCashSaleResponse[]>(
+    return this.http.get<BalanceSheet>(
       `${this.apiUrl}/Sam/gob_s`,
+      { params: params }
+    )
+  }
+  getpl(filter: PCashFilter): Observable<pandl> {
+    // console.log(filter);
+    let params = new HttpParams();
+    if (filter.from_date) {
+      params = params.append('from_date', filter.from_date);
+    }
+    if (filter.to_date) {
+      params = params.append('to_date', filter.to_date);
+    }
+    if (filter.name) {
+      params = params.append('name', filter.name);
+    }
+    return this.http.get<pandl>(
+      `${this.apiUrl}/Sam/gopl`,
       { params: params }
     )
   }
@@ -515,7 +542,7 @@ export class SalesService {
     )
   }
 
-  tcrlb(filter: PcreditFilter): Observable<CreditPurchaseResponse[]> {
+  tcrlb(filter: PreceiptFilter): Observable<PurchaseReceiptResponse[]> {
     // console.log(filter);
     let params = new HttpParams();
     if (filter.from_date) {
@@ -527,12 +554,12 @@ export class SalesService {
     if (filter.name) {
       params = params.append('name', filter.name);
     }
-    return this.http.get<CreditPurchaseResponse[]>(
+    return this.http.get<PurchaseReceiptResponse[]>(
       `${this.apiUrl}/Sam/gob_s`,
       { params: params }
     );
   }
-  balance_sheet(filter: creditFilter): Observable<CreditSaleResponse[]> {
+  balance_sheet(filter: salesreceiptFilter): Observable<SalesReceiptResponse[]> {
     // console.log(filter);
     let params = new HttpParams();
     if (filter.from_date) {
@@ -544,7 +571,7 @@ export class SalesService {
     if (filter.name) {
       params = params.append('name', filter.name);
     }
-    return this.http.get<CreditSaleResponse[]>(
+    return this.http.get<SalesReceiptResponse[]>(
       `${this.apiUrl}/Sam/gob_s`,
       { params: params }
     );

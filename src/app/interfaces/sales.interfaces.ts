@@ -171,6 +171,19 @@ export interface PCashSaleResponse {
   id:number,
 }
 
+export interface BalanceSheet {
+  cash: any[],
+  cashPurchases: any [],
+  purchaseReciepts: any[],
+  salesReciepts: [],
+}
+export interface pandl {
+  cash: any[],
+  cashPurchases: any[],
+  purchaseReciepts: any[],
+  salesReciepts: [],
+}
+
 export interface CreditPurchaseRequest {
   invoice_number: string,
   date: string,
@@ -406,6 +419,8 @@ export interface PurchaseReceiptRequest {
 }
 
 export interface PurchaseReceiptResponse {
+  total2: any;
+  total3: number;
   id:number,
 }
 export interface SalesReceiptRequest {
@@ -462,6 +477,8 @@ export interface SalesReceiptRequest {
 }
 
 export interface SalesReceiptResponse {
+  total2: any;
+  total3: any;
   id:number,
 
 }
