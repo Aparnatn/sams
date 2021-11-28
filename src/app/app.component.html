@@ -7,6 +7,8 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-
-<div  *ngIf="isLoggedIn"><a href="#" (click)="logout()">Logout</a></div>
+<div class="container" style="margin-left: 1px;" *ngIf="isLoggedIn">
+  <button type="button" (click)="logout()" style="border-radius:12px; margin-left: 1400px;" class="back"><b><p style="font-size: 20px;">Logout</p></b></button>
+</div>
+<!-- <div  *ngIf="isLoggedIn"><a href="#" (click)="logout()">Logout</a></div> -->
 <router-outlet></router-outlet>
