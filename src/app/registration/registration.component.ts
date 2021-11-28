@@ -60,4 +60,7 @@ Customers:CustomerResponse[]=[];
       console.log(data);});
       this.router.navigate(['/grand-hyper']);
   }
+  back() {
+    this.router.navigate(['/register']);
+  }
 }
