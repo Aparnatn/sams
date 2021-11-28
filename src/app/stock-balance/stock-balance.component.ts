@@ -37,5 +37,7 @@ export class StockBalanceComponent implements OnInit {
       })
     // this.router.navigate(['/reports']);
   }
-
+  back() {
+    this.router.navigate(['/itemjobbuttons']);
+  }
 }

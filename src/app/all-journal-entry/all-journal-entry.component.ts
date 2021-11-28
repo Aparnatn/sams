@@ -69,5 +69,9 @@ export class AllJournalEntryComponent implements OnInit {
     //         });
 
   }
+  
+ back() {
+  this.router.navigate(['/ledgerbuttons']);
+}
 
 }

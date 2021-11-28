@@ -35,4 +35,7 @@ export class ReportsComponent implements OnInit {
 
     this.router.navigate(['/financial']);
   }
+  back() {
+    this.router.navigate(['/grand-hyper']);
+  }
 }

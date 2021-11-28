@@ -37,4 +37,7 @@ export class SupplierStatementComponent implements OnInit {
 
     // this.router.navigate(['/reports']);
   }
+  back() {
+    this.router.navigate(['/supplierbuttons']);
+  }
 }

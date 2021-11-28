@@ -38,5 +38,8 @@ export class SupplierbuttonsComponent implements OnInit {
     this.router.navigate(['/supplier-master-data']);
   }
 
+  back() {
+    this.router.navigate(['/reports']);
+  }
 }
 

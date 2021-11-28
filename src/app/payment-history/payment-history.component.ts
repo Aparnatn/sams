@@ -51,4 +51,8 @@ export class PaymentHistoryComponent implements OnInit {
     });
 
   }
+  
+ back() {
+  this.router.navigate(['/supplierbuttons']);
+}
 }

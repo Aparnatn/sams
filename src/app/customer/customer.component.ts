@@ -38,4 +38,8 @@ export class CustomerComponent implements OnInit {
     // this.router.navigate(['/reports']);
   }
 
+  
+ back() {
+  this.router.navigate(['/customerbuttons']);
+}
 }

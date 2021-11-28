@@ -37,5 +37,8 @@ export class CustomerbuttonsComponent implements OnInit {
 
     this.router.navigate(['/customer-master']);
   }
+  back() {
+    this.router.navigate(['/reports']);
+  }
 }
 
