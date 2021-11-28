@@ -51,4 +51,8 @@ export class CustomerReceiptsComponent implements OnInit {
     });
 
   }
+  
+ back() {
+  this.router.navigate(['/customerbuttons']);
+}
 }

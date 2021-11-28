@@ -52,4 +52,8 @@ export class SupplierInvoiceComponent implements OnInit {
     });
 
   }
+  
+ back() {
+  this.router.navigate(['/supplierbuttons']);
+}
 }

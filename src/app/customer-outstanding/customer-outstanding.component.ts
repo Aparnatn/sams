@@ -35,4 +35,8 @@ export class CustomerOutstandingComponent implements OnInit {
       })
     // this.router.navigate(['/reports']);
   }
+  
+ back() {
+  this.router.navigate(['/customerbuttons']);
+}
 }

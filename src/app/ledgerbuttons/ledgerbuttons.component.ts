@@ -30,4 +30,9 @@ export class LedgerbuttonsComponent implements OnInit {
 
   //   this.router.navigate(['/purchase-receipts']);
   // }
+
+  back() {
+    this.router.navigate(['/reports']);
+  }
 }
+
