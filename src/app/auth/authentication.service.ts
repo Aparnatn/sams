@@ -66,6 +66,14 @@ export class AuthenticationService {
     }));
   }
 
+  getLoggedInstatus(): Observable<boolean> {
+    return this.loggedInStatusSubject.asObservable();
+  }
+
+  getLoggedInuser(): Observable<User> {
+    return this.currentUser.asObservable();
+  }
+
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('userToken');
