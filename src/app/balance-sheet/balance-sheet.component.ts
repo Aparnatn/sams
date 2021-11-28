@@ -21,12 +21,12 @@ export class BalanceSheetComponent implements OnInit {
   });
 
   assetTotal = 0;
-  LiabilityTotal = 0;
-  Cash: CashSaleResponse[];
-  PCash: PCashSaleResponse[];
-  credit: CreditSaleResponse[];
-  pcredit: CreditPurchaseResponse[];
-  service: any;
+  liabilityTotal = 0;
+  cash: CashSaleResponse[];
+  cashPurchases: PCashSaleResponse[];
+  salesReceipts: SalesReceiptResponse[];
+  purchaseReceipts: PurchaseReceiptResponse[];
+
 
   constructor(
     private http: HttpClient,
@@ -37,56 +37,35 @@ export class BalanceSheetComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.salesservice.lsb({}).subscribe((data) => {
-    //   this.Cash = data;
-    //   console.log(data);
-    // })
+
   }
 
   onSubmit(): void {
-    this.calculsteLiability();
-    this.calculateAsset();
-  }
-
-  calculsteLiability() {
-    // this.salesservice.balance_sheet(this.BsForm.value).subscribe((data) => {
-    //   this.credit = data;
-    //   let total = 0;
-    //   this.credit.forEach(element => {
-    //     this.LiabilityTotal += element.total3
-    //   });
-
-    // });
-
-    this.salesservice.tcrlb(this.BsForm.value).subscribe((data) => {
-      this.pcredit = data;
+    this.salesservice.getBalanceSheet(this.BsForm.value).subscribe((data) => {
+      this.cash = data.cash;
+      this.cashPurchases = data.cashPurchases;
+      this.salesReceipts = data.salesReciepts;
+      this.purchaseReceipts = data.purchaseReciepts;
       let total = 0;
-      this.pcredit.forEach(element => {
-        this.LiabilityTotal += element.total3
-      });
+      this.assetTotal = 0;
+      this.liabilityTotal = 0;
 
-    });
-    // this.salesservice.tcrlb(this.BsForm.value).subscribe((data,) => {
-    //   console.log(data);
-    // });
-
-  }
-
-  calculateAsset() {
-    // this.salesservice.lsb({}).subscribe((cash) => {
-    //   this.Cash = cash;
-    //   let total = 0;
-    //   this.Cash.forEach(element => {
-    //     this.assetTotal += Number(element.total3);
-    //   });
-    // });
-
-    this.salesservice.lslb(this.BsForm.value).subscribe((pcash) => {
-      this.PCash = pcash;
-      let total = 0;
-      this.PCash.forEach(element => {
+      this.cashPurchases.forEach(element => {
         this.assetTotal += Number(element.total3);
       });
+      this.cash.forEach(element => {
+        this.assetTotal += Number(element.total3);
+      });
+      this.salesReceipts.forEach(element => {
+        this.liabilityTotal += Number(element.total3);
+      });
+      this.purchaseReceipts.forEach(element => {
+        this.liabilityTotal += Number(element.total3);
+      });
     });
   }
+
+
+
+
 }

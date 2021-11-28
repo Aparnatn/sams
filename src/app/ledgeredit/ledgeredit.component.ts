@@ -22,6 +22,7 @@ export class LedgereditComponent implements OnInit {
     opening_bal:"",
     date:"",
   });
+  router: any;
 
   constructor(
     private http:HttpClient,
@@ -61,5 +62,8 @@ export class LedgereditComponent implements OnInit {
 
     this.service.ledgeredit(this.LedgereditForm.value,this.id).subscribe((data,)=>{
       console.log(data);});
+  }
+  back() {
+    this.router.navigate(['/ledger']);
   }
 }

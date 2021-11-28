@@ -190,11 +190,11 @@ export const ROUTES: Routes = [
     component: CustomerRegisterComponent,
     canActivate: [AuthGuard]
   },
-  {
-    path: 'user-register',
-    component: UserRegisterComponent,
-    canActivate: [AuthGuard]
-  },
+  // {
+  //   path: 'user-register',
+  //   component: UserRegisterComponent,
+  //   canActivate: [AuthGuard]
+  // },
   {
     path: 'registration',
     component: RegistrationComponent,
@@ -208,66 +208,82 @@ export const ROUTES: Routes = [
   {
     path: 'item',
     component: ItemComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'job',
     component: JobComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'group',
     component: GroupComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'ledger',
     component: LedgerComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'employee',
     component: EmployeeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
     component: LoginComponent,
+
   },
   {
     path: 'sales',
     component: SalesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'cash',
     component: CashComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'purchase-receipts',
     component: PurchaseReceiptsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'credit-sales',
     component: CreditSalesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'sales-return',
     component: SalesReturnComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'cash-purchase',
     component: CashPurchaseComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'credit-purchase',
     component: CreditPurchaseComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'purchase-return',
     component: PurchaseReturnComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '',
     component: CompanyComponent,
+
   },
   {
     path: 'sales-receipts',
     component: SalesReceiptsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'grand-hyper',
@@ -277,109 +293,135 @@ export const ROUTES: Routes = [
   {
     path: 'purchase',
     component: PurchaseComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'payroll',
     component: PayrollComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'journal-entry',
     component: JournalEntryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'customer',
     component: CustomerComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'supplier-statement',
     component: SupplierStatementComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'ledger-statement',
     component: LedgerStatementComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'ledger-journal',
     component: LedgerJournalComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'ledger-masterdata',
     component: LedgerMasterdataComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'ledger-balance',
     component: LedgerBalanceComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'job-statement',
     component: JobStatementComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'job-master',
     component: JobMasterComponent,
+    canActivate: [AuthGuard]
   },
 
 
   {
     path: 'supplier-outstand',
     component: SupplierOutstandComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'supplier-invoice',
     component: SupplierInvoiceComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'supplier-invo-receipt',
     component: SupplierInvoReceiptComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'supplier-master-data',
     component: SupplierMasterDataComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'payment-history',
     component: PaymentHistoryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'item-statement',
     component: ItemStatementComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'stock-adjustment',
     component: StockAdjustmentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'stock-balance',
     component: StockBalanceComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'stock-master-data',
     component: StockMasterDataComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'trial-balance',
     component: TrialBalanceComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'post-dated-cheques',
     component: PostDatedChequesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'all-journal-entry',
     component: AllJournalEntryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'profit-loss',
     component: ProfitLossComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'balance-sheet',
     component: BalanceSheetComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'reports',
     component: ReportsComponent,
+    canActivate: [AuthGuard]
   },
   // {
   //   path: 'customer-edit',
@@ -388,10 +430,12 @@ export const ROUTES: Routes = [
   {
     path: 'employee/:id/edit',
     component: EmployeeEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'item/:id/edit',
     component: ItemEditComponent,
+    canActivate: [AuthGuard]
   },
   {
 
@@ -399,42 +443,52 @@ export const ROUTES: Routes = [
 
 
     component: SupplierEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'cash-purchase-edit',
     component: CashPurchaseEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'cash-sale-edit',
     component: CashSaleEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'credit-purchase-edit',
     component: CreditPurchaseEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'credit-sale-edit',
     component: CreditSaleEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'purchase-receipt-edit',
     component: PurchaseReceiptEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'purchase-return-edit',
     component: PurchaseReturnEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'receipt-edit',
     component: ReceiptEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'sale-return-edit',
     component: SaleReturnEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'financial',
     component: FinancialComponent,
+    canActivate: [AuthGuard]
   },
 ];
 export class AppModule { }

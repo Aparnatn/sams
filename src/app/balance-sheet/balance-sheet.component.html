@@ -53,88 +53,84 @@
                   <th style="text-align: center;">Description</th>
                   <th style="text-align: center;">Amount</th>
                   <th style="text-align: center;">Total Amount</th>
-
+<th></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th style="text-align: center;">Partners Liability</th>
                   <td></td>
-
-
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
-                <tr  *ngFor="let cash of Cash;">
-                  <td>
-                  {{cash.account}}</td>
 
-
-                </tr>
-                <tr  *ngFor="let cash of credit;">
-
+                <tr  *ngFor="let cash of salesReceipts;">
                   <td>{{cash.account}}</td>
-
-
+                 <td>{{cash.total3}}</td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
                 </tr>
-                <tr>
+                <tr *ngFor="let cash of salesReceipts;">
                   <th style="text-align: right;">Total</th>
+                  <td>{{cash.total3}}</td>
                   <td></td>
                   <td></td>
-
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <th style="text-align: center;">Current Liability</th>
                   <td></td>
-
-
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
-                <tr  *ngFor="let cash of pcredit;">
+                <tr *ngFor="let cash of purchaseReceipts;">
                   <td>{{cash.account}}</td>
+                  <td>{{cash.total3}}</td>
                   <td></td>
-
-
-                </tr>
-                <tr>
-                  <td>ledger-4</td>
                   <td></td>
-
-
+                  <td></td>
                 </tr>
-                <tr>
+
+                <tr *ngFor="let cash of purchaseReceipts;">
                   <th style="text-align: right;">Total</th>
+                  <td>{{cash.total3}}</td>
                   <td></td>
                   <td></td>
-
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <th style="text-align: center;">Long Term Liability</th>
                   <td></td>
-
-
-                </tr>
-                <tr>
-
-                  <td>ledger-5</td>
+                  <td></td><td></td>
                   <td></td>
-
-
-                </tr>
-                <tr>
-                  <td>ledger-6</td>
                   <td></td>
                 </tr>
+
+
                 <tr>
                   <th style="text-align: right;">Total</th>
                   <td></td>
                   <td></td>
-
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
 
-                <tr  >
+                <tr>
                   <td></td>
                   <td></td>
                   <th style="text-align: right;">Gross Profit</th>
-
-
+                  <td></td>
+                  <td>{{liabilityTotal}}</td>
+                  <td></td>
                 </tr>
 
 
@@ -151,84 +147,62 @@
                   <th style="text-align: center;">Description</th>
                   <th style="text-align: center;">Amount</th>
                   <th style="text-align: center;">Total Amount</th>
+<th>
 
+</th>
+<th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr  *ngFor="let cash of cash;">
                   <th style="text-align: center;">Cash & Bank Account</th>
+                   <td></td>
+                  <td></td><td></td><td></td>
                   <td></td>
-
-
                 </tr>
-                <tr>
-                  <td>Ledger-7</td>
-                  <td></td>
 
+<tr *ngFor="let cash of cash;">
+  <td>{{cash.account}}</td>
+  <td>{{cash.total3}}</td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
 
-                </tr>
-                <tr>
-                  <td>ledger-8</td>
-                  <td></td>
-
-
-                </tr>
-                <tr  *ngFor="let cash of Cash;">
-                  <th style="text-align: right;">Total</th>
-                  <td>{{cash.total3}}</td>
-                  <td></td>
-
-                </tr>
                 <tr>
                   <th style="text-align: center;">Current Asset</th>
                   <td></td>
-
-
-                </tr>
-                <tr>
-                  <td>ledger-9</td>
                   <td></td>
-
-
+                  <td></td> <td></td>
                 </tr>
-                <tr>
-                  <td>ledger-10</td>
-                  <td></td>
 
 
-                </tr>
-                <tr>
+                <tr *ngFor="let cash of cash;">
                   <th style="text-align: right;">Total</th>
+                  <td>{{cash.total3}}</td>
                   <td></td>
                   <td></td>
-
+                  <td></td>
+                  <td></td>
                 </tr>
-                <tr>
+                <tr *ngFor="let cash of cashPurchases;">
                   <th style="text-align: center;">Fixed Asset</th>
                   <td></td>
-
-
-                </tr>
-                <tr>
-
-                  <td>ledger-11</td>
                   <td></td>
-
-
-                </tr>
-                <tr>
-                  <td>ledger-12</td>
                   <td></td>
-                </tr>
-                <tr>
-                  <th style="text-align: right;">Total</th>
                   <td></td>
                   <td></td>
 
                 </tr>
 
-                <tr *ngFor="let cash of PCash;">
-<td>{{cash.account}}</td>
+
+                <!-- <tr  *ngFor="let cash of cash;">
+                  <td>{{cash.account}}</td>
+                  <td>{{cash.total3}}</td>
+                </tr> -->
+
+                <tr *ngFor="let cash of cashPurchases;">
+                  <td>{{cash.account}}</td>
                   <td>{{cash.total3}}</td>
                   <td></td>
                   <th style="text-align: right;">Gross Profit</th>

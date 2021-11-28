@@ -30,6 +30,7 @@ export class CustomerEditComponent implements OnInit {
 
   });
   customers: CustomerResponse[] = [];
+  router: any;
   constructor(
     private http: HttpClient,
     private userservice: UserService,
@@ -72,6 +73,7 @@ export class CustomerEditComponent implements OnInit {
       });
     })
   }
+  
 
   onSubmit(): void {
 
@@ -79,5 +81,9 @@ export class CustomerEditComponent implements OnInit {
       console.log(data);
     });
   }
+  back() {
+    this.router.navigate(['/registration']);
+  }
+  
 }
 

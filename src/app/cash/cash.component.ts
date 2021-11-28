@@ -116,4 +116,7 @@ export class CashComponent implements OnInit {
 
      this.router.navigate(['/grand-hyper']);
   }
+  back() {
+    this.router.navigate(['/sales']);
+  }
 }

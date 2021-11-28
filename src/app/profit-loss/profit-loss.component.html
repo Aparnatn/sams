@@ -68,22 +68,12 @@
 
 
               </tr>
-              <tr  *ngFor="let cash of Cash;">
+              <tr  *ngFor="let cash of cash;">
                 <td>{{cash.account}}</td>
-                <td>{{cash.cash}}</td>
+                <td>{{cash.total3}}</td>
               </tr>
-              <tr>
-                <td>Income2</td>
-                <td></td>
 
 
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-
-
-              </tr>
               <tr>
                 <th>Total</th>
                 <td></td>
@@ -96,25 +86,15 @@
 
 
               </tr>
-              <tr *ngFor="let cash of PCash;">
+              <tr *ngFor="let cash of cashPurchases;">
 
                 <td>{{cash.account}}</td>
 
-                <td>{{cash.cash}}</td>
+                <td>{{cash.total3}}</td>
 
               </tr>
-              <tr>
-                <td>Expense-2</td>
-                <td></td>
 
 
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-
-
-              </tr>
               <tr>
                 <th>Total</th>
                 <td></td>
@@ -124,7 +104,7 @@
               <tr>
                 <td></td>
                 <th style="text-align: right;">Gross Profit</th>
-                <td></td>
+                <td>{{assetTotal}}</td>
 
               </tr>
               <tr>
@@ -134,27 +114,21 @@
 
 
               </tr>
-              <tr *ngFor="let cash of receipt;">
-                <td>Indirect-Income1</td>
+              <tr *ngFor="let cash of salesReceipts;">
+                <td></td>
                 <td>{{cash.account}}</td>
+                <td>{{cash.total3}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <!-- <td>{{cash.total3}}</td> -->
 
               </tr>
-              <tr>
-                <td>Indirect-Income2</td>
-                <td></td>
 
 
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-
-
-              </tr>
               <tr>
                 <th>Total</th>
-                <td></td>
+                <td>{{liabilityTotal}}</td>
                 <td></td>
 
               </tr>
@@ -165,24 +139,14 @@
 
 
               </tr>
-              <tr  *ngFor="let cash of preceipt;">
+              <tr *ngFor="let cash of purchaseReceipts;">
                 <td>Indirect-Expense-1</td>
                 <td>{{cash.account}}</td>
 
-
+                <td>{{cash.total3}}</td>
               </tr>
-              <tr>
-                <td>Indirect-Expense-2</td>
-                <td></td>
 
 
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-
-
-              </tr>
               <tr>
                 <th>Total</th>
                 <td></td>
@@ -192,7 +156,7 @@
               <tr>
                 <td></td>
                 <th style="text-align: right;">Net Profit</th>
-                <td></td>
+                <td>{{netProfit}}</td>
 
               </tr>
 
