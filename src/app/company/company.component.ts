@@ -32,7 +32,7 @@ export class CompanyComponent implements OnInit {
 
   companyForm = this.formBuilder.group({
     company_name: ['', Validators.required],
-    reg_no: ['', Validators.required],
+    register_no: ['', Validators.required],
     app_regdate: ['', Validators.required],
     reg_mobno: ['', Validators.required],
     email: ['', Validators.required],
