@@ -41,4 +41,8 @@ export class SupplierOutstandComponent implements OnInit {
 
     // this.router.navigate(['/reports']);
   }
+  
+ back() {
+  this.router.navigate(['/supplierbuttons']);
+}
 }

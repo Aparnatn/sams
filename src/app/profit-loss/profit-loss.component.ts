@@ -58,6 +58,11 @@ netProfit=0;
     });
   }
 
+  
+  back() {
+    this.router.navigate(['/financial']);
+  }
+
 
 
 

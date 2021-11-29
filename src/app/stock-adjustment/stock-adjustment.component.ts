@@ -60,5 +60,11 @@ export class StockAdjustmentComponent implements OnInit {
 
   }
 
+  
+ 
+  back() {
+    this.router.navigate(['/itemjobbuttons']);
+  }
+
 
 }

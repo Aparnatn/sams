@@ -1,27 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from './auth/authentication.service';
+import { AuthenticationService, User } from './auth/authentication.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'sam';
 
   isLoggedIn = false;
 
+  user: User;
+
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
-  ) {
+  ) {}
 
-    this.isLoggedIn = this.authenticationService.isLoggedIn;
+  ngOnInit(): void {
+    this.authenticationService.getLoggedInStatus().subscribe(status => {
+      this.isLoggedIn = status;
+    });
+
+    this.authenticationService.getLoggedInUser().subscribe((user: User) => {
+      this.user = user;
+    })
   }
 
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
+    return false;
   }
 }

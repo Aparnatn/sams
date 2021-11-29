@@ -52,5 +52,11 @@ export class JobStatementComponent implements OnInit {
 
 
   }
+  
+ 
+ back() {
+   this.router.navigate(['/itemjobbuttons']);
+ }
+
 
 }

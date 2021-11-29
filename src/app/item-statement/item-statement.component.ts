@@ -58,6 +58,9 @@ export class ItemStatementComponent implements OnInit {
     //         });
 
   }
+  back() {
+    this.router.navigate(['/itemjobbuttons']);
+  }
 
 
 }

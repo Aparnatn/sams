@@ -20,7 +20,7 @@ export class GrandHyperComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authService.user;
-    this.loadCompanies();
+    // this.loadCompanies();
     // this.loadUsers();
   }
 
@@ -37,26 +37,28 @@ export class GrandHyperComponent implements OnInit {
   }
 
   onSubmit1(): void {
+
     this.router.navigate(['/sales']);
   }
 
   onSubmit2(): void {
+
     this.router.navigate(['/journal-entry']);
   }
-
   onSubmit3(): void {
+
     this.router.navigate(['/register']);
   }
-
   onSubmit4(): void {
+
     this.router.navigate(['/reports']);
   }
-
   onSubmit5(): void {
+
     this.router.navigate(['/payroll']);
   }
-
   onSubmit6(): void {
+
     this.router.navigate(['/purchase']);
   }
 }

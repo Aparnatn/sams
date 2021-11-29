@@ -38,4 +38,8 @@ export class ItemjobbuttonsComponent implements OnInit {
 
     this.router.navigate(['/job-master']);
   }
+  
+ back() {
+  this.router.navigate(['/reports']);
+}
 }

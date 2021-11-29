@@ -34,4 +34,7 @@ export class CustomerMasterComponent implements OnInit {
       })
       // this.router.navigate(['/grand-hyper']);
   }
+  back() {
+    this.router.navigate(['/customerbuttons']);
+  }
 }

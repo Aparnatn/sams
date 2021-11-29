@@ -35,4 +35,8 @@ export class SupplierInvoReceiptComponent implements OnInit {
       })
     // this.router.navigate(['/reports']);
   }
+  
+ back() {
+  this.router.navigate(['/supplierbuttons']);
+}
 }

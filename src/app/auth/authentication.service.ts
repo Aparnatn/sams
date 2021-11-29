@@ -66,6 +66,13 @@ export class AuthenticationService {
     }));
   }
 
+  // clear token and force page reload to redirect to login page
+  forceLogout() {
+    this.logout();
+    location.reload();
+  }
+
+  // clears token stored in local storage
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('userToken');
@@ -74,12 +81,14 @@ export class AuthenticationService {
     this.loggedInStatusSubject.next(false);
     this.authTokenSubject.next(null);
     this.currentUser.next(null);
-
-    location.reload();
   }
 
-  getLoggedInStatus(): boolean {
-    return this.getAuthToken() !== null ? true : false;
+  getLoggedInStatus(): Observable<boolean> {
+    return this.loggedInStatusSubject.asObservable();
+  }
+
+  getLoggedInUser(): Observable<User> {
+    return this.currentUser.asObservable();
   }
 
   getCurrentUser(): User|null {

@@ -55,4 +55,8 @@ export class CustomerInvoiceComponent implements OnInit {
     });
 
   }
+  
+ back() {
+  this.router.navigate(['/customerbuttons']);
+}
 }

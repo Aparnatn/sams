@@ -90,6 +90,10 @@ export class LedgerStatementComponent implements OnInit {
   //             console.log(data);
   //           });
 
+  
+ back() {
+  this.router.navigate(['/ledgerbuttons']);
+}
 }
 
 
