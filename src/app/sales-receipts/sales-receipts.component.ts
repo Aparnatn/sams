@@ -63,6 +63,8 @@ account:['',Validators.required],
     discount:['',Validators.required],
   });
   Customer: CustomerResponse[];
+   fieldArray: Array<any> = [];
+   newAttribute: any = {};
     constructor(private userService: UserService,private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
 
     ngOnInit(): void {
@@ -108,8 +110,16 @@ account:['',Validators.required],
         console.log(data);});
         this.router.navigate(['/grand-hyper']);
     }
-    back() {
-      this.router.navigate(['/sales']);
-    }
+    i=0;
+    addFieldValue() {
+      this.fieldArray.push(this.newAttribute)
+      this.newAttribute = {};
+  }
+  back() {
+    this.router.navigate(['/purchase']);
+  }
 
+  deleteFieldValue(index) {
+      this.fieldArray.splice(index, 1);
+  }
   }

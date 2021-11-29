@@ -48,14 +48,27 @@ export class CashComponent implements OnInit {
   Customer: CustomerResponse[];
   Item:ItemResponse[];
   Job:JobResponse[];
+  fieldArray: Array<any> = [];
+  newAttribute: any = {};
   constructor(
     private http: HttpClient,
     private router: Router,
     private service: SalesService,
     private userService: UserService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+
   ) { }
 
+  i=0;
+
+  addFieldValue() {
+      this.fieldArray.push(this.newAttribute)
+      this.newAttribute = {};
+  }
+
+  deleteFieldValue(index) {
+      this.fieldArray.splice(index, 1);
+  }
    ngOnInit(): void {
 
     this.userService.getCustomer().subscribe((data: CustomerResponse[]) => {

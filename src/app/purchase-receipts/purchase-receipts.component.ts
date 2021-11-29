@@ -62,8 +62,8 @@ export class PurchaseReceiptsComponent implements OnInit {
   account:['',Validators.required],
   discount:['',Validators.required],
 });
-private fieldArray: Array<any> = [];
-            private newAttribute: any = {};
+ fieldArray: Array<any> = [];
+             newAttribute: any = {};
             Customer: CustomerResponse[];
   constructor(private userService: UserService,private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
 
@@ -114,6 +114,7 @@ private fieldArray: Array<any> = [];
     this.fieldArray.push(this.newAttribute)
     this.newAttribute = {};
 }
+i=0;
 back() {
   this.router.navigate(['/purchase']);
 }

@@ -109,7 +109,7 @@
 
         <div class="grid-container" >
           <!-- Control the column width, and how they should appear on different devices -->
-          <div class="row">
+          <div class="row" *ngFor="let field of fieldArray; let i = index">
             <div>   <input type="text" formControlName="item_id1" style="border-radius: 12px;width: 150px" class="form-control" >Item ID</div>
             <div>   <input type="text" formControlName="item_details1" style="border-radius: 12px;width: 150px" class="form-control" >Item Details</div>
             <div><input type="number" min="0"
@@ -135,7 +135,12 @@
           <div>  <input type="text" formControlName="sales_ex2" style="border-radius: 12px;width: 150px;" class="form-control" > Sales Executive</div>
           <div>   <input type="text" formControlName="job2" style="border-radius: 12px;width: 150px" class="form-control" >JOB</div>
           </div>
-
+          <td>
+            <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
+        </td>&emsp;
+          <td>
+            <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Delete</button>
+        </td>
 </div>
 
           <br>

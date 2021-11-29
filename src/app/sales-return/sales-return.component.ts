@@ -53,8 +53,8 @@ export class SalesReturnComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
   ) { }
-  private fieldArray: Array<any> = [];
-  private newAttribute: any = {};
+   fieldArray: Array<any> = [];
+   newAttribute: any = {};
    ngOnInit(): void {
     this.userService.getCustomer().subscribe((data: CustomerResponse[]) => {
       this.Customer = data;
@@ -101,14 +101,22 @@ export class SalesReturnComponent implements OnInit {
 
     });
   }
-
+  i=0;
   onSubmit(): void {
     this.service.salesReturn(this.salesReturnForm.value,).subscribe((data,) => {
       console.log(data);
     });
     this.router.navigate(['/grand-hyper']);
   }
-  back() {
-    this.router.navigate(['/sales']);
-  }
+  addFieldValue() {
+    this.fieldArray.push(this.newAttribute)
+    this.newAttribute = {};
+}
+back() {
+  this.router.navigate(['/purchase']);
+}
+
+deleteFieldValue(index) {
+    this.fieldArray.splice(index, 1);
+}
 }

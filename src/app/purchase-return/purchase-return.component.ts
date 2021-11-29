@@ -48,8 +48,8 @@ export class PurchaseReturnComponent implements OnInit {
 
 
   });
-  private fieldArray: Array<any> = [];
-            private newAttribute: any = {};
+   fieldArray: Array<any> = [];
+             newAttribute: any = {};
             Customer: CustomerResponse[];
             Item:ItemResponse[];
             Job:JobResponse[];
@@ -96,8 +96,16 @@ export class PurchaseReturnComponent implements OnInit {
       console.log(data);});
       this.router.navigate(['/grand-hyper']);
   }
-  back() {
-    this.router.navigate(['/purchase']);
-  }
+  addFieldValue() {
+    this.fieldArray.push(this.newAttribute)
+    this.newAttribute = {};
+}
+back() {
+  this.router.navigate(['/purchase']);
+}
+i=0;
+deleteFieldValue(index) {
+    this.fieldArray.splice(index, 1);
+}
 
 }

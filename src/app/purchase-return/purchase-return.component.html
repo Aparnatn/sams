@@ -103,7 +103,7 @@
                 <th> JOB </th>
               </thead>
               <tbody>
-                <tr id='addr0'>
+                <tr id='addr0' *ngFor="let field of fieldArray; let i = index">
                     <td></td>
                     <td><input type="text" formControlName="item_id1" class="form-control"/></td>
                     <td><input type="text"  formControlName="item_details1" class="form-control"/></td>
@@ -125,7 +125,12 @@
                     <td><input type="text"  formControlName="sales_ex2" class="form-control"/></td>
                     <td><input type="text"  formControlName="job2" class="form-control"/></td>
                 </tr>
-
+                <td>
+                  <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
+              </td>&emsp;
+                <td>
+                  <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Delete</button>
+              </td>
                 </tbody>
             </table>
           </div>

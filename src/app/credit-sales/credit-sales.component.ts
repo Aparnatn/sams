@@ -45,6 +45,8 @@ export class CreditSalesComponent implements OnInit {
     discount: ['',Validators.required],
   });
   Customer: CustomerResponse[];
+   fieldArray: Array<any> = [];
+   newAttribute: any = {};
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -52,7 +54,7 @@ export class CreditSalesComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
   ) { }
-
+  i=0;
    ngOnInit(): void {
     this.userService.getCustomer().subscribe((data: CustomerResponse[]) => {
       this.Customer = data;
@@ -96,7 +98,15 @@ export class CreditSalesComponent implements OnInit {
     this.router.navigate(['/grand-hyper']);
 
   }
-  back() {
-    this.router.navigate(['/sales']);
-  }
+  addFieldValue() {
+    this.fieldArray.push(this.newAttribute)
+    this.newAttribute = {};
+}
+back() {
+  this.router.navigate(['/purchase']);
+}
+
+deleteFieldValue(index) {
+    this.fieldArray.splice(index, 1);
+}
 }

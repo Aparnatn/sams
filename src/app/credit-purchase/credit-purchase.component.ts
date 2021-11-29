@@ -43,9 +43,12 @@ export class CreditPurchaseComponent implements OnInit {
     discount: ['',Validators.required],
 
   });
-  private fieldArray: Array<any> = [];
-  private newAttribute: any = {};
+  fieldArray: Array<any> = [];
+  newAttribute: any = {};
+
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
+  i=0;
+
 
   ngOnInit(): void {
     //   const headers = new Headers();

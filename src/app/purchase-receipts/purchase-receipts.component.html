@@ -111,7 +111,7 @@
                 <th> Partial </th>
               </thead>
               <tbody>
-                <tr id='addr1'>
+                <tr id='addr1' *ngFor="let field of fieldArray; let i = index">
                   <td><input type="text" formControlName="si_no1" class="form-control"/></td>
                     <td><input type="text"  formControlName="invoice_no1" class="form-control"/></td>
                     <td><input type="date"  formControlName="invoice_date1" class="form-control"/></td>
@@ -137,7 +137,12 @@
                     <td><input type="text"  formControlName="tick_space2"(ngModelChange)="calcualtTotal()" class="form-control"/></td>
                     <td><input type="text"  formControlName="partial2" class="form-control"/></td>
                 </tr>
-
+                <td>
+                  <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
+              </td>&emsp;
+                <td>
+                  <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Delete</button>
+              </td>
                 </tbody>
             </table>
           </div>
