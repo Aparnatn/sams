@@ -36,5 +36,11 @@ export class StockMasterDataComponent implements OnInit {
       })
     // this.router.navigate(['/reports']);
   }
+  
+ 
+ back() {
+   this.router.navigate(['/itemjobbuttons']);
+ }
+
 
 }

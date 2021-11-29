@@ -66,6 +66,11 @@ export class BalanceSheetComponent implements OnInit {
   }
 
 
+  
+  back() {
+    this.router.navigate(['/financial']);
+  }
+
 
 
 }

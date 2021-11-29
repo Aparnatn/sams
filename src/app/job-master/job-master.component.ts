@@ -40,4 +40,10 @@ export class JobMasterComponent implements OnInit {
 
     // this.router.navigate(['/grand-hyper']);
   }
+  
+ 
+ back() {
+   this.router.navigate(['/itemjobbuttons']);
+ }
+
 }

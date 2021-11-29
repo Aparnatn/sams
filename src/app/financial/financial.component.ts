@@ -14,7 +14,7 @@ export class FinancialComponent implements OnInit {
   }
   onSubmit1(): void {
 
-    this.router.navigate(['/sales']);
+    // this.router.navigate(['']);
   }
   onSubmit2(): void {
 
@@ -30,6 +30,11 @@ export class FinancialComponent implements OnInit {
 
     this.router.navigate(['/trial-balance']);
   }
+  back() {
+    this.router.navigate(['/reports']);
+  }
+
+
 }
 
 

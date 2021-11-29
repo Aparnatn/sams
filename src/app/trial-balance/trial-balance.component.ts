@@ -52,5 +52,10 @@ export class TrialBalanceComponent implements OnInit {
       return total;
     }
 
+    
+  back() {
+    this.router.navigate(['/financial']);
+  }
+
 }
 
