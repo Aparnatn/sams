@@ -20,7 +20,7 @@ export class GrandHyperComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authService.user;
-    this.loadCompanies();
+    // this.loadCompanies();
     // this.loadUsers();
   }
 

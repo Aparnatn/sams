@@ -20,11 +20,11 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.authenticationService.getLoggedInstatus().subscribe(status => {
+    this.authenticationService.getLoggedInStatus().subscribe(status => {
       this.isLoggedIn = status;
     });
 
-    this.authenticationService.getLoggedInuser().subscribe((user: User) => {
+    this.authenticationService.getLoggedInUser().subscribe((user: User) => {
       this.user = user;
     })
   }
@@ -32,5 +32,6 @@ export class AppComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
+    return false;
   }
 }

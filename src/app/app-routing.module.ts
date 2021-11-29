@@ -233,7 +233,6 @@ export const ROUTES: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-
   },
   {
     path: 'sales',
