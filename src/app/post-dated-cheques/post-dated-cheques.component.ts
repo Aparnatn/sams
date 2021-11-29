@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-dated-cheques',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-dated-cheques.component.scss']
 })
 export class PostDatedChequesComponent implements OnInit {
+  
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
+  
+  back() {
+    this.router.navigate(['/financial']);
+  }
+
 
 }
