@@ -21,37 +21,37 @@ export class PurchaseReceiptsComponent implements OnInit {
   user_id:['',Validators.required],
   supp_id:['',Validators.required],
   supp_name:['',Validators.required],
-  si_no1:['',Validators.required],
+  si_no1:[''],
   si_no2:['',Validators.required],
 
-  invoice_no1:['',Validators.required],
+  invoice_no1:[''],
   invoice_no2:['',Validators.required],
 
-  invoice_date1:['',Validators.required],
+  invoice_date1:[''],
   invoice_date2:['',Validators.required],
 
-  duedate1:['',Validators.required],
+  duedate1:[''],
   duedate2:['',Validators.required],
 
-  invoice_amt1:['',Validators.required],
+  invoice_amt1:[''],
   invoice_amt2:['',Validators.required],
 
-  received_amt1:['',Validators.required],
+  received_amt1:[''],
   received_amt2:['',Validators.required],
-  paid_amount:['',Validators.required],
-  outstanding1:['',Validators.required],
+  paid_amount:[''],
+  outstanding1:[''],
   outstanding2:['',Validators.required],
 
-  discount1:['',Validators.required],
+  discount1:[''],
   discount2:['',Validators.required],
 
-  balance_amt1:['',Validators.required],
+  balance_amt1:[''],
   balance_amt2:['',Validators.required],
 
-  tick_space1:['',Validators.required],
+  tick_space1:[''],
   tick_space2:['',Validators.required],
 
-  partial1:['',Validators.required],
+  partial1:[''],
   partial2:['',Validators.required],
 
   total1:['',Validators.required],
@@ -60,7 +60,7 @@ export class PurchaseReceiptsComponent implements OnInit {
 
 
   account:['',Validators.required],
-  discount:['',Validators.required],
+  discount:[''],
 });
  fieldArray: Array<any> = [];
              newAttribute: any = {};
