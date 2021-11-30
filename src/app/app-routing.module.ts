@@ -80,6 +80,7 @@ import { CustomerbuttonsComponent } from './customerbuttons/customerbuttons.comp
 import { LedgerbuttonsComponent } from './ledgerbuttons/ledgerbuttons.component';
 import { ItemjobbuttonsComponent } from './itemjobbuttons/itemjobbuttons.component';
 import { AuthGuard } from './auth/auth.guard';
+import { ManualJournalComponent } from './manual-journal/manual-journal.component';
 
 export const ROUTES: Routes = [
   {
@@ -190,11 +191,11 @@ export const ROUTES: Routes = [
     component: CustomerRegisterComponent,
     canActivate: [AuthGuard]
   },
-  // {
-  //   path: 'user-register',
-  //   component: UserRegisterComponent,
-  //   canActivate: [AuthGuard]
-  // },
+  {
+    path: 'manual-journal',
+    component: ManualJournalComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: 'registration',
     component: RegistrationComponent,

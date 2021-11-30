@@ -91,6 +91,7 @@ import { LedgerbuttonsComponent } from './ledgerbuttons/ledgerbuttons.component'
 import { ItemjobbuttonsComponent } from './itemjobbuttons/itemjobbuttons.component';
 import { AuthenticationService } from './auth/authentication.service';
 import { ErrorInterceptor } from './auth/error.iterceptor';
+import { ManualJournalComponent } from './manual-journal/manual-journal.component';
 
 @NgModule({
   declarations: [
@@ -186,6 +187,7 @@ import { ErrorInterceptor } from './auth/error.iterceptor';
     CustomerbuttonsComponent,
     LedgerbuttonsComponent,
     ItemjobbuttonsComponent,
+    ManualJournalComponent,
   ],
   imports: [
     BrowserModule,
