@@ -14,6 +14,6 @@ export class PayrollComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(['/reports']);
+    this.router.navigate(['/grand-hyper']);
   }
 }

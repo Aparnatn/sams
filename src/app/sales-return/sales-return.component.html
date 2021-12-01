@@ -82,9 +82,9 @@
         </div>
         <br><br>
 
-        <div class="grid-container" *ngFor="let field of fieldArray; let i = index">
+        <div class="grid-container" >
           <!-- Control the column width, and how they should appear on different devices -->
-          <div class="row">
+          <div class="row" *ngFor="let field of fieldArray; let i = index">
             <div>   <input type="text" formControlName="item_id1" style="border-radius: 12px;width: 150px" class="form-control" >Item ID</div>
             <div>   <input type="text" formControlName="item_details1" style="border-radius: 12px;width: 150px" class="form-control" >Item Details</div>
             <div><input type="number" min="0"
@@ -111,7 +111,7 @@
           <div>   <input type="text" formControlName="job2" style="border-radius: 12px;width: 150px" class="form-control" >JOB</div>
           </div>
 
-</div>
+        </div>
 <td>
   <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
 </td>&emsp;
@@ -173,7 +173,7 @@
           </div>
         </div>
 
-        <div class="row" style="padding-top: 5px; ">
+        <!-- <div class="row" style="padding-top: 5px; ">
           <div class="col-sm-2" style="padding-left: 3px;">
             <label class="form-control"  style="border-radius:12px;padding: 10px;"> Total</label>
           </div>
@@ -183,7 +183,7 @@
           <div class="col-sm-7" style="padding-left: 3px;" >
             <input  type="text " style="border-radius: 12px;" class="form-control" placeholder="Amount in words">
           </div>
-        </div>
+        </div> -->
 
       </div>
           <br>
