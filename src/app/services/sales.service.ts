@@ -2,9 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { BalanceSheet, CashSaleRequest, CashSaleResponse, CreditPurchaseRequest, CreditPurchaseResponse, CreditSaleRequest, CreditSaleResponse, CustomerMasterdataRequest, CustomerMasterdataResponse, pandl, PCashSaleRequest, PCashSaleResponse, PurchaseReceiptRequest, PurchaseReceiptResponse, PurchasereturnRequest, SalesReceiptRequest, SalesReceiptResponse, SalesreturnRequest, SalesReturnResponse } from '../interfaces/sales.interfaces';
+import { BalanceSheet, CashSaleRequest, CashSaleResponse, CreditPurchaseRequest, CreditPurchaseResponse, CreditSaleRequest, CreditSaleResponse, CustomerMasterdataRequest, CustomerMasterdataResponse, ManualJournalRequest, ManualJournalResponse, pandl, PCashSaleRequest, PCashSaleResponse, PurchaseReceiptRequest, PurchaseReceiptResponse, PurchasereturnRequest, SalesReceiptRequest, SalesReceiptResponse, SalesreturnRequest, SalesReturnResponse } from '../interfaces/sales.interfaces';
 import { Company } from '../user/user.service';
 import { CustomerResponse, ItemResponse, JobResponse } from '../user/login.interfaces';
+
+// export interface manualjournalFilter {
+//   from_date?: string,
+//   to_date?: string,
+//   name?: string,
+// }
 export interface CashFilter {
   from_date?: string,
   to_date?: string,
@@ -69,6 +75,14 @@ export class SalesService {
 
   constructor(private http: HttpClient) {
     this.apiUrl = environment.apiUrl
+  }
+
+  manualjournal(data: ManualJournalRequest): Observable<ManualJournalResponse> {
+    return this.http.post<ManualJournalResponse>(`${this.apiUrl}/Sam/ManualJournalApi`, data, {
+      // observe: 'response',
+      // withCredentials: true
+    });
+
   }
 
   cashSale(data: CashSaleRequest): Observable<CashSaleResponse> {

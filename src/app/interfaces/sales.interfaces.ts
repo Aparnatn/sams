@@ -1,3 +1,22 @@
+export interface ManualJournalRequest {
+  debitledg1: string,
+  debitledg2: string,
+  creditledg1: string,
+  creditledg2: string,
+  debitamnt1: string,
+  debitamnt2: string,
+  creditamnt1: string,
+  creditamnt2: string,
+  debtotal: string,
+  cretotal: string,
+  id:number,
+}
+
+export interface ManualJournalResponse {
+  id: number
+  // total2: number,
+}
+
 export interface CashSaleRequest {
   invoice_number: string,
   date: string,
