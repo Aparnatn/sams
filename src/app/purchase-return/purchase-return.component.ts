@@ -5,6 +5,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user/user.service';
 import { CustomerResponse, ItemResponse, JobResponse } from '../user/login.interfaces';
+import { CashFrom } from '../interfaces/sales.interfaces';
 @Component({
   selector: 'app-purchase-return',
   templateUrl: './purchase-return.component.html',
@@ -90,6 +91,27 @@ export class PurchaseReturnComponent implements OnInit {
 
     })
   }
+  calcualtTotal() {
+    const form: CashFrom = this.PurchaseReturnForm.value;
+
+    const amount1 = Number(form.price1_1) * Number(form.quantity1);
+    const amount2 = Number(form.price1_2) * Number(form.quantity2);
+    const amount3 = amount1+amount2
+    const total1 = amount3+Number(form.labour_charge) + Number(form.other_charge);
+    const total2 = total1 - Number(form.discount);
+    const total3 = total2
+
+    this.PurchaseReturnForm.patchValue({
+      "amount1": amount1,
+      "amount2": amount2,
+      "total1": total1,
+      "total2": String(total2),
+      "total3": total3,
+      "cash": total3
+
+    });
+  }
+  
   onSubmit1(): void {
 
     this.service.creditPurchase(this.PurchaseReturnForm.value,).subscribe((data,)=>{

@@ -113,7 +113,7 @@ export class SalesReturnComponent implements OnInit {
     this.newAttribute = {};
 }
 back() {
-  this.router.navigate(['/purchase']);
+  this.router.navigate(['/sales']);
 }
 
 deleteFieldValue(index) {

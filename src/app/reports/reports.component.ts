@@ -29,7 +29,7 @@ export class ReportsComponent implements OnInit {
   }
   onSubmit5(): void {
 
-    this.router.navigate(['/payroll']);
+    // this.router.navigate(['']);
   }
   onSubmit6(): void {
 
