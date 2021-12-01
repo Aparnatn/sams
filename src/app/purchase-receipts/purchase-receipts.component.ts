@@ -49,10 +49,10 @@ export class PurchaseReceiptsComponent implements OnInit {
   balance_amt2:['',Validators.required],
 
   tick_space1:[''],
-  tick_space2:['',Validators.required],
+  tick_space2:['',],
 
   partial1:[''],
-  partial2:['',Validators.required],
+  partial2:['',],
 
   total1:['',Validators.required],
   total2:['',Validators.required],
