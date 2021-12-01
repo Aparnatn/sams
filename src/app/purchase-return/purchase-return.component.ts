@@ -43,7 +43,7 @@ export class PurchaseReturnComponent implements OnInit {
     total1:['',Validators.required],
     total2:['',Validators.required],
     total3:['',Validators.required],
-    total4:['',Validators.required],
+    total4:['',],
 
     discount:[''],
 
