@@ -52,9 +52,11 @@ export class BalanceSheetComponent implements OnInit {
 
       this.cashPurchases.forEach(element => {
         this.assetTotal += Number(element.total3);
+
       });
       this.cash.forEach(element => {
         this.assetTotal += Number(element.total3);
+
       });
       this.salesReceipts.forEach(element => {
         this.liabilityTotal += Number(element.total3);
@@ -66,7 +68,7 @@ export class BalanceSheetComponent implements OnInit {
   }
 
 
-  
+
   back() {
     this.router.navigate(['/financial']);
   }

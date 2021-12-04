@@ -22,7 +22,7 @@ export class CashPurchaseComponent implements OnInit {
    supp_id: ['',Validators.required],
     supp_name: ['',Validators.required],
     item_id1: [''],
-    item_id2: ['',Validators.required],
+    item_id2: [''],
     item_details1: [''],
     item_details2: ['',Validators.required],
     price1_1: [''],

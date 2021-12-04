@@ -64,6 +64,7 @@ export interface CashSaleRequest {
 }
 
 export interface CashFrom extends CashSaleRequest {
+  price: any;
   total1: number,
   // total2: number,
 }

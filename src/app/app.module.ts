@@ -91,7 +91,9 @@ import { LedgerbuttonsComponent } from './ledgerbuttons/ledgerbuttons.component'
 import { ItemjobbuttonsComponent } from './itemjobbuttons/itemjobbuttons.component';
 import { AuthenticationService } from './auth/authentication.service';
 import { ErrorInterceptor } from './auth/error.iterceptor';
+
 import { ManualJournalComponent } from './manual-journal/manual-journal.component';
+import { AddMoreComponent } from './cash/add-more/add-more.componenet';
 
 @NgModule({
   declarations: [
@@ -109,6 +111,7 @@ import { ManualJournalComponent } from './manual-journal/manual-journal.componen
     LedgerComponent,
     LedgerStatementComponent,
     CashComponent,
+    AddMoreComponent,
     PurchaseReceiptsComponent,
     CreditSalesComponent,
     SalesReturnComponent,
@@ -197,6 +200,7 @@ import { ManualJournalComponent } from './manual-journal/manual-journal.componen
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
