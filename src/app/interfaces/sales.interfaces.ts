@@ -130,6 +130,8 @@ export interface CustomerMasterdataResponse {
  id:number
 }
 export interface CashSaleResponse {
+  amount: any;
+  price: any;
   price1_1: any;
   amount1: any;
   amount2: any;

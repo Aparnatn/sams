@@ -20,14 +20,15 @@ export class CashComponent implements OnInit {
     date: ['', Validators.required],
     internal_ref_no: ['', Validators.required],
     cash: ['', Validators.required],
-    ledger_name: "sales_ledger",
+
     user_id: ['', Validators.required],
     account: ['', Validators.required],
     customerId: '',
     customer_id: ['', Validators.required],
+
     items: this.formBuilder.array([
-      this.newItemRow(),
-    ], Validators.required),
+      this.newItemRow()
+    ]),
     labour_charge: ['',],
     other_charge: ['',],
     total1: ['', Validators.required],
@@ -74,7 +75,7 @@ export class CashComponent implements OnInit {
       quantity: [''],
       amount: [''],
       sales_ex: [''],
-      job: [''],
+      job_id: [''],
     });
   }
 

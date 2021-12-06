@@ -25,19 +25,13 @@ export class CustomerInvoiceComponent implements OnInit {
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,private salesservice:SalesService) { }
 
   ngOnInit(): void {
-    // this.service.customeInvoicetHF({}).subscribe((data) => {
-    //   this.customerIN = data;
-    //   console.log(data);
-    // })
+
   }
   onSubmit(): void {
-    this.service.customeInvoicetHF(this.customerInviceForm.value,).subscribe((data,)=>{
-      console.log(data);});
-      this.service.customeInvoicetHF({}).subscribe((data) => {
+    // this.service.customeInvoicetHF(this.customerInviceForm.value).subscribe((data)=>{
+    //   this.customerIN = data;
+    // });
 
-        this.customerIN = data;
-        console.log(data);
-      })
 
     // this.router.navigate(['/reports']);
     this.calculateAsset(this.assetTotal);
@@ -49,13 +43,13 @@ export class CustomerInvoiceComponent implements OnInit {
       this.Cash = cash;
 
         this.Cash.forEach(element => {
-          this.assetTotal  +=  Number(element.price1_1) + Number(element.amount2);
+          this.assetTotal  =  Number(element.amount) + Number(element.amount);
         });
         return Number(assetTotal);
     });
 
   }
-  
+
  back() {
   this.router.navigate(['/customerbuttons']);
 }

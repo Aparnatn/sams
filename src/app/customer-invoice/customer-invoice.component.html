@@ -89,28 +89,30 @@
             </tr>
           </thead>
           <tbody>
-            <tr   *ngFor="let customerIN of Cash;">
+            <tr *ngFor="let customerIN of Cash;">
+<td></td>
+              <td>{{customerIN.date}}</td>
+              <!-- <td>{{customerIN.internal_ref_no}}</td> -->
+              <td>{{customerIN.price}}</td>
+              <td>{{customerIN.description}}</td>
+              <td>{{customerIN.name}}</td>
+              <td>{{customerIN.quantity}}</td>
+              <td>{{customerIN.job}}</td>
+              <td>{{customerIN.sales_executive}}</td>
+              <td>{{customerIN.amount}}</td>
+            </tr>
+            <!-- <tr   *ngFor="let customerINn of Cash;">
               <td></td>
               <td>{{customerIN.date}}</td>
               <td>{{customerIN.internal_ref_no}}</td>
-              <td>{{customerIN.price1_1}}</td>
-              <td>{{customerIN.item_details1}}</td>
-              <td>{{customerIN.quantity1}}</td>
-              <td>{{customerIN.job1}}</td>
-              <td>{{customerIN.sales_ex1}}</td>
-              <td>{{customerIN.amount1}}</td>
-            </tr>
-            <tr   *ngFor="let customerINn of Cash;">
-              <td></td>
-              <td>{{customerINn.date}}</td>
-              <td>{{customerINn.internal_ref_no}}</td>
-              <td>{{customerINn.price1_2}}</td>
-              <td>{{customerINn.item_details2}}</td>
-              <td>{{customerINn.quantity2}}</td>
-              <td>{{customerINn.job2}}</td>
-              <td>{{customerINn.sales_ex2}}</td>
-              <td>{{customerINn.amount2}}</td>
-            </tr>
+              <td>{{customerIN.price}}</td>
+              <td>{{customerIN.description}}</td>
+              <td>{{customerIN.name}}</td>
+              <td>{{customerIN.quantity}}</td>
+              <td>{{customerIN.job}}</td>
+              <td>{{customerIN.sales_executive}}</td>
+              <td>{{customerIN.amount}}</td>
+            </tr> -->
             <tr>
               <td class="hide">hide</td>
               <td class="hide"></td>

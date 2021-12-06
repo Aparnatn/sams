@@ -140,7 +140,7 @@ export class UserService {
   }
 
   companycreate(data: CompanyRequest): Observable<CompanyResponse> {
-    return this.http.post<CompanyResponse>(`${this.apiUrl}/Sam/companycreate`, data, {
+    return this.http.post<CompanyResponse>(`${this.apiUrl}/Sam/companycreates`, data, {
       // observe: 'response',
       // withCredentials: true
     });
