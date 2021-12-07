@@ -130,7 +130,7 @@ export class SalesService {
   }
 
   purchaseReturn(data: PurchasereturnRequest): Observable<PurchaseReceiptResponse> {
-    return this.http.post<PurchaseReceiptResponse>(`${this.apiUrl}/Sam/PReceiptApi`, data, {
+    return this.http.post<PurchaseReceiptResponse>(`${this.apiUrl}/Sam/PRSales_ReturnApi`, data, {
       // observe: 'response',
       // withCredentials: true
     });
