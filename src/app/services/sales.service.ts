@@ -14,6 +14,7 @@ import { CustomerResponse, ItemResponse, JobResponse } from '../user/login.inter
 export interface CashFilter {
   from_date?: string,
   to_date?: string,
+  report_date?: string,
   name?: string,
 }
 

@@ -13,44 +13,34 @@ import { SalesService } from '../services/sales.service';
   styleUrls: ['./customer-invoice.component.scss']
 })
 export class CustomerInvoiceComponent implements OnInit {
- customerInviceForm = this.formBuilder.group({
-  date:['',Validators.required],
-  report_date:['',Validators.required],
-   });
+  customerInviceForm = this.formBuilder.group({
+    // date: ['', Validators.required],
+    report_date: ['', Validators.required],
+  });
 
-   customerIN: CustomerInvoiceHistoryResponse[];
-   assetTotal = 0;
-   Cash: CashSaleResponse[];
+  customerIN: CustomerInvoiceHistoryResponse[];
+  assetTotal = 0;
+  Cash: CashSaleResponse[];
 
-  constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,private salesservice:SalesService) { }
+  constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder, private service: ReportsService, private salesservice: SalesService) { }
 
   ngOnInit(): void {
 
   }
   onSubmit(): void {
-    // this.service.customeInvoicetHF(this.customerInviceForm.value).subscribe((data)=>{
-    //   this.customerIN = data;
-    // });
-
-
-    // this.router.navigate(['/reports']);
-    this.calculateAsset(this.assetTotal);
-
-
-  }
-  calculateAsset(assetTotal:Number) {
-    this.service.customer_invoice({}).subscribe((cash) => {
+    this.service.customer_invoice(this.customerInviceForm.value).subscribe((cash) => {
       this.Cash = cash;
 
-        this.Cash.forEach(element => {
-          this.assetTotal  =  Number(element.amount) + Number(element.amount);
-        });
-        return Number(assetTotal);
+      this.calculateAsset()
     });
-
+  }
+  calculateAsset() {
+    this.Cash.forEach(element => {
+      this.assetTotal = Number(element.amount) + Number(element.amount);
+    });
   }
 
- back() {
-  this.router.navigate(['/customerbuttons']);
-}
+  back() {
+    this.router.navigate(['/customerbuttons']);
+  }
 }

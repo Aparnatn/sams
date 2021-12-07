@@ -849,6 +849,9 @@ customer_invoice(filter: CashFilter): Observable<CashSaleResponse[]> {
   if (filter.to_date) {
     params = params.append('to_date', filter.to_date);
   }
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
+  }
   if (filter.name) {
     params = params.append('name', filter.name);
   }
@@ -916,8 +919,8 @@ pchs1(filter: PCashFilter): Observable<PCashSaleResponse[]> {
       )
     }
 
-    customerInvoiceH: CustomerInvoiceHistoryRequest[] = [];
-    customeInvoicetHF(filter: CustomerInvoiceHistoryFilter): Observable<CustomerInvoiceHistoryResponse[]> {
+    customerInvoiceHF: CustomerInvoiceHistoryRequest[] = [];
+    customerInvoicetHF(filter: CustomerInvoiceHistoryFilter): Observable<CustomerInvoiceHistoryResponse[]> {
       // console.log(filter);
       let params = new HttpParams();
       if (filter.from_date) {

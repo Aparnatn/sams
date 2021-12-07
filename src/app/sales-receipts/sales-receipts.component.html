@@ -79,32 +79,35 @@
         </div>
           <br><br>
         <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
-          <div class="col-sm-5" >
-            <label class="form-control"  style="border-radius:12px;padding: 10px;">Customer ID</label>
-            <!-- <input type="text " style="border-radius: 12px; color: white;" class="form-control" placeholder=" Supplier ID" > -->
+          <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
+            <div class="col" >
+              <label class="form-control"  style="border-radius:12px;padding: 10px;">Custoer ID</label>
+            </div>
+            <div class="col" >
+              <input type="text" formControlName="customerId" style="border-radius: 12px;" class="form-control" readonly>
+            </div>
           </div>
-          <div class="col-sm-7" >
-            <select  formControlName="customer_id" style="border-radius: 12px;" class="form-control" placeholder="">
-
-              <option *ngFor="let item of Customer">{{item.id}}</option>
+<br>
+            <div class="col" >
+              <label class="form-control"  style="border-radius:12px;padding: 10px;">Customer Name</label>
+            </div>
+            <div class="col" >
+            <select  formControlName="customer_id" (change)="setCustomerId($event)" style="border-radius: 12px;" class="form-control" placeholder="">
+              <option *ngFor="let item of customers" value="{{item.id}}">{{item.customer_name}}</option>
             </select>
           </div>
         </div>
-        <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
-          <div class="col-sm-5" >
-            <label class="form-control"  style="border-radius:12px;padding: 10px;">Customer Name </label>
-            <!-- <input type="text " style="border-radius: 12px" class="form-control" placeholder=" Supplier Name" > -->
-          </div>
-          <div class="col-sm-7" >
+
+          <!-- <div class="col-sm-7" >
             <select  formControlName="customer_name" style="border-radius: 12px;" class="form-control" placeholder="">
 
               <option *ngFor="let item of Customer">{{item.customer_name}}</option>
             </select>
-          </div>
-        </div>
+          </div> -->
+
           <br><br>
 
-          <div class="container">
+          <div class="container" formArrayName="items" >
 
             <table class="table table-bordered">
               <thead>
@@ -121,20 +124,22 @@
                 <th> Partial </th>
               </thead>
               <tbody>
-                <tr id='addr1' *ngFor="let field of fieldArray; let i = index">
-                  <td><input type="text" formControlName="si_no1" class="form-control"/></td>
-                    <td><input type="text"  formControlName="invoice_no1" class="form-control"/></td>
-                    <td><input type="date"  formControlName="invoice_date1" class="form-control"/></td>
-                    <td><input type="date"  formControlName="duedate1"(ngModelChange)="calcualtTotal()" placeholder='D/M/Y' class="form-control price" step="0.00" min="0"/></td>
-                    <td><input type="number"  formControlName="invoice_amt1" (ngModelChange)="calcualtTotal()"placeholder='0.00' class="form-control qty" step="0" min="0"/></td>
-                    <td><input type="number"  formControlName="received_amt1" (ngModelChange)="calcualtTotal()"placeholder='0.00' class="form-control total" /></td>
-                    <td><input type="number"  formControlName="outstanding1"(ngModelChange)="calcualtTotal()" placeholder='0.00' class="form-control total" /></td>
-                    <td><input type="text"  formControlName="discount1"(ngModelChange)="calcualtTotal()" class="form-control"/></td>
-                    <td><input type="text"  formControlName="balance_amt1" (ngModelChange)="calcualtTotal()" class="form-control"/></td>
-                    <td><input type="text"  formControlName="tick_space1" (ngModelChange)="calcualtTotal()" class="form-control"/></td>
-                    <td><input type="text"  formControlName="partial1" class="form-control"/></td>
+
+                <tr id='addr1' *ngFor="let field of items().controls; let i = index" [formGroupName]="i">
+                  <td><input type="text" formControlName="si_no" class="form-control"/></td>
+                    <td><input type="text"  formControlName="invoice_no" class="form-control"/></td>
+                    <td><input type="date"  formControlName="invoice_date" class="form-control"/></td>
+                    <td><input type="date"  formControlName="duedate" placeholder='D/M/Y' class="form-control price" step="0.00" min="0"/></td>
+                    <td><input type="number"  formControlName="invoice_amt" (ngModelChange)="calcualtTotal()"placeholder='0.00' class="form-control qty" step="0" min="0"/></td>
+                    <td><input type="number"  formControlName="received_amt" (ngModelChange)="calcualtTotal()"placeholder='0.00' class="form-control total" /></td>
+                    <td><input type="number"  formControlName="outstanding"(ngModelChange)="calcualtTotal()" placeholder='0.00' class="form-control total" /></td>
+                    <td><input type="text"  formControlName="discount"(ngModelChange)="calcualtTotal()" class="form-control"/></td>
+                    <td><input type="text"  formControlName="balance_amt" class="form-control"/></td>
+                    <td><input type="text"  formControlName="tick_space" class="form-control"/></td>
+                    <td><input type="text"  formControlName="partial" class="form-control"/></td>
                 </tr>
-                <tr id='addr1'>
+
+                <!-- <tr id='addr1'>
                   <td><input type="text" formControlName="si_no2" class="form-control"/></td>
                     <td><input type="text"  formControlName="invoice_no2" class="form-control"/></td>
                     <td><input type="date"  formControlName="invoice_date2" class="form-control"/></td>
@@ -146,12 +151,12 @@
                     <td><input type="text"  formControlName="balance_amt2"  (ngModelChange)="calcualtTotal()"class="form-control"/></td>
                     <td><input type="text"  formControlName="tick_space2"(ngModelChange)="calcualtTotal()" class="form-control"/></td>
                     <td><input type="text"  formControlName="partial2" class="form-control"/></td>
-                </tr>
+                </tr> -->
                 <td>
-                  <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
-              </td>&emsp;
+                  <button class="btn btn-default" type="button" (click)="addMoreItem()">Add</button>
+              </td>
                 <td>
-                  <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Delete</button>
+                  <button class="btn btn-default"  type="button" (click)="removeItem(itemsIndex)">Delete</button>
               </td>
                 </tbody>
             </table>
@@ -176,7 +181,7 @@
               <label class="form-control"  style="border-radius:12px;padding: 10px;"> Discount</label>
             </div>
             <div class="col" style="padding-left: 3px;" >
-              <input type="text " formControlName="discount"(ngModelChange)="calcualtTotal()" style="border-radius: 12px;" class="form-control" name="discount" id="discount" placeholder="0">
+              <input type="text " formControlName="discount" (ngModelChange)="calcualtTotal()" style="border-radius: 12px;" class="form-control" name="discount" id="discount" placeholder="0">
             </div>
             <div class="col-sm-7" style="padding-left: 3px;" >
               <input  type="text " style="border-radius: 12px;" class="form-control" name="total2" placeholder='Amount in words'>
@@ -199,7 +204,7 @@
               <label class="form-control"  style="border-radius:12px;padding: 10px;"> Paid Amount</label>
             </div>
             <div class="col" >
-              <input type="text " formControlName="paid_amount" style="border-radius: 12px;" class="form-control" name="discount" id="discount" placeholder="0">
+              <input type="text " formControlName="paid_amount"  style="border-radius: 12px;" class="form-control" placeholder="0">
             </div>
           </div>
 
