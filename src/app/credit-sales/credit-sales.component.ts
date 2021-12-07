@@ -2,51 +2,52 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SalesService } from '../services/sales.service';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CashFrom, CreditSaleRequest } from '../interfaces/sales.interfaces';
 import { UserService } from '../user/user.service';
-import { CustomerResponse } from '../user/login.interfaces';
+import { CustomerResponse, EmployeeResponse, ItemResponse, JobResponse } from '../user/login.interfaces';
 @Component({
   selector: 'app-credit-sales',
   templateUrl: './credit-sales.component.html',
   styleUrls: ['./credit-sales.component.scss']
 })
 export class CreditSalesComponent implements OnInit {
+  customerId = '';
+  
   creditSaleForm = this.formBuilder.group({
-    invoice_number: ['',Validators.required],
-    date: ['',Validators.required],
-    internal_ref_no: ['',Validators.required],
-    account:['',Validators.required],
-    user_id: ['',Validators.required],
-    due_on:['',Validators.required],
-    credit_limit_amt:['',Validators.required],
-
-    customer_id: ['',Validators.required],
-    customer_name: ['',Validators.required],
-    item_id1: ['',],
-    item_id2: ['',Validators.required],
-    item_details1: ['',],
-    item_details2: ['',Validators.required],
-    price1_1: ['',],
-    price1_2: ['',Validators.required],
-    quantity1: ['',],
-    quantity2: ['',Validators.required],
-    amount1: ['',],
-    amount2: ['',Validators.required],
-    sales_ex1: ['',],
-    sales_ex2: ['',Validators.required],
-    job1: ['',],
-    job2: ['',Validators.required],
+    invoice_number: ['', Validators.required],
+    date: ['', Validators.required],
+    internal_ref_no: ['', Validators.required],
+    credit_limit_amt: ['', Validators.required],
+    due_on: ['', Validators.required],
+    ledger_name: "sales_ledger",
+    user_id: ['', Validators.required],
+    account: ['', Validators.required],
+    customerId: '',
+    customer_id: ['', Validators.required],
+    itemscrs: this.formBuilder.array([
+      this.newItemRow(),
+    ], Validators.required),
     labour_charge: ['',],
     other_charge: ['',],
-    total1: ['',Validators.required],
-    total2: ['',Validators.required],
-    total3: ['',Validators.required],
+    total1: ['', Validators.required],
+    total2: ['', Validators.required],
+    total3: ['', Validators.required],
     discount: ['',],
   });
-  Customer: CustomerResponse[];
-   fieldArray: Array<any> = [];
-   newAttribute: any = {};
+
+  customers: CustomerResponse[];
+
+  Items: ItemResponse[];
+
+  jobs: JobResponse[];
+
+  employees: EmployeeResponse[];
+
+  // to track index of last item in cashForm.itemscrs array
+  itemscrsIndex = 0;
+
+  itemscrsList: number[] = [1]
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -54,34 +55,85 @@ export class CreditSalesComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
   ) { }
-  i=0;
-   ngOnInit(): void {
+  itemscrs(): FormArray {
+    return this.creditSaleForm.get("itemscrs") as FormArray
+  }
+
+  addMoreItem() {
+    this.itemscrs().push(this.newItemRow());
+    this.itemscrsIndex++;
+  }
+
+  private newItemRow(): FormGroup {
+    return this.formBuilder.group({
+      item_id: [''],
+      price: [''],
+      quantity: [''],
+      amount: [''],
+      sales_ex: [''],
+      job_id: [''],
+    });
+  }
+
+  removeItem(i: number) {
+    this.itemscrs().removeAt(i);
+    this.itemscrsIndex--;
+  }
+
+  ngOnInit(): void {
+    this.loadCustomers();
+    this.loadItems();
+    this.loadJobs();
+    this.loadEmployee();
+  }
+
+  loadCustomers() {
     this.userService.getCustomer().subscribe((data: CustomerResponse[]) => {
-      this.Customer = data;
-
-      data.forEach(d => {
-        this.creditSaleForm.patchValue({
-          customer_name: d.customer_name,
-          customer_id: d.id
-        });
-      });
-
+      this.customers = data;
     })
-   }
+  }
+
+  loadJobs() {
+    this.userService.getJob().subscribe((data: JobResponse[]) => {
+      this.jobs = data;
+    })
+  }
+
+  loadItems() {
+    this.userService.getItemss().subscribe((data: ItemResponse[]) => {
+      this.Items = data;
+    })
+  }
+
+  loadEmployee() {
+    this.userService.getEmployees().subscribe((data: EmployeeResponse[]) => {
+      this.employees = data;
+    })
+  }
+
+  setCustomerId(event) {
+    this.creditSaleForm.patchValue({customerId: this.creditSaleForm.get('customer_id').value});
+  }
 
   calcualtTotal() {
-    const form: CashFrom = this.creditSaleForm.value;
+    const form = this.creditSaleForm.value;
+    let total1 = 0;
 
-    const amount1 = Number(form.price1_1) * Number(form.quantity1);
-    const amount2 = Number(form.price1_2) * Number(form.quantity2);
-    const amount3 = amount1+amount2
-    const total1 = amount3+Number(form.labour_charge) + Number(form.other_charge);
+    this.itemscrs().controls.forEach(item => {
+      let amount = Number(item.get('price').value) * Number(item.get('quantity').value);
+      total1 += amount;
+      item.patchValue({ amount: amount })
+    })
+
+    const amount = Number(form.itemscrs.price) * Number(form.quantity);
+
+    total1 += Number(form.labour_charge) + Number(form.other_charge);
     const total2 = total1 - Number(form.discount);
     const total3 = total2
 
     this.creditSaleForm.patchValue({
-      "amount1": amount1,
-      "amount2": amount2,
+      "amount": amount,
+
       "total1": total1,
       "total2": String(total2),
       "total3": total3,
@@ -89,24 +141,21 @@ export class CreditSalesComponent implements OnInit {
 
     });
   }
-
   onSubmit(): void {
-    this.service.creditSale(this.creditSaleForm.value,).subscribe((data,) => {
-      console.log(data);
 
-    });
-    this.router.navigate(['/grand-hyper']);
 
+    if (this.creditSaleForm.dirty && this.creditSaleForm.valid) {
+      this.service.creditSale(this.creditSaleForm.value).subscribe((data) => {
+        console.log(data);
+        this.router.navigate(['/grand-hyper']);
+
+      }, (error) => {
+        alert(error.error);
+      });
+    }
   }
-  addFieldValue() {
-    this.fieldArray.push(this.newAttribute)
-    this.newAttribute = {};
-}
-back() {
-  this.router.navigate(['/sales']);
-}
 
-deleteFieldValue(index) {
-    this.fieldArray.splice(index, 1);
-}
+  back() {
+    this.router.navigate(['/sales']);
+  }
 }
