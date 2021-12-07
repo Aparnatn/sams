@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReceiptFrom, PurchaseReceiptRequest } from '../interfaces/sales.interfaces';
 import { SalesService } from '../services/sales.service';
 import { UserService } from '../user/user.service';
@@ -21,87 +21,84 @@ export class PurchaseReceiptsComponent implements OnInit {
   user_id:['',Validators.required],
   supp_id:['',Validators.required],
   supp_name:['',Validators.required],
-  si_no1:[''],
-  si_no2:['',Validators.required],
-
-  invoice_no1:[''],
-  invoice_no2:['',Validators.required],
-
-  invoice_date1:[''],
-  invoice_date2:['',Validators.required],
-
-  duedate1:[''],
-  duedate2:['',Validators.required],
-
-  invoice_amt1:[''],
-  invoice_amt2:['',Validators.required],
-
-  received_amt1:[''],
-  received_amt2:['',Validators.required],
-  paid_amount:[''],
-  outstanding1:[''],
-  outstanding2:['',Validators.required],
-
-  discount1:[''],
-  discount2:['',Validators.required],
-
-  balance_amt1:[''],
-  balance_amt2:['',Validators.required],
-
-  tick_space1:[''],
-  tick_space2:['',],
-
-  partial1:[''],
-  partial2:['',],
-
+  items: this.formBuilder.array([
+    this.newItemRow()
+  ]),
   total1:['',Validators.required],
   total2:['',Validators.required],
   total3:['',Validators.required],
-
-
   account:['',Validators.required],
   discount:[''],
+  paid_amount: ['', Validators.required],
 });
- fieldArray: Array<any> = [];
-             newAttribute: any = {};
-            Customer: CustomerResponse[];
+customers: CustomerResponse[];
+itemsIndex = 0;
+
+itemsList: number[] = [1]
   constructor(private userService: UserService,private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
+  items(): FormArray {
+    return this.PurchaseReceiptsForm.get("items") as FormArray
+  }
 
+  addMoreItem() {
+    this.items().push(this.newItemRow());
+    this.itemsIndex++;
+  }
+
+  private newItemRow(): FormGroup {
+    return this.formBuilder.group({
+      si_no: [''],
+      invoice_no: [''],
+      invoice_date: [''],
+      duedate: [''],
+      invoice_amt: [''],
+      received_amt: [''],
+
+      outstanding: [''],
+      discount: [''],
+      balance_amt: [''],
+      tick_space: [''],
+      partial: [''],
+    });
+  }
   ngOnInit(): void {
+    this.loadCustomers();
+
+  }
+  loadCustomers() {
     this.userService.getCustomer().subscribe((data: CustomerResponse[]) => {
-      this.Customer = data;
-
-      data.forEach(d => {
-        this.PurchaseReceiptsForm.patchValue({
-          customer_name: d.customer_name,
-          customer_id: d.id
-        });
-      });
-
+      this.customers = data;
     })
   }
+  setCustomerId(event) {
+    this.PurchaseReceiptsForm.patchValue({customerId: this.PurchaseReceiptsForm.get('customer_id').value});
+  }
   calcualtTotal() {
-    const form: ReceiptFrom = this.PurchaseReceiptsForm.value;
+    const form = this.PurchaseReceiptsForm.value;
+    let total1 = 0;
 
-    const tick_space1 =  Number(form.received_amt1)+ Number(form.outstanding1)-Number(form.discount1);
-    const balance_amt1= Number(form.received_amt1)+ Number(form.outstanding1)-Number(form.discount1);
-    const tick_space2 =   Number(form.received_amt2)+ Number(form.outstanding2)-Number(form.discount2);
-    const balance_amt2=   Number(form.received_amt2)+Number(form.outstanding2)-Number(form.discount2);
-    const total1 = tick_space1+tick_space2;
-    const total2 = tick_space1+tick_space2-Number(form.discount);
-    const total3 = tick_space1+tick_space2-Number(form.discount);
+    this.items().controls.forEach(item => {
+      let received_amt = item.get('received_amt').value;
+      let outstanding = item.get('outstanding').value;
+      let discount = item.get('discount').value;
 
+      const tick_space = Number(received_amt) + Number(outstanding) - Number(discount);
+      const balance_amt = Number(received_amt) + Number(outstanding) - Number(discount);
+
+      total1 += tick_space;
+
+      item.patchValue({ tick_space: tick_space, balance_amt: balance_amt })
+
+    })
+
+    const total2 = total1 - Number(form.discount);
+    // const total3 = total2  - Number(form.paid_amount);
+    const total3 = total2;
 
     this.PurchaseReceiptsForm.patchValue({
-
-      "total1": total1,
-      "total2":total2,
-      "total3": String(total3),
-      "tick_space1":tick_space1,
-      "tick_space2":tick_space2,
-       "balance_amt1": balance_amt1,
-       "balance_amt2":balance_amt2,
-
+      total1: total1,
+      total2: total2,
+      total3: total3
     });
   }
   onSubmit1(): void {
@@ -110,16 +107,14 @@ export class PurchaseReceiptsComponent implements OnInit {
       console.log(data);});
       this.router.navigate(['/grand-hyper']);
   }
-  addFieldValue() {
-    this.fieldArray.push(this.newAttribute)
-    this.newAttribute = {};
-}
+  removeItem(i: number) {
+    this.items().removeAt(i);
+    this.itemsIndex--;
+  }
 i=0;
 back() {
   this.router.navigate(['/purchase']);
 }
 
-deleteFieldValue(index) {
-    this.fieldArray.splice(index, 1);
-}
+
 }
