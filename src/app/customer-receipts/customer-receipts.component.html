@@ -41,7 +41,7 @@
           </div>
 
           <div class="col-sm-7" >
-            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="report_date">
+            <input type="date" formControlName="report_date"  style="border-radius:12px;" class="form-control" placeholder="" >
           </div>
         </div>
         <div class="row" style="padding-top: 5px;">
@@ -80,7 +80,7 @@
             <tr>
               <th>Sl.no</th>
               <th>Date</th>
-              <th>Ref No</th>
+              <th>Price</th>
               <th>Description</th>
               <th>Item</th>
               <th>Quantity</th>
@@ -90,28 +90,30 @@
             </tr>
           </thead>
           <tbody>
-            <tr   *ngFor="let payment of Cash;">
-              <td></td>
-              <td>{{payment.date}}</td>
-              <td>{{payment.internal_ref_no}}</td>
-              <td>{{payment.price1_1}}</td>
-              <td>{{payment.item_details1}}</td>
-              <td>{{payment.quantity1}}</td>
-              <td>{{payment.job1}}</td>
-              <td>{{payment.sales_ex1}}</td>
-              <td>{{payment.amount1}}</td>
+            <tr *ngFor="let customerIN of Cash;">
+<td></td>
+              <td>{{customerIN.date}}</td>
+              <!-- <td>{{customerIN.internal_ref_no}}</td> -->
+              <td>{{customerIN.price}}</td>
+              <td>{{customerIN.description}}</td>
+              <td>{{customerIN.name}}</td>
+              <td>{{customerIN.quantity}}</td>
+              <td>{{customerIN.job}}</td>
+              <td>{{customerIN.sales_executive}}</td>
+              <td>{{customerIN.amount}}</td>
             </tr>
-            <tr *ngFor="let payment1 of Cash;">
+            <!-- <tr   *ngFor="let customerINn of Cash;">
               <td></td>
-              <td>{{payment1.date}}</td>
-              <td>{{payment1.internal_ref_no}}</td>
-              <td>{{payment1.price1_2}}</td>
-              <td>{{payment1.item_details2}}</td>
-              <td>{{payment1.quantity2}}</td>
-              <td>{{payment1.job2}}</td>
-              <td>{{payment1.sales_ex2}}</td>
-              <td>{{payment1.amount2}}</td>
-            </tr>
+              <td>{{customerIN.date}}</td>
+              <td>{{customerIN.internal_ref_no}}</td>
+              <td>{{customerIN.price}}</td>
+              <td>{{customerIN.description}}</td>
+              <td>{{customerIN.name}}</td>
+              <td>{{customerIN.quantity}}</td>
+              <td>{{customerIN.job}}</td>
+              <td>{{customerIN.sales_executive}}</td>
+              <td>{{customerIN.amount}}</td>
+            </tr> -->
             <tr>
               <td class="hide">hide</td>
               <td class="hide"></td>

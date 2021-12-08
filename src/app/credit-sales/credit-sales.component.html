@@ -106,7 +106,7 @@
             <div class="row" *ngFor="let field of itemscrs().controls; let i = index" [formGroupName]="i">
               <div><select  formControlName="item_id" style="border-radius: 12px;" class="form-control" placeholder="">
                 <option selected disabled value="">Choose....</option>
-                <option *ngFor="let field of Items" value="{{field.item_id}}">{{field.item_details1}}</option>
+                <option *ngFor="let field of Items" value="{{field.id}}">{{field.item_details1}}</option>
               </select>Item</div>
               <div><input type="number" min="0"
                   (ngModelChange)="calcualtTotal()" formControlName="price"
@@ -117,14 +117,13 @@
               <div><input type="number" min="0" formControlName="amount" style="border-radius: 12px;width: 150px" class="form-control" >Amount</div>
               <div>  <select  formControlName="sales_ex" style="border-radius: 12px;" class="form-control" placeholder="">
                 <option selected disabled value=""></option>
-                <option *ngFor="let field of employees" value="{{field.sales_ex_id}}">{{field.emp_name}}</option>
+                <option *ngFor="let field of employees" value="{{field.id}}">{{field.emp_name}}</option>
               </select>Sales executive</div>
-              <div>  <select  formControlName="job" style="border-radius: 12px;" class="form-control" placeholder="">
+              <div>  <select  formControlName="job_id" style="border-radius: 12px;" class="form-control" placeholder="">
                 <option selected disabled value=""></option>
-                <option *ngFor="let field of jobs" value="{{field.job_id}}">{{field.job_desc}}</option>
+                <option *ngFor="let field of jobs" value="{{field.id}}">{{field.job_desc}}</option>
               </select>Job</div>
               </div>
-  
   
   
   
@@ -132,7 +131,7 @@
               <button class="btn btn-default" type="button" (click)="addMoreItem()">Add</button>
           </td>
             <td>
-              <button class="btn btn-default"  type="button" (click)="removeItem(itemscrsIndex)">Delete</button>
+              <button class="btn btn-default"  type="button" (click)="removeItem(itemsIndex)">Delete</button>
           </td>
         </div>
   

@@ -39,10 +39,10 @@ export class SalesReturnComponent implements OnInit {
 
   employees: EmployeeResponse[];
 
-  // to track index of last item in cashForm.itemssrtn array
-  itemssrtnIndex = 0;
+  // to track index of last item in cashForm.items array
+  itemsIndex = 0;
 
-  itemssrtnList: number[] = [1]
+  itemsList: number[] = [1]
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -58,7 +58,7 @@ export class SalesReturnComponent implements OnInit {
 
   addMoreItem() {
     this.itemssrtn().push(this.newItemRow());
-    this.itemssrtnIndex++;
+    this.itemsIndex++;
   }
 
   private newItemRow(): FormGroup {
@@ -74,7 +74,7 @@ export class SalesReturnComponent implements OnInit {
 
   removeItem(i: number) {
     this.itemssrtn().removeAt(i);
-    this.itemssrtnIndex--;
+    this.itemsIndex--;
   }
 
   ngOnInit(): void {
@@ -83,7 +83,7 @@ export class SalesReturnComponent implements OnInit {
     this.loadJobs();
     this.loadEmployee();
   }
-
+  
   loadCustomers() {
     this.userService.getCustomer().subscribe((data: CustomerResponse[]) => {
       this.customers = data;
@@ -111,7 +111,7 @@ export class SalesReturnComponent implements OnInit {
   setCustomerId(event) {
     this.salesReturnForm.patchValue({customerId: this.salesReturnForm.get('customer_id').value});
   }
-
+  
   calcualtTotal() {
     const form = this.salesReturnForm.value;
     let total1 = 0;

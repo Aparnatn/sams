@@ -76,40 +76,18 @@
           <tbody>
             <tr *ngFor="let customer of CustomerIR;">
               <td></td>
-              <td></td>
+              <td>{{customer.account }}</td>
               <td>{{customer.date }}</td>
               <td>{{ customer.internal_ref_no }}</td>
               <td>{{customer.customer_name}}</td>
-              <td></td>
-              <td>{{customer.total1}}</td>
-              <td>{{customer.sales_ex1}}</td>
+              <td>{{customer.description}}</td>
+              <td>{{customer.amount}}</td>
+              <td>{{customer.sales_executive}}</td>
               <td>{{customer.user_id}}</td>
 
             </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td ></td>
-              <td ></td>
-              <td ></td>
-              <td ></td>
-
-              <td ></td>
-              <td ></td>
-              <td ></td>
-              <td ></td>
-
-              <td></td>
-            </tr>
+            
+            
 
           </tbody>
         </table>

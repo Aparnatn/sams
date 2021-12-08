@@ -25,9 +25,11 @@ export class CreditSalesComponent implements OnInit {
     account: ['', Validators.required],
     customerId: '',
     customer_id: ['', Validators.required],
+
     itemscrs: this.formBuilder.array([
-      this.newItemRow(),
-    ], Validators.required),
+      this.newItemRow()
+    ]),
+    
     labour_charge: ['',],
     other_charge: ['',],
     total1: ['', Validators.required],
@@ -44,24 +46,28 @@ export class CreditSalesComponent implements OnInit {
 
   employees: EmployeeResponse[];
 
-  // to track index of last item in cashForm.itemscrs array
-  itemscrsIndex = 0;
+  // to track index of last item in cashForm.items array
+  itemsIndex = 0;
 
-  itemscrsList: number[] = [1]
+  itemsList: number[] = [1]
+
   constructor(
     private http: HttpClient,
     private router: Router,
     private service: SalesService,
-    private formBuilder: FormBuilder,
     private userService: UserService,
+    private formBuilder: FormBuilder,
+
   ) { }
+
+ 
   itemscrs(): FormArray {
     return this.creditSaleForm.get("itemscrs") as FormArray
   }
 
   addMoreItem() {
     this.itemscrs().push(this.newItemRow());
-    this.itemscrsIndex++;
+    this.itemsIndex++;
   }
 
   private newItemRow(): FormGroup {
@@ -77,7 +83,7 @@ export class CreditSalesComponent implements OnInit {
 
   removeItem(i: number) {
     this.itemscrs().removeAt(i);
-    this.itemscrsIndex--;
+    this.itemsIndex--;
   }
 
   ngOnInit(): void {
@@ -86,7 +92,7 @@ export class CreditSalesComponent implements OnInit {
     this.loadJobs();
     this.loadEmployee();
   }
-
+  
   loadCustomers() {
     this.userService.getCustomer().subscribe((data: CustomerResponse[]) => {
       this.customers = data;
@@ -114,7 +120,7 @@ export class CreditSalesComponent implements OnInit {
   setCustomerId(event) {
     this.creditSaleForm.patchValue({customerId: this.creditSaleForm.get('customer_id').value});
   }
-
+  
   calcualtTotal() {
     const form = this.creditSaleForm.value;
     let total1 = 0;
@@ -141,7 +147,10 @@ export class CreditSalesComponent implements OnInit {
 
     });
   }
+
+
   onSubmit(): void {
+
 
 
     if (this.creditSaleForm.dirty && this.creditSaleForm.valid) {

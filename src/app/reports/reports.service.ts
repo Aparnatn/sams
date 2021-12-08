@@ -390,6 +390,28 @@ customerInvoRecpt: customerInvoRecptRegRequest[] = [];
       )
     }
 
+    customer_account(filter: ReceiptFilter): Observable<SalesReceiptResponse[]> {
+      // console.log(filter);
+      let params = new HttpParams();
+      if (filter.from_date) {
+        params = params.append('from_date', filter.from_date);
+      }
+      if (filter.to_date) {
+        params = params.append('to_date', filter.to_date);
+      }
+      if (filter.report_date) {
+        params = params.append('report_date', filter.report_date);
+      }
+      if (filter.name) {
+        params = params.append('name', filter.name);
+      }
+      return this.http.get<SalesReceiptResponse[]>(
+        `${this.apiUrl}/Sam/CustomerAccountStatement`,
+        {params: params}
+      )
+    }
+
+
     customerOutstandinG: customerOutstandingRequest[] = [];
     customerOutstandF(filter: customeroutstandingFilter): Observable<customerOutstandingResponse[]> {
       // console.log(filter);
@@ -860,6 +882,126 @@ customer_invoice(filter: CashFilter): Observable<CashSaleResponse[]> {
     {params: params}
   )
 }
+
+
+supplier_invoice(filter: PCashFilter): Observable<PCashSaleResponse[]> {
+  // console.log(filter);
+  let params = new HttpParams();
+  if (filter.from_date) {
+    params = params.append('from_date', filter.from_date);
+  }
+  if (filter.to_date) {
+    params = params.append('to_date', filter.to_date);
+  }
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
+  }
+  if (filter.date) {
+    params = params.append('date', filter.date);
+  }
+  if (filter.name) {
+    params = params.append('name', filter.name);
+  }
+  return this.http.get<PCashSaleResponse[]>(
+    `${this.apiUrl}/Sam/SupplierInvoiceHistory`,
+    {params: params}
+  )
+}
+
+
+supplier_Accoun(filter: PReceiptFilter): Observable<PurchaseReceiptResponse[]> {
+  // console.log(filter);
+  let params = new HttpParams();
+  if (filter.from_date) {
+    params = params.append('from_date', filter.from_date);
+  }
+  if (filter.to_date) {
+    params = params.append('to_date', filter.to_date);
+  }
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
+  }
+  if (filter.date) {
+    params = params.append('date', filter.date);
+  }
+  if (filter.name) {
+    params = params.append('name', filter.name);
+  }
+  return this.http.get<PurchaseReceiptResponse[]>(
+    `${this.apiUrl}/Sam/SupplierAccountStatement`,
+    {params: params}
+  )
+}
+
+supplier_payment(filter: PCashFilter): Observable<PCashSaleResponse[]> {
+  // console.log(filter);
+  let params = new HttpParams();
+  if (filter.from_date) {
+    params = params.append('from_date', filter.from_date);
+  }
+  if (filter.to_date) {
+    params = params.append('to_date', filter.to_date);
+  }
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
+  }
+  if (filter.name) {
+    params = params.append('name', filter.name);
+  }
+  return this.http.get<PCashSaleResponse[]>(
+    `${this.apiUrl}/Sam/SupplierPaymentHistory`,
+    {params: params}
+  )
+}
+
+supplier_invoRR(filter: PCashFilter): Observable<PCashSaleResponse[]> {
+  // console.log(filter);
+  let params = new HttpParams();
+  if (filter.from_date) {
+    params = params.append('from_date', filter.from_date);
+  }
+  if (filter.to_date) {
+    params = params.append('to_date', filter.to_date);
+  }
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
+  }
+  if (filter.date) {
+    params = params.append('date', filter.date);
+  }
+  if (filter.name) {
+    params = params.append('name', filter.name);
+  }
+  return this.http.get<PCashSaleResponse[]>(
+    `${this.apiUrl}/Sam/supplierInvoRecptReg`,
+    {params: params}
+  )
+}
+
+supplier_out(filter: PReceiptFilter): Observable<PurchaseReceiptResponse[]> {
+  // console.log(filter);
+  let params = new HttpParams();
+  if (filter.from_date) {
+    params = params.append('from_date', filter.from_date);
+  }
+  if (filter.to_date) {
+    params = params.append('to_date', filter.to_date);
+  }
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
+  }
+  if (filter.date) {
+    params = params.append('date', filter.date);
+  }
+  if (filter.name) {
+    params = params.append('name', filter.name);
+  }
+  return this.http.get<PurchaseReceiptResponse[]>(
+    `${this.apiUrl}/Sam/SupplierOutstanding`,
+    {params: params}
+  )
+}
+
 
 pchs1(filter: PCashFilter): Observable<PCashSaleResponse[]> {
     // console.log(filter);

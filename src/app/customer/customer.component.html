@@ -89,14 +89,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr   *ngFor="let customerAcc of customerAcc;">
+            <tr   *ngFor="let customerAcc of Receipt;">
               <td></td>
               <td>{{customerAcc.date }}</td>
               <td>{{customerAcc.internal_ref_no }}</td>
-              <td></td>
-              <td>{{customerAcc.invoice_amt1 }}</td>
-              <td>{{customerAcc.tick_space1 }}</td>
-              <td>{{customerAcc.balance_amt1 }}</td>
+              <td>{{customerAcc.account }}</td>
+              <td>{{customerAcc.inv_amount }}</td>
+              <td>{{customerAcc.rpt_amount }}</td>
+              <td>{{customerAcc.balance }}</td>
             </tr>
 
 

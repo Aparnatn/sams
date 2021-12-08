@@ -289,6 +289,7 @@ export interface SupplierRequest {
 
 export interface SupplierResponse {
   id: number,
+  supplier_name: string,
 }
 
 export interface Employee {

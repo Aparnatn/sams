@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { customerInvoRecptRegResponse } from '../reports/reports.interface';
 import { ReportsService } from '../reports/reports.service';
+import { CashSaleResponse } from '../interfaces/sales.interfaces';
 
 @Component({
   selector: 'app-customer-register',
@@ -18,7 +19,8 @@ export class CustomerRegisterComponent implements OnInit {
 
 
    });
-   CustomerIR: customerInvoRecptRegResponse[];
+   Cash: CashSaleResponse[];
+  CustomerIR: customerInvoRecptRegResponse[];
   constructor(private router:Router,private http:HttpClient,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {

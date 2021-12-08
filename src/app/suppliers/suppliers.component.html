@@ -34,11 +34,11 @@
 
         <div class="row" style="padding-top: 5px;">
           <div class="col-sm-3">
-            <label class="form-control"  style="border-radius:12px;padding: 10px;"> Customer Name </label>
+            <label class="form-control"  style="border-radius:12px;padding: 10px;"> Supplier Name </label>
             <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Customer formControlName" > -->
           </div>
           <div class="col-sm-9">
-            <input type="text " style="border-radius:12px;" class="form-control" formControlName="customer_name"  placeholder="" >
+            <input type="text " style="border-radius:12px;" class="form-control" formControlName="supplier_name"  placeholder="" >
           </div>
         </div>
 
@@ -189,7 +189,7 @@
 
       <thead class="alert-warning">
       <tr>
-          <th>Customer name</th>
+          <th>Supplier name</th>
           <th>Vat Reg No.</th>
           <th>CR No</th>
           <th>Erpired On</th>
@@ -211,7 +211,7 @@
       <tbody>
 
           <tr  *ngFor="let item of Suppliers">
-              <td>{{item.customer_name }}</td>
+              <td>{{item.supplier_name }}</td>
               <td>{{item.vat_reg_no }}</td>
               <td>{{item.cr_no }}</td>
               <td>{{item.expired_on }}</td>

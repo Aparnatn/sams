@@ -11,7 +11,7 @@ import { SupplierResponse } from '../user/login.interfaces';
 })
 export class SuppliersComponent implements OnInit {
   SupplierForm = this.formBuilder.group({
-    customer_name: ['',Validators.required],
+    supplier_name: ['',Validators.required],
     vat_reg_no: ['',Validators.required],
     cr_no: ['',Validators.required],
     expired_on: ['',Validators.required],

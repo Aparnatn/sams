@@ -24,35 +24,21 @@ export class SupplierInvoiceComponent implements OnInit {
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,private salesservice:SalesService) { }
 
   ngOnInit(): void {
-    // this.service.supplierInvoiceHF({}).subscribe((data) => {
-    //   this.supplierIn = data;
-    //   console.log(data);
-    // })
+    
   }
   onSubmit(): void {
-    this.service.supplierInvoiceHF(this.supplierInvoiceHistoryForm.value,).subscribe((data,)=>{
-      console.log(data);});
-      this.service.supplierInvoiceHF({}).subscribe((data) => {
-        this.supplierIn = data;
-        console.log(data);
-      })
-    // this.router.navigate(['/reports']);
-    this.calculateAsset(this.assetTotal);
-
-
-  }
-  calculateAsset(assetTotal:Number) {
-    this.service.supplier_InvoiceHF({}).subscribe((pcash) => {
+    this.service.supplier_invoice(this.supplierInvoiceHistoryForm.value).subscribe((pcash) => {
       this.PCash = pcash;
 
-        this.PCash.forEach(element => {
-          this.assetTotal  +=  Number(element.price1_1) + Number(element.amount2);
-        });
-        return Number(assetTotal);
+      this.calculateAsset()
     });
 
   }
-  
+  calculateAsset() {
+    this.PCash.forEach(element => {
+      this.assetTotal =+ Number(element.amount) ;
+    });
+  }
  back() {
   this.router.navigate(['/supplierbuttons']);
 }

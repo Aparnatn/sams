@@ -87,14 +87,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr   *ngFor="let supplierAcc of supplierAcc;">
+              <tr   *ngFor="let supplierAcc of PReceipt;">
                 <td></td>
                 <td>{{supplierAcc.date }}</td>
-                <td>{{supplierAcc.internal_ref_no }}</td>
-                <td></td>
-                <td>{{supplierAcc.invoice_amt1 }}</td>
-                <td>{{supplierAcc.tick_space1 }}</td>
-                <td>{{supplierAcc.balance_amt1 }}</td>
+                <td>{{supplierAcc.refno }}</td>
+                <td>{{supplierAcc.account }}</td>
+                <td>{{supplierAcc.invamount }}</td>
+                <td>{{supplierAcc.receipt }}</td>
+                <td>{{supplierAcc.balance }}</td>
               </tr>
 
 

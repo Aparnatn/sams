@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PCashSaleResponse } from '../interfaces/sales.interfaces';
 import { supplierInvoRcptRegResponse } from '../reports/reports.interface';
 import { ReportsService } from '../reports/reports.service';
 
@@ -17,6 +18,7 @@ export class SupplierInvoReceiptComponent implements OnInit {
    });
 
    supplierInvoRcpt: supplierInvoRcptRegResponse[];
+   PCash: PCashSaleResponse[];
 
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
@@ -27,13 +29,9 @@ export class SupplierInvoReceiptComponent implements OnInit {
     // })
   }
   onSubmit(): void {
-    this.service.supplierInvoRF(this.SupplierInvoReceiptForm.value,).subscribe((data,)=>{
-      console.log(data);});
-      this.service.supplierInvoRF({}).subscribe((data) => {
-        this.supplierInvoRcpt = data;
-        console.log(data);
-      })
-    // this.router.navigate(['/reports']);
+    this.service.supplier_invoRR(this.SupplierInvoReceiptForm.value).subscribe((cash) => {
+      this.PCash = cash;
+    });
   }
   
  back() {

@@ -31,11 +31,15 @@ export interface PCashFilter {
   to_date?: string,
   report_date?:string,
   name?: string,
+  report_date?: string,
+  date?: string,
 }
 
 export interface ReceiptFilter {
   from_date?: string,
   to_date?: string,
+  report_date?: string,
+  date?: string,
   name?: string,
 }
 
@@ -43,6 +47,8 @@ export interface PReceiptFilter {
   from_date?: string,
   to_date?: string,
   name?: string,
+  report_date?: string,
+  date?: string,
 }
 
 export interface creditsaleFilter {
