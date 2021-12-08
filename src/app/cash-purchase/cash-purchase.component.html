@@ -1,4 +1,3 @@
-
 <head>
 
   <style>
@@ -82,23 +81,24 @@
               </div>
             </div>
   <br>
+
               <div class="col" >
                 <label class="form-control"  style="border-radius:12px;padding: 10px;">Supplier Name</label>
               </div>
               <div class="col" >
               <select  formControlName="supplier_id" (change)="setSupplierId($event)" style="border-radius: 12px;" class="form-control" placeholder="">
-                <option *ngFor="let item of suppliers" value="{{item.id}}">{{item.customer_name}}</option>
+                <option *ngFor="let item of suppliers" value="{{item.id}}">{{item.supplier_name}}</option>
               </select>
             </div>
           </div>
 
-         
+
         <br><br>
 
-        <div class="container" formArrayName="itemsCP" style="padding-left: 200px;padding-right: 180px;">
+        <div class="container" formArrayName="itemsCP" style="padding-left: 50px;padding-right: 50px;">
           <!-- Control the column width, and how they should appear on different devices -->
           <div class="row" *ngFor="let field of itemsCP().controls; let i = index" [formGroupName]="i">
-            <div><select  formControlName="item_id" style="border-radius: 12px;" class="form-control" placeholder="">
+            <div class="col-sm-3"><select  formControlName="item_id" style="border-radius: 12px;" class="form-control" placeholder="">
               <option selected disabled value="">Choose....</option>
               <option *ngFor="let field of Items" value="{{field.id}}">{{field.item_name}}</option>
             </select>Item</div>
@@ -206,6 +206,3 @@
   </section>
 
 </body>
-
-
-

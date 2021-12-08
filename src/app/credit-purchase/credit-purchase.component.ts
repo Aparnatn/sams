@@ -84,12 +84,12 @@ export class CreditPurchaseComponent implements OnInit {
     this.itemsIndex--;
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.loadSupplier();
     this.loadItems();
     this.loadJobs();
     this.loadEmployee();
-   
+
   }
 
   loadSupplier() {
@@ -146,8 +146,8 @@ export class CreditPurchaseComponent implements OnInit {
 
     });
   }
-    
-  onSubmit(): void { 
+
+  onSubmit(): void {
     if (this.CreditPurchaseForm.dirty && this.CreditPurchaseForm.valid) {
       this.service.creditPurchase(this.CreditPurchaseForm.value).subscribe((data) => {
         console.log(data);
@@ -158,7 +158,7 @@ export class CreditPurchaseComponent implements OnInit {
       });
     }
   }
- 
+
 back() {
   this.router.navigate(['/purchase']);
 }

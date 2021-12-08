@@ -185,6 +185,8 @@ export interface PCashSaleRequest {
 }
 
 export interface PCashSaleResponse {
+  reduce(arg0: (total: any, line: any) => any, arg1: number): number;
+  amount: any;
   amount1: any;
   amount2: any;
   price1_1: any;
@@ -200,6 +202,8 @@ export interface BalanceSheet {
   salesReciepts: [],
 }
 export interface pandl {
+  pcredit: CreditPurchaseResponse[];
+  credits: CreditSaleResponse[];
   cash: any[],
   cashPurchases: any[],
   purchaseReciepts: any[],

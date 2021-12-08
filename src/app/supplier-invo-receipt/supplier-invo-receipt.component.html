@@ -15,7 +15,7 @@
     <section style="padding-top:30px">
     <div class="container">
 
-      <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">Supplier Invoice History</p></b></button>
+      <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">Supplier Invoice & Receipt Register</p></b></button>
       <br>
     </div>
 
@@ -72,40 +72,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr  *ngFor = "let supplier of supplierInvoRcpt">
+              <tr  *ngFor = "let supplier of PCash">
                 <td></td>
-                <td></td>
+                <td>{{supplier.account}}</td>
                 <td>{{supplier.date}}</td>
                 <td>{{supplier.internal_ref_no}}</td>
-                <td>{{supplier.supp_name}}</td>
-                <td>{{supplier.price1_1}}</td>
-
-                <td>{{supplier.sales_ex1}}</td>
+                <td>{{supplier.supplier_name}}</td>
+                <td>{{supplier.description}}</td>
+                <td>{{supplier.amount}}</td>
+                <td>{{supplier.sales_executive}}</td>
                 <td>{{supplier.user_id}}</td>
               </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-              </tr>
+             
+              
 
             </tbody>
           </table>

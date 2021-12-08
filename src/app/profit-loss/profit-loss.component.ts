@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { SalesService } from '../services/sales.service';
-import { CashSaleResponse, PCashSaleResponse, PurchaseReceiptResponse, SalesReceiptResponse } from '../interfaces/sales.interfaces';
+import { CashSaleResponse, CreditPurchaseResponse, CreditSaleResponse, PCashSaleResponse, PurchaseReceiptResponse, SalesReceiptResponse } from '../interfaces/sales.interfaces';
 import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
 @Component({
   selector: 'app-profit-loss',
@@ -14,10 +14,13 @@ export class ProfitLossComponent implements OnInit {
   PandLForm = this.formBuilder.group({
 
 date:"",
+report_date:"",
   });
   cash: CashSaleResponse[];
   cashPurchases: PCashSaleResponse[];
   salesReceipts: SalesReceiptResponse[];
+  credits:CreditSaleResponse[];
+  pcredit:CreditPurchaseResponse[];
   purchaseReceipts: PurchaseReceiptResponse[];
   assetTotal = 0;
   liabilityTotal = 0;
@@ -35,6 +38,7 @@ netProfit=0;
       this.cashPurchases = data.cashPurchases;
       this.salesReceipts= data.salesReciepts;
       this.purchaseReceipts = data.purchaseReciepts;
+
       let total = 0;
       this.assetTotal = 0;
       this.liabilityTotal = 0;
@@ -58,7 +62,7 @@ netProfit=0;
     });
   }
 
-  
+
   back() {
     this.router.navigate(['/financial']);
   }

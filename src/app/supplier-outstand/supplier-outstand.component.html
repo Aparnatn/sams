@@ -89,14 +89,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr   *ngFor="let supplierOut of supplierOut;">
+              <tr   *ngFor="let supplierOut of PReceipt;">
                 <td></td>
               <td>{{supplierOut.date }}</td>
               <td>{{supplierOut.internal_ref_no }}</td>
-              <td></td>
-              <td>{{supplierOut.invoice_amt1 }}</td>
-              <td>{{supplierOut.tick_space1 }}</td>
-              <td>{{supplierOut.balance_amt1 }}</td>
+              <td>{{supplierOut.account }}</td>
+              <td>{{supplierOut.inv_amount }}</td>
+              <td>{{supplierOut.rpt_amount }}</td>
+              <td>{{supplierOut.outstanding }}</td>
+              <td>{{supplierOut.over_due }}</td>
               </tr>
 
 

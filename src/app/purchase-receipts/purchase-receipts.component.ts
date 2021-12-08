@@ -5,7 +5,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReceiptFrom, PurchaseReceiptRequest } from '../interfaces/sales.interfaces';
 import { SalesService } from '../services/sales.service';
 import { UserService } from '../user/user.service';
-import { CustomerResponse } from '../user/login.interfaces';
+import { CustomerResponse, SupplierResponse } from '../user/login.interfaces';
 @Component({
   selector: 'app-purchase-receipts',
   templateUrl: './purchase-receipts.component.html',
@@ -19,19 +19,21 @@ export class PurchaseReceiptsComponent implements OnInit {
   due_on:['',Validators.required],
   credit_limit_amt:['',Validators.required],
   user_id:['',Validators.required],
-  supp_id:['',Validators.required],
-  supp_name:['',Validators.required],
+  supplier_id:['',Validators.required],
+  supplierId: '',
+  account:['',Validators.required],
+
   items: this.formBuilder.array([
     this.newItemRow()
   ]),
   total1:['',Validators.required],
   total2:['',Validators.required],
   total3:['',Validators.required],
-  account:['',Validators.required],
+
   discount:[''],
   paid_amount: ['', Validators.required],
 });
-customers: CustomerResponse[];
+suppliers: SupplierResponse[];
 itemsIndex = 0;
 
 itemsList: number[] = [1]
@@ -62,16 +64,16 @@ itemsList: number[] = [1]
     });
   }
   ngOnInit(): void {
-    this.loadCustomers();
+    this.loadSuppliers();
 
   }
-  loadCustomers() {
-    this.userService.getCustomer().subscribe((data: CustomerResponse[]) => {
-      this.customers = data;
+  loadSuppliers() {
+    this.userService.getSuppliers().subscribe((data: SupplierResponse[]) => {
+      this.suppliers = data;
     })
   }
-  setCustomerId(event) {
-    this.PurchaseReceiptsForm.patchValue({customerId: this.PurchaseReceiptsForm.get('customer_id').value});
+  setSupplierId(event) {
+    this.PurchaseReceiptsForm.patchValue({supplierId: this.PurchaseReceiptsForm.get('supplier_id').value});
   }
   calcualtTotal() {
     const form = this.PurchaseReceiptsForm.value;
