@@ -23,8 +23,8 @@ export class CreditPurchaseComponent implements OnInit {
     account: ['', Validators.required],
     user_id: ['', Validators.required],
     credit_limit_amt: ['', Validators.required],
-    supp_id: ['', Validators.required],
-    supp_name:['', Validators.required],
+    supplierId: '',
+    supplier_id: ['', Validators.required],
 
     itemsCRP: this.formBuilder.array([
       this.newItemRow()

@@ -29,7 +29,7 @@ export class PurchaseReceiptsComponent implements OnInit {
   total1:['',Validators.required],
   total2:['',Validators.required],
   total3:['',Validators.required],
-  
+
   discount:[''],
   paid_amount: ['', Validators.required],
 });

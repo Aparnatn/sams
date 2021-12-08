@@ -1,4 +1,3 @@
-
 <head>
 
   <style>
@@ -72,18 +71,18 @@
 
           <br><br>
 
-
+          <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
             <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
-              <div class="col-sm-5" >
+              <div class="col" >
                 <label class="form-control"  style="border-radius:12px;padding: 10px;">Supplier ID</label>
               </div>
-              <div class="col-sm-7" >
-                <input type="text" formControlName="supp_id" style="border-radius: 12px;" class="form-control" >
+              <div class="col" >
+                <input type="text" formControlName="supplierId" style="border-radius: 12px;" class="form-control" readonly>
               </div>
             </div>
+  <br>
 
-            <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
-              <div class="col-sm-5" >
+              <div class="col" >
                 <label class="form-control"  style="border-radius:12px;padding: 10px;">Supplier Name</label>
               </div>
               <div class="col" >
@@ -91,8 +90,8 @@
                 <option *ngFor="let item of suppliers" value="{{item.id}}">{{item.supplier_name}}</option>
               </select>
             </div>
+          </div>
 
-</div>
 
         <br><br>
 
@@ -207,6 +206,3 @@
   </section>
 
 </body>
-
-
-

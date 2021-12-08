@@ -23,9 +23,9 @@ export class CashPurchaseComponent implements OnInit {
 
     user_id: ['', Validators.required],
     account: ['', Validators.required],
+    supplierId: '',
+    supplier_id: ['', Validators.required],
 
-    supp_id: ['', Validators.required],
-    supp_name:['', Validators.required],
     itemsCP: this.formBuilder.array([
       this.newItemRow()
     ]),
@@ -35,6 +35,7 @@ export class CashPurchaseComponent implements OnInit {
     total2: ['', Validators.required],
     total3: ['', Validators.required],
     discount: ['',],
+
 
   });
 

@@ -22,9 +22,9 @@ export class PurchaseReturnComponent implements OnInit {
 
     user_id: ['', Validators.required],
     credit_limit_amt: ['', Validators.required],
+    supplierId: '',
+    supplier_id: ['', Validators.required],
 
-    supp_id: ['', Validators.required],
-    supp_name: ['', Validators.required],
     itemsPR: this.formBuilder.array([
       this.newItemRow()
     ]),
