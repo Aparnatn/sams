@@ -28,6 +28,8 @@ export interface PCashFilter {
   from_date?: string,
   to_date?: string,
   name?: string,
+  report_date?: string,
+  date?: string,
 }
 
 export interface ReceiptFilter {
@@ -40,6 +42,8 @@ export interface PReceiptFilter {
   from_date?: string,
   to_date?: string,
   name?: string,
+  report_date?: string,
+  date?: string,
 }
 
 export interface creditsaleFilter {

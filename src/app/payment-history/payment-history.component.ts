@@ -29,27 +29,18 @@ export class PaymentHistoryComponent implements OnInit {
     // })
   }
   onSubmit(): void {
-    this.service.supplierPaymentHisF(this.PaymentHistoryForm.value,).subscribe((data,)=>{
-      console.log(data);});
-      this.service.supplierPaymentHisF({}).subscribe((data) => {
-        this.payment = data;
-        console.log(data);
-      })
-    // this.router.navigate(['/reports']);
-    this.calculateAsset(this.assetTotal);
+    this.service.supplier_payment(this.PaymentHistoryForm.value).subscribe((cash) => {
+      this.PCash = cash;
+
+      this.calculateAsset()
+    });
 
 
   }
-  calculateAsset(assetTotal:Number) {
-    this.service.supplier_InvoiceHF({}).subscribe((pcash) => {
-      this.PCash = pcash;
-
-        this.PCash.forEach(element => {
-          this.assetTotal  +=  Number(element.price1_1) + Number(element.amount2);
-        });
-        return Number(assetTotal);
+  calculateAsset() {
+    this.PCash.forEach(element => {
+      this.assetTotal =  Number(element.amount);
     });
-
   }
   
  back() {

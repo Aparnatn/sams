@@ -95,27 +95,17 @@
               <tr   *ngFor="let supplierIn of PCash;">
                 <td></td>
                 <td>{{supplierIn.date }}</td>
-                <td>{{supplierIn.internal_ref_no }}</td>
-                <td>{{supplierIn.price1_1}}</td>
-                <td>{{supplierIn.item_details1 }}</td>
-                <td>{{supplierIn.quantity1 }}</td>
-                <td>{{supplierIn.job1 }}</td>
-                <td>{{supplierIn.sales_ex1 }}</td>
-                <td>{{supplierIn.price1_1}}</td>
+                
+                <td>{{supplierIn.price}}</td>
+                <td>{{supplierIn.description }}</td>
+                <td>{{supplierIn.name }}</td>
+                <td>{{supplierIn.quantity }}</td>
+                <td>{{supplierIn.job }}</td>
+                <td>{{supplierIn.sales_executive}}</td>
+                <td>{{supplierIn.amount }}</td>
 
               </tr>
-              <tr   *ngFor="let supplierINn of PCash;">
-                <td></td>
-                <td>{{supplierINn.date}}</td>
-                <td>{{supplierINn.internal_ref_no}}</td>
-                <td>{{supplierIn.price1_2}}</td>
-                <td>{{supplierINn.item_details2}}</td>
-                <td>{{supplierINn.quantity2}}</td>
-                <td>{{supplierINn.job2}}</td>
-                <td>{{supplierINn.sales_ex2}}</td>
-                <td>{{supplierINn.amount2}}</td>
-              </tr>
-
+              
 
               <tr>
                 <td colspan="8" align="right">Balance Amount</td>
