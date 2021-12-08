@@ -7,12 +7,12 @@ import { environment } from 'src/environments/environment';
 
 
 
-import {  CashSaleRequest, CashSaleResponse, CreditPurchaseRequest, CreditPurchaseResponse, CreditSaleRequest, CreditSaleResponse, ItemStatementRequest, ItemStatementResponse, JobStatementRequest, JobStatementResponse, PCashSaleRequest, PCashSaleResponse, PurchaseReceiptRequest, PurchaseReceiptResponse, SalesReceiptRequest, SalesReceiptResponse, StockAdjustmentRequest, StockAdjustmentResponse } from '../interfaces/sales.interfaces';
+import {  CashSaleRequest, CashSaleResponse, CreditPurchaseRequest, CreditPurchaseResponse, CreditSaleRequest, CreditSaleResponse, CustomerMasterdataResponse, ItemStatementRequest, ItemStatementResponse, JobStatementRequest, JobStatementResponse, PCashSaleRequest, PCashSaleResponse, PurchaseReceiptRequest, PurchaseReceiptResponse, SalesReceiptRequest, SalesReceiptResponse, StockAdjustmentRequest, StockAdjustmentResponse } from '../interfaces/sales.interfaces';
 
 
 
 import { AllJournalRequest, AllJournalResponse,   } from '../interfaces/sales.interfaces';
-import { CashFilter, creditsaleFilter, PCashFilter, PcreditFilter, PReceiptFilter, ReceiptFilter } from '../services/sales.service';
+import { CashFilter, creditsaleFilter, CustomerMasterFilter, PCashFilter, PcreditFilter, PReceiptFilter, ReceiptFilter, SupplierMasterFilter } from '../services/sales.service';
 
 import { ItemRequest, ItemResponse } from '../user/login.interfaces';
 import { customerAccountStatementRequest, customerAccountStatementResponse, CustomerInvoiceHistoryRequest, CustomerInvoiceHistoryResponse, customerInvoRecptRegRequest, customerInvoRecptRegResponse, customerOutstandingRequest, customerOutstandingResponse, CustomerReceiptHistoryRequest, CustomerReceiptHistoryResponse, jobMasterdataRequest, jobMasterdataResponse, LedgerMasterDataRequest, LedgerMasterDataResponse, PaymentHistoryRequest, PaymentHistoryResponse, StockBalanceRequest, StockBalanceResponse, stockmasterdataRequest, stockmasterdataResponse, supplierAccountStatementRequest, supplierAccountStatementResponse, SupplierInvoiceHistoryRequest, SupplierInvoiceHistoryResponse, supplierInvoRcptRegRequest, supplierInvoRcptRegResponse, supplierMasterdataRequest, supplierMasterdataResponse, supplierOutstandingRequest, supplierOutstandingResponse } from './reports.interface';
@@ -402,11 +402,38 @@ customerInvoRecpt: customerInvoRecptRegRequest[] = [];
       if (filter.report_date) {
         params = params.append('report_date', filter.report_date);
       }
+      if (filter.date) {
+        params = params.append('date', filter.date);
+      }
       if (filter.name) {
         params = params.append('name', filter.name);
       }
       return this.http.get<SalesReceiptResponse[]>(
         `${this.apiUrl}/Sam/CustomerAccountStatement`,
+        {params: params}
+      )
+    }
+
+    customer_out(filter: ReceiptFilter): Observable<SalesReceiptResponse[]> {
+      // console.log(filter);
+      let params = new HttpParams();
+      if (filter.from_date) {
+        params = params.append('from_date', filter.from_date);
+      }
+      if (filter.to_date) {
+        params = params.append('to_date', filter.to_date);
+      }
+      if (filter.report_date) {
+        params = params.append('report_date', filter.report_date);
+      }
+      if (filter.date) {
+        params = params.append('date', filter.date);
+      }
+      if (filter.name) {
+        params = params.append('name', filter.name);
+      }
+      return this.http.get<SalesReceiptResponse[]>(
+        `${this.apiUrl}/Sam/CustomerOutstanding`,
         {params: params}
       )
     }
@@ -883,6 +910,31 @@ customer_invoice(filter: CashFilter): Observable<CashSaleResponse[]> {
   )
 }
 
+customer_receipt(filter: CashFilter): Observable<CashSaleResponse[]> {
+  // console.log(filter);
+  let params = new HttpParams();
+  if (filter.from_date) {
+    params = params.append('from_date', filter.from_date);
+  }
+  if (filter.to_date) {
+    params = params.append('to_date', filter.to_date);
+  }
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
+  }
+  if (filter.date) {
+    params = params.append('date', filter.date);
+  }
+  if (filter.name) {
+    params = params.append('name', filter.name);
+  }
+  return this.http.get<CashSaleResponse[]>(
+    `${this.apiUrl}/Sam/CustomerReceiptHistory`,
+    {params: params}
+  )
+}
+
+
 
 supplier_invoice(filter: PCashFilter): Observable<PCashSaleResponse[]> {
   // console.log(filter);
@@ -908,6 +960,55 @@ supplier_invoice(filter: PCashFilter): Observable<PCashSaleResponse[]> {
   )
 }
 
+
+supplier_master(filter: SupplierMasterFilter): Observable<supplierMasterdataResponse[]> {
+  // console.log(filter);
+  let params = new HttpParams();
+  if (filter.from_date) {
+    params = params.append('from_date', filter.from_date);
+  }
+  if (filter.to_date) {
+    params = params.append('to_date', filter.to_date);
+  }
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
+  }
+  if (filter.date) {
+    params = params.append('date', filter.date);
+  }
+  if (filter.name) {
+    params = params.append('name', filter.name);
+  }
+  return this.http.get<supplierMasterdataResponse[]>(
+    `${this.apiUrl}/Sam/supplierMasterData`,
+    {params: params}
+  )
+}
+
+
+customer_masterD(filter: CustomerMasterFilter): Observable<CustomerMasterdataResponse[]> {
+  // console.log(filter);
+  let params = new HttpParams();
+  if (filter.from_date) {
+    params = params.append('from_date', filter.from_date);
+  }
+  if (filter.to_date) {
+    params = params.append('to_date', filter.to_date);
+  }
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
+  }
+  if (filter.date) {
+    params = params.append('date', filter.date);
+  }
+  if (filter.name) {
+    params = params.append('name', filter.name);
+  }
+  return this.http.get<CustomerMasterdataResponse[]>(
+    `${this.apiUrl}/Sam/customerMasterData`,
+    {params: params}
+  )
+}
 
 supplier_Accoun(filter: PReceiptFilter): Observable<PurchaseReceiptResponse[]> {
   // console.log(filter);

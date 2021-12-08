@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SalesReceiptResponse } from '../interfaces/sales.interfaces';
 import { customerOutstandingResponse } from '../reports/reports.interface';
 import { ReportsService } from '../reports/reports.service';
 
@@ -17,6 +18,7 @@ export class CustomerOutstandingComponent implements OnInit {
    });
 
    customerOut: customerOutstandingResponse[];
+   Receipt: SalesReceiptResponse[];
 
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
@@ -27,13 +29,10 @@ export class CustomerOutstandingComponent implements OnInit {
     // })
   }
   onSubmit(): void {
-    this.service.customerOutstandF(this.customerOutstandForm.value,).subscribe((data,)=>{
-      console.log(data);});
-      this.service.customerOutstandF({}).subscribe((data) => {
-        this.customerOut = data;
-        console.log(data);
+    this.service.customer_out(this.customerOutstandForm.value).subscribe((cash) => {
+      this.Receipt = cash;
       })
-    // this.router.navigate(['/reports']);
+      
   }
   
  back() {
