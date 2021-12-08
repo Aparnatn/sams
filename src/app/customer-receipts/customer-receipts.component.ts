@@ -45,7 +45,7 @@ export class CustomerReceiptsComponent implements OnInit {
       this.Cash = cash;
 
         this.Cash.forEach(element => {
-          this.assetTotal  +=  Number(element.price1_1) + Number(element.amount2);
+          this.assetTotal  =  Number(element.amount) + Number(element.amount);
         });
         return Number(assetTotal);
     });

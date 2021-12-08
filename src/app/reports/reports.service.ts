@@ -390,6 +390,28 @@ customerInvoRecpt: customerInvoRecptRegRequest[] = [];
       )
     }
 
+    customer_account(filter: ReceiptFilter): Observable<SalesReceiptResponse[]> {
+      // console.log(filter);
+      let params = new HttpParams();
+      if (filter.from_date) {
+        params = params.append('from_date', filter.from_date);
+      }
+      if (filter.to_date) {
+        params = params.append('to_date', filter.to_date);
+      }
+      if (filter.report_date) {
+        params = params.append('report_date', filter.report_date);
+      }
+      if (filter.name) {
+        params = params.append('name', filter.name);
+      }
+      return this.http.get<SalesReceiptResponse[]>(
+        `${this.apiUrl}/Sam/CustomerAccountStatement`,
+        {params: params}
+      )
+    }
+
+
     customerOutstandinG: customerOutstandingRequest[] = [];
     customerOutstandF(filter: customeroutstandingFilter): Observable<customerOutstandingResponse[]> {
       // console.log(filter);
