@@ -16,19 +16,19 @@ import { element } from 'protractor';
 export class LedgerStatementComponent implements OnInit {
 
   LedgerStatementForm = this.formBuilder.group({
-    from_date: ["", Validators.required],
-    to_date: ["", Validators.required],
+    date: ["", Validators.required],
+    report_date: ["", Validators.required],
     ledger_name: ["", Validators.required],
     period: ["", Validators.required],
   });
 
-  Cash: CashSaleResponse[];
-  PCash: PCashSaleResponse[];
-  receipt: SalesReceiptResponse[];
-  preceipt: PurchaseReceiptResponse[];
-  credit: CreditSaleResponse[];
-  pcredit: CreditPurchaseResponse[];
-  Ledger: LedgerResponse[];
+  cash: CashSaleResponse[] = [];
+  cashPurchases: PCashSaleResponse[] = [];
+  salesReceipts: SalesReceiptResponse[] = [];
+  purchaseReceipts: PurchaseReceiptResponse[] = [];
+  credits: CreditSaleResponse[] = [];
+  pcredits: CreditPurchaseResponse[] = [];
+  Ledgers: LedgerResponse[] = [];
 
   constructor(
     private http: HttpClient,
@@ -43,13 +43,12 @@ export class LedgerStatementComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.service.ls(this.LedgerStatementForm.value).subscribe((data) => {
-      this.Cash = data;
+    this.service.ledgerstatement(this.LedgerStatementForm.value).subscribe((data) => {
+      this.cash = data;
 
-      console.log(data);
     });
     this.userservice.getLedgers().subscribe((data) => {
-      this.Ledger = data;
+      this.Ledgers = data;
       console.log(data);
     })
   }
@@ -65,32 +64,8 @@ export class LedgerStatementComponent implements OnInit {
 
 
 
-  // this.service.lsl(this.LedgerStatementForm.value).subscribe((data)=>{
-  //   this.PCash = data;
-  //   console.log(data);
-  // });
 
-  //     this.service.tll(this.LedgerStatementForm.value).subscribe((data)=>{
-  //       this.receipt = data;
-  //       console.log(data);
-  //     });
 
-  //       this.service.tlrs(this.LedgerStatementForm.value).subscribe((data)=>{
-  //         this.preceipt = data;
-  //         console.log(data);
-  //       });
-
-  //         this.service.tsrl(this.LedgerStatementForm.value).subscribe((data)=>{
-  //           this.credit = data;
-  //           console.log(data);
-  //         });
-
-  //           this.service.trl(this.LedgerStatementForm.value).subscribe((data)=>{
-  //             this.pcredit = data;
-  //             console.log(data);
-  //           });
-
-  
  back() {
   this.router.navigate(['/ledgerbuttons']);
 }

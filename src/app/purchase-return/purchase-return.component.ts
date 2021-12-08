@@ -19,12 +19,12 @@ export class PurchaseReturnComponent implements OnInit {
     date: ['', Validators.required],
     internal_ref_no: ['', Validators.required],
     due_on: ['', Validators.required],
-    
+
     user_id: ['', Validators.required],
     credit_limit_amt: ['', Validators.required],
-    supplierId: '',
-    supplier_id: ['', Validators.required],
 
+    supp_id: ['', Validators.required],
+    supp_name: ['', Validators.required],
     itemsPR: this.formBuilder.array([
       this.newItemRow()
     ]),
@@ -34,8 +34,8 @@ export class PurchaseReturnComponent implements OnInit {
     total2: ['', Validators.required],
     total3: ['', Validators.required],
     discount: ['',],
-   
-   
+
+
   });
 
   suppliers: SupplierResponse[];
@@ -60,7 +60,7 @@ export class PurchaseReturnComponent implements OnInit {
 
   ) { }
 
-  
+
   itemsPR(): FormArray {
     return this.PurchaseReturnForm.get("itemsPR") as FormArray
   }
@@ -69,7 +69,7 @@ export class PurchaseReturnComponent implements OnInit {
     this.itemsPR().push(this.newItemRow());
     this.itemsIndex++;
   }
-  
+
   private newItemRow(): FormGroup {
     return this.formBuilder.group({
       item_id: [''],
@@ -85,14 +85,14 @@ export class PurchaseReturnComponent implements OnInit {
     this.itemsIndex--;
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.loadSupplier();
     this.loadItems();
     this.loadJobs();
     this.loadEmployee();
   }
-  
-  
+
+
   loadSupplier() {
     this.userService.getSuppliers().subscribe((data: SupplierResponse[]) => {
       this.suppliers = data;
@@ -147,7 +147,7 @@ export class PurchaseReturnComponent implements OnInit {
 
     });
   }
-  
+
   onSubmit(): void {
     if (this.PurchaseReturnForm.dirty && this.PurchaseReturnForm.valid) {
       this.service.purchaseReturn(this.PurchaseReturnForm.value).subscribe((data) => {

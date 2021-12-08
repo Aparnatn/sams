@@ -23,9 +23,9 @@ export class CashPurchaseComponent implements OnInit {
 
     user_id: ['', Validators.required],
     account: ['', Validators.required],
-    supplierId: '',
-    supplier_id: ['', Validators.required],
 
+    supp_id: ['', Validators.required],
+    supp_name:['', Validators.required],
     itemsCP: this.formBuilder.array([
       this.newItemRow()
     ]),
@@ -38,7 +38,7 @@ export class CashPurchaseComponent implements OnInit {
 
   });
 
-    
+
   suppliers: SupplierResponse[];
 
   Items: ItemResponse[];
@@ -86,7 +86,7 @@ export class CashPurchaseComponent implements OnInit {
     this.itemsIndex--;
   }
 
- 
+
   ngOnInit(): void {
     this.loadSupplier();
     this.loadItems();
@@ -150,7 +150,7 @@ export class CashPurchaseComponent implements OnInit {
   }
 
 
-    
+
   onSubmit(): void {
     if (this.PCashSaleForm.dirty && this.PCashSaleForm.valid) {
       this.service.PcashSale(this.PCashSaleForm.value).subscribe((data) => {
@@ -161,7 +161,7 @@ export class CashPurchaseComponent implements OnInit {
         alert(error.error);
       });
     }
-    
+
   }
 
   back() {

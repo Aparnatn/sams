@@ -72,27 +72,27 @@
 
           <br><br>
 
-          <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
+
             <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
-              <div class="col" >
+              <div class="col-sm-5" >
                 <label class="form-control"  style="border-radius:12px;padding: 10px;">Supplier ID</label>
               </div>
-              <div class="col" >
-                <input type="text" formControlName="supplierId" style="border-radius: 12px;" class="form-control" readonly>
+              <div class="col-sm-7" >
+                <input type="text" formControlName="supp_id" style="border-radius: 12px;" class="form-control" >
               </div>
             </div>
-  <br>
-              <div class="col" >
+
+            <div class="row" style="padding-top: 5px; padding-left: 100px; padding-right: 100px;">
+              <div class="col-sm-5" >
                 <label class="form-control"  style="border-radius:12px;padding: 10px;">Supplier Name</label>
               </div>
-              <div class="col" >
-              <select  formControlName="supplier_id" (change)="setSupplierId($event)" style="border-radius: 12px;" class="form-control" placeholder="">
-                <option *ngFor="let item of suppliers" value="{{item.id}}">{{item.customer_name}}</option>
-              </select>
+              <div class="col-sm-7" >
+                <input type="text"  style="border-radius: 12px;" formControlName="supp_name" class="form-control" >
+              </div>
             </div>
-          </div>
 
-         
+
+
         <br><br>
 
         <div class="container" formArrayName="itemsCP" style="padding-left: 200px;padding-right: 180px;">
