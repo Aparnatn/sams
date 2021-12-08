@@ -35,6 +35,8 @@ export interface PCashFilter {
 export interface ReceiptFilter {
   from_date?: string,
   to_date?: string,
+  report_date?: string,
+  date?: string,
   name?: string,
 }
 
