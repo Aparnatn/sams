@@ -84,7 +84,7 @@
               </div>
               <div class="col" >
               <select  formControlName="supplier_id" (change)="setSupplierId($event)" style="border-radius: 12px;" class="form-control" placeholder="">
-                <option *ngFor="let item of suppliers" value="{{item.id}}">{{item.customer_name}}</option>
+                <option *ngFor="let item of suppliers" value="{{item.id}}">{{item.supplier_name}}</option>
               </select>
             </div>
           </div>
