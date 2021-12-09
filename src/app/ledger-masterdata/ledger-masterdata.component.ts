@@ -21,21 +21,16 @@ export class LedgerMasterdataComponent implements OnInit {
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    // this.service.ledgermasterdF({}).subscribe((data) => {
-    //   this.ledger = data;
-    //   console.log(data);
-    // })
+    
   }
 
   onSubmit(): void {
 
-    this.service.ledgermasterdF(this.LedgerMasterDataForm.value,).subscribe((data,)=>{
-      console.log(data);});
-      this.service.ledgermasterdF({}).subscribe((data) => {
-        this.ledger = data;
-        console.log(data);
-      })
-      // this.router.navigate(['/grand-hyper']);
+    this.service.ledger_masterD(this.LedgerMasterDataForm.value).subscribe((pcash) => {
+      this.ledger = pcash;
+
+      
+    });
   }
   
  back() {

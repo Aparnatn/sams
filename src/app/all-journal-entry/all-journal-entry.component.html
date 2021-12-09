@@ -76,7 +76,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr  *ngFor="let cash of Cash;">
+            <tr  *ngFor="let cash of cash;">
               <td></td>
               <td>{{cash.date}}</td>
               <td>{{cash.internal_ref_no}}</td>
@@ -92,7 +92,7 @@
 
 
             </tr>
-            <tr  *ngFor="let cash1 of PCash;">
+            <tr  *ngFor="let cash1 of cashPurchases;">
               <td></td>
               <td>{{cash1.date}}</td>
               <td>{{cash1.internal_ref_no}}</td>
@@ -107,7 +107,7 @@
               <td>{{cash1.user_id}}</td>
 
             </tr>
-            <tr   *ngFor="let cash2 of receipt;">
+            <tr   *ngFor="let cash2 of salesReceipts;">
               <td></td>
               <td>{{cash2.date}}</td>
               <td>{{cash2.internal_ref_no}}</td>
@@ -116,14 +116,14 @@
               <td>{{cash2.account}}</td>
               <td>{{cash2.total3}}</td>
               <td>Sales Ledger</td>
-              <td>{{cash2.total5}}</td>
+              <td>{{cash2.total3}}</td>
               <td>{{cash2.item_details1}}</td>
               <td>{{cash2.quantity}}</td>
               <td>{{cash2.user_id}}</td>
 
 
             </tr>
-            <tr  *ngFor="let cash3 of preceipt;">
+            <tr  *ngFor="let cash3 of purchaseReceipts;">
               <td></td>
               <td>{{cash3.date}}</td>
               <td>{{cash3.internal_ref_no}}</td>
@@ -132,7 +132,7 @@
               <td>{{cash3.account}}</td>
               <td>{{cash3.total3}}</td>
               <td>Cash Ledger</td>
-              <td>{{cash3.total5}}</td>
+              <td>{{cash3.total3}}</td>
               <td>{{cash3.item_details1}}</td>
               <td>{{cash3.quantity}}</td>
               <td>{{cash3.user_id}}</td>
@@ -155,7 +155,7 @@
 
             </tr>
 
-            <tr  *ngFor="let cash5 of pcredit;">
+            <tr  *ngFor="let cash5 of creditPurchases;">
               <td></td>
               <td>{{cash5.date}}</td>
               <td>{{cash5.internal_ref_no}}</td>
@@ -170,23 +170,7 @@
               <td>{{cash5.user_id}}</td>
 
             </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-
-
-            </tr>
-
-
+            
 
           </tbody>
         </table>

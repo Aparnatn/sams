@@ -13,17 +13,17 @@ import { ReportsService } from '../reports/reports.service';
 })
 export class AllJournalEntryComponent implements OnInit {
   AllJournalEntryForm = this.formBuilder.group({
-    date:['',Validators.required],
-    report_date:['',Validators.required],
+    date:"",
+    report_date:"",
 
    });
 
-   Cash: CashSaleResponse[];
-   PCash: PCashSaleResponse[];
-   receipt:SalesReceiptResponse[];
-   preceipt:PurchaseReceiptResponse[];
-   credit:CreditSaleResponse[];
-   pcredit:CreditPurchaseResponse[];
+   cash: CashSaleResponse[];
+  cashPurchases: PCashSaleResponse[];
+  salesReceipts: SalesReceiptResponse[];
+  credit:CreditSaleResponse[];
+  creditPurchases:CreditPurchaseResponse[];
+  purchaseReceipts: PurchaseReceiptResponse[];
 
 
 
@@ -38,9 +38,13 @@ export class AllJournalEntryComponent implements OnInit {
   }
   onSubmit(): void {
 
-    this.service.chs(this.AllJournalEntryForm.value).subscribe((data,)=>{
-      this.Cash = data;
-      console.log(data);
+    this.service.getalljournal(this.AllJournalEntryForm.value).subscribe((data,)=>{
+      this.cash = data.cash;
+      this.cashPurchases = data.cashPurchases;
+      this.credit = data.credit;
+      this.creditPurchases = data.creditPurchases;
+      this.salesReceipts= data.salesReciepts;
+      this.purchaseReceipts = data.purchaseReciepts;
     });
 
     // this.service.pchs(this.AllJournalEntryForm.value).subscribe((data,)=>{

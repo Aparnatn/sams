@@ -20,20 +20,15 @@ export class SupplierMasterDataComponent implements OnInit {
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    // this.service.supplierMasterDF({}).subscribe((data) => {
-    //   this.supplier = data;
-    //   console.log(data);
-    // })
+    
 
   }
   onSubmit(): void {
-    this.service.supplierMasterDF(this.supplierMasterDataForm.value,).subscribe((data,)=>{
-      console.log(data);});
-      this.service.supplierMasterDF({}).subscribe((data) => {
-        this.supplier = data;
-        console.log(data);
-      })  
-    // this.router.navigate(['/reports']);
+    this.service.supplier_master(this.supplierMasterDataForm.value).subscribe((pcash) => {
+      this.supplier = pcash;
+
+      
+    });
   }
   back() {
     this.router.navigate(['/supplierbuttons']);

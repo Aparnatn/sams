@@ -130,6 +130,12 @@ export interface CustomerMasterdataResponse {
  id:number
 }
 export interface CashSaleResponse {
+  creditPurchases: CreditPurchaseResponse[];
+  credit: CreditSaleResponse[];
+  purchaseReciepts: PurchaseReceiptResponse[];
+  salesReciepts: SalesReceiptResponse[];
+  cashPurchases: PCashSaleResponse[];
+  cash: CashSaleResponse[];
   amount: any;
   price: any;
   price1_1: any;
