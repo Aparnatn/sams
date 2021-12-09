@@ -197,14 +197,14 @@ export class SalesService {
   account: PurchaseReceiptRequest[] = [];
   amount: CreditSaleRequest[] = [];
   paid_amount: CreditPurchaseRequest[] = [];
-  l(filter: CashFilter): Observable<CashSaleResponse[]> {
+  trial_balance(filter: CashFilter): Observable<CashSaleResponse[]> {
     // console.log(filter);
     let params = new HttpParams();
-    if (filter.from_date) {
-      params = params.append('from_date', filter.from_date);
+    if (filter.date) {
+      params = params.append('date', filter.date);
     }
-    if (filter.to_date) {
-      params = params.append('to_date', filter.to_date);
+    if (filter.report_date) {
+      params = params.append('report_date', filter.report_date);
     }
     if (filter.name) {
       params = params.append('name', filter.name);
@@ -215,95 +215,12 @@ export class SalesService {
     )
   }
 
-  tl(filter: PCashFilter): Observable<PCashSaleResponse[]> {
-    // console.log(filter);
-    let params = new HttpParams();
-    if (filter.from_date) {
-      params = params.append('from_date', filter.from_date);
-    }
-    if (filter.to_date) {
-      params = params.append('to_date', filter.to_date);
-    }
-    if (filter.name) {
-      params = params.append('name', filter.name);
-    }
-    return this.http.get<PCashSaleResponse[]>(
-      `${this.apiUrl}/Sam/gotb`,
-      { params: params }
-    )
-  }
 
-  tlr(filter: ReceiptFilter): Observable<SalesReceiptResponse[]> {
-    // console.log(filter);
-    let params = new HttpParams();
-    if (filter.from_date) {
-      params = params.append('from_date', filter.from_date);
-    }
-    if (filter.to_date) {
-      params = params.append('to_date', filter.to_date);
-    }
-    if (filter.name) {
-      params = params.append('name', filter.name);
-    }
-    return this.http.get<SalesReceiptResponse[]>(
-      `${this.apiUrl}/Sam/gotb`,
-      { params: params }
-    )
-  }
 
-  tpr(filter: PReceiptFilter): Observable<PurchaseReceiptResponse[]> {
-    // console.log(filter);
-    let params = new HttpParams();
-    if (filter.from_date) {
-      params = params.append('from_date', filter.from_date);
-    }
-    if (filter.to_date) {
-      params = params.append('to_date', filter.to_date);
-    }
-    if (filter.name) {
-      params = params.append('name', filter.name);
-    }
-    return this.http.get<PurchaseReceiptResponse[]>(
-      `${this.apiUrl}/Sam/gotb`,
-      { params: params }
-    )
-  }
 
-  tsr(filter: creditsaleFilter): Observable<CreditSaleResponse[]> {
-    // console.log(filter);
-    let params = new HttpParams();
-    if (filter.from_date) {
-      params = params.append('from_date', filter.from_date);
-    }
-    if (filter.to_date) {
-      params = params.append('to_date', filter.to_date);
-    }
-    if (filter.name) {
-      params = params.append('name', filter.name);
-    }
-    return this.http.get<CreditSaleResponse[]>(
-      `${this.apiUrl}/Sam/gotb`,
-      { params: params }
-    )
-  }
 
-  tcr(filter: PcreditFilter): Observable<CreditPurchaseResponse[]> {
-    // console.log(filter);
-    let params = new HttpParams();
-    if (filter.from_date) {
-      params = params.append('from_date', filter.from_date);
-    }
-    if (filter.to_date) {
-      params = params.append('to_date', filter.to_date);
-    }
-    if (filter.name) {
-      params = params.append('name', filter.name);
-    }
-    return this.http.get<CreditPurchaseResponse[]>(
-      `${this.apiUrl}/Sam/gotb`,
-      { params: params }
-    )
-  }
+
+
 
   sis: CashSaleRequest[] = [];
   invoices: PCashSaleRequest[] = [];
@@ -328,10 +245,7 @@ export class SalesService {
       `${this.apiUrl}/Sam/gols`,
       { params: params }
     )
-    // return this.http.get<CashSaleResponse[]>(
-    //   `${this.apiUrl}/Sam/gotb`,
-    //   { params: params }
-    // )
+
   }
 
   lsl(filter: PCashFilter): Observable<PCashSaleResponse[]> {
@@ -371,7 +285,7 @@ export class SalesService {
     if (filter.date) {
       params = params.append('date', filter.date);
     }
-    if (filter.to_date) {
+    if (filter.report_date) {
       params = params.append('report_date', filter.report_date);
     }
     if (filter.name) {

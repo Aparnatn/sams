@@ -134,75 +134,75 @@
             <tbody>
 
 
-              <tr *ngFor="let item of cash;">
+              <tr *ngFor="let item of Cash;">
                 <td>{{item.id}}</td>
-                <td></td>
+<td></td>
                 <td>{{item.account}}</td>
                 <td></td>
 
-                <td *ngFor="let ledger of Ledgers;">{{ledger.opening_bal}}</td>
+                <td>{{item.opening_balance}}</td>
 
                 <td>{{item.total3}}</td>
                 <td>{{item.total3}}</td>
-                <td>{{ calculateTotal(item.total2, item.total3, Ledger) }}</td>
+                <td>{{ calculateTotal(item.total3, Ledger) }}</td>
 
               </tr>
-              <tr *ngFor="let item of cashPurchases;">
-                <td>{{item.id}}</td>
+              <tr *ngFor="let cash of PCash;">
+                <td>{{ cash.id }}</td>
                 <td></td>
-                <td>{{item.account}}</td>
+                <td>{{cash.account}}</td>
                 <td></td>
-                <td>{{item.opening_bal}}</td>
-                <td>{{item.total3}}</td>
-                <td>{{item.total3}}</td>
-                <td>{{item.amount1}}</td>
+                <td>{{cash.opening_balance}}</td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td>{{ calculateTotal(item.total3, Ledger) }}</td>
 
               </tr>
-              <tr *ngFor="let item of salesReceipts;">
-                <td>{{ item.id }}</td>
+              <tr *ngFor="let cash of receipt;">
+                <td>{{ cash.id }}</td>
                 <td></td>
-                <td>{{item.account}}</td>
+                <td>{{cash.account}}</td>
+                <td>{{cash.opening_balance}}</td>
                 <td></td>
-                <td></td>
-                <td>{{item.total3}}</td>
-                <td>{{item.total3}}</td>
-                <td></td>
-
-
-              </tr>
-
-              <tr *ngFor="let item of purchaseReceipts;">
-                <td>{{ item.id }}</td>
-                <td></td>
-                <td>{{item.account}}</td>
-                <td></td>
-                <td></td>
-                <td>{{item.total3}}</td>
-                <td>{{item.total3}}</td>
-                <td></td>
-
-              </tr>
-              <tr *ngFor="let item of credits;">
-                <td>{{ item.id }}</td>
-                <td></td>
-                <td>{{item.account}}</td>
-                <td></td>
-                <td></td>
-                <td>{{item.total3}}</td>
-                <td>{{item.total3}}</td>
-                <td></td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td>{{ calculateTotal(item.total3, Ledger) }}</td>
 
 
               </tr>
-              <tr *ngFor="let item of pcredits;">
-                <td>{{ item.id }}</td>
+
+              <tr  *ngFor="let cash of preceipt;">
+                <td>{{ cash.id }}</td>
                 <td></td>
-                <td>{{item.account}}</td>
+                <td>{{cash.account}}</td>
+                <td>{{cash.opening_balance}}</td>
                 <td></td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td>{{ calculateTotal(item.total3, Ledger) }}</td>
+
+              </tr>
+              <tr   *ngFor="let cash of credit;">
+                <td>{{ cash.id }}</td>
                 <td></td>
-                <td>{{item.total3}}</td>
-                <td>{{item.total3}}</td>
+                <td>{{cash.account}}</td>
+                <td >{{cash.opening_balance}}</td>
                 <td></td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td>{{ calculateTotal( item.total3, Ledger) }}</td>
+
+
+              </tr>
+              <tr  *ngFor="let cash of pcredit;">
+                <td>{{ cash.id }}</td>
+                <td></td>
+                <td>{{cash.account}}</td>
+                <td>{{cash.opening_balance}}</td>
+                <td></td>
+                <td>{{cash.total3}}</td>
+                <td>{{cash.total3}}</td>
+                <td>{{ calculateTotal( item.total3, Ledger) }}</td>
 
               </tr>
               <tr>

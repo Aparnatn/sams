@@ -43,7 +43,7 @@
 
 
           <div class="col-sm-7" >
-            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date">
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="report_date">
           </div>
         </div>
 
@@ -74,15 +74,15 @@
 
               <tr *ngFor="let item of Cash;">
                 <td>{{item.id}}</td>
-                <td></td>
+<td></td>
                 <td>{{item.account}}</td>
                 <td></td>
 
-                <td *ngFor="let cash of Ledger;">{{cash.opening_bal}}</td>
+                <td>{{item.opening_balance}}</td>
 
                 <td>{{item.total3}}</td>
                 <td>{{item.total3}}</td>
-                <td>{{ calculateTotal(item.total2, item.total3, Ledger) }}</td>
+                <td>{{ calculateTotal(item.total3, Ledger) }}</td>
 
               </tr>
               <tr *ngFor="let cash of PCash;">
@@ -90,21 +90,21 @@
                 <td></td>
                 <td>{{cash.account}}</td>
                 <td></td>
-                <td>{{cash.opening_bal}}</td>
+                <td>{{cash.opening_balance}}</td>
                 <td>{{cash.total3}}</td>
                 <td>{{cash.total3}}</td>
-                <td>{{cash.amount1}}</td>
+                <td>{{ calculateTotal(item.total3, Ledger) }}</td>
 
               </tr>
               <tr *ngFor="let cash of receipt;">
                 <td>{{ cash.id }}</td>
                 <td></td>
                 <td>{{cash.account}}</td>
-                <td></td>
+                <td>{{cash.opening_balance}}</td>
                 <td></td>
                 <td>{{cash.total3}}</td>
                 <td>{{cash.total3}}</td>
-                <td></td>
+                <td>{{ calculateTotal(item.total3, Ledger) }}</td>
 
 
               </tr>
@@ -113,22 +113,22 @@
                 <td>{{ cash.id }}</td>
                 <td></td>
                 <td>{{cash.account}}</td>
-                <td></td>
+                <td>{{cash.opening_balance}}</td>
                 <td></td>
                 <td>{{cash.total3}}</td>
                 <td>{{cash.total3}}</td>
-                <td></td>
+                <td>{{ calculateTotal(item.total3, Ledger) }}</td>
 
               </tr>
               <tr   *ngFor="let cash of credit;">
                 <td>{{ cash.id }}</td>
                 <td></td>
                 <td>{{cash.account}}</td>
-                <td></td>
+                <td >{{cash.opening_balance}}</td>
                 <td></td>
                 <td>{{cash.total3}}</td>
                 <td>{{cash.total3}}</td>
-                <td></td>
+                <td>{{ calculateTotal( item.total3, Ledger) }}</td>
 
 
               </tr>
@@ -136,11 +136,11 @@
                 <td>{{ cash.id }}</td>
                 <td></td>
                 <td>{{cash.account}}</td>
-                <td></td>
+                <td>{{cash.opening_balance}}</td>
                 <td></td>
                 <td>{{cash.total3}}</td>
                 <td>{{cash.total3}}</td>
-                <td></td>
+                <td>{{ calculateTotal(item.total2, item.total3, Ledger) }}</td>
 
               </tr>
               <tr>

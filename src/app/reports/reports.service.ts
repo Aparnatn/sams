@@ -695,14 +695,14 @@ crs(filter: creditsaleFilter): Observable<CreditSaleResponse[]> {
 pcsr3: PCashSaleRequest[] = [];
 csr4:CreditSaleRequest[] = [];
 cpr3:CreditPurchaseRequest[] = [];
-chs3(filter: CashFilter): Observable<CashSaleResponse[]> {
+stock_adjustment(filter: CashFilter): Observable<CashSaleResponse[]> {
   // console.log(filter);
   let params = new HttpParams();
-  if (filter.from_date) {
-    params = params.append('from_date', filter.from_date);
+  if (filter.date) {
+    params = params.append('date', filter.date);
   }
-  if (filter.to_date) {
-    params = params.append('to_date', filter.to_date);
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
   }
   if (filter.name) {
     params = params.append('name', filter.name);
@@ -713,57 +713,7 @@ chs3(filter: CashFilter): Observable<CashSaleResponse[]> {
   )
 }
 
-pchs3(filter: PCashFilter): Observable<PCashSaleResponse[]> {
-    // console.log(filter);
-    let params = new HttpParams();
-    if (filter.from_date) {
-      params = params.append('from_date', filter.from_date);
-    }
-    if (filter.to_date) {
-      params = params.append('to_date', filter.to_date);
-    }
-    if (filter.name) {
-      params = params.append('name', filter.name);
-    }
-    return this.http.get<PCashSaleResponse[]>(
-      `${this.apiUrl}/Sam/stockAdjustment`,
-      {params: params}
-    )
-}
-crs3(filter: creditsaleFilter): Observable<CreditSaleResponse[]> {
-  // console.log(filter);
-  let params = new HttpParams();
-  if (filter.from_date) {
-  params = params.append('from_date', filter.from_date);
-  }
-  if (filter.to_date) {
-  params = params.append('to_date', filter.to_date);
-  }
-  if (filter.name) {
-  params = params.append('name', filter.name);
-  }
-  return this.http.get<CreditSaleResponse[]>(
-  `${this.apiUrl}/Sam/stockAdjustment`,
-  {params: params}
-  )
-  }
-  crp3(filter: PcreditFilter): Observable<CreditPurchaseResponse[]> {
-    // console.log(filter);
-    let params = new HttpParams();
-    if (filter.from_date) {
-    params = params.append('from_date', filter.from_date);
-    }
-    if (filter.to_date) {
-    params = params.append('to_date', filter.to_date);
-    }
-    if (filter.name) {
-    params = params.append('name', filter.name);
-    }
-    return this.http.get<CreditPurchaseResponse[]>(
-    `${this.apiUrl}/Sam/stockAdjustment`,
-    {params: params}
-    )
-    }
+
     csr5: CashSaleRequest[] = [];
 pcsr4: PCashSaleRequest[] = [];
 csr6:CreditSaleRequest[] = [];

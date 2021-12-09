@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CashSaleResponse, CreditPurchaseResponse, CreditSaleResponse, PCashSaleResponse } from '../interfaces/sales.interfaces';
 import { ReportsService } from '../reports/reports.service';
+import { ItemResponse } from '../user/login.interfaces';
 
 
 @Component({
@@ -22,46 +23,27 @@ export class StockAdjustmentComponent implements OnInit {
    PCash: PCashSaleResponse[];
    credit:CreditSaleResponse[];
    pcredit:CreditPurchaseResponse[];
-
+   item:ItemResponse[];
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    // this.service.chs3({}).subscribe((data) => {
-    //   this.Cash = data;
-    //   console.log(data);
-    // })
+
   }
   onSubmit(): void {
 
-    this.service.chs3(this.StockAdjustmentForm.value).subscribe((data,)=>{
+    this.service.stock_adjustment(this.StockAdjustmentForm.value).subscribe((data,)=>{
       this.Cash = data;
       console.log(data);
-      this.service.chs3({}).subscribe((data) => {
-        this.Cash = data;
-        console.log(data);
-      })
-      
+
+
+
     });
 
-    // this.service.pchs3(this.StockAdjustmentForm.value).subscribe((data,)=>{
-    //   this.PCash = data;
-    //   console.log(data);
-    // });
-
-    //   this.service.crs3(this.StockAdjustmentForm.value).subscribe((data,)=>{
-    //         this.credit = data;
-    //         console.log(data);
-    //       });
-
-    //         this.service.crp3(this.StockAdjustmentForm.value).subscribe((data,)=>{
-    //           this.pcredit = data;
-    //           console.log(data);
-    //         });
 
   }
 
-  
- 
+
+
   back() {
     this.router.navigate(['/itemjobbuttons']);
   }

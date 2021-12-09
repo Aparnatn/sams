@@ -22,13 +22,13 @@ export class LedgerStatementComponent implements OnInit {
     period: ["", Validators.required],
   });
 
-  cash: CashSaleResponse[] = [];
-  cashPurchases: PCashSaleResponse[] = [];
-  salesReceipts: SalesReceiptResponse[] = [];
-  purchaseReceipts: PurchaseReceiptResponse[] = [];
-  credits: CreditSaleResponse[] = [];
-  pcredits: CreditPurchaseResponse[] = [];
-  Ledgers: LedgerResponse[] = [];
+  Cash: CashSaleResponse[];
+  PCash: PCashSaleResponse[];
+  receipt:SalesReceiptResponse[];
+  preceipt:PurchaseReceiptResponse[];
+  credit:CreditSaleResponse[];
+  pcredit:CreditPurchaseResponse[];
+  Ledger: LedgerResponse[] = [];
 
   constructor(
     private http: HttpClient,
@@ -44,22 +44,24 @@ export class LedgerStatementComponent implements OnInit {
 
   onSubmit(): void {
     this.service.ledgerstatement(this.LedgerStatementForm.value).subscribe((data) => {
-      this.cash = data;
+      this.Cash = data;
 
     });
     this.userservice.getLedgers().subscribe((data) => {
-      this.Ledgers = data;
+      this.Ledger = data;
       console.log(data);
     })
   }
 
-  calculateTotal(total_1: string | number, total_2: string | number, ledgers: LedgerResponse[]) {
-    let total = Number(total_1) - Number(total_2);
-
+  calculateTotal(total3:number, ledgers: LedgerResponse[]) {
+    let total1 = Number(total3) - Number(total3);
+    let total=0;
+    let total2=0;
     (ledgers || []).forEach(ledger => {
       total += Number(ledger.opening_bal);
+      total2= Number(total1) + Number(total)
     });
-    return total;
+    return Number(total2);
   }
 
 

@@ -16,6 +16,7 @@ import { LedgerResponse } from '../user/login.interfaces';
 export class TrialBalanceComponent implements OnInit {
   TrialBalanceForm = this.formBuilder.group({
    date:["", Validators.required],
+   report_date:"",
 
   });
 
@@ -35,7 +36,7 @@ export class TrialBalanceComponent implements OnInit {
 
   onSubmit(): void {
 
-    this.service.l(this.TrialBalanceForm.value).subscribe((data,)=>{
+    this.service.trial_balance(this.TrialBalanceForm.value).subscribe((data,)=>{
       this.Cash = data;
       console.log(data);
     });
@@ -43,16 +44,18 @@ export class TrialBalanceComponent implements OnInit {
       this.Ledger = data;
       console.log(data);
     })}
-    calculateTotal(total_1: string | number, total_2: string | number, ledgers: LedgerResponse[]) {
-      let total = Number(total_1) - Number(total_2);
-
+    calculateTotal(total3:number, ledgers: LedgerResponse[]) {
+      let total1 = Number(total3) - Number(total3);
+      let total=0;
+      let total2=0;
       (ledgers || []).forEach(ledger => {
         total += Number(ledger.opening_bal);
+        total2= Number(total1) + Number(total)
       });
-      return total;
+      return Number(total2);
     }
 
-    
+
   back() {
     this.router.navigate(['/financial']);
   }
