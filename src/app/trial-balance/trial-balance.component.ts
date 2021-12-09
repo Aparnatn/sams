@@ -44,16 +44,16 @@ export class TrialBalanceComponent implements OnInit {
       this.Ledger = data;
       console.log(data);
     })}
-    calculateTotal(total3:number, ledgers: LedgerResponse[]) {
-      let total1 = Number(total3) - Number(total3);
-      let total=0;
-      let total2=0;
-      (ledgers || []).forEach(ledger => {
-        total += Number(ledger.opening_bal);
-        total2= Number(total1) + Number(total)
-      });
-      return Number(total2);
-    }
+    // calculateTotal(total3:number, ledgers: LedgerResponse[]) {
+    //   let total1 = Number(total3) - Number(total3);
+    //   let total=0;
+    //   let total2=0;
+    //   (ledgers || []).forEach(ledger => {
+    //     total += Number(ledger.opening_bal);
+    //     total2= Number(total1) + Number(total)
+    //   });
+    //   return Number(total2);
+    // }
 
 
   back() {

@@ -19,7 +19,7 @@ report_date:"",
   cash: CashSaleResponse[];
   cashPurchases: PCashSaleResponse[];
   salesReceipts: SalesReceiptResponse[];
-  credits:CreditSaleResponse[];
+  credit:CreditSaleResponse[];
   pcredit:CreditPurchaseResponse[];
   purchaseReceipts: PurchaseReceiptResponse[];
   assetTotal = 0;
@@ -38,7 +38,8 @@ netProfit=0;
       this.cashPurchases = data.cashPurchases;
       this.salesReceipts= data.salesReciepts;
       this.purchaseReceipts = data.purchaseReciepts;
-
+      this.credit=data.credit;
+      this.pcredit=data.pcredit;
       let total = 0;
       this.assetTotal = 0;
       this.liabilityTotal = 0;
@@ -48,12 +49,18 @@ netProfit=0;
         this.assetTotal += Number(element.total3);
       });
       this.cashPurchases.forEach(element => {
-        this.assetTotal -= Number(element.total3);
+        this.assetTotal += Number(element.total3);
+      });
+      this.credit.forEach(element => {
+        this.assetTotal += Number(element.total3);
       });
       this.salesReceipts.forEach(element => {
         this.liabilityTotal += Number(element.total3);
       });
       this.purchaseReceipts.forEach(element => {
+        this.liabilityTotal += Number(element.total3);
+      });
+      this.pcredit.forEach(element => {
         this.liabilityTotal += Number(element.total3);
       });
 

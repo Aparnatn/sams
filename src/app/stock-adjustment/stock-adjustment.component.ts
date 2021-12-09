@@ -33,9 +33,6 @@ export class StockAdjustmentComponent implements OnInit {
 
     this.service.stock_adjustment(this.StockAdjustmentForm.value).subscribe((data,)=>{
       this.Cash = data;
-      console.log(data);
-
-
 
     });
 

@@ -99,10 +99,11 @@
               </tr>
 
 
-              <tr>
-                <th>Total</th>
-                <td></td>
-                <td></td>
+              <tr *ngFor="let cash of credit;">
+
+                <td>{{cash.account}}</td>
+
+                <td>{{cash.total3}}</td>
 
               </tr>
               <tr>
@@ -130,10 +131,14 @@
               </tr>
 
 
-              <tr>
-                <th>Total</th>
+              <tr *ngFor="let cash of pcredit;">
+                <td></td>
+                <td>{{cash.account}}</td>
+                <td>{{cash.total3}}</td>
                 <td></td>
                 <td></td>
+                <td></td>
+                <!-- <td>{{cash.total3}}</td> -->
 
               </tr>
               <tr>
