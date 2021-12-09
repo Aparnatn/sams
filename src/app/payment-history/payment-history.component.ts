@@ -39,7 +39,7 @@ export class PaymentHistoryComponent implements OnInit {
   }
   calculateAsset() {
     this.PCash.forEach(element => {
-      this.assetTotal =  Number(element.amount);
+      this.assetTotal +=  Number(element.amount);
     });
   }
   

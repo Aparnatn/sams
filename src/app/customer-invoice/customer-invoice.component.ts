@@ -36,7 +36,7 @@ export class CustomerInvoiceComponent implements OnInit {
   }
   calculateAsset() {
     this.Cash.forEach(element => {
-      this.assetTotal = Number(element.amount) + Number(element.amount);
+      this.assetTotal += Number(element.amount)
     });
   }
 
