@@ -42,11 +42,14 @@ export interface stockAdjustmentFilter {
   to_date?: string,
   name?: string,
 }
-export interface jobStatementFilter {
+export interface JobMasterFilter {
+  date?:string,
   from_date?: string,
   to_date?: string,
+  report_date?:string,
   name?: string,
 }
+
 export interface supplierMasterdataFilter {
   from_date?: string,
   to_date?: string,
@@ -57,15 +60,17 @@ export interface supplierInvoRecptRegisterFilter {
   to_date?: string,
   name?: string,
 }
-export interface jobmasterdataFilter {
+export interface jobStatementFilter {
   from_date?: string,
   to_date?: string,
   name?: string,
 }
 
 export interface stockmasterFilter {
+  date?:string,
   from_date?: string,
   to_date?: string,
+  report_date?:string,
   name?: string,
 }
 
@@ -113,8 +118,10 @@ export interface SupplierPaymentHistoryFilter {
   name?: string,
 }
 export interface LedgerMasterDataFilter {
+  date?:string,
   from_date?: string,
   to_date?: string,
+  report_date?:string,
   name?: string,
 }
 export interface CustomerReceiptHistoryFilter {
@@ -332,7 +339,7 @@ customerInvoRecpt: customerInvoRecptRegRequest[] = [];
     }
 
     jobmasterD: jobMasterdataRequest[] = [];
-    jobmasterDF(filter: jobmasterdataFilter): Observable<jobMasterdataResponse[]> {
+    jobmasterDF(filter: JobMasterFilter): Observable<jobMasterdataResponse[]> {
       // console.log(filter);
       let params = new HttpParams();
       if (filter.from_date) {
@@ -1009,6 +1016,83 @@ customer_masterD(filter: CustomerMasterFilter): Observable<CustomerMasterdataRes
     {params: params}
   )
 }
+
+
+job_masterD(filter: JobMasterFilter): Observable<jobMasterdataResponse[]> {
+  // console.log(filter);
+  let params = new HttpParams();
+  if (filter.from_date) {
+    params = params.append('from_date', filter.from_date);
+  }
+  if (filter.to_date) {
+    params = params.append('to_date', filter.to_date);
+  }
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
+  }
+  if (filter.date) {
+    params = params.append('date', filter.date);
+  }
+  if (filter.name) {
+    params = params.append('name', filter.name);
+  }
+  return this.http.get<jobMasterdataResponse[]>(
+    `${this.apiUrl}/Sam/JobMasterData`,
+    {params: params}
+  )
+}
+
+
+stock_masterD(filter: stockmasterFilter): Observable<stockmasterdataResponse[]> {
+  // console.log(filter);
+  let params = new HttpParams();
+  if (filter.from_date) {
+    params = params.append('from_date', filter.from_date);
+  }
+  if (filter.to_date) {
+    params = params.append('to_date', filter.to_date);
+  }
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
+  }
+  if (filter.date) {
+    params = params.append('date', filter.date);
+  }
+  if (filter.name) {
+    params = params.append('name', filter.name);
+  }
+  return this.http.get<stockmasterdataResponse[]>(
+    `${this.apiUrl}/Sam/stockMasterData`,
+    {params: params}
+  )
+}
+
+
+ledger_masterD(filter: LedgerMasterDataFilter): Observable<LedgerMasterDataResponse[]> {
+  // console.log(filter);
+  let params = new HttpParams();
+  if (filter.from_date) {
+    params = params.append('from_date', filter.from_date);
+  }
+  if (filter.to_date) {
+    params = params.append('to_date', filter.to_date);
+  }
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
+  }
+  if (filter.date) {
+    params = params.append('date', filter.date);
+  }
+  if (filter.name) {
+    params = params.append('name', filter.name);
+  }
+  return this.http.get<LedgerMasterDataResponse[]>(
+    `${this.apiUrl}/Sam/LedgerMasterData`,
+    {params: params}
+  )
+}
+
+
 
 supplier_Accoun(filter: PReceiptFilter): Observable<PurchaseReceiptResponse[]> {
   // console.log(filter);

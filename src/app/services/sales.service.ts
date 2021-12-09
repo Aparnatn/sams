@@ -35,6 +35,7 @@ export interface SupplierMasterFilter {
   name?: string,
 }
 
+
 export interface PCashFilter {
   date?:string,
   from_date?: string,
