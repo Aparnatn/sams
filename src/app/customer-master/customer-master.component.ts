@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { SalesService } from '../services/sales.service';
 import { CustomerMasterdataResponse } from '../interfaces/sales.interfaces';
+import { ReportsService } from '../reports/reports.service';
 @Component({
   selector: 'app-customer-master',
   templateUrl: './customer-master.component.html',
@@ -16,24 +17,18 @@ export class CustomerMasterComponent implements OnInit {
     report_date:['',Validators.required],
   });
   Customer: CustomerMasterdataResponse[];
-  constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
+  constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,private salesservice:SalesService) { }
 
   ngOnInit(): void {
-    // this.service.customermaster({}).subscribe((data) => {
-    //   this.Customer = data;
-    //   console.log(data);
-    // })
+  
   }
   onSubmit(): void {
+    this.service.customer_masterD(this.CustomerMasterDataForm.value).subscribe((pcash) => {
+      this.Customer = pcash;
 
-    this.service.customermaster(this.CustomerMasterDataForm.value,).subscribe((data,)=>{
-      console.log(data);});
-      this.service.customermaster({}).subscribe((data) => {
-        this.Customer = data;
-        console.log(data);
-      })
-      // this.router.navigate(['/grand-hyper']);
-  }
+      
+    });
+      }
   back() {
     this.router.navigate(['/customerbuttons']);
   }

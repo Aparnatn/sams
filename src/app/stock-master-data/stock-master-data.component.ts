@@ -21,20 +21,15 @@ export class StockMasterDataComponent implements OnInit {
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    // this.service.stockmasterDF({}).subscribe((data) => {
-    //   this.stock = data;
-    //   console.log(data);
-    // })
+   
   }
   onSubmit(): void {
+    this.service.stock_masterD(this.stockMasterDataForm.value).subscribe((pcash) => {
+      this.stock = pcash;
 
-    this.service.stockmasterDF(this.stockMasterDataForm.value,).subscribe((data,)=>{
-      console.log(data);});
-      this.service.stockmasterDF({}).subscribe((data) => {
-        this.stock = data;
-        console.log(data);
-      })
-    // this.router.navigate(['/reports']);
+      
+    });
+    
   }
   
  

@@ -29,28 +29,18 @@ export class CustomerReceiptsComponent implements OnInit {
     // })
   }
   onSubmit(): void {
-    this.service.customerRcptHF(this.customerReceiptForm.value,).subscribe((data,)=>{
-      console.log(data);});
-      this.service.customerRcptHF({}).subscribe((data) => {
-        this.receipt = data;
-        console.log(data);
-      })
-    // this.router.navigate(['/reports']);
-    this.calculateAsset(this.assetTotal);
-
-
-  }
-  calculateAsset(assetTotal:Number) {
-    this.service.customer_invoice({}).subscribe((cash) => {
+    this.service.customer_receipt(this.customerReceiptForm.value).subscribe((cash) => {
       this.Cash = cash;
 
-        this.Cash.forEach(element => {
-          this.assetTotal  =  Number(element.amount) + Number(element.amount);
-        });
-        return Number(assetTotal);
+      this.calculateAsset()
     });
-
   }
+  calculateAsset() {
+    this.Cash.forEach(element => {
+      this.assetTotal = Number(element.amount) + Number(element.amount);
+    });
+  }
+
   
  back() {
   this.router.navigate(['/customerbuttons']);

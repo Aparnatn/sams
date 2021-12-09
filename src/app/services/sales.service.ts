@@ -20,10 +20,21 @@ export interface CashFilter {
 }
 
 export interface CustomerMasterFilter {
+  date?:string,
   from_date?: string,
   to_date?: string,
+  report_date?:string,
   name?: string,
 }
+
+export interface SupplierMasterFilter {
+  date?:string,
+  from_date?: string,
+  to_date?: string,
+  report_date?:string,
+  name?: string,
+}
+
 
 export interface PCashFilter {
   date?:string,
@@ -79,6 +90,9 @@ export interface salesreceiptFilter {
 
 @Injectable()
 export class SalesService {
+  customer_master(value: any) {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl: string;
   getCustomers: any;
 

@@ -21,20 +21,15 @@ export class JobMasterComponent implements OnInit {
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    // this.service.jobmasterDF({}).subscribe((data) => {
-    //   this.jobmaster = data;
-    //   console.log(data);
-    // })
+    
   }
   onSubmit(): void {
 
-    this.service.jobmasterDF(this.jobmasterdataForm.value,).subscribe((data,)=>{
-      console.log(data);});
-      this.service.jobmasterDF({}).subscribe((data) => {
-        this.jobmaster = data;
-        console.log(data);
-      })
-    // this.router.navigate(['/reports']);
+    this.service.job_masterD(this.jobmasterdataForm.value).subscribe((pcash) => {
+      this.jobmaster = pcash;
+
+      
+    });
   }
   onSubmit2(): void {
 
