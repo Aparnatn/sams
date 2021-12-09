@@ -382,6 +382,8 @@ export class SalesService {
       { params: params }
     )
   }
+  
+  
   getpl(filter: CashFilter): Observable<pandl> {
     // console.log(filter);
     let params = new HttpParams();

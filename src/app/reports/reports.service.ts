@@ -691,6 +691,31 @@ crs(filter: creditsaleFilter): Observable<CreditSaleResponse[]> {
     )
     }
 
+    cash: CashSaleResponse[] = [];
+  cashPurchases: PCashSaleResponse[] = [];
+  salesReceipts: SalesReceiptResponse[] = [];
+  credits:CreditSaleResponse[] = [];
+  pcredit:CreditPurchaseResponse[] = [];
+  purchaseReceipts: PurchaseReceiptResponse[] = [];
+    getalljournal(filter: CashFilter): Observable<CashSaleResponse> {
+      // console.log(filter);
+      let params = new HttpParams();
+      if (filter.date) {
+        params = params.append('date', filter.date);
+      }
+      if (filter.report_date) {
+        params = params.append('report_date', filter.report_date);
+      }
+      if (filter.name) {
+        params = params.append('name', filter.name);
+      }
+      return this.http.get<CashSaleResponse>(
+        `${this.apiUrl}/Sam/allJournalEntry`,
+        { params: params }
+      )
+    }
+
+
     csr3: CashSaleRequest[] = [];
 pcsr3: PCashSaleRequest[] = [];
 csr4:CreditSaleRequest[] = [];
