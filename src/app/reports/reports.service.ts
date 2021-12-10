@@ -773,6 +773,7 @@ stock_adjustment(filter: CashFilter): Observable<CashSaleResponse[]> {
 }
 
 
+
     csr5: CashSaleRequest[] = [];
 pcsr4: PCashSaleRequest[] = [];
 csr6:CreditSaleRequest[] = [];
@@ -1240,6 +1241,42 @@ pchs1(filter: PCashFilter): Observable<PCashSaleResponse[]> {
       )
     }
 
+    
+item_statemnt(filter: CashFilter): Observable<CashSaleResponse[]> {
+  // console.log(filter);
+  let params = new HttpParams();
+  if (filter.date) {
+    params = params.append('date', filter.date);
+  }
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
+  }
+  if (filter.name) {
+    params = params.append('name', filter.name);
+  }
+  return this.http.get<CashSaleResponse[]>(
+    `${this.apiUrl}/Sam/itemStatement`,
+    {params: params}
+  )
+}
+stock_balance(filter: CashFilter): Observable<CashSaleResponse[]> {
+  // console.log(filter);
+  let params = new HttpParams();
+  if (filter.date) {
+    params = params.append('date', filter.date);
+  }
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
+  }
+  if (filter.name) {
+    params = params.append('name', filter.name);
+  }
+  return this.http.get<CashSaleResponse[]>(
+    `${this.apiUrl}/Sam/StockBalance`,
+    {params: params}
+  )
+}
+
     LedgerMasterD: LedgerMasterDataRequest[] = [];
     ledgermasterdF(filter: LedgerMasterDataFilter): Observable<LedgerMasterDataResponse[]> {
       // console.log(filter);
@@ -1258,6 +1295,29 @@ pchs1(filter: PCashFilter): Observable<PCashSaleResponse[]> {
         {params: params}
       )
     }
+
+
+    cash1: CashSaleResponse[] = [];
+    cashPurchases1: PCashSaleResponse[] = [];
+    credits1:CreditSaleResponse[] = [];
+    pcredit1:CreditPurchaseResponse[] = [];
+  job_Statement(filter: CashFilter): Observable<CashSaleResponse[]> {
+    // console.log(filter);
+    let params = new HttpParams();
+    if (filter.date) {
+      params = params.append('date', filter.date);
+    }
+    if (filter.report_date) {
+      params = params.append('report_date', filter.report_date);
+    }
+    if (filter.name) {
+      params = params.append('name', filter.name);
+    }
+    return this.http.get<CashSaleResponse[]>(
+      `${this.apiUrl}/Sam/jobStatement`,
+      {params: params}
+    )
+  }
 
 
 }
