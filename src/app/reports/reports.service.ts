@@ -771,7 +771,27 @@ stock_adjustment(filter: CashFilter): Observable<CashSaleResponse[]> {
     {params: params}
   )
 }
-
+  cash1: CashSaleResponse[] = [];
+  cashPurchases1: PCashSaleResponse[] = [];
+  credits1:CreditSaleResponse[] = [];
+  pcredit1:CreditPurchaseResponse[] = [];
+job_Statement(filter: CashFilter): Observable<CashSaleResponse[]> {
+  // console.log(filter);
+  let params = new HttpParams();
+  if (filter.date) {
+    params = params.append('date', filter.date);
+  }
+  if (filter.report_date) {
+    params = params.append('report_date', filter.report_date);
+  }
+  if (filter.name) {
+    params = params.append('name', filter.name);
+  }
+  return this.http.get<CashSaleResponse[]>(
+    `${this.apiUrl}/Sam/jobStatement`,
+    {params: params}
+  )
+}
 
     csr5: CashSaleRequest[] = [];
 pcsr4: PCashSaleRequest[] = [];

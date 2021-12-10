@@ -23,19 +23,29 @@
       <form [formGroup]="JobStatementForm" (ngSubmit)="onSubmit()">
         <div class="container-sm ">
 
-        <div class="row">
-          <div class="col-sm-5" >
-            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Date </label>
-
+          <div class="row">
+            <div class="col-sm-5" >
+              <label class="form-control"  style="border-radius:12px;padding: 10px; "> Date </label>
+  
+            </div>
+            <div class="col-sm-7" >
+              <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date">
+            </div>
           </div>
-          <div class="col-sm-7" >
-            <input type="text"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date">
-          </div>
-        </div>
 
 
 
           <div class="row" style="padding-top: 5px;">
+            <div class="col-sm-5" >
+              <label class="form-control"  style="border-radius:12px;padding: 10px; ">  Report Date </label>
+  
+            </div>
+  
+            <div class="col-sm-7" >
+              <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="report_date">
+            </div>
+          </div>
+        <div class="row" style="padding-top: 5px;">
           <div class="col-sm-5" >
             <label class="form-control"  style="border-radius:12px;padding: 10px; "> Job </label>
 
@@ -45,27 +55,8 @@
             <input type="text"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="name">
           </div>
         </div>
-        <div class="row" style="padding-top: 5px;">
-          <div class="col-sm-5" >
-            <label class="form-control"  style="border-radius:12px;padding: 10px; ">Report Date </label>
 
-          </div>
-
-          <div class="col-sm-7" >
-            <input type="date"  style="border-radius:12px;" class="form-control" formControlName="report_date">
-          </div>
-        </div>
-
-        <div class="row" style="padding-top: 5px;">
-          <div class="col-sm-5" >
-            <label class="form-control"  style="border-radius:12px;padding: 10px; "> Period </label>
-
-          </div>
-
-          <div class="col-sm-7" >
-            <input type="text"  style="border-radius:12px;" class="form-control" placeholder="" name="">
-          </div>
-        </div>
+        
 
 
 
@@ -89,54 +80,49 @@
               </tr>
             </thead>
             <tbody>
-              <tr  *ngFor="let cash of Cash;">
+              <tr *ngFor="let cash of Cash;">
                 <td></td>
-                <td>{{ cash.id }}</td>
-                <td>{{ cash.job1 }}</td>
-                <td></td>
-                <td>{{ cash.total }}</td>
-                <td></td>
+                <td>{{cash.job_id}}</td>
+                <td>{{cash.job_name}}</td>
+                <td>{{cash.job_details}}</td>
+                <td>{{cash.amount}}</td>
+                <td>{{cash.amount1}}</td>
 
 
               </tr>
-              <tr  *ngFor="let cash1 of Cash;">
+              <tr *ngFor="let cash1 of PCash;">
                 <td></td>
-                <td>{{ cash1.id }}</td>
-                <td>{{ cash1.job2 }}</td>
-                <td></td>
-                <td>{{ cash1.amount2 }}</td>
-                <td></td>
-
+                <td>{{cash1.job_id}}</td>
+                <td>{{cash1.job_name}}</td>
+                <td>{{cash1.job_details}}</td>
+                <td>{{cash1.amount1}}</td>
+                <td>{{cash1.amount}}</td>
+                
               </tr>
-              <tr  *ngFor="let cash2 of PCash;">
-                <td></td>
-                <td>{{ cash2.id }}</td>
-                <td>{{ cash2.job1 }}</td>
-                <td></td>
-                <td></td>
-                <td>{{ cash2.total }}</td>
 
-              </tr>
-              <tr  *ngFor="let cash3 of PCash;">
+              <tr *ngFor="let cash4 of credit;">
                 <td></td>
-                <td>{{ cash3.id }}</td>
-                <td>{{ cash3.job2 }}</td>
-                <td></td>
-                <td></td>
-                <td>{{ cash3.amount2 }}</td>
+                <td>{{cash4.job_id}}</td>
+                <td>{{cash4.job_name}}</td>
+                <td>{{cash4.job_details}}</td>
+                <td>{{cash4.amount}}</td>
+                <td>{{cash4.amount1}}</td>
 
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
 
-                <td></td>
-                <td></td>
 
               </tr>
 
+
+              <tr *ngFor="let cash5 of pcredit;">
+                <td></td>
+                <td>{{cash5.job_id}}</td>
+                <td>{{cash5.job_name}}</td>
+                <td>{{cash5.job_details}}</td>
+                <td>{{cash5.amount1}}</td>
+                <td>{{cash5.amount}}</td>
+                
+
+              </tr>
 
             </tbody>
           </table>
