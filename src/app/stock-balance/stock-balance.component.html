@@ -74,14 +74,55 @@
               </tr>
             </thead>
             <tbody>
-              <tr  *ngFor="let stockb of stockb;">
+              <tr *ngFor="let cash of Cash;">
                 <td></td>
-                <td>{{stockb.id }}</td>
-                <td>{{stockb.item_name }}</td>
-                <td>{{stockb.item_desc }}</td>
-                <td>{{stockb.item_barcode }}</td>
-                <td>{{stockb.item_category }}</td>
+                <td>{{cash.item_id}}</td>
+                <td>{{cash.item_name}}</td>
+                <td>{{cash.item_details}}</td>
+                <td>{{cash.barcode}}</td>
+                <td>{{cash.category}}</td>
+                <td>{{cash.remaining}}</td>
+               
+                
+
+
+              </tr>
+              <tr *ngFor="let cash1 of PCash;">
                 <td></td>
+                <td>{{cash1.item_id}}</td>
+                <td>{{cash1.item_name}}</td>
+                <td>{{cash1.item_details}}</td>
+                <td>{{cash1.quantity}}</td>
+                <td>{{cash1.barcode}}</td>
+                <td>{{cash1.category}}</td>
+                <td>{{cash1.remaining}}</td>
+              </tr>
+
+              <tr *ngFor="let cash4 of credit;">
+                <td></td>
+                <td>{{cash4.item_id}}</td>
+                <td>{{cash4.item_name}}</td>
+                <td>{{cash4.item_details}}</td>
+                <td>{{cash4.quantity}}</td>
+                <td>{{cash4.barcode}}</td>
+                <td>{{cash4.category}}</td>
+                <td>{{cash4.remaining}}</td>
+
+
+
+              </tr>
+
+
+              <tr *ngFor="let cash5 of pcredit;">
+                <td></td>
+                <td>{{cash5.item_id}}</td>
+                <td>{{cash5.item_name}}</td>
+                <td>{{cash5.item_details}}</td>
+                <td>{{cash5.quantity}}</td>
+                <td>{{cash.barcode}}</td>
+                <td>{{cash.barcode}}</td>
+                <td>{{cash5.balance}}</td>
+
 
 
               </tr>

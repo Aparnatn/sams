@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CashSaleResponse, CreditPurchaseResponse, CreditSaleResponse, PCashSaleResponse } from '../interfaces/sales.interfaces';
 import { StockBalanceResponse } from '../reports/reports.interface';
 import { ReportsService } from '../reports/reports.service';
+import { ItemResponse } from '../user/login.interfaces';
 
 
 @Component({
@@ -18,24 +20,23 @@ export class StockBalanceComponent implements OnInit {
    });
 
    stockb: StockBalanceResponse[];
+   Cash: CashSaleResponse[];
+   PCash: PCashSaleResponse[];
+   credit:CreditSaleResponse[];
+   pcredit:CreditPurchaseResponse[];
+   item:ItemResponse[];
 
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    // this.service. stockbalanceF({}).subscribe((data) => {
-    //   this.stockb = data;
-    //   console.log(data);
-    // })
+    
   }
 
   onSubmit(): void {
-    this.service.stockbalanceF(this.stockbalanceForm.value,).subscribe((data,)=>{
-      console.log(data);});
-      this.service. stockbalanceF({}).subscribe((data) => {
-        this.stockb = data;
-        console.log(data);
-      })
-    // this.router.navigate(['/reports']);
+    this.service.stock_balance(this.stockbalanceForm.value).subscribe((data,)=>{
+      this.Cash = data;
+    });
+  
   }
   back() {
     this.router.navigate(['/itemjobbuttons']);

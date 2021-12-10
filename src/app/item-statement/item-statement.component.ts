@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CashSaleResponse, CreditPurchaseResponse, CreditSaleResponse, PCashSaleResponse } from '../interfaces/sales.interfaces';
 import { ReportsService } from '../reports/reports.service';
+import { ItemResponse } from '../user/login.interfaces';
 
 
 @Component({
@@ -22,24 +23,17 @@ export class ItemStatementComponent implements OnInit {
    PCash: PCashSaleResponse[];
    credit:CreditSaleResponse[];
    pcredit:CreditPurchaseResponse[];
+   item:ItemResponse[];
 
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    // this.service.chs4({}).subscribe((data) => {
-    //   this.Cash = data;
-    //   console.log(data);
-    // })
+   
   }
   onSubmit(): void {
 
-    this.service.chs4(this.ItemStatementForm.value).subscribe((data,)=>{
+    this.service.item_statemnt(this.ItemStatementForm.value).subscribe((data,)=>{
       this.Cash = data;
-      console.log(data);
-      this.service.chs4({}).subscribe((data) => {
-        this.Cash = data;
-        console.log(data);
-      })
     });
 
     // this.service.pchs4(this.ItemStatementForm.value).subscribe((data,)=>{
