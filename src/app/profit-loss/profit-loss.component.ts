@@ -24,7 +24,12 @@ report_date:"",
   purchaseReceipts: PurchaseReceiptResponse[];
   assetTotal = 0;
   liabilityTotal = 0;
-netProfit=0;
+  netProfit= 0;
+  Dincome = 0;
+  Iincome = 0;
+  Dexpense = 0;
+  Iexpense = 0;
+  grossProfit = 0;
   // items = this.userservice.ledgers();
   constructor(private http:HttpClient,private salesservice: SalesService,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
 
@@ -44,28 +49,35 @@ netProfit=0;
       this.assetTotal = 0;
       this.liabilityTotal = 0;
       this.netProfit=0;
+      this.Dincome =0;
+      this.Iincome =0;
+      this.Dexpense =0;
+      this.Iexpense =0;
+      this.grossProfit=0;
+
+
 
       this.cash.forEach(element => {
-        this.assetTotal += Number(element.total3);
+        this.Dincome += Number(element.total3);
       });
       this.cashPurchases.forEach(element => {
-        this.assetTotal += Number(element.total3);
+        this.Dexpense += Number(element.total3);
       });
       this.credit.forEach(element => {
-        this.assetTotal += Number(element.total3);
+        this.Dincome += Number(element.total3);
       });
       this.salesReceipts.forEach(element => {
-        this.liabilityTotal += Number(element.total3);
+        this.Iincome += Number(element.total3);
       });
       this.purchaseReceipts.forEach(element => {
-        this.liabilityTotal += Number(element.total3);
+        this.Iexpense += Number(element.total3);
       });
       this.pcredit.forEach(element => {
-        this.liabilityTotal += Number(element.total3);
+        this.Dexpense += Number(element.total3);
       });
-
-        this.netProfit = this.assetTotal - this.liabilityTotal;
-
+        this.grossProfit = this.Dincome - this.Dexpense;
+        // this.liabilityTotal = this.Iincome - this.Iexpense;
+        this.netProfit = this.grossProfit - this.Iexpense + this.Iincome;
     });
   }
 

@@ -46,7 +46,10 @@
             <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="report_date">
           </div>
         </div>
-
+        <br>
+        <div class="container">
+        <button type="submit" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
+      </div>
 
 
 
@@ -74,14 +77,21 @@
               </tr>
               <tr  *ngFor="let cash of cash;">
                 <td>{{cash.account}}</td>
-                <td>{{cash.total3}}</td>
+                <td style="text-align: right;">{{cash.total3}}</td>
               </tr>
+              
+              <tr *ngFor="let cash of credit;">
 
+                <td>{{cash.account}}</td>
+
+                <td style="text-align: right;">{{cash.total3}}</td>
+
+              </tr>
 
               <tr>
                 <th>Total</th>
-                <td></td>
-                <td></td>
+                <td style="text-align: right;">{{Dincome}}</td>
+                <td style="text-align: right;">{{Dincome}}</td>
 
               </tr>
               <tr>
@@ -94,22 +104,29 @@
 
                 <td>{{cash.account}}</td>
 
-                <td>{{cash.total3}}</td>
+                <td style="text-align: right;">{{cash.total3}}</td>
 
               </tr>
 
 
-              <tr *ngFor="let cash of credit;">
+              <tr *ngFor="let cash of pcredit;">
 
                 <td>{{cash.account}}</td>
 
-                <td>{{cash.total3}}</td>
+                <td style="text-align: right;">{{cash.total3}}</td>
+
+              </tr>
+
+              <tr>
+                <th>Total</th>
+                <td style="text-align: right;">{{Dexpense}}</td>
+                <td style="text-align: right;">{{Dexpense}}</td>
 
               </tr>
               <tr>
                 <td></td>
                 <th style="text-align: right;">Gross Profit</th>
-                <td>{{assetTotal}}</td>
+                <td style="text-align: right;">{{grossProfit}}</td>
 
               </tr>
               <tr>
@@ -120,25 +137,17 @@
 
               </tr>
               <tr *ngFor="let cash of salesReceipts;">
-                <td></td>
+                
                 <td>{{cash.account}}</td>
-                <td>{{cash.total3}}</td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td style="text-align: right;">{{cash.total3}}</td>
+                
                 <!-- <td>{{cash.total3}}</td> -->
 
               </tr>
-
-
-              <tr *ngFor="let cash of pcredit;">
-                <td></td>
-                <td>{{cash.account}}</td>
-                <td>{{cash.total3}}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <!-- <td>{{cash.total3}}</td> -->
+              <tr>
+                <th>Total</th>
+                <td style="text-align: right;">{{Iincome}}</td>
+                <td style="text-align: right;">{{Iincome}}</td>
 
               </tr>
               <tr>
@@ -149,23 +158,23 @@
 
               </tr>
               <tr *ngFor="let cash of purchaseReceipts;">
-                <td>Indirect-Expense-1</td>
+                
                 <td>{{cash.account}}</td>
 
-                <td>{{cash.total3}}</td>
+                <td style="text-align: right;">{{cash.total3}}</td>
               </tr>
 
 
               <tr>
                 <th>Total</th>
-                <td>{{liabilityTotal}}</td>
-                <td></td>
+                <td style="text-align: right;">{{Iexpense}}</td>
+                <td style="text-align: right;">{{Iexpense}}</td>
 
               </tr>
               <tr>
                 <td></td>
                 <th style="text-align: right;">Net Profit</th>
-                <td>{{netProfit}}</td>
+                <td style="text-align: right;">{{netProfit}}</td>
 
               </tr>
 
@@ -191,10 +200,7 @@
 
       </div>
 
-    <br>
-        <div class="container">
-        <button type="submit" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
-      </div>
+    
       </form>
 
 
