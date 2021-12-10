@@ -11,239 +11,122 @@
     <!-- <div class="container" style="padding-top:10px;margin-left: 1px;">
       <button type="button" (click)="back()" style="border-radius:12px;" class="back"><b><p style="font-size: 20px;text-align: center;">Back</p></b></button>
     </div> -->
-  
+
       <section style="padding-top:30px">
       <div class="container">
-  
+
         <button type="button"  style="border-radius:12px;" class="btn  btn-sm btn-block"><b><p style="font-size: 30px;">Manual Journal Entry</p></b></button>
         <br>
       </div>
-  
+
         <form [formGroup]="ManualJournalForm" (ngSubmit)="onSubmit()" >
           <div class="container-sm ">
-  
+
           <div class="container">
-  
+
             <table class="table table-bordered">
               <thead>
                 <tr>
                   <th style="text-align: center;">Ledger</th>
                   <th style="text-align: center;">Debit Amount</th>
                   <th style="text-align: center;">Credit Amount</th>
-  
+
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                    <th style="border-radius:12px;text-align: center;">Debit Ledger</th>
-                    
+                    <th colspan="2" style="border-radius:12px;text-align: center;">Debit Ledger</th>
+                    <th>
+                      <button class="btn btn-default" type="button" (click)="addDebitLedgerRow()">Add</button>
+                  </th>
+                </tr>
 
-                </tr>
-    
                 <tr>
-                    <td><select type="text" style="border-radius:12px;" name="debitledg1" class="form-control"  >
-                        <option selected disabled value="">Choose....</option>
-                        <option>Assets </option>
-                        <option>Current Asset </option>
-                        <option>Bank Accounts </option>
-                        <option>Cash-in-Hand</option>
-                        <option>Cash</option>
-                        <option>Deposits(Asset)</option>
-                        <option>Loans & Advances(Assets)</option>
-                        <option>Stock-in-Hand</option>
-                        <option>Sundry Debtors</option>
-                        <option>Fixed Asset</option>
-                        <option>Investments</option>
-                        <option>Misc. Expenses(ASSET)</option>
-                        <option>Liabilities</option>
-                        <option>Branch\Divisions</option>
-                        <option>Capital Account</option>
-                        <option>Reserves & Surplus</option>
-                        <option>Current Liabilities</option>
-                        <option>Duties & Taxes</option>
-                        <option>Provisions</option>
-                        <option>Sundry Creditors</option>
-                        <option>Loans (Liabilities)</option>
-                        <option>Bank OD A/c</option>
-                        <option>Secured A/c</option>
-                        <option>Profit & loss A/c</option>
-                        <option>Expenses</option>
-                        <option>Direct Expenses</option>
-                        <option>Indirect Expenses</option>
-                        <option>Purchase Accounts</option>
-                        <option>Income</option>
-                        <option>Direct Income</option>
-                        <option>Indirect Income</option>
-                        <option>sales Accounts</option>
-                      </select></td>
-                    <td><input type="text" style="border-radius:12px;" name="debitamnt1" placeholder='0.00' class="form-control qty" step="0" min="0"/></td>
-                    <td></td>
+                  <td formArrayName="debit_ledgers" colspan="3"><table>
+                    <tr *ngFor="let field of debitLedgers().controls; let i = index"      [formGroupName]="i">
+                      <td>
+                        <select type="text" style="border-radius:12px;"   formControlName="debitledg2" class="form-control"  >
+                          <option  *ngFor="let item of Ledger"  value="{{item.id}}">{{item.ledger_name}}</option>
+
+                        </select>
+                      </td>
+                      <td>
+                        <input type="text" style="border-radius:12px;" (ngModelChange)="calcualtTotal()" formControlName="debitamnt2" class="form-control price" step="0.00" min="0" placeholder="0.00" />
+                      </td>
+                      <td>
+                        <button class="btn btn-default"  type="button" (click)="removeDebitLedger(i)">Delete</button>
+                      </td>
+                    </tr>
+                  </table></td>
+                </tr>
+
+                <tr>
+                    <th colspan="2" style="border-radius:12px;text-align: center;">Credit Ledger</th>
+                    <th>
+                      <button class="btn btn-default" type="button" (click)="addCreditLedgerRow()">Add</button>
+                  </th>
                 </tr>
                 <tr>
-                    <td><select type="text" style="border-radius:12px;" name="debitledg2" class="form-control"  >
-                        <option selected disabled value="">Choose....</option>
-                        <option>Assets </option>
-                        <option>Current Asset </option>
-                        <option>Bank Accounts </option>
-                        <option>Cash-in-Hand</option>
-                        <option>Cash</option>
-                        <option>Deposits(Asset)</option>
-                        <option>Loans & Advances(Assets)</option>
-                        <option>Stock-in-Hand</option>
-                        <option>Sundry Debtors</option>
-                        <option>Fixed Asset</option>
-                        <option>Investments</option>
-                        <option>Misc. Expenses(ASSET)</option>
-                        <option>Liabilities</option>
-                        <option>Branch\Divisions</option>
-                        <option>Capital Account</option>
-                        <option>Reserves & Surplus</option>
-                        <option>Current Liabilities</option>
-                        <option>Duties & Taxes</option>
-                        <option>Provisions</option>
-                        <option>Sundry Creditors</option>
-                        <option>Loans (Liabilities)</option>
-                        <option>Bank OD A/c</option>
-                        <option>Secured A/c</option>
-                        <option>Profit & loss A/c</option>
-                        <option>Expenses</option>
-                        <option>Direct Expenses</option>
-                        <option>Indirect Expenses</option>
-                        <option>Purchase Accounts</option>
-                        <option>Income</option>
-                        <option>Direct Income</option>
-                        <option>Indirect Income</option>
-                        <option>sales Accounts</option>
-                      </select></td>
-                    <td><input type="text" style="border-radius:12px;" name="debitamnt2" class="form-control price" step="0.00" min="0" placeholder="0.00" /></td>
-                    <td></td>
+                  <td formArrayName="credit_ledgers" colspan="3"><table>
+                    <tr *ngFor="let field of creditLedgers().controls; let j = index" [formGroupName]="j">
+                      <td>
+                        <select type="text" style="border-radius:12px;"  formControlName="creditledg2" class="form-control"  >
+                          <option *ngFor="let item of Ledger"  value="{{item.id}}">{{item.ledger_name}}</option>
+
+                        </select>
+                      </td>
+                      <td>
+                        <input type="text" style="border-radius:12px;" (ngModelChange)="calcualtTotal()" formControlName="creditamnt2" class="form-control price" step="0.00" min="0" placeholder="0.00" />
+                      </td>
+                      <td>
+                        <button class="btn btn-default"  type="button" (click)="removeCreditLedger(i)">Delete</button>
+                      </td>
+                    </tr>
+                  </table></td>
                 </tr>
-                <tr>
-                    <th style="border-radius:12px;text-align: center;">Credit Ledger</th>
-                    
-                </tr>
-                
-                <tr>
-                    <td><select type="text" style="border-radius:12px;" name="creditledg1" class="form-control"  >
-                        <option selected disabled value="">Choose....</option>
-                        <option>Assets </option>
-                        <option>Current Asset </option>
-                        <option>Bank Accounts </option>
-                        <option>Cash-in-Hand</option>
-                        <option>Cash</option>
-                        <option>Deposits(Asset)</option>
-                        <option>Loans & Advances(Assets)</option>
-                        <option>Stock-in-Hand</option>
-                        <option>Sundry Debtors</option>
-                        <option>Fixed Asset</option>
-                        <option>Investments</option>
-                        <option>Misc. Expenses(ASSET)</option>
-                        <option>Liabilities</option>
-                        <option>Branch\Divisions</option>
-                        <option>Capital Account</option>
-                        <option>Reserves & Surplus</option>
-                        <option>Current Liabilities</option>
-                        <option>Duties & Taxes</option>
-                        <option>Provisions</option>
-                        <option>Sundry Creditors</option>
-                        <option>Loans (Liabilities)</option>
-                        <option>Bank OD A/c</option>
-                        <option>Secured A/c</option>
-                        <option>Profit & loss A/c</option>
-                        <option>Expenses</option>
-                        <option>Direct Expenses</option>
-                        <option>Indirect Expenses</option>
-                        <option>Purchase Accounts</option>
-                        <option>Income</option>
-                        <option>Direct Income</option>
-                        <option>Indirect Income</option>
-                        <option>sales Accounts</option>
-                      </select></td>
-                    <td></td>
-                    <td><input type="text" style="border-radius:12px;" name="creditamnt1" placeholder='0.00' class="form-control total" step="0" min="0" /></td>
-                </tr>
-                <tr>
-                    <td><select type="text" style="border-radius:12px;" name="creditledg2" class="form-control"   >
-                        <option selected disabled value="">Choose....</option>
-                        <option>Assets </option>
-                        <option>Current Asset </option>
-                        <option>Bank Accounts </option>
-                        <option>Cash-in-Hand</option>
-                        <option>Cash</option>
-                        <option>Deposits(Asset)</option>
-                        <option>Loans & Advances(Assets)</option>
-                        <option>Stock-in-Hand</option>
-                        <option>Sundry Debtors</option>
-                        <option>Fixed Asset</option>
-                        <option>Investments</option>
-                        <option>Misc. Expenses(ASSET)</option>
-                        <option>Liabilities</option>
-                        <option>Branch\Divisions</option>
-                        <option>Capital Account</option>
-                        <option>Reserves & Surplus</option>
-                        <option>Current Liabilities</option>
-                        <option>Duties & Taxes</option>
-                        <option>Provisions</option>
-                        <option>Sundry Creditors</option>
-                        <option>Loans (Liabilities)</option>
-                        <option>Bank OD A/c</option>
-                        <option>Secured A/c</option>
-                        <option>Profit & loss A/c</option>
-                        <option>Expenses</option>
-                        <option>Direct Expenses</option>
-                        <option>Indirect Expenses</option>
-                        <option>Purchase Accounts</option>
-                        <option>Income</option>
-                        <option>Direct Income</option>
-                        <option>Indirect Income</option>
-                        <option>sales Accounts</option>
-                      </select></td>
-                    <td></td>
-                    <td><input type="text" style="border-radius:12px;" name="creditamnt2" class="form-control value" step="0.00" min="0" placeholder="0.00" /></td>
-                </tr>
-           
+
                 <tr>
                     <th style="border-radius:12px;text-align: center;">Total</th>
-                    <td><input type="number" style="border-radius:12px;"name="debtotal" placeholder='0.00' class="form-control" id="total_db" readonly /></td>
-                    <td><input type="number" style="border-radius:12px;"name="cretotal" placeholder='0.00' class="form-control" id="total_cr" readonly /></td>
+                    <td><input type="number" style="border-radius:12px;"  formControlName="debtotal" placeholder='0.00' class="form-control" id="total_db" readonly /></td>
+                    <td><input type="number" style="border-radius:12px;" formControlName="cretotal" placeholder='0.00' class="form-control" id="total_cr" readonly /></td>
                 </tr>
-                
-                
+
+
 
 
                 </tbody>
             </table>
           </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
         </div>
           <br>
       <div class="container ">
-  
-  
+
+
         </div>
-  
+
       <br>
           <div class="container">
           <button type="submit" style="border-radius: 12px;" class="btn btn-lg btn-block">Submit</button>
         </div>
         </form>
-  
-  
+
+
       </section>
       </body>
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+

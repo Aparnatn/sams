@@ -145,6 +145,12 @@ export class UserService {
       // withCredentials: true
     });
   }
+  manualentry(data: LedgerRequest): Observable<LedgerResponse> {
+    return this.http.post<LedgerResponse>(`${this.apiUrl}/Sam/manualjournal`, data, {
+      // observe: 'response',
+      // withCredentials: true
+    });
+  }
   userlist(data: RegisterRequest): Observable<UserlistResponse> {
     return this.http.post<UserlistResponse>(`${this.apiUrl}/Sam/userlist`, data, {
       // observe: 'response',

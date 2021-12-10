@@ -65,6 +65,7 @@ export interface LedgerStatementResponse {
 }
 
 export interface LedgerResponse {
+  debitledg2: any;
   id: number,
   opening_bal: number,
 }

@@ -23,8 +23,8 @@ import { customerAccountStatementRequest, customerAccountStatementResponse, Cust
 
 
 export interface customerInvoRecptRegFilter {
-  from_date?: string,
-  to_date?: string,
+  date?: string,
+  report_date?: string,
   name?: string,
 }
 export interface allJournalEntryFilter {
@@ -145,7 +145,7 @@ export class ReportsService {
   customerInvoRecptReg(data: customerInvoRecptRegRequest ): Observable<customerInvoRecptRegResponse> {
     return this.http.post<customerInvoRecptRegResponse>(`${this.apiUrl}/Sam/customerInvoReceiptRegister`, data, {
         // observe: 'response',
-        withCredentials: true
+        // withCredentials: true
     });
 
 }
@@ -280,15 +280,15 @@ ledgermasterdata(data: LedgerMasterDataRequest ): Observable<LedgerMasterDataRes
 
 }
 
-customerInvoRecpt: customerInvoRecptRegRequest[] = [];
+
     customerInvoR(filter: customerInvoRecptRegFilter): Observable<customerInvoRecptRegResponse[]> {
       // console.log(filter);
       let params = new HttpParams();
-      if (filter.from_date) {
-        params = params.append('from_date', filter.from_date);
+      if (filter.date) {
+        params = params.append('date', filter.date);
       }
-      if (filter.to_date) {
-        params = params.append('to_date', filter.to_date);
+      if (filter.report_date) {
+        params = params.append('report_date', filter.report_date);
       }
       if (filter.name) {
         params = params.append('name', filter.name);

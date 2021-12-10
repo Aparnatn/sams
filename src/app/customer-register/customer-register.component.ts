@@ -24,19 +24,16 @@ export class CustomerRegisterComponent implements OnInit {
   constructor(private router:Router,private http:HttpClient,private formBuilder: FormBuilder,private service:ReportsService,) { }
 
   ngOnInit(): void {
-    // this.service.customerInvoR({}).subscribe((data) => {
-    //   this.CustomerIR = data;
-    //   console.log(data);
-    // })
+
   }
 
   onSubmit(): void {
-    this.service.customerInvoR(this.CustomerInvoRForm.value,).subscribe((data,)=>{
-      console.log(data);});
-      this.service.customerInvoR({}).subscribe((data) => {
+    this.service.customerInvoR(this.CustomerInvoRForm.value).subscribe((data,)=>{
+
         this.CustomerIR = data;
-        console.log(data);
-      })
+        console.log(data);  });
+
+
       // this.router.navigate(['/grand-hyper']);
 
     // this.router.navigate(['/reports']);
