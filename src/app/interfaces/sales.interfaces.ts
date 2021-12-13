@@ -205,9 +205,9 @@ export interface BalanceSheet {
   cash: any[],
   cashPurchases: any [],
   purchaseReciepts: any[],
-  salesReciepts: [],
-  credits:[],
-  pcredits:[],
+  salesReciepts: [], 
+  credits:any[],
+  pcredits:any[],
 }
 export interface pandl {
   credit: CreditSaleResponse[];
@@ -261,6 +261,7 @@ export interface CreditPurchaseRequest {
 
 export interface CreditPurchaseResponse {
   total3: number;
+  total2: any;
   id:number,
 }
 
@@ -398,6 +399,8 @@ export interface CreditSaleRequest {
 }
 
 export interface CreditSaleResponse {
+ 
+  total2: any;
   total3: number;
   id:number,
 }
