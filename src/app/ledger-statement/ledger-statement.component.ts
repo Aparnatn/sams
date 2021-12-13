@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Ledger, LedgerResponse, LedgerstatementFrom } from '../user/login.interfaces';
 import { Observable } from 'rxjs';
-import { SalesService } from '../services/sales.service';
+import { LedgerStatementResponse, SalesService } from '../services/sales.service';
 import { CashSaleResponse, CreditPurchaseResponse, CreditSaleResponse, PCashSaleResponse, PurchaseReceiptResponse, SalesReceiptResponse } from '../interfaces/sales.interfaces';
 import { element } from 'protractor';
 @Component({
@@ -18,17 +18,12 @@ export class LedgerStatementComponent implements OnInit {
   LedgerStatementForm = this.formBuilder.group({
     date: ["", Validators.required],
     report_date: ["", Validators.required],
-    ledger_name: ["", Validators.required],
-    period: ["", Validators.required],
+    ledger_id: ["", Validators.required],
+
   });
 
-  Cash: CashSaleResponse[];
-  PCash: PCashSaleResponse[];
-  receipt:SalesReceiptResponse[];
-  preceipt:PurchaseReceiptResponse[];
-  credit:CreditSaleResponse[];
-  pcredit:CreditPurchaseResponse[];
-  Ledger: LedgerResponse[] = [];
+  journals: LedgerStatementResponse[] = [];
+  ledgerNames: LedgerResponse[] = [];
 
   constructor(
     private http: HttpClient,
@@ -40,17 +35,15 @@ export class LedgerStatementComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.userservice.getLedgers().subscribe((data) => {
+      this.ledgerNames = data;
+    });
   }
 
   onSubmit(): void {
     this.service.ledgerstatement(this.LedgerStatementForm.value).subscribe((data) => {
-      this.Cash = data;
-
+      this.journals = data;
     });
-    this.userservice.getLedgers().subscribe((data) => {
-      this.Ledger = data;
-      console.log(data);
-    })
   }
 
   calculateTotal(total3:number, ledgers: LedgerResponse[]) {

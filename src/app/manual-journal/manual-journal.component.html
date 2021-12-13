@@ -45,13 +45,13 @@
                   <td formArrayName="debit_ledgers" colspan="3"><table>
                     <tr *ngFor="let field of debitLedgers().controls; let i = index"      [formGroupName]="i">
                       <td>
-                        <select type="text" style="border-radius:12px;"   formControlName="debitledg2" class="form-control"  >
+                        <select type="text" style="border-radius:12px;"   formControlName="ledger_id" class="form-control"  >
                           <option  *ngFor="let item of Ledger"  value="{{item.id}}">{{item.ledger_name}}</option>
 
                         </select>
                       </td>
                       <td>
-                        <input type="text" style="border-radius:12px;" (ngModelChange)="calcualtTotal()" formControlName="debitamnt2" class="form-control price" step="0.00" min="0" placeholder="0.00" />
+                        <input type="text" style="border-radius:12px;" formControlName="amount" class="form-control price" step="0.00" min="0" placeholder="0.00" />
                       </td>
                       <td>
                         <button class="btn btn-default"  type="button" (click)="removeDebitLedger(i)">Delete</button>
@@ -70,13 +70,13 @@
                   <td formArrayName="credit_ledgers" colspan="3"><table>
                     <tr *ngFor="let field of creditLedgers().controls; let j = index" [formGroupName]="j">
                       <td>
-                        <select type="text" style="border-radius:12px;"  formControlName="creditledg2" class="form-control"  >
+                        <select type="text" style="border-radius:12px;"  formControlName="ledger_id" class="form-control"  >
                           <option *ngFor="let item of Ledger"  value="{{item.id}}">{{item.ledger_name}}</option>
 
                         </select>
                       </td>
                       <td>
-                        <input type="text" style="border-radius:12px;" (ngModelChange)="calcualtTotal()" formControlName="creditamnt2" class="form-control price" step="0.00" min="0" placeholder="0.00" />
+                        <input type="text" style="border-radius:12px;"  formControlName="amount" class="form-control price" step="0.00" min="0" placeholder="0.00" />
                       </td>
                       <td>
                         <button class="btn btn-default"  type="button" (click)="removeCreditLedger(i)">Delete</button>

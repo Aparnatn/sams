@@ -19,6 +19,17 @@ export interface CashFilter {
   name?: string,
 }
 
+export interface LedgerStamentFilter {
+  date?: string,
+  report_date?: string,
+  ledger_id?: string,
+}
+
+export interface LedgerStatementResponse {
+  ledger_id?: string,
+  account?:string,
+}
+
 export interface CustomerMasterFilter {
   date?:string,
   from_date?: string,
@@ -88,6 +99,16 @@ export interface salesreceiptFilter {
   name?: string,
 }
 
+export interface TrialBalance {
+  id: number,
+  name: string,
+  category: string,
+  opening_balance: string,
+  credit_amount: number,
+  debit_amount: number,
+  balance: number
+}
+
 @Injectable()
 export class SalesService {
   customer_master(value: any) {
@@ -100,8 +121,8 @@ export class SalesService {
     this.apiUrl = environment.apiUrl
   }
 
-  manualjournal(data: ManualJournalRequest): Observable<ManualJournalResponse> {
-    return this.http.post<ManualJournalResponse>(`${this.apiUrl}/Sam/ManualJournalApi`, data, {
+  manualjournalentry(data: ManualJournalRequest): Observable<ManualJournalResponse> {
+    return this.http.post<ManualJournalResponse>(`${this.apiUrl}/Sam/manualjournal`, data, {
       // observe: 'response',
       // withCredentials: true
     });
@@ -211,7 +232,7 @@ export class SalesService {
   account: PurchaseReceiptRequest[] = [];
   amount: CreditSaleRequest[] = [];
   paid_amount: CreditPurchaseRequest[] = [];
-  trial_balance(filter: CashFilter): Observable<CashSaleResponse[]> {
+  trial_balance(filter: CashFilter): Observable<TrialBalance[]> {
     // console.log(filter);
     let params = new HttpParams();
     if (filter.date) {
@@ -223,7 +244,7 @@ export class SalesService {
     if (filter.name) {
       params = params.append('name', filter.name);
     }
-    return this.http.get<CashSaleResponse[]>(
+    return this.http.get<TrialBalance[]>(
       `${this.apiUrl}/Sam/gotb`,
       { params: params }
     )
@@ -243,7 +264,7 @@ export class SalesService {
   amounts: CreditSaleRequest[] = [];
   paid_amounts: CreditPurchaseRequest[] = [];
 
-  ledgerstatement(filter: CashFilter): Observable<CashSaleResponse[]> {
+  ledgerstatement(filter: LedgerStamentFilter): Observable<LedgerStatementResponse[]> {
     // console.log(filter);
     let params = new HttpParams();
     if (filter.date) {
@@ -252,10 +273,10 @@ export class SalesService {
     if (filter.report_date) {
       params = params.append('report_date', filter.report_date);
     }
-    if (filter.name) {
-      params = params.append('name', filter.name);
+    if (filter.ledger_id) {
+      params = params.append('ledger_id', filter.ledger_id);
     }
-    return this.http.get<CashSaleResponse[]>(
+    return this.http.get<LedgerStatementResponse[]>(
       `${this.apiUrl}/Sam/gols`,
       { params: params }
     )
@@ -310,8 +331,8 @@ export class SalesService {
       { params: params }
     )
   }
-  
-  
+
+
   getpl(filter: CashFilter): Observable<pandl> {
     // console.log(filter);
     let params = new HttpParams();

@@ -28,10 +28,11 @@ export class CustomerRegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.service.customerInvoR(this.CustomerInvoRForm.value).subscribe((data,)=>{
+    this.service.customerInvoR(this.CustomerInvoRForm.value).subscribe((cash)=>{
 
-        this.CustomerIR = data;
-        console.log(data);  });
+        this.Cash= cash;
+
+      });
 
 
       // this.router.navigate(['/grand-hyper']);

@@ -365,6 +365,7 @@ export interface SuppliereditRequest {
   bank_acc_no: string,
 }
 export interface Supplier {
+  supplier_name: any;
   id?: number,
   customer_name: string,
   vat_reg_no: string,

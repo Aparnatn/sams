@@ -14,7 +14,7 @@ export class SupplierEditComponent implements OnInit {
   id: number;
   suppliereditForm = this.formBuilder.group({
     id:"",
-    customer_name:"",
+    supplier_name:"",
     vat_reg_no:"",
     cr_no:"",
     expired_on:"",
@@ -56,7 +56,7 @@ export class SupplierEditComponent implements OnInit {
    this.service.getsupp(this.id).subscribe((suppliers: Supplier) => {
      this.suppliereditForm.setValue({
        id: suppliers.id,
-       customer_name:suppliers.customer_name,
+       supplier_name:suppliers.supplier_name,
        vat_reg_no:suppliers.vat_reg_no,
        cr_no:suppliers.cr_no,
        expired_on:suppliers.expired_on,

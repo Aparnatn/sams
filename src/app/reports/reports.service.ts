@@ -28,8 +28,8 @@ export interface customerInvoRecptRegFilter {
   name?: string,
 }
 export interface allJournalEntryFilter {
-  from_date?: string,
-  to_date?: string,
+  date?: string,
+  report_date?: string,
   name?: string,
 }
 export interface itemStatementFilter {
@@ -281,7 +281,7 @@ ledgermasterdata(data: LedgerMasterDataRequest ): Observable<LedgerMasterDataRes
 }
 
 
-    customerInvoR(filter: customerInvoRecptRegFilter): Observable<customerInvoRecptRegResponse[]> {
+    customerInvoR(filter: CashFilter): Observable<CashSaleResponse[]> {
       // console.log(filter);
       let params = new HttpParams();
       if (filter.date) {
@@ -290,10 +290,8 @@ ledgermasterdata(data: LedgerMasterDataRequest ): Observable<LedgerMasterDataRes
       if (filter.report_date) {
         params = params.append('report_date', filter.report_date);
       }
-      if (filter.name) {
-        params = params.append('name', filter.name);
-      }
-      return this.http.get<customerInvoRecptRegResponse[]>(
+
+      return this.http.get<CashSaleResponse[]>(
         `${this.apiUrl}/Sam/customerInvoReceiptRegister`,
         {params: params}
       )
@@ -725,13 +723,8 @@ crs(filter: creditsaleFilter): Observable<CreditSaleResponse[]> {
     )
     }
 
-    cash: CashSaleResponse[] = [];
-  cashPurchases: PCashSaleResponse[] = [];
-  salesReceipts: SalesReceiptResponse[] = [];
-  credits:CreditSaleResponse[] = [];
-  pcredit:CreditPurchaseResponse[] = [];
-  purchaseReceipts: PurchaseReceiptResponse[] = [];
-    getalljournal(filter: CashFilter): Observable<CashSaleResponse> {
+
+    getalljournal(filter: CashFilter): Observable<AllJournalResponse[]> {
       // console.log(filter);
       let params = new HttpParams();
       if (filter.date) {
@@ -743,7 +736,7 @@ crs(filter: creditsaleFilter): Observable<CreditSaleResponse[]> {
       if (filter.name) {
         params = params.append('name', filter.name);
       }
-      return this.http.get<CashSaleResponse>(
+      return this.http.get<AllJournalResponse[]>(
         `${this.apiUrl}/Sam/allJournalEntry`,
         { params: params }
       )
@@ -1241,7 +1234,7 @@ pchs1(filter: PCashFilter): Observable<PCashSaleResponse[]> {
       )
     }
 
-    
+
 item_statemnt(filter: CashFilter): Observable<CashSaleResponse[]> {
   // console.log(filter);
   let params = new HttpParams();

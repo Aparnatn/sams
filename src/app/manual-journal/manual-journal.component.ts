@@ -58,8 +58,9 @@ export class ManualJournalComponent implements OnInit {
 
   private debitLedgerRow(): FormGroup {
     return this.formBuilder.group({
-      debitledg: ['',],
-      debitamnt2: ['',],
+      ledger_id: ['',],
+      amount: ['',],
+
     });
   }
 
@@ -73,8 +74,9 @@ export class ManualJournalComponent implements OnInit {
 
   private creditLedgerRow(): FormGroup {
     return this.formBuilder.group({
-      creditledg: ['',],
-      creditamnt2: ['',],
+      ledger_id: ['',],
+      amount: ['',],
+
     });
   }
 
@@ -85,33 +87,33 @@ export class ManualJournalComponent implements OnInit {
   }
 
   calcualtTotal() {
-    const form = this.ManualJournalForm.value;
-    let debtotal = 0;
-    let cretotal = 0;
-    this.debitLedgers().controls.forEach(item => {
+    // const form = this.ManualJournalForm.value;
+    // let debtotal = 0;
+    // let cretotal = 0;
+    // this.debitLedgers().controls.forEach(item => {
 
-      debtotal += Number(item.get('debitamnt2').value);
-      item.patchValue({ debtotal: debtotal })
-    })
-    this.creditLedgers().controls.forEach(item => {
+    //   debtotal += Number(item.get('amount').value);
+    //   item.patchValue({ debtotal: debtotal })
+    // })
+    // this.creditLedgers().controls.forEach(item => {
 
-      cretotal += Number(item.get('creditamnt2').value);
-      item.patchValue({ cretotal: cretotal })
-    })
+    //   cretotal += Number(item.get('creditamnt2').value);
+    //   item.patchValue({ cretotal: cretotal })
+    // })
 
 
-    this.ManualJournalForm.patchValue({
+    // this.ManualJournalForm.patchValue({
 
-      "debtotal": debtotal,
-      "cretotal": cretotal
-    });
+    //   "debtotal": debtotal,
+    //   "cretotal": cretotal
+    // });
 
   }
 
   onSubmit(): void {
-    this.service.manualjournal(this.ManualJournalForm.value,).subscribe((data,) => {
+    this.service.manualjournalentry(this.ManualJournalForm.value,).subscribe((data,) => {
       console.log(data);
     });
-    this.router.navigate(['/grand-hyper']);
+    // this.router.navigate(['/grand-hyper']);
   }
 }
