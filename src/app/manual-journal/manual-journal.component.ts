@@ -116,4 +116,7 @@ export class ManualJournalComponent implements OnInit {
     });
     // this.router.navigate(['/grand-hyper']);
   }
+  back() {
+    this.router.navigate(['/journal-entry']);
+  }
 }

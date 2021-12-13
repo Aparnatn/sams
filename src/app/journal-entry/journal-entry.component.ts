@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-journal-entry',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JournalEntryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,) { }
 
   ngOnInit(): void {
+  }
+  onSubmit(): void {
+
+    this.router.navigate(['/manual-journal']);
+  }
+  onSubmit1(): void {
+
+    // this.router.navigate([]);
+  }
+  back() {
+    this.router.navigate(['/grand-hyper']);
   }
 
 }

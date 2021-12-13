@@ -61,19 +61,251 @@
 
 
         <div class="container">
-          <h3 style="text-align: center;">LIABILITY</h3>
+          <b><h3 style="text-align: center;">LIABILITY</h3></b>
           <table class="table table-bordered">
             <thead>
                 <tr>
                   <th style="text-align: center;">Description</th>
                   <th style="text-align: center;">Amount</th>
                   <th style="text-align: center;">Total Amount</th>
-<th></th>
+                  
                 </tr>
               </thead>
               <tbody>
+
                 <tr>
                   <th style="text-align: center;">Partners Liability</th>
+                  <td></td>
+  
+  
+                </tr>
+                <tr *ngFor="let cash of purchaseReceipts;">
+                  <td>{{cash.account}}</td>
+                  <td style="text-align: right;">{{cash.total3}}</td>
+                </tr>
+                
+                <!-- <tr *ngFor="let cash of credit;">
+  
+                  <td>{{cash.account}}</td>
+  
+                  <td style="text-align: right;">{{cash.total3}}</td>
+  
+                </tr> -->
+  
+                <tr>
+                  <th>Total</th>
+                  <td style="text-align: right;">{{Pliability}}</td>
+                  <td style="text-align: right;">{{Pliability}}</td> 
+  
+                </tr>
+
+                <tr>
+                  <th style="text-align: center;">Current Liability</th>
+                  <td></td>
+  
+  
+                </tr>
+                <tr *ngFor="let cash of  cashPurchases;">
+  
+                  <td>{{cash.account}}</td>
+  
+                  <td style="text-align: right;">{{cash.total3}}</td>
+  
+                </tr>
+  
+  
+                <tr *ngFor="let cash of  pcredits;">
+  
+                  <td>{{cash.account}}</td>
+  
+                  <td style="text-align: right;">{{cash.total3}}</td>
+  
+                </tr>
+  
+                <tr>
+                  <th>Total</th>
+                  <td style="text-align: right;">{{Cliability}}</td>
+                  <td style="text-align: right;">{{Cliability}}</td>
+  
+                </tr>
+
+                <tr>
+                  <th style="text-align: center;">Long Term Liability</th>
+                  <td></td>
+  
+  
+                </tr>
+                <!-- <tr *ngFor="let cash of  cashPurchases;">
+  
+                  <td>{{cash.account}}</td>
+  
+                  <td style="text-align: right;">{{cash.total3}}</td>
+  
+                </tr>
+  
+  
+                <tr *ngFor="let cash of  pcredits;">
+  
+                  <td>{{cash.account}}</td>
+  
+                  <td style="text-align: right;">{{cash.total3}}</td>
+  
+                </tr>
+   -->
+                <tr>
+                  <th>Total</th>
+                  <td style="text-align: right;">{{LTliability}}</td>
+                  <td style="text-align: right;">{{LTliability}}</td>
+  
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <th style="text-align: right;">Gross Profit</th>
+                  <td style="text-align: right;">{{grossProfit1}}</td>
+  
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <div class="container">
+            <h3 style="text-align: center;">ASSET</h3>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th style="text-align: center;">Description</th>
+                  <th style="text-align: center;">Amount</th>
+                  <th style="text-align: center;">Total Amount</th>
+               </tr>
+              </thead>
+              <tbody>
+                
+                <tr>
+                  <th style="text-align: center;">Cash & Bank Account</th>
+                  <td></td>
+  
+  
+                </tr>
+                <tr *ngFor="let cash of salesReceipts;">
+                  <td>{{cash.account}}</td>
+                  <td style="text-align: right;">{{cash.total3}}</td>
+                </tr>
+                
+                <!-- <tr *ngFor="let cash of credit;">
+  
+                  <td>{{cash.account}}</td>
+  
+                  <td style="text-align: right;">{{cash.total3}}</td>
+  
+                </tr> -->
+  
+                <tr>
+                  <th>Total</th>
+                  <td style="text-align: right;">{{CBAccount}}</td>
+                  <td style="text-align: right;">{{CBAccount}}</td> 
+  
+                </tr>
+
+                <tr>
+                  <th style="text-align: center;">Current Asset</th>
+                  <td></td>
+  
+  
+                </tr>
+                <tr *ngFor="let cash of cash;">
+  
+                  <td>{{cash.account}}</td>
+  
+                  <td style="text-align: right;">{{cash.total3}}</td>
+  
+                </tr>
+  
+  
+                <tr  *ngFor="let cash of credits;">
+  
+                  <td>{{cash.account}}</td>
+  
+                  <td style="text-align: right;">{{cash.total3}}</td>
+  
+                </tr>
+  
+                <tr>
+                  <th>Total</th>
+                  <td style="text-align: right;">{{CAsset}}</td>
+                  <td style="text-align: right;">{{CAsset}}</td>
+  
+                </tr>
+
+                <tr>
+                  <th style="text-align: center;">Fixed Asset</th>
+                  <td></td>
+  
+<!--   
+                </tr>
+                <tr *ngFor="let cash of  cashPurchases;">
+  
+                  <td>{{cash.account}}</td>
+  
+                  <td style="text-align: right;">{{cash.total3}}</td>
+  
+                </tr>
+  
+  
+                <tr *ngFor="let cash of  pcredits;">
+  
+                  <td>{{cash.account}}</td>
+  
+                  <td style="text-align: right;">{{cash.total3}}</td>
+  
+                </tr>
+   -->
+                <tr>
+                  <th>Total</th>
+                  <td style="text-align: right;">{{FAsset}}</td>
+                  <td style="text-align: right;">{{FAsset}}</td>
+  
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <th style="text-align: right;">Gross Profit</th>
+                  <td style="text-align: right;">{{grossProfit2}}</td>
+  
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+          <div class="container">
+            <h3 style="text-align: center;">LIABILITY</h3>
+            <table class="table table-bordered">
+              <thead>
+                  <tr>
+                    <th style="text-align: center;">Description</th>
+                    <th style="text-align: center;">Amount</th>
+                    <th style="text-align: center;">Total Amount</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                  <th style="text-align: center;"></th>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -81,7 +313,7 @@
                   <td></td>
                 </tr>
 
-                <tr  *ngFor="let cash of salesReceipts;">
+                <tr  >
                   <td>{{cash.account}}</td>
                  <td>{{cash.total3}}</td>
                  <td></td>
@@ -89,14 +321,14 @@
                  <td></td>
                  <td></td>
                 </tr>
-                <tr *ngFor="let cash of salesReceipts;">
+                 <tr *ngFor="let cash of salesReceipts;">
                   <th style="text-align: right;">Total</th>
                   <td>{{cash.total3}}</td>
                   <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
-                </tr>
+                </tr> 
                 <tr>
                   <th style="text-align: center;">Current Liability</th>
                   <td></td>
@@ -105,7 +337,7 @@
                   <td></td>
                   <td></td>
                 </tr>
-                <tr *ngFor="let cash of purchaseReceipts;">
+                <tr *ngFor="let cash of  cashPurchases;">
                   <td>{{cash.account}}</td>
                   <td>{{cash.total3}}</td>
                   <td></td>
@@ -113,7 +345,7 @@
                   <td></td>
                 </tr>
 
-                <tr *ngFor="let cash of purchaseReceipts;">
+                <tr *ngFor="let cash of  pcredits;">
                   <th style="text-align: right;">Total</th>
                   <td>{{cash.total3}}</td>
                   <td></td>
@@ -143,7 +375,7 @@
                   <td></td>
                   <td></td>
                   <th style="text-align: right;">Gross Profit</th>
-                  <td></td>
+                  
                   <td>{{liabilityTotal}}</td>
                   <td></td>
                 </tr>
@@ -162,11 +394,7 @@
                   <th style="text-align: center;">Description</th>
                   <th style="text-align: center;">Amount</th>
                   <th style="text-align: center;">Total Amount</th>
-<th>
-
-</th>
-<th></th>
-                </tr>
+               </tr>
               </thead>
               <tbody>
                 <tr>
@@ -176,7 +404,7 @@
                   <td></td>
                 </tr>
 
-<tr *ngFor="let cash of cash;">
+<tr *ngFor="let cash of salesReceipts;">
   <td>{{cash.account}}</td>
   <td>{{cash.total3}}</td>
   <td></td>
@@ -190,7 +418,20 @@
                   <td></td>
                   <td></td> <td></td>
                 </tr>
-
+                <tr *ngFor="let cash of cash;">
+                  <td>{{cash.account}}</td>
+                  <td>{{cash.total3}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngFor="let cash of credits;">
+                  <td>{{cash.account}}</td>
+                  <td>{{cash.total3}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
 
                 <tr >
                   <th style="text-align: right;">Total</th>
@@ -200,7 +441,7 @@
                   <td></td>
                   <td></td>
                 </tr>
-                <tr *ngFor="let cash of cashPurchases;">
+                <tr >
                   <th style="text-align: center;">Fixed Asset</th>
                   <td></td>
                   <td></td>
@@ -211,19 +452,20 @@
                 </tr>
 
 
-                <!-- <tr  *ngFor="let cash of cash;">
+               <tr  *ngFor="let cash of cash;">
                   <td>{{cash.account}}</td>
                   <td>{{cash.total3}}</td>
-                </tr> -->
+                </tr> 
 
-                <tr *ngFor="let cash of cashPurchases;">
-                  <td>{{cash.account}}</td>
-                  <td>{{cash.total3}}</td>
+                <tr>
+                  <td></td>
                   <td></td>
                   <th style="text-align: right;">Gross Profit</th>
-                  <td >{{assetTotal}}</td>
-
+                  
+                  <td>{{assetTotal}}</td>
+                  
                 </tr>
+               
 
 
 
@@ -231,7 +473,7 @@
               </tbody>
             </table>
           </div>
-
+ -->
 
 
 
