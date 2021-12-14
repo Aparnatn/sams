@@ -8,7 +8,7 @@
   </style>
 </head>
 <body>
-  
+
   <div class="container" style="padding-top:10px;margin-left: 1px;">
     <button type="button" (click)="back()" style="border-radius:12px;" class="back"><b><p style="font-size: 20px;text-align: center;">Back</p></b></button>
   </div>
@@ -23,15 +23,7 @@
     <form [formGroup]="LedgerForm" (ngSubmit)="onSubmit1()" >
       <div class="container-sm ">
 
-        <div class="row" style="padding-top: 5px;">
-          <div class="col-sm-3">
-             <label class="form-control"  style="border-radius:12px;padding: 10px;"> Ledger ID </label>
-            <!-- <input type="text " style="border-radius:12px;" class="form-control"  placeholder="Ledger ID" > -->
-          </div>
-          <div class="col-sm-9">
-            <input type="text " style="border-radius:12px;" class="form-control"  placeholder="" >
-          </div>
-        </div>
+
         <div class="row" style="padding-top: 5px;">
           <div class="col-sm-3">
              <label class="form-control"  style="border-radius:12px;padding: 10px;"> Ledger Name </label>
@@ -39,7 +31,7 @@
           </div>
           <div class="col-sm-9">
             <input type="text " style="border-radius:12px;" class="form-control" formControlName="ledger_name" placeholder="" >
-              
+
           </div>
         </div>
 
@@ -50,39 +42,11 @@
           </div>
           <div class="col-sm-9">
             <select type="text " style="border-radius:12px;" class="form-control"formControlName="group_name"  placeholder="" >
-              <option selected disabled value="">Choose....</option>
-              <option>Assets </option>
-              <option>Current Asset </option>
-              <option>Bank Accounts </option>
-              <option>Cash-in-Hand</option>
-              <option>Cash</option>
-              <option>Deposits(Asset)</option>
-              <option>Loans & Advances(Assets)</option>
-              <option>Stock-in-Hand</option>
-              <option>Sundry Debtors</option>
-              <option>Fixed Asset</option>
-              <option>Investments</option>
-              <option>Misc. Expenses(ASSET)</option>
-              <option>Liabilities</option>
-              <option>Branch\Divisions</option>
-              <option>Capital Account</option>
-              <option>Reserves & Surplus</option>
-              <option>Current Liabilities</option>
-              <option>Duties & Taxes</option>
-              <option>Provisions</option>
-              <option>Sundry Creditors</option>
-              <option>Loans (Liabilities)</option>
-              <option>Bank OD A/c</option>
-              <option>Secured A/c</option>
-              <option>Profit & loss A/c</option>
-              <option>Expenses</option>
-              <option>Direct Expenses</option>
-              <option>Indirect Expenses</option>
-              <option>Purchase Accounts</option>
-              <option>Income</option>
-              <option>Direct Income</option>
-              <option>Indirect Income</option>
-              <option>sales Accounts</option>
+              <option *ngFor="let item of group"  value="{{item.id}}">
+                {{item.group_name}}
+              </option>
+
+
             </select>
           </div>
         </div>

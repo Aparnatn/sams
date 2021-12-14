@@ -35,6 +35,10 @@ export class RegisterComponent implements OnInit {
 
     this.router.navigate(['/employee']);
   }
+  onSubmit7(): void {
+
+    this.router.navigate(['/group']);
+  }
   back() {
     this.router.navigate(['/grand-hyper']);
   }

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user/user.service';
-import { LedgerResponse } from '../user/login.interfaces';
+import { CustomerResponse, GroupResponse, LedgerResponse, SupplierResponse } from '../user/login.interfaces';
 @Component({
   selector: 'app-ledger',
   templateUrl: './ledger.component.html',
@@ -18,15 +18,42 @@ export class LedgerComponent implements OnInit {
 date:"",
   });
  ledgers:LedgerResponse[]=[];
+ group:GroupResponse[]=[];
+ customers:CustomerResponse[]=[];
+ suppliers:SupplierResponse[]=[];
+
   constructor(private http:HttpClient,private userservice: UserService,private router:Router,private formBuilder: FormBuilder,private service:UserService,) { }
 
   ngOnInit(): void {
     this.loadLedger();
+    this.loadGroups();
+    this.loadCustomers();
+    this.loadSuppliers();
+
   }
+
+
+
+  loadCustomers() {
+    this.userservice.getCustomer().subscribe((data: CustomerResponse[]) => {
+      this.customers = data;
+    })
+  }
+  loadSuppliers() {
+    this.userservice.getSuppliers().subscribe((data: SupplierResponse[]) => {
+      this.suppliers = data;
+    })
+  }
+
   private loadLedger() {
-    this.service. getLedgers().subscribe((data: LedgerResponse[]) => {
+    this.service.getLedgers().subscribe((data: LedgerResponse[]) => {
       this.ledgers = data;
     })
+  }
+    private loadGroups() {
+      this.service.getgroups().subscribe((data: GroupResponse[]) => {
+        this.group = data;
+      })
   }
   delete(event:number) {
     if(confirm("Are you sure to delete this ledger ?")) {

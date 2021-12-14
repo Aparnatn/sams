@@ -20,14 +20,7 @@ export class GroupComponent implements OnInit {
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:UserService,) { }
 
   ngOnInit(): void {
-    // const headers = new Headers();
-    // headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    // headers.append('Access-Control-Allow-Methods', 'GET');
-    // headers.append('Access-Control-Allow-Origin', '*');
-    // this.http.post("http://127.0.0.1:8004/groups", {headers: headers}).subscribe(res => {
 
-    //   console.log(res);
-    // });
   }
   onSubmit1(): void {
 

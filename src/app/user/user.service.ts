@@ -126,7 +126,7 @@ export class UserService {
   }
 
   group(data: GroupRequest): Observable<GroupResponse> {
-    return this.http.post<GroupResponse>(`${this.apiUrl}/groups`, data, {
+    return this.http.post<GroupResponse>(`${this.apiUrl}/Sam/groupcreates/`, data, {
       // observe: 'response',
       // withCredentials: true
     });
@@ -367,6 +367,12 @@ export class UserService {
   }
   getLedgers(): Observable<LedgerResponse[]> {
     return this.http.get<LedgerResponse[]>(`${this.apiUrl}/Sam/ledgershowApi`, {
+      // observe: 'response',
+      // withCredentials: true
+    });
+  }
+  getgroups(): Observable<GroupResponse[]> {
+    return this.http.get<GroupResponse[]>(`${this.apiUrl}/Sam/groupshowApi`, {
       // observe: 'response',
       // withCredentials: true
     });
