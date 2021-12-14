@@ -12,7 +12,7 @@ export class GroupComponent implements OnInit {
 
  groupForm = this.formBuilder.group({
     group_name: ['',Validators.required],
-    category:['',Validators.required],
+    category_name:['',Validators.required],
 
 
 
