@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SalesService } from '../services/sales.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CashFrom, CashSaleRequest } from '../interfaces/sales.interfaces';
+import { CashFrom, CashSaleRequest, CashSaleResponse } from '../interfaces/sales.interfaces';
 import { CustomerResponse, EmployeeResponse, ItemResponse, JobResponse } from '../user/login.interfaces';
 import { UserService } from '../user/user.service';
 
@@ -13,7 +13,7 @@ import { UserService } from '../user/user.service';
   styleUrls: ['./cash.component.scss']
 })
 export class CashComponent implements OnInit {
-  customerId = '';
+
 
   cashSaleForm = this.formBuilder.group({
     invoice_number: ['', Validators.required],
@@ -38,7 +38,7 @@ export class CashComponent implements OnInit {
   });
 
   customers: CustomerResponse[];
-
+  cash:CashSaleResponse[];
   Items: ItemResponse[];
 
   jobs: JobResponse[];
@@ -89,7 +89,14 @@ export class CashComponent implements OnInit {
     this.loadItems();
     this.loadJobs();
     this.loadEmployee();
+    this.loadCash();
   }
+  private loadCash() {
+    this.userService. getCash().subscribe((data: CashSaleResponse[]) => {
+      this.cash = data;
+    })
+  }
+
 
   loadCustomers() {
     this.userService.getCustomer().subscribe((data: CustomerResponse[]) => {

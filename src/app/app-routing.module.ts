@@ -451,7 +451,7 @@ export const ROUTES: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'cash-sale-edit',
+    path: 'cash/:id/edit',
     component: CashSaleEditComponent,
     canActivate: [AuthGuard]
   },

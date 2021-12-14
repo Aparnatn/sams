@@ -200,7 +200,58 @@
         </div>
     </form>
   </section>
+  <!-- <table border="1" class="table table-bordered" input align="center">
 
+    <thead class="alert-warning">
+    <tr>
+        <th>Invoice Number</th>
+        <th>Date</th>
+        <th>Internal reference Number</th>
+        <th>Cash</th>
+        <th>User Id </th>
+        <th>Account </th>
+        <th>Customer id</th>
+        <th>Labour Charges</th>
+        <th>Other charges</th>
+        <th>Total1</th>
+        <th>Total2</th>
+        <th>Total3</th>
+        <th>Discount</th>
+         <th>Actions</th>
+         <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+
+        <tr  *ngFor="let item of cash">
+
+            <td>{{item.invoice_number}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.internal_ref_no}}</td>
+            <td>{{ item.cash}}</td>
+
+            <td> {{item.user_id}}</td>
+            <td>{{item.account}}</td>
+
+            <td>{{item.customer_id}}</td>
+
+
+            <td>{{item.labour_charge}}</td>
+            <td>{{item.other_charge}}</td>
+            <td>{{item.total1}}</td>
+            <td>{{item.total2}}</td>
+            <td>{{item.total3}}</td>
+            <td>{{item.discount}}</td>
+
+
+
+
+            <td><a href="cash/{{item.id}}/edit">Edit</a></td>
+            <td><a href="" (click)="delete(item.id)">Delete</a></td>
+         </tr>
+
+    </tbody>
+</table> -->
 </body>
 
 
