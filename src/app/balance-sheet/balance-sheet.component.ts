@@ -34,8 +34,8 @@ export class BalanceSheetComponent implements OnInit {
   CBAccount = 0;
   CAsset = 0;
   FAsset = 0;
-  grossProfit1 = 0;
-  grossProfit2 = 0;
+  grossProfitl = 0;
+  grossProfita = 0;
   
 
 
@@ -68,8 +68,8 @@ export class BalanceSheetComponent implements OnInit {
       this.CBAccount = 0;
       this.CAsset = 0;
       this.FAsset = 0;
-      this.grossProfit1=0;
-      this.grossProfit2=0;
+      this.grossProfitl=0;
+      this.grossProfita=0;
     
      
       this.purchaseReceipts.forEach(element => {
@@ -91,9 +91,9 @@ export class BalanceSheetComponent implements OnInit {
         this.CAsset += Number(element.total3);
       });
       
-      this.grossProfit1 = this.Pliability + this.Cliability + this.LTliability;
-      // this.liabilityTotal = this.Iincome - this.Iexpense;
-      this.grossProfit2 = this.CBAccount + this.CAsset + this.FAsset;
+        this.grossProfitl = this.Pliability + this.Cliability;
+        this.grossProfita = this.CBAccount + this.CAsset;
+      
   });
 
 
