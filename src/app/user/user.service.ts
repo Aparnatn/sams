@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { CompanylistResponse, CompanyRequest, CompanyResponse, CustomerRequest, CustomerResponse, EmployeeRequest, EmployeeResponse, GroupRequest, GroupResponse, ItemRequest, ItemResponse, JobRequest, JobResponse, Ledger, LedgereditRequest, LedgereditResponse, LedgerRequest, LedgerResponse, LedgerStatementRequest, LedgerStatementResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, SupplierRequest, SupplierResponse, UserlistResponse, User, EmployeeeditRequest, EmployeeeditResponse, Employee, Job, SuppliereditRequest, SuppliereditResponse, CustomereditRequest, CustomereditResponse, Customer, Supplier, ItemeditRequest, ItemeditResponse, Item } from './login.interfaces';
+import { CompanylistResponse, CompanyRequest, CompanyResponse, CustomerRequest, CustomerResponse, EmployeeRequest, EmployeeResponse, GroupRequest, GroupResponse, ItemRequest, ItemResponse, JobRequest, JobResponse, Ledger, LedgereditRequest, LedgereditResponse, LedgerRequest, LedgerResponse, LedgerStatementRequest, LedgerStatementResponse, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, SupplierRequest, SupplierResponse, UserlistResponse, User, EmployeeeditRequest, EmployeeeditResponse, Employee, Job, SuppliereditRequest, SuppliereditResponse, CustomereditRequest, CustomereditResponse, Customer, Supplier, ItemeditRequest, ItemeditResponse, Item, cash, casheditRequest, casheditResponse } from './login.interfaces';
 import { LedgerComponent } from '../ledger/ledger.component';
 
 export interface LedgerFilter {
@@ -178,6 +178,12 @@ export class UserService {
       // withCredentials: true
     });
   }
+  cashedit(data: casheditRequest,id): Observable<casheditResponse> {
+    return this.http.post<casheditResponse>(`${this.apiUrl}/Sam/cash/${id}/update`, data, {
+      // observe: 'response',
+      // withCredentials: true
+    });
+  }
   ledgerdelete(id:number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/Sam/ledger/${id}/delete`,  {
       // observe: 'response',
@@ -308,6 +314,11 @@ export class UserService {
     );
   }
 
+  getcash(id:number): Observable<cash> {
+    return this.http.get<cash>(`${this.apiUrl}/Sam/Cash/${id}`,
+    );
+  }
+
   getcust(id: number): Observable<Customer> {
     return this.http.get<Customer>(`${this.apiUrl}/Sam/customer/${id}`,
     );
@@ -362,6 +373,54 @@ export class UserService {
   }
   getEmployees(): Observable<EmployeeResponse[]> {
     return this.http.get<EmployeeResponse[]>(`${this.apiUrl}/Sam/employeeshowApi`, {
+      // observe: 'response',
+     withCredentials: true
+    });
+  }
+  getCash(): Observable<EmployeeResponse[]> {
+    return this.http.get<EmployeeResponse[]>(`${this.apiUrl}/Sam/cashshowApi`, {
+      // observe: 'response',
+     withCredentials: true
+    });
+  }
+  getPCash(): Observable<EmployeeResponse[]> {
+    return this.http.get<EmployeeResponse[]>(`${this.apiUrl}/Sam/pcashshowApi`, {
+      // observe: 'response',
+     withCredentials: true
+    });
+  }
+  getcredit(): Observable<EmployeeResponse[]> {
+    return this.http.get<EmployeeResponse[]>(`${this.apiUrl}/Sam/creditshowApi`, {
+      // observe: 'response',
+     withCredentials: true
+    });
+  }
+  getpcredit(): Observable<EmployeeResponse[]> {
+    return this.http.get<EmployeeResponse[]>(`${this.apiUrl}/Sam/PcreditshowApi`, {
+      // observe: 'response',
+     withCredentials: true
+    });
+  }
+  getreceipt(): Observable<EmployeeResponse[]> {
+    return this.http.get<EmployeeResponse[]>(`${this.apiUrl}/Sam/ReceiptshowApi`, {
+      // observe: 'response',
+     withCredentials: true
+    });
+  }
+  getpreceipt(): Observable<EmployeeResponse[]> {
+    return this.http.get<EmployeeResponse[]>(`${this.apiUrl}/Sam/PReceiptshowApi`, {
+      // observe: 'response',
+     withCredentials: true
+    });
+  }
+  getsalesreturn(): Observable<EmployeeResponse[]> {
+    return this.http.get<EmployeeResponse[]>(`${this.apiUrl}/Sam/salesReturnshowApi`, {
+      // observe: 'response',
+     withCredentials: true
+    });
+  }
+  getpurchase(): Observable<EmployeeResponse[]> {
+    return this.http.get<EmployeeResponse[]>(`${this.apiUrl}/Sam/PRsalesReturnshowApi`, {
       // observe: 'response',
      withCredentials: true
     });
