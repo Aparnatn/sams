@@ -22,7 +22,7 @@ export class PurchaseReceiptsComponent implements OnInit {
   supplier_id:['',Validators.required],
   supplierId: '',
   account:['',Validators.required],
-
+  account_new: ['', Validators.required],
   items: this.formBuilder.array([
     this.newItemRow()
   ]),

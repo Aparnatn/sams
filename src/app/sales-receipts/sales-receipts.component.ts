@@ -22,6 +22,7 @@ export class SalesReceiptsComponent implements OnInit {
     customer_id: ['', Validators.required],
     customerId: '',
     account:['', Validators.required],
+    account_new: ['', Validators.required],
     items: this.formBuilder.array([
       this.newItemRow()
     ]),

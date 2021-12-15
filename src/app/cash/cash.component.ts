@@ -23,6 +23,7 @@ export class CashComponent implements OnInit {
 
     user_id: ['', Validators.required],
     account: ['', Validators.required],
+    account_new: ['', Validators.required],
     customerId: '',
     customer_id: ['', Validators.required],
 
