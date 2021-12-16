@@ -93,7 +93,7 @@ export class CashComponent implements OnInit {
     this.loadCash();
   }
   private loadCash() {
-    this.userService. getCash().subscribe((data: CashSaleResponse[]) => {
+    this.userService.getCash().subscribe((data: CashSaleResponse[]) => {
       this.cash = data;
     })
   }
