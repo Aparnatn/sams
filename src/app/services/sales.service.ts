@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { BalanceSheet, CashSaleRequest, CashSaleResponse, CreditPurchaseRequest, CreditPurchaseResponse, CreditSaleRequest, CreditSaleResponse, CustomerMasterdataRequest, CustomerMasterdataResponse, ManualJournalRequest, ManualJournalResponse, pandl, PCashSaleRequest, PCashSaleResponse, PurchaseReceiptRequest, PurchaseReceiptResponse, PurchasereturnRequest, SalesReceiptRequest, SalesReceiptResponse, SalesreturnRequest, SalesReturnResponse } from '../interfaces/sales.interfaces';
 import { Company } from '../user/user.service';
-import { CustomerResponse, ItemResponse, JobResponse } from '../user/login.interfaces';
+import { casheditResponse, CustomerResponse, ItemResponse, JobResponse } from '../user/login.interfaces';
 
 // export interface manualjournalFilter {
 //   from_date?: string,
@@ -249,7 +249,23 @@ export class SalesService {
       { params: params }
     )
   }
-
+  trial(filter: CashFilter): Observable<CashSaleResponse[]> {
+    // console.log(filter);
+    let params = new HttpParams();
+    if (filter.date) {
+      params = params.append('date', filter.date);
+    }
+    if (filter.report_date) {
+      params = params.append('report_date', filter.report_date);
+    }
+    if (filter.name) {
+      params = params.append('name', filter.name);
+    }
+    return this.http.get<CashSaleResponse[]>(
+      `${this.apiUrl}/Sam/gotb`,
+      { params: params }
+    )
+  }
 
 
 
