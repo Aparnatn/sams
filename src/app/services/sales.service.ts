@@ -299,20 +299,20 @@ export class SalesService {
 
   }
 
-  lsl(filter: PCashFilter): Observable<PCashSaleResponse[]> {
+  lsl(filter: CashFilter): Observable<CashSaleResponse[]> {
     // console.log(filter);
     let params = new HttpParams();
-    if (filter.from_date) {
-      params = params.append('from_date', filter.from_date);
+    if (filter.date) {
+      params = params.append('from_date', filter.date);
     }
-    if (filter.to_date) {
-      params = params.append('to_date', filter.to_date);
+    if (filter.report_date) {
+      params = params.append('to_date', filter.report_date);
     }
     if (filter.name) {
       params = params.append('name', filter.name);
     }
-    return this.http.get<PCashSaleResponse[]>(
-      `${this.apiUrl}/Sam/go`,
+    return this.http.get<CashSaleResponse[]>(
+      `${this.apiUrl}/Sam/gols`,
       { params: params }
     )
   }
