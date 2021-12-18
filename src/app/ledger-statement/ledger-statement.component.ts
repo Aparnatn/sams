@@ -58,9 +58,9 @@ export class LedgerStatementComponent implements OnInit {
       this.journals = data;
 
     });
-    this.service.lsl(this.LedgerStatementForm.value).subscribe((data) => {
-      this.cash = data;
-    });
+    // this.service.lsl(this.LedgerStatementForm.value).subscribe((data) => {
+    //   this.cash = data;
+    // });
   }
 
   calculateTotal(total3:number, ledgers: LedgerResponse[]) {
