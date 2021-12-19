@@ -149,6 +149,9 @@ export interface CashSaleResponse {
   id:number,
   created_at:string,
   updated_at:string,
+
+  account?:Number,
+  account_new:string,
 }
 
 export interface PCashSaleRequest {
@@ -207,7 +210,7 @@ export interface BalanceSheet {
   cash: any[],
   cashPurchases: any [],
   purchaseReciepts: any[],
-  salesReciepts: [], 
+  salesReciepts: [],
   credits:any[],
   pcredits:any[],
 }
@@ -401,7 +404,7 @@ export interface CreditSaleRequest {
 }
 
 export interface CreditSaleResponse {
- 
+
   total2: any;
   total3: number;
   id:number,

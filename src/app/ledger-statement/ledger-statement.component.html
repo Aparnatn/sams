@@ -63,6 +63,7 @@
             <select  formControlName="ledger_id" style="border-radius: 12px;" class="form-control" placeholder="">
 
 
+
               <option *ngFor="let item of ledgerNames;" value="{{item.id}}">{{item.ledger_name}}</option>
               <option>Sales Accounts</option>
               <option>Cash/Bank</option>
@@ -70,7 +71,8 @@
               <option>Customer Ledger</option>
               <option *ngFor="let item of customers;" value="{{item.id}}">{{item.customer_name}}</option>
               <option *ngFor="let item of suppliers;" value="{{item.id}}">{{item.supplier_name}}</option>
-          </select>   </div>
+          </select>
+           </div>
         </div>
         <br><br>
 
@@ -104,6 +106,7 @@
                 <td></td>
                 <td>{{item.date}}</td>
                 <!-- <td>{{item.ledger_id}}</td> -->
+                <td>{{item.ledger}}</td>
                 <td>{{item.ledger_name}}</td>
                 <td>{{item.ledger_category}}</td>
                  <td></td>
@@ -130,7 +133,7 @@
               </tr>
 
               <tr *ngFor="let item of cash;let i=index">
-                <td>{{i+1}}</td>
+                <td></td>
 
                 <td>{{item.date}}</td>
 

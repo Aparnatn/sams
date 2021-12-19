@@ -22,9 +22,12 @@ export class LedgerStatementComponent implements OnInit {
 
   });
 
-  journals: LedgerStatementResponse[] = [];
-  ledgerNames: LedgerResponse[] = [];
+  journals: LedgerStatementResponse[] ;
+  ledgerNames: LedgerResponse[];
   cash:CashSaleResponse[]=[];
+  pcash:PCashSaleResponse[]=[];
+  receipt:SalesReceiptResponse[]=[];
+  preceipt:PurchaseReceiptResponse[]=[];
   customers: CustomerResponse[];
   suppliers: SupplierResponse[];
   constructor(
@@ -42,6 +45,7 @@ export class LedgerStatementComponent implements OnInit {
     });
     this.loadCustomers();
     this.loadSupplier();
+
   }
   loadCustomers() {
     this.userservice.getCustomer().subscribe((data: CustomerResponse[]) => {
@@ -61,18 +65,10 @@ export class LedgerStatementComponent implements OnInit {
     this.service.lsl(this.LedgerStatementForm.value).subscribe((data) => {
       this.cash = data;
     });
+
   }
 
-  calculateTotal(total3:number, ledgers: LedgerResponse[]) {
-    let total1 = Number(total3) - Number(total3);
-    let total=0;
-    let total2=0;
-    (ledgers || []).forEach(ledger => {
-      total += Number(ledger.opening_bal);
-      total2= Number(total1) + Number(total)
-    });
-    return Number(total2);
-  }
+
 
 
 

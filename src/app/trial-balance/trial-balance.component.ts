@@ -19,37 +19,47 @@ export class TrialBalanceComponent implements OnInit {
     report_date: "",
 
   });
-
+  account:CashSaleResponse[];
   ledgers: TrialBalance[];
   cash: CashSaleResponse[];
+  pcash:PCashSaleResponse[];
   customers:CustomerResponse[]=[];
   credit:CreditSaleResponse[];
+  total3 = 0;
   constructor(private http: HttpClient, private service: SalesService, private userservice: UserService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    
+
     this.loadCustomers();
+
   }
 
   onSubmit(): void {
 
     this.service.trial_balance(this.TrialBalanceForm.value).subscribe((data) => {
       this.ledgers = data;
-      this.getcash();
-      
+      // this.getcash();
+
+
     });
+
   }
-    getcash(){
-      this.service.trial(this.TrialBalanceForm.value).subscribe((data) => {
-        this.cash = data;
-      });
-    }
+    // getcash(){
+    //   this.service.trial(this.TrialBalanceForm.value).subscribe((data) => {
+    //     this.cash = data;
+    //     // this.cash.forEach(element => {
+    //     //   this.total3 += Number(element.total3);
+    //     // });
+    //   });
+
+
 
     loadCustomers(){
       this.userservice.getCustomer().subscribe((data:CustomerResponse[])=>{
         this.customers = data;
       })
     }
+
   back() {
     this.router.navigate(['/financial']);
   }
