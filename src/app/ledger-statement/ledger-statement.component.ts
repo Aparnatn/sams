@@ -66,18 +66,8 @@ export class LedgerStatementComponent implements OnInit {
     //   this.cash = data;
     // });
   }
-
+  back() {
+    this.router.navigate(['/ledgerbuttons']);
   }
 
-
-
-
-
-
-
-//  back() {
-//   this.router.navigate(['/ledgerbuttons']);
-// }
-
-
-
+}
