@@ -62,9 +62,10 @@ export class LedgerStatementComponent implements OnInit {
       this.journals = data;
 
     });
-    this.service.lsl(this.LedgerStatementForm.value).subscribe((data) => {
-      this.cash = data;
-    });
+    // this.service.lsl(this.LedgerStatementForm.value).subscribe((data) => {
+    //   this.cash = data;
+    // });
+  }
 
   }
 
@@ -74,9 +75,9 @@ export class LedgerStatementComponent implements OnInit {
 
 
 
- back() {
-  this.router.navigate(['/ledgerbuttons']);
-}
-}
+//  back() {
+//   this.router.navigate(['/ledgerbuttons']);
+// }
+
 
 
