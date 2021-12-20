@@ -19,9 +19,10 @@ export class TrialBalanceComponent implements OnInit {
     report_date: "",
 
   });
-
+  account:"Sales Accounts";
   ledgers: TrialBalance[];
-  cash: CashSaleResponse[];
+  cash: CashSaleResponse[]=[];
+  Pcash:PCashSaleResponse[];
   customers:CustomerResponse[]=[];
   creditPurchases:CreditPurchaseResponse[];
   
@@ -44,8 +45,9 @@ export class TrialBalanceComponent implements OnInit {
   constructor(private http: HttpClient, private service: SalesService, private userservice: UserService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    
-    this.loadCustomers();
+
+
+
   }
 
   onSubmit(): void {
@@ -107,6 +109,8 @@ export class TrialBalanceComponent implements OnInit {
       });
 
     });
+
+
   }
 
     loadCustomers(){
@@ -114,6 +118,7 @@ export class TrialBalanceComponent implements OnInit {
         this.customers = data;
       })
     }
+
   back() {
     this.router.navigate(['/financial']);
   }

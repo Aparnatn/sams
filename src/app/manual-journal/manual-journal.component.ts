@@ -15,7 +15,7 @@ export class ManualJournalComponent implements OnInit {
   ManualJournalForm = this.formBuilder.group({
     debtotal: ['', Validators.required],
     cretotal: ['', Validators.required],
-    internal_ref_no: ['', Validators.required],
+    internal_ref_no: ['',],
     debit_ledgers: this.formBuilder.array([
       this.debitLedgerRow()
     ]),
