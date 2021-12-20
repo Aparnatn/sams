@@ -104,16 +104,13 @@
                 <td>{{ i + 1 }}</td>
                 <td>{{item.date}}</td>
                 <!-- <td>{{item.ledger_id}}</td> -->
-                <td>{{item.ledger}}</td>
                 <td>{{item.ledger_name}}</td>
-                <!-- <td>{{item.ledger_category}}</td> -->
+                <td>{{item.ledger_category}}</td>
                  <!-- <td></td> -->
                 <td>{{item.opening_balance}}</td>
                 <td>{{item.debit}}</td>
                 <td>{{item.credit}}</td>
-                <td *ngIf="item.type == 'DEBIT'">{{ item.debit }}(dr)</td>
-                <td *ngIf="item.type == 'CREDIT'">{{ item.credit }}(cr)</td>
-                <td *ngIf="item.type == 'NONE'"></td>
+                <td>0</td>
               </tr>
 
               <tr *ngFor="let item of cash; let i = index">
