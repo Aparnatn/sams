@@ -94,11 +94,10 @@
                 <td>Sales Accounts</td>
                 <td></td>
                 <td></td>
-                <td>{{CashTot}}</td>
                 <td></td>
-                <td *ngFor="let item of cash">{{CashTot}} Dr</td>
+                <td>{{CashTot}}</td>
+                <td>{{CashTot}} Cr</td>
               </tr>
-
 
               <tr>
                 <td></td>
@@ -106,9 +105,9 @@
                 <td>Bank / Cash</td>
                 <td></td>
                 <td></td>
+                <td>{{PCashTot}}</td>
                 <td></td>
-                <td *ngFor="let item of cash">{{PCashTot}}</td>
-                <td *ngFor="let item of cash">{{PCashTot}} Dr</td>
+                <td>{{PCashTot}} Dr</td>
 
               </tr>
 
@@ -120,8 +119,8 @@
                 <td>Sundry Debtors</td>
                 <td></td>
                 <td></td>
-                <td></td>
                 <td>{{CreditTot}}</td>
+                <td></td>
                 <td>{{CreditTot}} Dr</td>
 
               </tr>
@@ -133,7 +132,7 @@
                 <td></td>
                 <td>{{PCashTotal}}</td>
                 <td></td>
-                <td>{{PCashTotal}} Cr</td>
+                <td>{{PCashTotal}} Dr</td>
 
 
               </tr>
@@ -149,7 +148,7 @@
                 <td></td>
                 <td></td>
                 <td>{{PCreditTot}}</td>
-                <td>{{PCreditTot}} Dr</td>
+                <td>{{PCreditTot}} Cr</td>
 
               </tr>
               <tr>
@@ -160,7 +159,7 @@
                 <td></td>
                 <td>{{ReceiptTot}}</td>
                 <td></td>
-                <td>{{ReceiptTot}} Cr</td>
+                <td>{{ReceiptTot}} Dr</td>
 
 
               </tr>
@@ -181,8 +180,8 @@
                 <td>{{item.account}}</td>
                 <td></td>
                 <td></td>
-                <td>{{item.total3}}</td>
                 <td></td>
+                <td>{{item.total3}}</td>
                 <td>{{item.total3}} Cr</td>
 
 
