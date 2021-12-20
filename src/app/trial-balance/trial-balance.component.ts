@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { SalesService, TrialBalance } from '../services/sales.service';
 import { Router } from '@angular/router';
 import { CashSaleResponse, CreditPurchaseResponse, CreditSaleResponse, PCashSaleResponse, PurchaseReceiptResponse, SalesReceiptResponse } from '../interfaces/sales.interfaces';
-import { CustomerResponse, LedgerResponse } from '../user/login.interfaces';
+import { CustomerResponse, LedgerResponse, LedgerStatementResponse } from '../user/login.interfaces';
 @Component({
   selector: 'app-trial-balance',
   templateUrl: './trial-balance.component.html',
@@ -19,8 +19,8 @@ export class TrialBalanceComponent implements OnInit {
     report_date: "",
 
   });
-  account:"Sales Accounts";
-  ledgers: TrialBalance[];
+  journals: LedgerStatementResponse[] ;
+  ledgers: LedgerStatementResponse[];
   cash: CashSaleResponse[]=[];
   Pcash:PCashSaleResponse[];
   customers:CustomerResponse[]=[];
