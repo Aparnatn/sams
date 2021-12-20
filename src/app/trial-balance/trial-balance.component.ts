@@ -19,13 +19,13 @@ export class TrialBalanceComponent implements OnInit {
     report_date: "",
 
   });
-  account:"Sales Accounts";
-  ledgers: TrialBalance[];
+
+  ledgers: LedgerResponse[]=[];
   cash: CashSaleResponse[]=[];
   Pcash:PCashSaleResponse[];
   customers:CustomerResponse[]=[];
   creditPurchases:CreditPurchaseResponse[];
-  
+
   cashPurchases: PCashSaleResponse[];
   salesReceipts: SalesReceiptResponse[];
   purchaseReceipts: PurchaseReceiptResponse[];
@@ -70,7 +70,7 @@ export class TrialBalanceComponent implements OnInit {
       this.PCashTotal = 0;
 
 
-      
+
       this.purchaseReceipts.forEach(element => {
         this.PCashTot += Number(element.total3);
       });

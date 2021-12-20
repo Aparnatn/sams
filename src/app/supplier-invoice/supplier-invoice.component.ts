@@ -14,8 +14,8 @@ import { SalesService } from '../services/sales.service';
 })
 export class SupplierInvoiceComponent implements OnInit {
   supplierInvoiceHistoryForm = this.formBuilder.group({
-    date:['',Validators.required],
-    report_date:['',Validators.required],
+    from_date:['',Validators.required],
+    to_date:['',Validators.required],
    });
 
    supplierIn: SupplierInvoiceHistoryResponse[];
@@ -24,11 +24,11 @@ export class SupplierInvoiceComponent implements OnInit {
   constructor(private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:ReportsService,private salesservice:SalesService) { }
 
   ngOnInit(): void {
-    
+
   }
   onSubmit(): void {
-    this.service.supplier_invoice(this.supplierInvoiceHistoryForm.value).subscribe((pcash) => {
-      this.PCash = pcash;
+    this.service.supplier_invoice(this.supplierInvoiceHistoryForm.value).subscribe((data) => {
+      this.PCash = data;
 
       this.calculateAsset()
     });

@@ -1111,14 +1111,14 @@ supplier_payment(filter: PCashFilter): Observable<PCashSaleResponse[]> {
 supplier_invoRR(filter: PCashFilter): Observable<PCashSaleResponse[]> {
   // console.log(filter);
   let params = new HttpParams();
-  
+
   if (filter.report_date) {
     params = params.append('report_date', filter.report_date);
   }
   if (filter.date) {
     params = params.append('date', filter.date);
   }
-  
+
   return this.http.get<PCashSaleResponse[]>(
     `${this.apiUrl}/Sam/supplierInvoRecptReg`,
     {params: params}
@@ -1131,15 +1131,11 @@ supplier_out(filter: PReceiptFilter): Observable<PurchaseReceiptResponse[]> {
   if (filter.from_date) {
     params = params.append('from_date', filter.from_date);
   }
-  if (filter.to_date) {
-    params = params.append('to_date', filter.to_date);
-  }
+
   if (filter.report_date) {
     params = params.append('report_date', filter.report_date);
   }
-  if (filter.date) {
-    params = params.append('date', filter.date);
-  }
+
   if (filter.name) {
     params = params.append('name', filter.name);
   }
