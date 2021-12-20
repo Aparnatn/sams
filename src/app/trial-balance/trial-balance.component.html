@@ -88,43 +88,116 @@
                 <td>{{item.balance}}</td>
               </tr>
 
-              <tr *ngFor="let item of cash">
+              <tr>
                 <td></td>
                 <td></td>
-                <td>{{item.account}}</td>
+                <td>Sales Accounts</td>
                 <td></td>
                 <td></td>
-                <td>{{item.debit}}</td>
+                <td>{{CashTot}}</td>
                 <td></td>
-                <td>{{item.debit}}</td>
+                <td *ngFor="let item of cash">{{CashTot}} Dr</td>
+              </tr>  
+
+              
+              <tr>
+                <td></td>
+                <td></td>
+                <td>Bank / Cash</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td *ngFor="let item of cash">{{PCashTot}}</td>
+                <td *ngFor="let item of cash">{{PCashTot}} Dr</td>
+
+              </tr>
+
+
+              
+              <tr>
+                <td></td>
+                <td></td>
+                <td>Sundry Debtors</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{CreditTot}}</td>
+                <td>{{CreditTot}} Dr</td>
+
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td>Purchase Accounts</td>
+                <td></td>
+                <td></td>
+                <td>{{PCashTotal}}</td>
+                <td></td>
+                <td>{{PCashTotal}} Cr</td>
 
 
               </tr>
-              <tr *ngFor="let item of cash">
+              
+
+
+              
+              <tr>
+                <td></td>
+                <td></td>
+                <td>Sundry Creditors</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{PCreditTot}}</td>
+                <td>{{PCreditTot}} Dr</td>
+
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td>Customer Ledgers</td>
+                <td></td>
+                <td></td>
+                <td>{{ReceiptTot}}</td>
+                <td></td>
+                <td>{{ReceiptTot}} Cr</td>
+
+
+              </tr>
+              <!-- <tr *ngFor="let item of salesReceipts">
                 <td></td>
                 <td></td>
                 <td>{{item.account_new}}</td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>{{item.credit}}</td>
-                <td>{{item.credit}}</td>
+                <td>{{item.total3}}</td>
+                <td>{{item.total3}} Dr</td>
+
+              </tr> -->
+              <tr *ngFor="let item of purchaseReceipts">
+                <td></td>
+                <td></td>
+                <td>{{item.account}}</td>
+                <td></td>
+                <td></td>
+                <td>{{item.total3}}</td>
+                <td></td>
+                <td>{{item.total3}} Cr</td>
+
 
               </tr>
+              <!-- <tr *ngFor="let item of purchaseReceipts">
+                <td></td>
+                <td></td>
+                <td>{{item.account_new}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{item.total3}}</td>
+                <td>{{item.total3}} Dr</td>
 
-
-              <tr *ngFor="let item of credit">
-                <td></td>
-                <td></td>
-                <td>{{item.customer}}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>{{item.credit}}</td>
-                <td>{{item.credit}}</td>
-
-              </tr>
-
+              </tr> -->
 
             </tbody>
           </table>

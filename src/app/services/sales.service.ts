@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { BalanceSheet, CashSaleRequest, CashSaleResponse, CreditPurchaseRequest, CreditPurchaseResponse, CreditSaleRequest, CreditSaleResponse, CustomerMasterdataRequest, CustomerMasterdataResponse, ManualJournalRequest, ManualJournalResponse, pandl, PCashSaleRequest, PCashSaleResponse, PurchaseReceiptRequest, PurchaseReceiptResponse, PurchasereturnRequest, SalesReceiptRequest, SalesReceiptResponse, SalesreturnRequest, SalesReturnResponse } from '../interfaces/sales.interfaces';
+import { BalanceSheet, CashSaleRequest, CashSaleResponse, CreditPurchaseRequest, CreditPurchaseResponse, CreditSaleRequest, CreditSaleResponse, CustomerMasterdataRequest, CustomerMasterdataResponse, ManualJournalRequest, ManualJournalResponse, pandl, PCashSaleRequest, PCashSaleResponse, PurchaseReceiptRequest, PurchaseReceiptResponse, PurchasereturnRequest, SalesReceiptRequest, SalesReceiptResponse, SalesreturnRequest, SalesReturnResponse, TrialB } from '../interfaces/sales.interfaces';
 import { Company } from '../user/user.service';
 import { casheditResponse, CustomerResponse, ItemResponse, JobResponse } from '../user/login.interfaces';
 
@@ -388,4 +388,23 @@ export class SalesService {
       // withCredentials: true
     });
   }
+
+  getTrialB(filter: PCashFilter): Observable<TrialB> {
+    // console.log(filter);
+    let params = new HttpParams();
+    if (filter.date) {
+      params = params.append('date', filter.date);
+    }
+    if (filter.report_date) {
+      params = params.append('report_date', filter.report_date);
+    }
+    if (filter.name) {
+      params = params.append('name', filter.name);
+    }
+    return this.http.get<TrialB>(
+      `${this.apiUrl}/Sam/gob_s`,
+      { params: params }
+    )
+  }
+
 }

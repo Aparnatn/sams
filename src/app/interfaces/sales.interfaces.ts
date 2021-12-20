@@ -210,6 +210,17 @@ export interface BalanceSheet {
   salesReciepts: [], 
   credits:any[],
   pcredits:any[],
+  
+}
+export interface TrialB {
+  cash: any[],
+  cashPurchases: any [],
+  purchaseReciepts: any[],
+  salesReciepts: [], 
+  credits:any[],
+  pcredits:any[],
+  ledgers: any[];
+  creditPurchases:[];
 }
 export interface pandl {
   credit: CreditSaleResponse[];
