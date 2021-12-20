@@ -13,7 +13,8 @@ import { ReportsService } from '../reports/reports.service';
 })
 export class SupplierOutstandComponent implements OnInit {
   supplierOutstandForm = this.formBuilder.group({
-    date:['',Validators.required],
+    from_date:['',Validators.required],
+
     report_date:['',Validators.required],
    });
 
@@ -30,8 +31,8 @@ export class SupplierOutstandComponent implements OnInit {
     // })
   }
   onSubmit(): void {
-    this.service.supplier_out(this.supplierOutstandForm.value).subscribe((pcash) => {
-      this.PReceipt = pcash;
+    this.service.supplier_out(this.supplierOutstandForm.value).subscribe((data) => {
+      this.PReceipt = data;
     });
 
 
@@ -40,7 +41,7 @@ export class SupplierOutstandComponent implements OnInit {
 
     // this.router.navigate(['/reports']);
   }
-  
+
  back() {
   this.router.navigate(['/supplierbuttons']);
 }

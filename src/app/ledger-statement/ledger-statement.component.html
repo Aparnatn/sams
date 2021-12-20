@@ -62,10 +62,10 @@
           <div class="col-sm-7" >
             <select  formControlName="ledger_id" style="border-radius: 12px;" class="form-control" placeholder="">
               <option *ngFor="let item of ledgerNames;" value="{{item.id}}">{{item.ledger_name}}</option>
-              <option value="STATIC__SALES_ACCOUNTS">Sales Accounts</option>
+              <!-- <option value="STATIC__SALES_ACCOUNTS">Sales Accounts</option>
               <option value="STATIC__CASH_BANK">Cash/Bank</option>
               <option value="STATIC__PURCHASE_ACCOUNTS">Purchase Accounts</option>
-              <option value="STATIC__CUSTOMER_LEDGER">Customer Ledger</option>
+              <option value="STATIC__CUSTOMER_LEDGER">Customer Ledger</option> -->
               <option *ngFor="let item of customers;" value="CUSTOMER__{{item.id}}">{{item.customer_name}}</option>
               <option *ngFor="let item of suppliers;" value="SUPPLIER__{{item.id}}">{{item.supplier_name}}</option>
             </select>

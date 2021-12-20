@@ -28,7 +28,7 @@
 
           </div>
           <div class="col-sm-7" >
-            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="date" >
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="from_date" >
           </div>
         </div>
 
@@ -41,7 +41,7 @@
           </div>
 
           <div class="col-sm-7" >
-            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="report_date">
+            <input type="date"  style="border-radius:12px;" class="form-control" placeholder="" formControlName="to_date">
           </div>
         </div>
         <div class="row" style="padding-top: 5px;">
@@ -95,7 +95,7 @@
               <tr   *ngFor="let supplierIn of PCash;">
                 <td></td>
                 <td>{{supplierIn.date }}</td>
-                
+
                 <td>{{supplierIn.price}}</td>
                 <td>{{supplierIn.description }}</td>
                 <td>{{supplierIn.name }}</td>
@@ -105,7 +105,7 @@
                 <td>{{supplierIn.amount }}</td>
 
               </tr>
-              
+
 
               <tr>
                 <td colspan="8" align="right">Balance Amount</td>
