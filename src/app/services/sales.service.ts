@@ -18,11 +18,19 @@ export interface CashFilter {
   report_date?: string,
   name?: string,
 }
+export interface TrialFilter {
+  date?: string,
+  from_date?: string,
+  to_date?: string,
+  report_date?: string,
+  name?: string,
+}
 
 export interface LedgerStamentFilter {
   date?: string,
   report_date?: string,
   ledger_id?: string,
+
 }
 
 export interface LedgerStatementResponse {
@@ -249,7 +257,7 @@ export class SalesService {
       { params: params }
     )
   }
-  trial(filter: CashFilter): Observable<CashSaleResponse[]> {
+  trial(filter: PCashFilter): Observable<PCashSaleResponse[]> {
     // console.log(filter);
     let params = new HttpParams();
     if (filter.date) {
@@ -261,7 +269,7 @@ export class SalesService {
     if (filter.name) {
       params = params.append('name', filter.name);
     }
-    return this.http.get<CashSaleResponse[]>(
+    return this.http.get<PCashSaleResponse[]>(
       `${this.apiUrl}/Sam/gotb`,
       { params: params }
     )

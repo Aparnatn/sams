@@ -19,18 +19,19 @@ export class TrialBalanceComponent implements OnInit {
     report_date: "",
 
   });
-  account:CashSaleResponse[];
+  account:"Sales Accounts";
   ledgers: TrialBalance[];
-  cash: CashSaleResponse[];
-  pcash:PCashSaleResponse[];
+  Cash: CashSaleResponse[]=[];
+  Pcash:PCashSaleResponse[];
   customers:CustomerResponse[]=[];
   credit:CreditSaleResponse[];
-  total3 = 0;
+total=0;
+
   constructor(private http: HttpClient, private service: SalesService, private userservice: UserService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
-    this.loadCustomers();
+
 
   }
 
@@ -38,21 +39,25 @@ export class TrialBalanceComponent implements OnInit {
 
     this.service.trial_balance(this.TrialBalanceForm.value).subscribe((data) => {
       this.ledgers = data;
-      // this.getcash();
-
+      this.getcash();
+      this.loadCustomers();
 
     });
 
+
   }
-    // getcash(){
-    //   this.service.trial(this.TrialBalanceForm.value).subscribe((data) => {
-    //     this.cash = data;
-    //     // this.cash.forEach(element => {
-    //     //   this.total3 += Number(element.total3);
-    //     // });
-    //   });
+    getcash(): void{
+      this.service.trial(this.TrialBalanceForm.value).subscribe((data) => {
+        this.Pcash = data;
+        this.calculateAsset();
 
-
+      });
+    }
+    calculateAsset() {
+      this.Pcash.forEach(element => {
+        this.total = Number(element.total3) + Number(element.total3);
+      });
+    }
 
     loadCustomers(){
       this.userservice.getCustomer().subscribe((data:CustomerResponse[])=>{

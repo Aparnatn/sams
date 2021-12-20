@@ -18,7 +18,7 @@ export class LedgerStatementComponent implements OnInit {
   LedgerStatementForm = this.formBuilder.group({
     date: ["", Validators.required],
     report_date: ["", Validators.required],
-    ledger_id: ["", Validators.required],
+    ledger_id: "",
 
   });
 
@@ -67,7 +67,6 @@ export class LedgerStatementComponent implements OnInit {
     // });
   }
 
-  }
 
 
 
@@ -75,9 +74,10 @@ export class LedgerStatementComponent implements OnInit {
 
 
 
-//  back() {
-//   this.router.navigate(['/ledgerbuttons']);
-// }
 
+ back() {
+  this.router.navigate(['/ledgerbuttons']);
+}
 
+}
 

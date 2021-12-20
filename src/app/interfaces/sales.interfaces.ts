@@ -224,6 +224,7 @@ export interface pandl {
   salesReciepts: [],
 }
 
+
 export interface CreditPurchaseRequest {
   invoice_number: string,
   date: string,
