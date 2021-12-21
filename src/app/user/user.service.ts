@@ -345,7 +345,12 @@ export class UserService {
       // withCredentials: true
     });
   }
-
+  getcompany(): Observable<CompanyResponse[]> {
+    return this.http.get<CompanyResponse[]>(`${this.apiUrl}/Sam/companyshowApi`, {
+      // observe: 'response',
+      // withCredentials: true
+    });
+  }
   getCustomer(): Observable<CustomerResponse[]> {
     return this.http.get<CustomerResponse[]>(`${this.apiUrl}/Sam/customershowApi`, {
       // observe: 'response',
