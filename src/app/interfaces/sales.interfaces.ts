@@ -219,11 +219,12 @@ export interface TrialB {
   cash: any[],
   cashPurchases: any [],
   purchaseReciepts: any[],
-  salesReciepts: [], 
+  salesReciepts: [],
   credits:any[],
   pcredits:any[],
   ledgers: any[];
   creditPurchases:[];
+  journals:any[];
 }
 export interface pandl {
   credit: CreditSaleResponse[];

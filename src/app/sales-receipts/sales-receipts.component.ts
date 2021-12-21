@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SalesFrom, SalesReceiptRequest } from '../interfaces/sales.interfaces';
 import { UserService } from '../user/user.service';
-import { CustomerResponse } from '../user/login.interfaces';
+import { CustomerResponse, LedgerResponse } from '../user/login.interfaces';
 @Component({
   selector: 'app-sales-receipts',
   templateUrl: './sales-receipts.component.html',
@@ -37,7 +37,7 @@ export class SalesReceiptsComponent implements OnInit {
   });
   customers: CustomerResponse[];
   itemsIndex = 0;
-
+  ledger: LedgerResponse[];
   itemsList: number[] = [1]
   constructor(private userService: UserService, private http: HttpClient, private router: Router, private formBuilder: FormBuilder, private service: SalesService,) { }
   items(): FormArray {
@@ -72,11 +72,16 @@ export class SalesReceiptsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.loadCustomers();
-
+    this.loadledgers();
   }
   loadCustomers() {
     this.userService.getCustomer().subscribe((data: CustomerResponse[]) => {
       this.customers = data;
+    })
+  }
+  loadledgers() {
+    this.userService.getLedgers().subscribe((data: LedgerResponse[]) => {
+      this.ledger = data;
     })
   }
   setCustomerId(event) {

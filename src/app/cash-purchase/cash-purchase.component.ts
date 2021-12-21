@@ -4,7 +4,7 @@ import { SalesService } from '../services/sales.service';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PCashFrom, PCashSaleRequest } from '../interfaces/sales.interfaces';
-import {  EmployeeResponse, ItemResponse, JobResponse, SupplierResponse } from '../user/login.interfaces';
+import {  EmployeeResponse, ItemResponse, JobResponse, LedgerResponse, SupplierResponse } from '../user/login.interfaces';
 import { UserService } from '../user/user.service';
 @Component({
   selector: 'app-cash-purchase',
@@ -48,7 +48,7 @@ export class CashPurchaseComponent implements OnInit {
   jobs: JobResponse[];
 
   employees: EmployeeResponse[];
-
+  ledger: LedgerResponse[];
    // to track index of last item in cashForm.items array
    itemsIndex = 0;
 
@@ -94,6 +94,7 @@ export class CashPurchaseComponent implements OnInit {
     this.loadItems();
     this.loadJobs();
     this.loadEmployee();
+    this.loadledgers();
    }
 
    loadSupplier() {
@@ -118,8 +119,13 @@ export class CashPurchaseComponent implements OnInit {
     this.userService.getEmployees().subscribe((data: EmployeeResponse[]) => {
       this.employees = data;
     })
-  }
 
+  }
+  loadledgers() {
+    this.userService.getLedgers().subscribe((data: LedgerResponse[]) => {
+      this.ledger = data;
+    })
+  }
   setSupplierId(event) {
     this.PCashSaleForm.patchValue({supplierId: this.PCashSaleForm.get('supplier_id').value});
   }
