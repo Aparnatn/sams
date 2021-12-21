@@ -37,8 +37,8 @@ export class TrialBalanceComponent implements OnInit {
   CreditTot = 0;
   ReceiptTot = 0;
   CashTot = 0;
-  PCashTotal: number;
-
+  PCashTotal = 0;
+  creditors_tot =0;
 
 
 
@@ -68,7 +68,7 @@ export class TrialBalanceComponent implements OnInit {
       this.ReceiptTot = 0;
       this.CashTot = 0;
       this.PCashTotal = 0;
-
+      this.creditors_tot =0;
 
 
       this.purchaseReceipts.forEach(element => {
@@ -104,9 +104,8 @@ export class TrialBalanceComponent implements OnInit {
       this.credits.forEach(element => {
         this.CashTot += Number(element.total3);
       });
-      this.credits.forEach(element => {
-        this.CashTot += Number(element.total3);
-      });
+      
+      this.creditors_tot = this.PCreditTot - this.ReceiptTot;
 
     });
 

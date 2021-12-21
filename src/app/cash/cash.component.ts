@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SalesService } from '../services/sales.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CashFrom, CashSaleRequest, CashSaleResponse } from '../interfaces/sales.interfaces';
-import { CustomerResponse, EmployeeResponse, ItemResponse, JobResponse } from '../user/login.interfaces';
+import { CustomerResponse, EmployeeResponse, ItemResponse, JobResponse, LedgerResponse } from '../user/login.interfaces';
 import { UserService } from '../user/user.service';
 
 @Component({
@@ -48,7 +48,7 @@ export class CashComponent implements OnInit {
 
   // to track index of last item in cashForm.items array
   itemsIndex = 0;
-
+  ledger: LedgerResponse[];
   itemsList: number[] = [1]
 
   constructor(
@@ -91,6 +91,7 @@ export class CashComponent implements OnInit {
     this.loadJobs();
     this.loadEmployee();
     this.loadCash();
+    this.loadledgers();
   }
   private loadCash() {
     this.userService.getCash().subscribe((data: CashSaleResponse[]) => {
@@ -110,7 +111,11 @@ export class CashComponent implements OnInit {
       this.jobs = data;
     })
   }
-
+  loadledgers() {
+    this.userService.getLedgers().subscribe((data: LedgerResponse[]) => {
+      this.ledger = data;
+    })
+  }
   loadItems() {
     this.userService.getItemss().subscribe((data: ItemResponse[]) => {
       this.Items = data;

@@ -73,7 +73,7 @@
           <div class="col-sm-4" >
             <select  formControlName="account_new" style="border-radius: 12px;" class="form-control" placeholder="">
               <option selected disabled value="">Choose....</option>
-              <option>Cash/Bank</option>
+              <option *ngFor="let field of ledger" value="{{field.id}}">{{field.ledger_name}}</option>
             </select>
           </div>
         </div>

@@ -5,7 +5,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReceiptFrom, PurchaseReceiptRequest } from '../interfaces/sales.interfaces';
 import { SalesService } from '../services/sales.service';
 import { UserService } from '../user/user.service';
-import { CustomerResponse, SupplierResponse } from '../user/login.interfaces';
+import { CustomerResponse, LedgerResponse, SupplierResponse } from '../user/login.interfaces';
 @Component({
   selector: 'app-purchase-receipts',
   templateUrl: './purchase-receipts.component.html',
@@ -35,7 +35,7 @@ export class PurchaseReceiptsComponent implements OnInit {
 });
 suppliers: SupplierResponse[];
 itemsIndex = 0;
-
+ledger: LedgerResponse[];
 itemsList: number[] = [1]
   constructor(private userService: UserService,private http:HttpClient,private router:Router,private formBuilder: FormBuilder,private service:SalesService,) { }
   items(): FormArray {
@@ -65,13 +65,19 @@ itemsList: number[] = [1]
   }
   ngOnInit(): void {
     this.loadSuppliers();
-
+    this.loadledgers();
   }
   loadSuppliers() {
     this.userService.getSuppliers().subscribe((data: SupplierResponse[]) => {
       this.suppliers = data;
     })
   }
+  loadledgers() {
+    this.userService.getLedgers().subscribe((data: LedgerResponse[]) => {
+      this.ledger = data;
+    })
+  }
+
   setSupplierId(event) {
     this.PurchaseReceiptsForm.patchValue({supplierId: this.PurchaseReceiptsForm.get('supplier_id').value});
   }
