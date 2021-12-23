@@ -44,7 +44,7 @@
                 <tr>
                     <th colspan="2" style="border-radius:12px;text-align: center;">Debit Ledger</th>
                     <th>
-                      <button class="btn btn-default" type="button" (click)="addDebitLedgerRow()">Add</button>
+                      <!-- <button class="btn btn-default" type="button" (click)="addDebitLedgerRow()">Add</button> -->
                   </th>
                 </tr>
 
@@ -61,6 +61,7 @@
                         <input type="text" style="border-radius:12px;" formControlName="amount" class="form-control price" step="0.00" min="0" placeholder="0.00" />
                       </td>
                       <td>
+                        <button class="btn btn-default" type="button" (click)="addDebitLedgerRow()">Add</button>
                         <button class="btn btn-default"  type="button" (click)="removeDebitLedger(i)">Delete</button>
                       </td>
                     </tr>
@@ -70,7 +71,7 @@
                 <tr>
                     <th colspan="2" style="border-radius:12px;text-align: center;">Credit Ledger</th>
                     <th>
-                      <button class="btn btn-default" type="button" (click)="addCreditLedgerRow()">Add</button>
+                      <!-- <button class="btn btn-default" type="button" (click)="addCreditLedgerRow()">Add</button> -->
                   </th>
                 </tr>
                 <tr>
@@ -86,6 +87,7 @@
                         <input type="text" style="border-radius:12px;"  formControlName="amount" class="form-control price" step="0.00" min="0" placeholder="0.00" />
                       </td>
                       <td>
+                        <button class="btn btn-default" type="button" (click)="addCreditLedgerRow()">Add</button>
                         <button class="btn btn-default"  type="button" (click)="removeCreditLedger(i)">Delete</button>
                       </td>
                     </tr>

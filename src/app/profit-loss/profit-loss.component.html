@@ -75,16 +75,13 @@
 
 
               </tr>
-              <tr  *ngFor="let cash of cash;">
-                <td>{{cash.account}}</td>
-                <td style="text-align: right;">{{cash.total3}}</td>
-              </tr>
+              
               
               <tr *ngFor="let cash of credit;">
 
-                <td>{{cash.account}}</td>
+                <td>Sales Accounts</td>
 
-                <td style="text-align: right;">{{cash.total3}}</td>
+                <td style="text-align: right;">{{Dincome}}</td>
 
               </tr>
 
@@ -100,22 +97,16 @@
 
 
               </tr>
-              <tr *ngFor="let cash of cashPurchases;">
+              <tr *ngFor="let cash of credit;">
 
-                <td>{{cash.account}}</td>
+                <td>Purchase Accounts</td>
 
-                <td style="text-align: right;">{{cash.total3}}</td>
-
-              </tr>
-
-
-              <tr *ngFor="let cash of pcredit;">
-
-                <td>{{cash.account}}</td>
-
-                <td style="text-align: right;">{{cash.total3}}</td>
+                <td style="text-align: right;">{{Dexpense}}</td>
 
               </tr>
+
+
+              
 
               <tr>
                 <th>Total</th>
@@ -136,11 +127,11 @@
 
 
               </tr>
-              <tr *ngFor="let cash of salesReceipts;">
+              <tr>
                 
-                <td>{{cash.account}}</td>
-                <td style="text-align: right;">{{cash.total3}}</td>
-                
+                <td></td>
+                <td style="text-align: right;"></td>
+                <td></td>
                 <!-- <td>{{cash.total3}}</td> -->
 
               </tr>
