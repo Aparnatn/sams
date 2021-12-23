@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Ledger } from '../user/login.interfaces';
+import { CustomerResponse, Ledger, LedgerStatementResponse } from '../user/login.interfaces';
 import { Observable } from 'rxjs';
 import { SalesService } from '../services/sales.service';
-import { BSFrom, CashFrom, CashSaleResponse, CreditPurchaseResponse, CreditSaleResponse, PCashFrom, PCashSaleResponse, PurchaseReceiptResponse, SalesReceiptResponse } from '../interfaces/sales.interfaces';
+import { BSFrom, CashFrom, CashSaleResponse, CreditPurchaseResponse, CreditSaleResponse, ManualJournalResponse, PCashFrom, PCashSaleResponse, PurchaseReceiptResponse, SalesReceiptResponse } from '../interfaces/sales.interfaces';
 
 @Component({
   selector: 'app-balance-sheet',
@@ -19,25 +19,29 @@ export class BalanceSheetComponent implements OnInit {
     report_date: ["", Validators.required],
 
   });
+  journals: ManualJournalResponse[] ;
+  ledgers: LedgerStatementResponse[];
+  cash: CashSaleResponse[]=[];
+  Pcash:PCashSaleResponse[];
+  customers:CustomerResponse[]=[];
+  creditPurchases:CreditPurchaseResponse[];
 
-  assetTotal = 0;
-  liabilityTotal = 0;
-  cash: CashSaleResponse[];
   cashPurchases: PCashSaleResponse[];
   salesReceipts: SalesReceiptResponse[];
   purchaseReceipts: PurchaseReceiptResponse[];
   credits:CreditSaleResponse[];
   pcredits:CreditPurchaseResponse[];
-  Pliability = 0;
-  Cliability = 0;
-  LTliability = 0;
-  CBAccount = 0;
-  CAsset = 0;
-  FAsset = 0;
-  grossProfitl = 0;
-  grossProfita = 0;
-  
-
+  PReceiptTot = 0;
+  PCashTot = 0;
+  PCreditTot = 0;
+  CreditTot = 0;
+  ReceiptTot = 0;
+  CashTot = 0;
+  PCashTotal = 0;
+  creditors_tot =0;
+  debitors_tot =0;
+  PReceiptTotal=0;
+  PcashTo=0;
 
   constructor(
     private http: HttpClient,
@@ -52,74 +56,82 @@ export class BalanceSheetComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.salesservice.getBalanceSheet(this.BsForm.value).subscribe((data) => {
+
+    this.salesservice.getTrialB(this.BsForm.value).subscribe((data) => {
+      this.ledgers = data.ledgers;
       this.cash = data.cash;
       this.cashPurchases = data.cashPurchases;
       this.salesReceipts = data.salesReciepts;
       this.purchaseReceipts = data.purchaseReciepts;
       this.credits = data.credits;
+       this.creditPurchases = data.creditPurchases;
       this.pcredits = data.pcredits;
-      let total = 0;
-      this.assetTotal = 0;
-      this.liabilityTotal = 0;
-      this.Pliability = 0;
-      this.Cliability = 0;
-      this.LTliability = 0;
-      this.CBAccount = 0;
-      this.CAsset = 0;
-      this.FAsset = 0;
-      this.grossProfitl=0;
-      this.grossProfita=0;
-    
-     
+      this.PReceiptTot = 0;
+      this.PCashTot = 0;
+      this.PCreditTot = 0;
+      this.CreditTot = 0;
+      this.ReceiptTot = 0;
+      this.CashTot = 0;
+      this.PCashTotal = 0;
+      this.creditors_tot =0;
+      this.debitors_tot =0;
+this.PcashTo=0;
+
       this.purchaseReceipts.forEach(element => {
-        this.Pliability += Number(element.total3);
+        this.PCashTot += Number(element.total3);
       });
       this.cashPurchases.forEach(element => {
-        this.Cliability += Number(element.total3);
+        this.PcashTo= Number(element.total3);
+      });
+      this.purchaseReceipts.forEach(element => {
+        this.PReceiptTot += Number(element.total3);
+      });
+      this.cashPurchases.forEach(element => {
+        this.PCashTot += Number(element.total3);
+      });
+      this.cashPurchases.forEach(element => {
+        this.PCashTotal += Number(element.total3);
       });
       this.pcredits.forEach(element => {
-        this.Cliability += Number(element.total3);
-      });
-      this.credits.forEach(element => {
-        this.CAsset += Number(element.total3);
-      });
-      this.salesReceipts.forEach(element => {
-        this.CBAccount += Number(element.total3);
+        this.PCashTotal += Number(element.total3);
       });
       this.cash.forEach(element => {
-        this.CAsset += Number(element.total3);
+        this.PCashTot += Number(element.total3);
       });
-      
-        this.grossProfitl = this.Pliability + this.Cliability;
-        this.grossProfita = this.CBAccount + this.CAsset;
-      
-  });
+      this.salesReceipts.forEach(element => {
+        this.PCashTot += Number(element.total3);
+      });
+      this.pcredits.forEach(element => {
+        this.PCreditTot += Number(element.total3);
+      });
+      this.credits.forEach(element => {
+        this.CreditTot += Number(element.total3);
+      });
+      this.salesReceipts.forEach(element => {
+        this.ReceiptTot += Number(element.total3);
+      });
+      this.cash.forEach(element => {
+        this.CashTot += Number(element.total3);
+      });
+      this.credits.forEach(element => {
+        this.CashTot += Number(element.total3);
+      });
+
+      this.creditors_tot = this.CreditTot + this.PCashTot;
+      this.debitors_tot = this.PCreditTot + this.PReceiptTot+this.PcashTo;
+    });
 
 
-    //   this.cashPurchases.forEach(element => {
-    //     this.Cliability += Number(element.total3);
-
-    //   });
-    //   this.cash.forEach(element => {
-    //     this.assetTotal += Number(element.total3);
-
-    //   });
-    //   this.salesReceipts.forEach(element => {
-    //     this.liabilityTotal += Number(element.total3);
-    //   });
-    //   this.purchaseReceipts.forEach(element => {
-    //     this.liabilityTotal += Number(element.total3);
-    //   });
-    // });
   }
 
-
+    loadCustomers(){
+      this.userservice.getCustomer().subscribe((data:CustomerResponse[])=>{
+        this.customers = data;
+      })
+    }
 
   back() {
     this.router.navigate(['/financial']);
   }
-
-
 
 }

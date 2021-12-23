@@ -130,6 +130,9 @@ export interface CustomerMasterdataRequest {
 export interface CustomerMasterdataResponse {
  id:number
 }
+export interface TrialResponse {
+  id:number
+ }
 export interface CashSaleResponse {
   creditPurchases: CreditPurchaseResponse[];
   credit: CreditSaleResponse[];
@@ -213,7 +216,7 @@ export interface BalanceSheet {
   salesReciepts: [],
   credits:any[],
   pcredits:any[],
-  
+
 }
 export interface TrialB {
   cash: any[],

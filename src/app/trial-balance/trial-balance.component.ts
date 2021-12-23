@@ -6,7 +6,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { SalesService, TrialBalance } from '../services/sales.service';
 import { Router } from '@angular/router';
-import { CashSaleResponse, CreditPurchaseResponse, CreditSaleResponse, PCashSaleResponse, PurchaseReceiptResponse, SalesReceiptResponse } from '../interfaces/sales.interfaces';
+import { CashSaleResponse, CreditPurchaseResponse, CreditSaleResponse, ManualJournalResponse, PCashSaleResponse, PurchaseReceiptResponse, SalesReceiptResponse } from '../interfaces/sales.interfaces';
 import { CustomerResponse, LedgerResponse, LedgerStatementResponse } from '../user/login.interfaces';
 @Component({
   selector: 'app-trial-balance',
@@ -19,7 +19,7 @@ export class TrialBalanceComponent implements OnInit {
     report_date: "",
 
   });
-  journals: LedgerStatementResponse[] ;
+  journals: ManualJournalResponse[] ;
   ledgers: LedgerStatementResponse[];
   cash: CashSaleResponse[]=[];
   Pcash:PCashSaleResponse[];
@@ -59,7 +59,7 @@ export class TrialBalanceComponent implements OnInit {
       this.salesReceipts = data.salesReciepts;
       this.purchaseReceipts = data.purchaseReciepts;
       this.credits = data.credits;
-      // this.creditPurchases = data.creditPurchases;
+       this.creditPurchases = data.creditPurchases;
       this.pcredits = data.pcredits;
       this.PReceiptTot = 0;
       this.PCashTot = 0;
@@ -104,7 +104,7 @@ export class TrialBalanceComponent implements OnInit {
       this.credits.forEach(element => {
         this.CashTot += Number(element.total3);
       });
-      
+
       this.creditors_tot = this.PCreditTot - this.ReceiptTot;
 
     });
