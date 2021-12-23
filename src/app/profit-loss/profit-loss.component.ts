@@ -66,16 +66,16 @@ report_date:"",
       this.credit.forEach(element => {
         this.Dincome += Number(element.total3);
       });
-      this.salesReceipts.forEach(element => {
-        this.Iincome += Number(element.total3);
-      });
+      // this.salesReceipts.forEach(element => {
+      //   this.Iincome += Number(element.total3);
+      // });
       this.purchaseReceipts.forEach(element => {
         this.Iexpense += Number(element.total3);
       });
       this.pcredit.forEach(element => {
         this.Dexpense += Number(element.total3);
       });
-        this.grossProfit = this.Dincome - this.Dexpense;
+        this.grossProfit = this.Dincome + this.Dexpense;
         // this.liabilityTotal = this.Iincome - this.Iexpense;
         this.netProfit = this.grossProfit - this.Iexpense + this.Iincome;
     });
